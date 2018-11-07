@@ -1,11 +1,71 @@
-Wed Nov 07 10:22:56 2018
- velvetg_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data
-Wed Nov 07 10:23:50 2018
- velveth_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data 15 *
-Wed Nov 07 10:24:03 2018
- velveth_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data 15 example.data.fasta
-Wed Nov 07 10:24:31 2018
- velveth_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data 15 D:\PyCharm Projects\Genome Assembly Project\data\example.data.fasta
-Wed Nov 07 10:32:52 2018
- D:\PyCharm Projects\Genome Assembly Project\Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data\results
+Wed Nov 07 10:37:47 2018
+ velveth_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data 23 D:\PyCharm Projects\Genome Assembly Project\data\example.data.fasta
+Wed Nov 07 10:38:22 2018
+ velveth_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data 7 D:\PyCharm Projects\Genome Assembly Project\data\example.data.fasta
+Wed Nov 07 10:38:46 2018
+ velveth_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data 3 D:\PyCharm Projects\Genome Assembly Project\data\example.data.fasta
+Wed Nov 07 10:39:13 2018
+ velveth_mt_x64.exe D:\PyCharm Projects\Genome Assembly Project\data 31 D:\PyCharm Projects\Genome Assembly Project\data\example.data.fasta
+Wed Nov  7 12:36:09 2018
+ ./assemblers/velvet_1.2.10/velveth ./data 15 ./data/example.data.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 12:36:32 2018
+ ./assemblers/velvet_1.2.10/velvetg ./data
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
 Final graph has 1 nodes and n50 of 117, max 117, total 117, using 0/9 reads
+Wed Nov  7 12:37:35 2018
+ ./assemblers/velvet_1.2.10/velveth ./data 11 ./data/example.data.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 12:37:36 2018
+ ./assemblers/velvet_1.2.10/velvetg ./data
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Final graph has 5 nodes and n50 of 37, max 49, total 123, using 0/9 reads
+Wed Nov  7 12:51:56 2018
+ ./assemblers/velvet_1.2.10/velveth ./data/results 11 ./data/example.data.fasta ./data/real.error.large.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 12:52:04 2018
+ ./assemblers/velvet_1.2.10/velvetg ./data/results
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Final graph has 7526 nodes and n50 of 10, max 91, total 36030, using 0/4684 reads

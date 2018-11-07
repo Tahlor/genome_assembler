@@ -1,0 +1,71 @@
+Wed Nov  7 13:25:25 2018
+ ./assemblers/velvet_1.2.10/velveth /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/synthetic.noerror.large 11 /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/synthetic.noerror.large.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 13:26:00 2018
+ ./assemblers/velvet_1.2.10/velveth /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/synthetic.noerror.large 11 /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/synthetic.noerror.large.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 13:26:00 2018
+ ./assemblers/velvet_1.2.10/velvetg /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/synthetic.noerror.large
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Final graph has 142 nodes and n50 of 94, max 397, total 3139, using 0/780 reads
+Wed Nov  7 13:26:27 2018
+ ./assemblers/velvet_1.2.10/velvetg /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/synthetic.noerror.large
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 13:26:27 2018
+ ./assemblers/velvet_1.2.10/velveth /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/synthetic.noerror.large 15 /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/synthetic.noerror.large.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 13:29:59 2018
+ ./assemblers/velvet_1.2.10/velveth /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/synthetic.noerror.large 15 /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/synthetic.noerror.large.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 13:29:59 2018
+ ./assemblers/velvet_1.2.10/velvetg /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/synthetic.noerror.large
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
