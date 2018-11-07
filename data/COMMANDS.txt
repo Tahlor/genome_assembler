@@ -1,0 +1,6 @@
+"D:\PyCharm Projects\Genome Assembly Project\data\example.data.fasta"
+
+"D:\PyCharm Projects\Genome Assembly Project\Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe" "D:\PyCharm Projects\Genome Assembly Project\data\results"
+ 15 "D:\PyCharm Projects\Genome Assembly Project\data\example.data.fasta"
+
+"D:\PyCharm Projects\Genome Assembly Project\Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe" "D:\PyCharm Projects\Genome Assembly Project\data\results"
