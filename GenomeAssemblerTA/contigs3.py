@@ -1,18 +1,7 @@
 import collections, sys
 import os
 
-<<<<<<< HEAD
-d = {"A": "T", "T": "A", "G": "C", "C": "G"}
-
-def twin(text):
-    out = ""
-    for t in text[::-1]:
-        if t in d.keys():
-            out += d[t]
-    return out
-=======
 output = open("results.txt", "w")
->>>>>>> af0a04d3263b6915edd6e2999632467d3ac05f92
 
 def kmers(seq, k):
     for i in range(len(seq) - k + 1):
@@ -47,6 +36,7 @@ def get_contig(d, km):
     c = forward_contig(d, km)
     return contig_to_string(c), c
 
+
 def forward_contig(d, km):
     """ Given a kmer, get the contig
     """
@@ -54,7 +44,6 @@ def forward_contig(d, km):
 
     while True:
         # there should be one edge to next kmer; if not, stop
-            # fw is all possible contigs that could be connected
         if sum(x in d for x in fw(c_fw[-1])) != 1:
             break
 
@@ -68,7 +57,9 @@ def forward_contig(d, km):
             break  # break out of cycles or mobius contigs
 
         c_fw.append(cand)
+
     return c_fw
+
 
 def all_contigs(d, k):
     """ Get the contig when starting at each kmer
@@ -102,9 +93,6 @@ def parse_fasta(path):
     return [t[:-1] for i, t in enumerate(text) if i % 2 == 1]
 
 
-<<<<<<< HEAD
-def main_call(path, depth=0, k_range = None):
-=======
 
 def calc_n50(contigs):
     contigs.sort()
@@ -123,58 +111,15 @@ def longest_contig(contigs):
         return 0
     return max([len(contig) for contig in contigs])
 
-
-def main_call(path, depth=0):
->>>>>>> af0a04d3263b6915edd6e2999632467d3ac05f92
-    """
-    path: path of fasta file
-    depth: kmers with frequence of less than "depth" are dropped (assumed to be errant)
-    """
-    reads = parse_fasta(path)
-    print("\t K #CONTIGS CONTIG_LIST")
-<<<<<<< HEAD
-    if k_range is None:
-        k_range = range(13,39,2)
-    for k in k_range:
-        d = build_de_bruijn(reads, k, depth)
-        G, cs = all_contigs(d, k)
-        print("\t", k, len(cs), cs) # cs is list of contigs
-        #checker(reads, cs)
-=======
-    output.write("\tK\t#CONTIGS\tN50\t\tLARGEST\t\t\tCONTIG_LIST \n")
-    for k in range(13,51,2):
-        d = build_de_bruijn(kmers, k, depth)
-        G, cs = all_contigs(d, k)
-        print("\t", k, len(cs), cs) # cs is list of contigs
-        output.write("\t" + str(k))
-        output.write("\t" + str(len(cs)))
-        output.write("\t\t\t" + str(calc_n50(cs)))
-        output.write("\t\t" + str(longest_contig(cs)))
-        output.write("\t\t\t\t" + str(cs) + "\n")
->>>>>>> af0a04d3263b6915edd6e2999632467d3ac05f92
-
-def checker(reads, contigs):
-    result = False
-    for read in reads:
-        for contig in contigs:
-            result = read in contig
-            if result:
-                break
-        if not result:
-            print("CONTIGS don't include all reads")
-            return
-
-def main_loop():
+def main_file_loop():
     data_path = r"../data"
     print(os.getcwd())
-    output.write(os.getcwd())
     files = os.listdir(data_path)
     files.sort()
 
     for f in files:
         if f[-6:] == ".fasta":
             print(f)
-<<<<<<< HEAD
             main_call(os.path.join(data_path, f), depth=1)
 
 def test():
@@ -185,10 +130,37 @@ def test():
     G, cs = all_contigs(d, k)
     print("\t", k, len(cs), cs)  # cs is list of contigs
 
+
+def main_call(path, depth=0):
+    """
+    path: path of fasta file
+    depth: kmers with frequence of less than "depth" are dropped (assumed to be errant)
+    """
+    kmers = parse_fasta(path)
+    print("\t K #CONTIGS CONTIG_LIST")
+    output.write("\tK\t#CONTIGS\tN50\t\tLARGEST\t\t\tCONTIG_LIST \n")
+    for k in range(13,51,2):
+        d = build_de_bruijn(kmers, k, depth)
+        G, cs = all_contigs(d, k)
+        print("\t", k, len(cs), cs) # cs is list of contigs
+        output.write("\t" + str(k))
+        output.write("\t" + str(len(cs)))
+        output.write("\t\t\t" + str(calc_n50(cs)))
+        output.write("\t\t" + str(longest_contig(cs)))
+        output.write("\t\t\t\t" + str(cs) + "\n")
+
 if __name__ == "__main__":
-    #main_loop()
-    test()
-=======
+    data_path = r"../data"
+    print(os.getcwd())
+    output.write(os.getcwd())
+    files = os.listdir(data_path)
+    files.sort()
+    for f in files:
+        if f[-6:] == ".fasta":
+            print(f)
             output.write(f + "\n")
             main_call(os.path.join(data_path, f))
->>>>>>> af0a04d3263b6915edd6e2999632467d3ac05f92
+
+
+    #main_loop()
+    #test()

@@ -142,3 +142,15 @@ rna_to_peptide = {"UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
                   "GGU":"G", "GGC":"G", "GGA":"G", "GGG":"G", }
 
 #peptide_to_rna = invert_dict(rna_to_peptide)
+
+
+def checker(reads, contigs):
+    result = False
+    for read in reads:
+        for contig in contigs:
+            result = read in contig
+            if result:
+                break
+        if not result:
+            print("CONTIGS don't include all reads")
+            return
