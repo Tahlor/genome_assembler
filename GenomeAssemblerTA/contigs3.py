@@ -130,7 +130,6 @@ def test():
     G, cs = all_contigs(d, k)
     print("\t", k, len(cs), cs)  # cs is list of contigs
 
-
 def main_call(path, depth=0):
     """
     path: path of fasta file
@@ -160,7 +159,5 @@ if __name__ == "__main__":
             print(f)
             output.write(f + "\n")
             main_call(os.path.join(data_path, f))
-
-
     #main_loop()
     #test()
