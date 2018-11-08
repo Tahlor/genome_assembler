@@ -93,23 +93,22 @@ def mode_of_list(the_list, break_ties = True):
 
 def check_solution(my_answer, true_answer, separator=" ", exact=False):
     mistakes = 0
+    if "/" in my_answer:
+        text1 = (" ".join(open_file(my_answer)).split(separator))
+    else:
+        text1 = my_answer
+    text2 = (" ".join(open_file(true_answer)).split(separator))
 
     if exact:
-        text1 = (" ".join(open_file(my_answer)).split(separator))
-        text2 = (" ".join(open_file(true_answer)).split(separator))
         if text1 != text2:
             for i,t in enumerate(text1):
                 if i >= len(text2):
                     mistakes += 1
                 elif t != text2[i]:
                     mistakes+=1
-
         print(text1)
         print(text2)
-
     else:
-        text1 = set(" ".join(open_file(my_answer)).split(separator))
-        text2 = set(" ".join(open_file(true_answer)).split(separator))
         for i in text1:
             if i not in text2:
                 print("{} not in correct solution".format(i))
