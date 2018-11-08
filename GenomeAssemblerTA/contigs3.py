@@ -1,6 +1,8 @@
 import collections, sys
 import os
 
+output = open("results.txt", "w")
+
 def kmers(seq, k):
     for i in range(len(seq) - k + 1):
         yield seq[i:i + k]
@@ -91,6 +93,25 @@ def parse_fasta(path):
     return [t[:-1] for i, t in enumerate(text) if i % 2 == 1]
 
 
+
+def calc_n50(contigs):
+    contigs.sort()
+    contigs.sort(key=len, reverse=True)
+    total_length = sum(len(contig) for contig in contigs)
+    half_length = total_length / 2
+    count = 0
+    for contig in contigs:
+        count += len(contig)
+        if count >= half_length:
+            return len(contig)
+
+
+def longest_contig(contigs):
+    if len(contigs) == 0:
+        return 0
+    return max([len(contig) for contig in contigs])
+
+
 def main_call(path, depth=0):
     """
     path: path of fasta file
@@ -98,17 +119,25 @@ def main_call(path, depth=0):
     """
     kmers = parse_fasta(path)
     print("\t K #CONTIGS CONTIG_LIST")
-    for k in range(13,39,2):
+    output.write("\tK\t#CONTIGS\tN50\t\tLARGEST\t\t\tCONTIG_LIST \n")
+    for k in range(13,51,2):
         d = build_de_bruijn(kmers, k, depth)
         G, cs = all_contigs(d, k)
         print("\t", k, len(cs), cs) # cs is list of contigs
+        output.write("\t" + str(k))
+        output.write("\t" + str(len(cs)))
+        output.write("\t\t\t" + str(calc_n50(cs)))
+        output.write("\t\t" + str(longest_contig(cs)))
+        output.write("\t\t\t\t" + str(cs) + "\n")
 
 if __name__ == "__main__":
     data_path = r"../data"
     print(os.getcwd())
+    output.write(os.getcwd())
     files = os.listdir(data_path)
     files.sort()
     for f in files:
         if f[-6:] == ".fasta":
             print(f)
+            output.write(f + "\n")
             main_call(os.path.join(data_path, f))
