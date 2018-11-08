@@ -1,0 +1,60 @@
+Wed Nov  7 17:24:27 2018
+ ./assemblers/velvet_1.2.10/velveth ./data/results/4 synthetic.noerror.large 17 ./data/4 synthetic.noerror.large.fasta -short
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 17:24:27 2018
+ ./assemblers/velvet_1.2.10/velvetg ./data/results/4 synthetic.noerror.large
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 17:26:32 2018
+ ./assemblers/velvet_1.2.10/velveth ./data/results/4 synthetic.noerror.large 17 ./data/4 synthetic.noerror.large.fasta -short2
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 17:26:32 2018
+ ./assemblers/velvet_1.2.10/velvetg ./data/results/4 synthetic.noerror.large
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 17:27:14 2018
+ ./assemblers/velvet_1.2.10/velveth ./data/results/4 synthetic.noerror.large 17 ./data/4 synthetic.noerror.large.fasta
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
+Wed Nov  7 17:27:14 2018
+ ./assemblers/velvet_1.2.10/velvetg ./data/results/4 synthetic.noerror.large
+Version 1.2.10
+Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Compilation settings:
+CATEGORIES = 2
+MAXKMERLENGTH = 31
+
