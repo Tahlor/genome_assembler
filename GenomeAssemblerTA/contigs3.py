@@ -91,13 +91,17 @@ def parse_fasta(path):
     return [t[:-1] for i, t in enumerate(text) if i % 2 == 1]
 
 
-def main_call(path):
+def main_call(path, depth=0):
+    """
+    path: path of fasta file
+    depth: kmers with frequence of less than "depth" are dropped (assumed to be errant)
+    """
     kmers = parse_fasta(path)
     print("\t K #CONTIGS CONTIG_LIST")
     for k in range(13,39,2):
-        d = build_de_bruijn(kmers, k, 0)
+        d = build_de_bruijn(kmers, k, depth)
         G, cs = all_contigs(d, k)
-        print("\t", k, len(cs), cs)
+        print("\t", k, len(cs), cs) # cs is list of contigs
 
 if __name__ == "__main__":
     data_path = r"../data"
