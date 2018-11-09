@@ -1,0 +1,104 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Ordering-and-Joining</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_93.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_95.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Ordering-and-Joining -->
+
+
+<H1><A NAME="SEC163" HREF="gap4_toc.html#SEC163">Ordering and Joining Contigs</A></H1>
+
+<UL>
+<LI><A HREF="gap4_95.html#SEC164">Order Contigs</A>
+<LI><A HREF="gap4_96.html#SEC165">Find Read Pairs</A>
+<LI><A HREF="gap4_99.html#SEC170">Find Internal Joins</A>
+<LI><A HREF="gap4_101.html#SEC172">Find Repeats</A>
+</UL>
+
+<P>
+After the initial rounds of assembly it is likely that the data for a
+sequencing project will still not be contiguous. In order to minimise
+the number of experiments required to finish the project it is useful 
+to be able to get as much from the existing data as possible. The
+functions described in this section can help to get the current set of
+contigs into a consistent left to right order, can discover joins
+between contigs which were missed or overlooked by the assembly
+engines, and can help in the analysis of repeats which may cause
+problems for assembly. It is one of the strengths of gap4 that the
+results from several of these independent types of analysis can be
+combined in a single display
+(see section <A HREF="gap5_7.html#SEC12">Contig Comparator</A>),
+and where they are seen to reinforce one another, users can feel more
+confident in their decisions.
+
+</P>
+
+<p>
+<a href="comparator,5.325in.png.html"><img src="comparator,5.325in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+A typical Contig Comparator display is shown in the figure above. It is
+showing results from other functions, as well as the ones described
+in this section.
+
+</P>
+<P>
+The first function
+(see section <A HREF="gap4_95.html#SEC164">Order Contigs</A>)
+automatically orders contigs based on read-pair data. The orderings
+found can be examined in the Template Display
+(see section <A HREF="gap4_29.html#SEC36">Template Display</A>)
+
+</P>
+<P>
+The next function
+(see section <A HREF="gap5_45.html#SEC82">Find read pairs</A>)
+also examines read-pair data, but instead of automatically ordering the
+contigs, plots out their relationships in the Contig Comparator, from
+where the user can invoke the Template Display to check them, and use
+the Contig Selector
+to reorder them.
+
+</P>
+<P>
+Sometimes assembly engines will miss or regard some weak joins as too
+uncertain to be made. The Find Internal Joins function
+(see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>),
+compares contigs, including their hidden data, to find matches between
+the ends of contigs. 
+Again results are presented in the Contig
+Comparator, and users can invoke the Contig Joining Editor
+(see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>)
+to examine and make joins.
+
+</P>
+<P>
+Whereas Find Internal Joins makes sure that alignments between contigs
+continue right to their ends, another search, Find Repeats
+(see section <A HREF="gap5_44.html#SEC81">Find Repeats</A>)
+finds any identical segments of sequence, wherever they lie in the
+consensus. This has several uses. It gives another way of finding
+potential joins, and it provides a way of anotating (tagging) repeats so
+that their positions are obvious to users, and can be taken into account
+by other search procedures.
+Again results are presented in the Contig
+Comparator, and users can invoke the Contig Joining Editor
+(see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>)
+to examine and make joins.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_93.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_95.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

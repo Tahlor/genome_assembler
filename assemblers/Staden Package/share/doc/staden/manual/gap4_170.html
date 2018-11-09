@@ -1,0 +1,150 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Conf</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_169.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_171.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Conf -->
+
+
+<H1><A NAME="SEC257" HREF="gap4_toc.html#SEC257">Configuring</A></H1>
+
+<!-- NODE:Conf-Introduction -->
+
+
+<H2><A NAME="SEC258" HREF="gap4_toc.html#SEC258">Introduction</A></H2>
+<P>
+<A NAME="IDX605"></A>
+<A NAME="IDX606"></A>
+<A NAME="IDX607"></A>
+<A NAME="IDX608"></A>
+<A NAME="IDX609"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>
+<LI><A HREF="gap4_172.html#SEC260">Set Maxseq</A>
+<LI><A HREF="gap4_173.html#SEC261">Set Fonts</A>
+
+<LI><A HREF="gap4_174.html#SEC262">Configuring Menus</A>
+<LI><A HREF="gap4_175.html#SEC263">Set Genetic Code</A>
+<LI><A HREF="gap4_176.html#SEC264">Alignment Scores</A>
+<LI><A HREF="gap4_177.html#SEC265">Trace File Location</A>
+<LI><A HREF="gap4_178.html#SEC266">The Tag Selector</A>
+<LI><A HREF="gap4_179.html#SEC267">Tag GTAGDB File</A>
+<LI><A HREF="gap4_180.html#SEC268">Template Status</A>
+</UL>
+
+<P>
+The Options menu allows selection of the Consensus algorithm and the
+genetic code to use, and adjustment of various parameters
+used throughout gap4. It also provides a way of setting
+more trivial things such as fonts and colours.
+
+</P>
+<P>
+Most of these options have "OK Permanent" buttons in addition to the normal
+"OK" button. The "OK Permanent" button will save the current settings to the
+<TT>`.gaprc'</TT> file in the user's home directory.
+On Windows 95 this may be <CODE>C:\</CODE>.
+
+</P>
+<P>
+In general users will not need to be aware of this method as the most important
+configuration options are all available from within the graphical user
+interface. However there are many additional configurable parameters which may
+be referred to throughout the manual. These too are stored in the
+<TT>`.gaprc'</TT> files.
+
+</P>
+<P>
+When gap4 starts up it will first load the complete set of configurations from
+the <TT>`$STADENROOT/tables/gaprc'</TT> file. Next it loads <TT>`.gaprc'</TT> from the
+user's home directory, and finally <TT>`.gaprc'</TT> from the user's current
+project directory.  This means that the setting stored in the <TT>`.gaprc'</TT>
+file in the user's project directory will have priority over those found in
+the home directory, which, in turn, have priority of those found in the Staden
+Package installation directories.
+
+</P>
+<P>
+Note that searching for the <TT>`.gaprc'</TT> files only applies when starting
+gap4 and not when opening new or different databases.
+Hence if the user double clicks on a database
+<TT>`.aux'</TT> file then gap4 will read
+the <TT>`.gaprc'</TT> file found in the same directory as the database. If users
+start up gap4 from the Start menu and then open the project, the
+<TT>`.gaprc'</TT> file in the project directory will not be read.
+ 
+
+</P>
+<P>
+The format of commands in the <TT>`.gaprc'</TT> file are:
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+"#" followed by anything is a comment.
+
+</P>
+<P>
+"set_def VARIABLE value" sets the parameter "VARIABLE" to the value
+"value".  Note that value must be enclosed in double quotes if it
+contains spaces.
+
+</P>
+<P>
+"set_defx temp VARIABLE value" sets a parameter in a temporary list
+named "temp". This has no effect unless it is then used within a
+set_def command.  In this case we use "$temp" as the "value" parameter
+of a set_def command.
+</BLOCKQUOTE>
+
+<P>
+An example follows:
+
+</P>
+
+<PRE>
+set_def FIJ.MAXMIS.VALUE		30.00
+
+set_def	TEMPLATE.PRIMER_REVERSE_COLOUR	"green"
+
+set_def CONTIG_EDITOR.DISAGREE_MODE	2
+set_def CONTIG_EDITOR.DISAGREE_CASE	0
+set_def CONTIG_EDITOR.MAX_HEIGHT	25
+</PRE>
+
+<P>
+Note that some adjustments will effect more than just gap4. For example,
+the colours of traces are stored in the
+<TT>`.tk_utilsrc'</TT> file, and this file is used by both gap4 and trev.
+For colour blind users it can be useful to change these particular
+settings. For example the following is a <TT>`.tk_utilsrc'</TT> file
+to change the colours for the trace displays.
+
+</P>
+
+<PRE>
+set_def TRACE.COLOUR_A			white
+set_def TRACE.COLOUR_C			blue
+set_def TRACE.COLOUR_G			black
+set_def TRACE.COLOUR_T			"#ff8000"
+set_def TRACE.LINE_WIDTH		2
+</PRE>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_169.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_171.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

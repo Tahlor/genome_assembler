@@ -1,0 +1,98 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Joining</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_71.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_73.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Joining -->
+
+
+<H2><A NAME="SEC137" HREF="gap4_toc.html#SEC137">The Join Editor</A></H2>
+<P>
+<A NAME="IDX323"></A>
+<A NAME="IDX324"></A>
+
+</P>
+<P>
+Contigs are joined interactively using the Join Editor.
+This is simply a pair
+of contig editor displays stacked above one another with a "differences"
+line in between. 
+Note that it is essential
+to align the contigs over the full length of their overlap. It is much more
+difficult to achieve this after a join has been made, and until the
+alignment is correct, the consensus sequence will be nonsense.
+
+</P>
+<P>
+The few differences between the Join Editor and the Contig Editor can be seen
+in the figure below. Otherwise all the commands and operations are the
+same as those for the Contig Editor 
+
+</P>
+
+<p>
+<a href="contig_editor.join,6in.png.html"><img src="contig_editor.join,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+One difference is the Lock button. When set (as it is in the
+illustration) scrolling either contig, by using the scrollbar or the
+four movement buttons, will also scroll the other contig.
+
+</P>
+<P>
+The Align button aligns the overlapping consensus sequences and adds
+pads The alignment routine assumes that the two contigs are already in
+approximately the right relative position (as they are immediately
+after the Join Editor has been invoked from Find Internal Joins, or
+Find Repeats). If they are not they must be positioned manually before
+using the Align button.
+
+</P>
+<P>
+The "&#60;" and "&#62;" buttons either side of the "Align" button
+perform the alignment from the editing cursor to the start of the
+contig and and from the cursor to the end of the contig
+only. Alignment end-gaps are penalised at the curosr position but not
+for the alignment end at the contig start/end position. These buttons
+are useful for when multiple alignment positions may be valid, such as
+is the case with an overlap consisting entirely of a STR.
+
+</P>
+<P>
+It should be noted
+that each of the pair of editors comprising the Contig Editor 
+maintains its own undo history, and using Align
+is likely to add to both undo histories. 
+Hence, to undo the results of the Align command
+the Undo button in both editors must be used.
+
+</P>
+<P>
+Note also that storing the undo information takes up a great deal of computer
+memory and slows down the alignment process. For this reason the settings menu
+contains an option to turn off (or on) the saving of undo information. When
+aligning very long overlaps it is advisable to turn off the undo saving.
+
+</P>
+<P>
+When "Join/Quit" is pressed a dialogue box is displayed containing
+the percentage mismatch of the overlap, and asking if the join should be made.
+For joins above a certain
+level of mismatch (20 percent by default) a second confirmation is required.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_71.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_73.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

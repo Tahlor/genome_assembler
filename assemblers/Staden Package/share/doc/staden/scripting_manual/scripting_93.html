@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-shift_readings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_92.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_94.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-shift_readings -->
+
+
+<H2><A NAME="SEC101" HREF="scripting_toc.html#SEC101">shift_readings</A></H2>
+<P>
+<A NAME="IDX320"></A>
+<A NAME="IDX321"></A>
+<A NAME="IDX322"></A>
+
+</P>
+
+<PRE>
+<CODE>shift_readings</CODE>
+ -io            <I>io_handle:integer</I>
+ -readings      <I>identifiers:integers</I>
+ -distances     <I>distances:integers</I>
+</PRE>
+
+<P>
+This command shifts all readings to the right of (and including) a specified
+reading by a particular amount to the left or right. It is mainly for manually
+manipulating the database structures to join contigs. Use is not recommended.
+The function returns no value but will generate a Tcl error if an error
+occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<DT><VAR><CODE>-readings</CODE> readings</VAR>
+<DD>
+<DT><VAR><CODE>-distances</CODE> distances</VAR>
+<DD>
+For each reading listed in the <I>readings</I> argument, that reading and all
+those to the right of it are shifted by the corresponding element in the
+<I>distances</I> list. Positive distances shift right; negative distances shift
+left.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_92.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_94.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

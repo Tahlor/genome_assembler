@@ -1,0 +1,137 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Suggest Long</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_109.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_111.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Suggest Long -->
+
+
+<H2><A NAME="SEC181" HREF="gap4_toc.html#SEC181">Suggest Long Readings</A></H2>
+<P>
+<A NAME="IDX412"></A>
+<A NAME="IDX413"></A>
+
+</P>
+<P>
+This routine 
+(which is available from the gap4 Experiments menu)
+suggests which templates could be resequenced on a long gel
+machine to fill in single stranded regions or extend contigs. The "Estimated
+long reading length" tells the routine the expected length of reading that
+will be produced by the sequencing machine. The routine finds all single
+stranded regions, and where possible suggests solutions. Solutions will not be
+suggested using readings from templates that have inconsistent read-pair
+information.
+
+</P>
+<P>
+The example output below shows a list of  problem  segments
+followed by suggested templates.
+
+</P>
+
+<PRE>
+  Prob 1..1:            Extend contig start for joining.
+      Long       c91d3.s1   367. T_pos=366, T_size=1000..1500 (1250), cov 189
+      Long      c99e12.s1   340. T_pos=191, T_size=1000..1500 (1250), cov 216
+
+  Prob 1..456:          No +ve strand data.
+      No solution.
+
+  Prob 1597..1736:      No +ve strand data.
+      Long       c53c6.s1  1074. T_pos=341, T_size=1000..1500 (1250), cov 32
+      Long      e04c11.s1  1076. T_pos=376, T_size=1000..1500 (1250), cov 34
+      Long       e05h9.s1  1081. T_pos=377, T_size=1000..1500 (1250), cov 39
+      Long       e05a1.s1  1198. T_pos=329, T_size=1000..1500 (1250), cov 156*
+      Long      c53b11.s1  1382. T_pos=216, T_size=1000..1500 (1250), cov 340*
+
+  Prob 2530..2532:      No +ve strand data.
+      Long       e03a8.s1  2283. T_pos=199, T_size=1000..1500 (1250), cov 308*
+      Long      e05b10.s1  2331. T_pos=200, T_size=1000..1500 (1250), cov 356*
+
+  Prob 3974..4067:      No -ve strand data.
+      No solution.
+
+  Prob 4067..4067:      Extend contig end for joining.
+   D  Long       e06a3.s1  3588. T_pos=366, T_size=1000..1500 (1582), cov 76
+      Long       c53b1.s1  3709. T_pos=360, T_size=1000..1500 (1250), cov 197
+</PRE>
+
+<P>
+        Some brief notes on the above output; looking at the suggested
+  rerun of reading e05a1.s1.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>Prob 1597..1736:        No +ve strand data.</CODE>
+<DD>
+A single stranded region has been identified in this contig at bases
+1597 to 1736 inclusive.
+
+<DT><CODE>"?D Long"</CODE>
+<DD>
+The optional two letters before the word "Long" are used to flag possibly
+inconsistent templates (templates that are definitely inconsistent are
+ignored). "?" means that no primer information is available
+for the template that the reading is from. "D" means that the template size is not
+within the expected minimum and maximum. In this case the observed size is
+displayed (see below).
+
+<DT><CODE>"Long       e05a1.s1  1198."</CODE>
+<DD>
+A possible solution; rerun reading e05a1.s1 as a long gel. The first
+used base at the 5' end of this reading is at position 1198 in the
+contig. Typically this roughly corresponds to the primer position for
+this reading in the contig.
+
+<DT><CODE>T_pos=329</CODE>
+<DD>
+The last used base at the 3' end of the reading is estimated to be the
+329th base of the template.  Together with the template lengths this
+gives us an estimate of how much template there is available for a long
+gel or for walking.
+
+<DT><CODE>T_size=1000..1500 (1250)</CODE>
+<DD>
+The estimated size for this template is 1250 bases.  Gap4 is supplied a
+minimum and maximum size when a reading is assembled.  In this case the
+minimum is 1000 bases, and the maximum 1500.  When 
+forward and reverse reads assembled into the same contig
+estimate the real length reasonably accurately. Otherwise (as can be
+seen here), the estimated length is simply the average of the supplied
+minimum and maximum lengths.
+
+<DT><CODE>cov 156*</CODE>
+<DD>
+We would expect a long gel to cover our "hole" by 156 bases. This
+estimate is based purely on the position of the start of the reading in
+relation to the start of the hole, and the estimated length of a long
+gel.  The asterisk here marks that this coverage is more than enough to
+completely solve the problem by plugging the positive strand hole.
+</DL>
+
+<P>
+For the problem "3974..4067" there is "No solution" listed.  This is due
+to the fact that there are no suitable readings within the estimated
+long gel reading length of this problem.
+
+</P>
+
+<p>
+<img src="exp_suggest.long.png" alt="[picture]">
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_109.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_111.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,52 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Multiple Editors</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_26.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_28.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Multiple Editors -->
+
+
+<H2><A NAME="SEC58" HREF="gap5_toc.html#SEC58">Using Several Editors at Once</A></H2>
+<P>
+<A NAME="IDX96"></A>
+
+</P>
+<P>
+Several editors can be used simultaneously, even on the same contig.
+In the latter case, it is useful to understand the difference between
+the data and the view of the data.
+
+</P>
+<P>
+Each operating Contig Editor is a view of the data for
+a particular contig. With two editors
+viewing the same contig, making changes in either will modify the data
+that both are viewing, hence the change will be visible in both
+editors. Similarly, using Undo in either will undo the changes to both.
+
+</P>
+<P>
+Interaction between Contig Editors and Join Editors is more
+complicated and generally isn't advised. However such interactions
+work consistently with the notion of views of contigs. For example,
+suppose there are two Contig Editors open on two separate contigs, and in
+addition to these a Join Editor displaying both contigs. Making the
+join in the Join Editor will update the two stand-alone Contig Editors
+so that they are each viewing the correct positions in the new contig,
+even though they're both now viewing the same contig.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_26.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_28.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

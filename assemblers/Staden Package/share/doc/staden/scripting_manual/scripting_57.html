@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Script-io_rw_reading_name</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_56.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_58.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Script-io_rw_reading_name -->
+
+
+<H3><A NAME="SEC63" HREF="scripting_toc.html#SEC63">io_read_reading_name and io_write_reading_name</A></H3>
+<P>
+<A NAME="IDX167"></A>
+<A NAME="IDX168"></A>
+<A NAME="IDX169"></A>
+
+</P>
+<P>
+When accessing the reading name record referenced by the reading structure,
+special purpose functions must be used. The reading names are cached in
+memory once a database is opened. This speeds up accesses, but requires
+different IO functions. Note that <CODE>io_write_text</CODE> to update a reading
+name will invalidate the cache and cause bugs.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>io_read_reading_name</CODE> <I>io</I> <I>reading_number</I>
+<DD>
+Returns the reading name for reading <I>reading_number</I>.
+<P>
+<DT><CODE>io_write_reading_name</CODE> <I>io</I> <I>reading_number</I> <I>name</I>
+<DD>
+Writes the new reading <I>name</I> for reading <I>reading_number</I>. Assuming
+correct syntax, this always returns success.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_56.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_58.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

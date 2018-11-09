@@ -1,0 +1,108 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Find Oligos</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_46.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_48.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Find Oligos -->
+
+
+<H2><A NAME="SEC84" HREF="gap5_toc.html#SEC84">Sequence Search</A></H2>
+<P>
+<A NAME="IDX143"></A>
+<A NAME="IDX144"></A>
+<A NAME="IDX145"></A>
+<A NAME="IDX146"></A>
+<A NAME="IDX147"></A>
+
+</P>
+<P>
+The purpose of this function 
+(which is available from the gap5 View menu)
+is to find matches between the consensus
+sequence and short segments of sequence defined by the user.
+The segments of sequence (or "strings") can be typed into the dialogue
+provided or can be the sequences covered by consensus tag types 
+(see section <A HREF="gap4_19.html#SEC26">Tag types</A>)
+selected by the user. The latter mode hence provides a way of checking
+to see if a tagged segment of the sequence occurs elsewhere in the
+consensus. The function was previously known as "Find Oligos".
+
+</P>
+
+<p>
+<img src="find_oligo_pic.png" alt="[picture]">
+
+<P>
+Users can elect to search against a "single" contig, "all contigs",
+or a subset of contigs defined in a list (see section <A HREF="gap5_69.html#SEC107">Lists</A>)
+or a file. If "file" or
+"list" is selected the browse button is activated and gives access to
+file or list browsers. If they choose to analyse a single contig the
+dialogue concerned with selecting the contig and the region to search
+becomes activated.
+
+</P>
+<P>
+Both strands of the consensus are scanned using a very simple algorithm:
+insertions and deletions are not allowed, but mismatches are.
+The "Minimum percent match" defines the smallest percentage match which will
+be reported by the algorithm. A value of 75 means that at least 75% of
+the bases must match the target sequence. 
+
+</P>
+<P>
+The user can elect to use tags or to specify their own sequences for
+the search. Selecting "Use tags" will activate the "Select tags" browse
+button. Clicking on this button will bring up a check box dialogue to
+enable the user to select the tags types they wish to activate. 
+Alternatively selecting "Enter sequence" will activate a text entry box
+and the user can enter a string of characters. Only the characters ACGTU
+are allowed and there is no limit to the length of the string.
+
+</P>
+<P>
+If it has not already occurred, selection of this function will automatically
+transform the Contig Selector into the Contig Comparator. 
+
+</P>
+<P>See section <A HREF="gap5_7.html#SEC12">Contig Comparator</A>.
+Each match found is plotted as a diagonal line in the Contig Comparator. 
+The length of the diagonal line is proportional to the length of the
+search string. Self matches from the tag search are not reported. 
+
+</P>
+<P>
+If the match between the search string and the contig are in the same 
+orientation, the diagonal match line will be parallel to the main diagonal, 
+otherwise the line will be perpendicular to the main diagonal. Matches found
+between a tag and a contig can be used to invoke the Join Editor 
+(see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>) or Contig Editors (see section <A HREF="gap5_11.html#SEC20">Editing in gap5</A>).
+Matches between a specified sequence and a contig will only invoke the
+Contig Editor. All of the matches found are displayed in the Output Window e.g.
+
+</P>
+
+<PRE>
+Match found between tag on contig 315 in the + sense and contig 495
+ Percentage mismatch  16.7
+              957       967       977       987       997
+            315 CATAAGGATTTCCAATATTTTATTCCAGTTGGGCATCCTAGT
+                 ::  ::::::::::: :::::::::::::::::: ::::  
+            495 GATTGGGATTTCCAATGTTTTATTCCAGTTGGGCACCCTAAG
+                2        12        22        32        42
+</PRE>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_46.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_48.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-Basic_Level</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_121.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_123.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-Basic_Level -->
+
+
+<H2><A NAME="SEC139" HREF="scripting_toc.html#SEC139">Basic Gap4 I/O</A></H2>
+<P>
+These functions consist of both basic functions for reading, writing and
+creation of database items and simple I/O functions that build upon such
+operations. They are mainly contained within the <TT>`Gap4/IO.c'</TT> file.
+
+</P>
+<P>
+The return codes do vary greatly from function to function. Most return 0 for
+success and -1 for failure. However some will return other codes. In general
+it is best to check equality to the success code rather than equality to a
+specific failure code.
+
+</P>
+<P>
+and read as an array of <VAR>GCardinal</VAR>s. <VAR>elements</VAR> indicates the number
+of array elements and not the size of the array in bytes.
+
+</P>
+<P>
+<CODE>BitmapRead</CODE> reads records of type <CODE>GT_Bitmap</CODE>. The bitmap is
+allocated by this function. <VAR>elements</VAR> indicates the number of bits and
+not the size of the bitmap in bytes.
+
+</P>
+
+
+<H3><A NAME="SEC140" HREF="scripting_toc.html#SEC140">GT_Write, GT_Write_cached, TextWrite, DataWrite, ArrayWrite, BitmapWrite</A></H3>
+
+<P>
+<A NAME="IDX611"></A>
+<A NAME="IDX612"></A>
+<A NAME="IDX613"></A>
+<A NAME="IDX614"></A>
+<A NAME="IDX615"></A>
+<A NAME="IDX616"></A>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int GT_Write(
+        GapIO  *io,
+        int     rec,
+        void   *buf,
+        int     len,
+        GCardinal type);
+
+int GT_Write_cached(
+        GapIO  *io,
+        int     read,
+        GReadings *r);
+
+int TextWrite(
+        GapIO  *io,
+        int     rec,
+        char   *buf,
+        int     len);
+
+int DataWrite(
+        GapIO  *io,
+        int     rec,
+        void   *buf,
+        int     len,
+        int     size);
+
+int ArrayWrite(
+        GapIO  *io,
+        int     rec,
+        int     elements,
+        Array   a);
+
+int BitmapWrite(
+        GapIO  *io,
+        int     rec,
+        Bitmap  b);
+</PRE>
+
+<P>
+These functions write record number <VAR>rec</VAR> with the appropriate data type.
+They return zero for success and an error code for failure.
+
+</P>
+<P>
+<CODE>GT_Write</CODE> writes arbitrary records of type <VAR>type</VAR>. This is usually a
+structure. Do not use this function for writing <VAR>GReadings</VAR> structures.
+For best compatibility, use the <CODE>contig_write</CODE>, <CODE>gel_write</CODE>,
+<CODE>tag_write</CODE>, <CODE>vector_write</CODE> and <CODE>clone_write</CODE> function.
+
+</P>
+<P>
+<CODE>GT_Write_cached</CODE> is an interface to <CODE>GT_Write</CODE> which also updates
+the in-memory reading cache. For best compatibility, use the
+<CODE>gel_write</CODE> function.
+
+</P>
+<P>
+<CODE>TextWrite</CODE> writes a record of type <CODE>GT_Text</CODE>. It is used to write
+text only strings. 
+
+</P>
+<P>
+<CODE>DataWrite</CODE> writes a record of type <CODE>GT_Data</CODE>. It is used to write
+binary data such as sequence confidence values.
+
+</P>
+<P>
+<CODE>ArrayWrite</CODE> writes a record of type <CODE>GT_Array</CODE>. The array must be
+an array of <VAR>GCardinal</VAR> values. <VAR>elements</VAR> indicates the number of
+array elements and not the size of the array in bytes.
+
+</P>
+<P>
+<CODE>BitmapWrite</CODE> writes a record of type <CODE>GT_Bitmap</CODE>. <VAR>elements</VAR>
+indicates the number of bits and not the size of the bitmap in bytes.
+
+</P>
+<!-- NODE:G4Cio-io_handle -->
+
+
+<H3><A NAME="SEC141" HREF="scripting_toc.html#SEC141">io_handle and handle_io</A></H3>
+<P>
+<A NAME="IDX617"></A>
+<A NAME="IDX618"></A>
+<A NAME="IDX619"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+GapIO *io_handle(
+        f_int *handle);
+
+f_int *handle_io(
+        GapIO *io);
+</PRE>
+
+<P>
+These two routines convert between <VAR>GapIO</VAR> pointers and integer handles.
+Both the Fortran and Tcl code uses integer handles due to no support for
+structures.
+
+</P>
+<P>
+<CODE>io_handle</CODE> takes a pointer to an integer handle and returns the
+associated <VAR>GapIO</VAR> pointer. It returns NULL for failure.
+
+</P>
+<P>
+<CODE>handle_io</CODE> takes a <VAR>GapIO</VAR> pointer and returns a pointer to a
+integer handle. It returns NULL for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_121.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_123.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

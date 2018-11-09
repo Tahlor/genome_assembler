@@ -1,0 +1,117 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Repeats</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_100.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_102.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Repeats -->
+
+
+<H2><A NAME="SEC172" HREF="gap4_toc.html#SEC172">Find Repeats</A></H2>
+<P>
+<A NAME="IDX397"></A>
+<A NAME="IDX398"></A>
+
+</P>
+<P>
+The purpose of this function (which is invoked from the gap4 View menu) 
+is to find exact repeats in contig
+consensus sequences. An exact repeat is defined as a run of consecutive
+identical ACGT characters; no mismatches or gaps are permitted.
+
+</P>
+<P>
+If it has not already occurred, selection of
+this function will automatically
+transform the Contig Selector into the Contig Comparator.
+
+</P>
+<P>See section <A HREF="gap5_7.html#SEC12">Contig Comparator</A>.
+Each match found is plotted as a diagonal line in the Contig Comparator.
+The length of the diagonal line is proportional to the length of the
+match.
+
+</P>
+<P>
+If the match is for two contigs in the same orientation the diagonal
+will be parallel to the main diagonal, if they are not the line will be
+perpendicular to the main diagonal. The matches displayed in the Contig
+Comparator can be used to invoke the Join Editor (see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>) or Contig Editors (see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>), and an Information button will display
+data about the match in the Output window. e.g.
+
+</P>
+
+<PRE>
+Repeat match
+    From contig xb54a3.s1(#26) at 78
+    With contig xb62h3.s1(#3) at 1
+    Length 37
+</PRE>
+
+<P>
+This means that position 78 in the contig with xb54a3.s1 (reading number
+26) at its left end matches 37 bases at position 1 in the contig with
+xb62h3.s1 (number 3) at its left end.
+
+</P>
+
+<p>
+<img src="repeats.png" alt="[picture]">
+
+<P>
+Users can elect to search a "single" contig, or compare "all contigs",
+or a subset of contigs defined in a list or a file. If "file" or "list"
+is selected the browse button is activated and gives access to file or
+list browsers.  If they choose to analyse a single contig the dialogue
+concerned with selecting the contig and the region to search becomes
+activated. The "Minimum Repeat" defines the smallest match that the
+algorithm will report.  The algorithm will search only for repeats in
+the forward direction "Find direct repeats", or only those in the
+reverse direction "Find inverted repeats", or both "Find both".
+
+</P>
+<P>
+If "Mask active tags" is selected the "Select tags" button is activated.
+Clicking on this button will bring up a check box dialogue to enable the
+user to select the tags types they wish to activate. Masking the active
+tags means that all segments covered by tags that are "active" will not
+be used in the matching algorithm.
+A typical use of this mode is to avoid finding
+matches in segments covered by tags of type ALUS (ie segments thought to
+be Alu sequence) or that already covered by REPT tags. 
+
+</P>
+<P>See section <A HREF="gap4_19.html#SEC26">Tag types</A>.
+
+</P>
+<P>
+After the search is complete clicking on "Yes" in the "Save tags to
+file" panel will activate the "File name" box and all repeats on the
+list will be written to a file. This file can be used with "Enter tags"
+(see section <A HREF="gap4_127.html#SEC198">Enter Tags</A>) to create REPT tags for all
+the repeats found.  Note that "Enter tags" will remove all the results 
+plotted in the contig comparator.
+
+</P>
+<P>
+Note that the current version of Find Repeats has a limit to the number
+of repeats it can store. The limit depends on the current maximum
+consensus length, so if you want to increase the limit, reset the
+maximum consensus length. This can be done using the "Set maxseq" item
+in the "Options" menu.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_100.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_102.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

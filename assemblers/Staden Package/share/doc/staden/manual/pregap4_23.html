@@ -1,0 +1,133 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-Sequence Vector</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_22.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_24.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-Sequence Vector -->
+
+
+<H2><A NAME="SEC29" HREF="pregap4_toc.html#SEC29">Sequencing Vector Clip</A></H2>
+<P>
+<A NAME="IDX39"></A>
+<A NAME="IDX40"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module uses the <CODE>vector_clip</CODE> program to identify and mark the
+sequencing vector (those used to produce templates for sequencing, eg m13mp18
+or puc18). To achieve this task it needs to know information about the vector
+including the cut site position and the position of the primer site relative
+to the cut site.
+See section <A HREF="vector_clip_9.html#SEC11">Defining the Positions of Cloning and Primer Sites for Vector_Clip</A>..
+<P>
+
+<DT><STRONG>Option: Use Vector-primer file</STRONG>
+<DD>
+Vector_clip may be told to search through a series of vectors and primers held
+within an external file. Alternatively we can request that it looks only at
+one specific, known, vector. This question is to determine which of the two
+mutually exclusive methods to use. In general it is still important for the
+Experiment File to contain primer and template data. The Vector-primer module can
+be used to add the primer and sequencing vector information to the Experiment File
+but not the template name.
+
+<DT><STRONG>Option: Vector-primer filename.</STRONG>
+<DD>
+This is only used if the "Use Vector-primer file" question was answered with
+"Yes". Each input sequence will be compared against each vector-primer pair to
+find the best match. This provides a simple way of comparing against multiple
+vectors or comparing against both forward and reverse primers of a single
+vector. For further details on creating this vector-primer file, see
+section <A HREF="vector_clip_8.html#SEC9">Vector_Primer file format</A>..
+<P>
+
+<DT><STRONG>Option: Select vector-primer subset</STRONG>
+<DD>
+This is used in conjuction with the vector-primer filename to indicate which
+of the vector-primer pairs listed in this file should be used. Initially this
+is set to all vector-primer pairs, but efficiency will be greatly increased if
+just the required subset is selected. (Internally pregap4 will then temporarily
+produce a new vector-primer filename each time <CODE>vector_clip</CODE> requires
+one, containing just the selected items.) To select more than one
+vector-primer pair use the standard listbox mouse bindings: single left click
+to pick an item; click and drag to select a range; and control left click to
+toggle a single item. The selected list will be saved to the pregap4
+configuration file whenever all the parameters for this module are saved.
+<P>
+
+<DT><STRONG>Option: Max primer to cut-site length</STRONG>
+<DD>
+This parameter is only used when a vector-primer file is defined. The sequence
+stored in the vector-primer file may be considerably longer than we expect to
+see at the start of the sequences being analysed. By defining the maximum
+length of sequence we expect to see, <CODE>vector_clip</CODE> may be more sensitive
+and slightly faster.
+<P>
+
+<DT><STRONG>Option: Vector file name</STRONG>
+<DD>
+This, and the following two options, are only used if the "Use Vector-primer
+file" question was answered with "No".  The vector file name should be the
+name of a file containing just the vector bases or white space, in a plain
+text format.
+<P>
+
+<DT><STRONG>Option: Cut site</STRONG>
+<DD>
+The cut site specified as a base count from the start of the vector file.
+<P>
+
+<DT><STRONG>Option: Primer site</STRONG>
+<DD>
+The primer site specified as a base offset from the cut site. e.g. for m13mp18
+forward primers the value is 41. If, instead of the usual single value,
+two values
+are specified separated by a slash, then this gives the values for the
+universal forward and reverse primers (for example "<CODE>41/-24</CODE>"). Only use
+this format if the <CODE>PR</CODE> (primer type) experiment file line type is known
+AND will be specified in the experiment file. If the PR record
+is not specified in the
+experiment file, the primer site position will be set to zero, and the vector
+clipping is unlikely to work correctly.
+(PR values do not have to be known if they
+can be derived using naming schemes such as those used
+by the Sanger Centre). If the
+primer site indicates a custom primer sequence then the primer site is taken
+to be 0.
+<P>
+
+<DT><STRONG>Option: Percentage minimum 5' match</STRONG>
+<DD>
+<DT><STRONG>Option: Percentage minimum 3' match</STRONG>
+<DD>
+Both ends of the sequence are checked using a dynamic programming algorithm to
+find the optimal alignment. An end is marked as vector if the
+percentage match is at least as high as this supplied parameter.
+<P>
+
+<DT><STRONG>Option: Default 5' position</STRONG>
+<DD>
+This specifies the value to use for marking the 5' sequencing vector if none
+is detected. Specifying this as -1 will cause the absolute value given for the
+primer site (which is specified as relative to the cut site).
+<P>
+
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_22.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_24.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

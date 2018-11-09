@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-Wrappings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_211.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_213.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-Wrappings -->
+
+
+<H2><A NAME="SEC281" HREF="scripting_toc.html#SEC281">Wrapping it all up</A></H2>
+
+<P>
+We've now got all the code that we need to build a complete package. If this
+package is to be kept separate from the main Staden Package installation tree
+then we need to build our own directory tree for the package.
+
+</P>
+<P>
+For example, we'll create a separate directory for the composition package
+named <TT>`/home/spackages'</TT>. Within this directory we should place
+the rc file (<TT>`compositionrc'</TT>), the documentation
+(<TT>`composition.topic'</TT>, <TT>`composition.index'</TT> and
+<TT>`composition.html'</TT>) and the Tcl files <TT>`composition.tcl'</TT> and
+<TT>`tclIndex'</TT>.
+
+</P>
+<P>
+Additionally we need to have a dynamic library containing the C command. This
+should be placed in <TT>`/home/spackages/MACHINE-binaries/'</TT> where
+<TT>`MACHINE'</TT> is the machine type (eg <CODE>alpha</CODE>, <CODE>solaris</CODE>,
+<CODE>sun</CODE>, <CODE>sgi</CODE>, <CODE>linux</CODE> or <CODE>windows</CODE>). The library will
+probably be named something like <TT>`libcomposition.so'</TT>.
+
+</P>
+<P>
+The actual compilation of the library is complicated due to each machine type
+having different linker options. The full description of the Makefile system
+is beyond the scope of this documentation, but in brief, the system works by
+having a single <TT>`Makefile'</TT> for the package, a <TT>`global.mk'</TT> file in
+the <TT>`$STADENROOT/src/mk'</TT> directory containing general definitions, and a
+system specific (eg <TT>`alpha.mk'</TT>) file also in <TT>`$STADENROOT/src/mk'</TT>
+defining system architecture specific definitions. These combine to allow
+system independent macros to be used for building dynamic libraries.
+The complete composition package Makefile is in the appendices.
+
+</P>
+<P>
+Once the package has been installed correctly an <CODE>ls -R</CODE> on the
+installation directory should look something like the following.
+
+</P>
+
+<PRE>
+alpha-binaries/     composition.index   composition.topic   tclIndex
+composition.html    composition.tcl     compositionrc
+
+./alpha-binaries:
+libcomposition.so   so_locations
+</PRE>
+
+<P>
+Note that packages for multiple architectures may share the same installation
+tree as each architecture will need only its own <TT>`MACHINE-binaries'</TT>
+directory.
+
+</P>
+<P>
+The final requirement is to add the package onto gap4. This is done by adding
+the following to the users <TT>`.gaprc'</TT> file (where
+<TT>`/installation/directory/'</TT> is the location where containing the list of
+files).
+
+</P>
+
+<PRE>
+load_package /installation/directory/composition
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_211.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_213.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

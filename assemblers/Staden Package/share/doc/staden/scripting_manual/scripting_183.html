@@ -1,0 +1,220 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-REG_ANNO</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_182.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_184.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-REG_ANNO -->
+
+
+<H3><A NAME="SEC212" HREF="scripting_toc.html#SEC212">REG_ANNO</A></H3>
+<P>
+<A NAME="IDX817"></A>
+<A NAME="IDX818"></A>
+
+<PRE>
+reg_anno            annotations;
+
+typedef struct {
+    int    job;        /* REG_ANNO */
+} reg_anno;
+</PRE>
+
+<P>
+Sent when only the annotations (tags) for a contig have been updated. It is
+sometimes simplest for clients to handle <CODE>REG_ANNO</CODE> in the same manner as
+<CODE>REG_LENGTH</CODE>. However in some cases it can be much more efficient to
+handle separately as it may be easier to redisplay annotations than to
+redisplay everything.
+
+</P>
+<!-- NODE:Reg-REG_REGISTER and REG_DEREGISTER -->
+
+
+<H3><A NAME="SEC213" HREF="scripting_toc.html#SEC213">REG_REGISTER and REG_DEREGISTER</A></H3>
+<P>
+<A NAME="IDX819"></A>
+<A NAME="IDX820"></A>
+<A NAME="IDX821"></A>
+<A NAME="IDX822"></A>
+
+<PRE>
+reg_register        c_register;
+reg_deregister      c_deregister;
+
+typedef struct {
+    int    job;        /* REG_REGISTER, REG_DEREGISTER */
+    int    id;         /* Registration id */
+    int    type;       /* Registration type */
+    int    contig;     /* Contig number */
+} reg_register, reg_deregister;
+</PRE>
+
+<P>
+Both of these notifications share the same structure. They are sent whenever a
+registration or deregistration of another piece of data is performed for this
+contig. An example of the use of this is within the stop codon display which
+enables use of the "Refresh" button when a contig editor is running. The
+<VAR>id</VAR>, <VAR>type</VAR> and <VAR>contig</VAR> fields here are the same as the fields
+with the same name from the <VAR>contig_reg_t</VAR> structure.
+
+</P>
+<!-- NODE:Reg-REG_HIGHLIGHT_READ -->
+
+
+<H3><A NAME="SEC214" HREF="scripting_toc.html#SEC214">REG_HIGHLIGHT_READ</A></H3>
+<P>
+<A NAME="IDX823"></A>
+<A NAME="IDX824"></A>
+
+<PRE>
+reg_highlight_read  highlight;
+
+typedef struct {
+    int    job;       /* REG_HIGHLIGHT_READ */
+    int    seq;       /* Gel reading number (-ve == contig consensus) */
+    int    val;       /* 1==highlight, 0==dehighlight */
+} reg_highlight_read;
+</PRE>
+
+<P>
+This is used for notifying that an individual reading has been highlighted.
+It's purpose is to allow displays to synchronise highlighting of data. For
+instance, both the contig editor and template display send and acknowledge
+this notification. Thus when a name in the editor is highlighted the template
+display will highlight the appropriate reading, and vice versa.
+
+</P>
+<P>
+When <VAR>seq</VAR> is positive it represents the reading to highlight, otherwise
+it is 0 minus the contig number (not leftmost reading number).
+
+</P>
+<!-- NODE:Reg-REG_BUFFER_START and REG_BUFFER_END -->
+
+
+<H3><A NAME="SEC215" HREF="scripting_toc.html#SEC215">REG_BUFFER_START and REG_BUFFER_END</A></H3>
+<P>
+<A NAME="IDX825"></A>
+<A NAME="IDX826"></A>
+<A NAME="IDX827"></A>
+<A NAME="IDX828"></A>
+
+<PRE>
+reg_buffer_start    buffer_start;
+reg_buffer_end      buffer_end;
+
+typedef struct {
+    int    job;
+} reg_buffer_start, reg_buffer_end;
+</PRE>
+
+<P>
+These two notifications share the same structure, which holds no information.
+The purpose of <CODE>REG_BUFFER_START</CODE> is simply as a signal that many
+notifications will be arriving in quick succession, until a
+<CODE>REG_BUFFER_END</CODE> request arrives. The purpose is to speed up redisplay of
+functions registered with many contigs.
+
+</P>
+<P>
+As an example consider the enter tags function. This adds tags to many,
+potentially all, contigs. We can keep track of which contigs we need to send
+<CODE>REG_ANNO</CODE> requests to, and send them with code similar to the following:
+
+</P>
+
+<PRE>
+/* Notify of the start of the flurry of updates */
+rs.job = REG_BUFFER_START;
+for (i = 0; i &#60; NumContigs(args.io); i++) {
+    if (contigs[i]&#38;1) {
+        contig_notify(args.io, i+1, (reg_data *)&#38;rs);
+    }
+}
+
+/* Now notify all the contigs that we've added tags to */
+ra.job = REG_ANNO;
+for (i = 0; i &#60; NumContigs(args.io); i++) {
+    if (contigs[i]&#38;1) {
+        contig_notify(args.io, i+1, (reg_data *)&#38;ra);
+    }
+}
+
+/* Notify of the end of the flurry of updates */
+re.job = REG_BUFFER_END;
+for (i = 0; i &#60; NumContigs(args.io); i++) {
+    if (contigs[i]&#38;1) {
+        contig_notify(args.io, i+1, (reg_data *)&#38;re);
+    }
+}
+</PRE>
+
+<P>
+Consider the action of the contig selector. This needs to refresh the display
+whenever any modifications are made, including annotations. The enter tags
+function needs to send notifications to many contigs, thus the contig selector
+will receive many requests. It is obviously more efficient for the contig
+selector to only redisplay once. The addition of <CODE>BUFFER_START</CODE> and
+<CODE>BUFFER_END</CODE> solve this. As we don't know exactly which functions will be
+registered with which contigs, the enter tags code has to notify every contig.
+Hence the contig selector code must keep a count on the start and end of
+buffers so that it only needs to redisplay on the last buffer end. This code
+is as follows (tidied up and much shortened for brevity):
+
+</P>
+
+<PRE>
+switch(jdata-&#62;job) {
+case REG_BUFFER_START:
+    {
+        cs-&#62;buffer_count++;
+        cs-&#62;do_update = REG_BUFFER_START;
+        return;
+    }
+
+case REG_BUFFER_END:
+    {
+        cs-&#62;buffer_count--;
+        if (cs-&#62;buffer_count &#60;= 0) {
+            cs-&#62;buffer_count = 0;
+            if (cs-&#62;do_update &#38; REG_LENGTH) {
+                [ Redisplay Contigs ]
+            } else if (cs-&#62;do_update &#38; REG_ANNO) {
+                [ Redisplay Tags ]
+            } else if (cs-&#62;do_update &#38; REG_ORDER) {
+                [ Shuffle Order]
+            }
+            cs-&#62;do_update = 0;
+        }
+        return;
+    }
+
+case REG_ANNO:
+    {
+        if (!cs-&#62;do_update) {
+            [ Redisplay Tags ]
+        } else {
+            cs-&#62;do_update |= REG_ANNO;
+        }
+        return;
+    }
+/* etc */
+</PRE>
+
+<P>
+For further examples of handling buffering see the template display code.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_182.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_184.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

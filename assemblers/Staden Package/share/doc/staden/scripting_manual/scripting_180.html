@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-REG_LENGTH</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_179.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_181.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-REG_LENGTH -->
+
+
+<H3><A NAME="SEC202" HREF="scripting_toc.html#SEC202">REG_LENGTH</A></H3>
+<P>
+<A NAME="IDX796"></A>
+<A NAME="IDX797"></A>
+
+<PRE>
+reg_length          length;
+
+typedef struct {
+    int    job;        /* REG_LENGTH, implies data change too */
+    int    length;     /* New length */
+} reg_length;
+</PRE>
+
+<P>
+Sent whenever the length or data within of a contig changes. In this respect
+<CODE>REG_LENGTH</CODE> is a bit of a misnomer; replacing a single base within the
+contig editor and then saving (which does not change the length of that
+contig) will still send a <CODE>REG_LENGTH</CODE> request to inform data that the
+contig has changed. This is one of the most frequently sent and acknowledged
+requests.
+
+</P>
+<!-- NODE:Reg-REG_QUERY_NAME -->
+
+
+<H3><A NAME="SEC203" HREF="scripting_toc.html#SEC203">REG_QUERY_NAME</A></H3>
+<P>
+<A NAME="IDX798"></A>
+<A NAME="IDX799"></A>
+
+<PRE>
+reg_query_name      name;
+
+typedef struct {
+    int    job;        /* REG_QUERY_NAME */
+    char  *line;     /* char[80] */
+} reg_query_name;
+</PRE>
+
+<P>
+Sent by the <CODE>result_names</CODE> routine to obtain a brief one line (less than
+80 characters) name of this registered item. Callback procedures should write
+into the <VAR>line</VAR> field themselves with no need for memory allocation.  The
+name returned here will be used as a component of the line within the Results
+Manager window. Registered data is required to handle this request, unless it
+is invisible (has the <CODE>REG_FLAG_INVIS</CODE> bit set).
+
+</P>
+<!-- NODE:Reg-REG_DELETE -->
+
+
+<H3><A NAME="SEC204" HREF="scripting_toc.html#SEC204">REG_DELETE</A></H3>
+<P>
+<A NAME="IDX800"></A>
+<A NAME="IDX801"></A>
+
+<PRE>
+reg_delete          delete;
+
+typedef struct {
+    int    job;        /* REG_DELETE */
+} reg_delete;
+</PRE>
+
+<P>
+The registered data should be removed and any associated displays should be
+shutdown. This is in response to a contig being deleted (by the
+<CODE>io_delete_contig</CODE> function), or a programmed shutdown to force
+associated displays to quit (such as when forcing the quality display to quit
+when the user quits the template display). Registered data is required to
+handle this request.
+
+</P>
+<!-- NODE:Reg-REG_GET_LOCK and REG_SET_LOCK -->
+
+
+<H3><A NAME="SEC205" HREF="scripting_toc.html#SEC205">REG_GET_LOCK and REG_SET_LOCK</A></H3>
+<P>
+<A NAME="IDX802"></A>
+<A NAME="IDX803"></A>
+<A NAME="IDX804"></A>
+
+<PRE>
+#define REG_LOCK_READ   1
+#define REG_LOCK_WRITE  2
+
+reg_get_lock        glock;
+reg_set_lock        slock;
+
+typedef struct {
+    int    job;        /* REG_GET_LOCK */
+    int    lock;       /* Sends lock requirements, returns locks allowed */
+} reg_get_lock, reg_set_lock;
+</PRE>
+
+<P>
+Both these notifications share the same structure. The pair are used in
+conjunction to determine whether exclusive write access is allowed on this
+contig, and if so to set this access. This is all managed by the
+<CODE>contig_lock_write</CODE> function. See section <A HREF="scripting_190.html#SEC251">Locking Mechanisms</A>. Functions wishing to modify data, such as complement, should
+use locking.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_179.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_181.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

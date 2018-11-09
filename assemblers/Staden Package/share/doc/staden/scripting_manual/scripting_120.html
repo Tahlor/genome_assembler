@@ -1,0 +1,228 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-GapIO_Structure</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_119.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_121.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-GapIO_Structure -->
+
+
+<H2><A NAME="SEC137" HREF="scripting_toc.html#SEC137">The GapIO Structure</A></H2>
+<P>
+<A NAME="IDX545"></A>
+<A NAME="IDX546"></A>
+
+</P>
+<P>
+The main object passed around between the I/O functions is the <VAR>GapIO</VAR>
+structure. This is returned from the <CODE>open_db</CODE> function and is then
+passed around in much the same manner as a unix file descriptor or <VAR>FILE</VAR>
+pointer is. The structure, held in <TT>`gap4/IO.h'</TT>, is as follows.
+
+</P>
+
+<PRE>
+typedef struct {
+    GapServer *server;		/* our server */
+    GapClient *client;		/* ourselves */
+
+    int Nviews;			/* number of locked views */
+    Array views;		/* all locked views */
+
+    GDatabase db;		/* main database record */
+    Bitmap freerecs;		/* bitmap of unused */
+    Array contigs;		/* list of contig */
+    Array readings;		/* list of reading records */
+    Array annotations;		/* list of annotation records */
+    Array templates;		/* list of template records */
+    Array clones;		/* list of clone records */
+    Array vectors;		/* list of vector records */
+
+    int4 *relpos;		/* relpg[] */
+    int4 *length;		/* length[] */
+    int4 *lnbr;			/* lnbr[] */
+    int4 *rnbr;			/* rnbr[] */
+
+    char db_name[DB_FILELEN];	/* database "file.version" */
+
+    Array contig_order;		/* order of contigs */
+    Array contig_reg;		/* Registration arrays for each contig */
+
+#ifdef GAP_CACHE
+    Array reading;		/* Array of GReading _structures_ */
+    Array read_names;		/* Array of reading names */
+#endif
+    int freerecs_changed;	/* Whether to flush freerecs bitmap */
+    Bitmap updaterecs;		/* bitmap of updated records */
+    Bitmap tounlock;		/* bitmap of records to unlock at next flush */
+} GapIO;
+</PRE>
+
+<P>
+Many of the items held within this structure are used internally by the I/O
+functions. However it's worth describing all very briefly.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>server</VAR>
+<DD>
+<A NAME="IDX547"></A>
+ <A NAME="IDX548"></A>
+ 
+<DT><VAR>client</VAR>
+<DD>
+	The <VAR>server</VAR> and <VAR>client</VAR> pointers are used in the low level g
+	library communication. They need not be used by any external code.
+
+<A NAME="IDX549"></A>
+<A NAME="IDX550"></A>
+<DT><VAR>Nviews</VAR>
+<DD>
+<DT><VAR>views</VAR>
+<DD>
+	Each record in the database needs to be locked before it can be
+	accessed. A view is returned for each independent lock of a record.
+	These are used internally by the low level reading and writing
+	function.
+
+<A NAME="IDX551"></A>
+<DT><VAR>db</VAR>
+<DD>
+	This is a direct copy of the <VAR>GDatabase</VAR> structure for this
+	database. This needs to be kept up to date with the on disk copy
+	whenever changes are made (eg by adding a new reading).
+
+<A NAME="IDX552"></A>
+<DT><VAR>freerecs</VAR>
+<DD>
+	This is a copy of the free records bitmap referenced by the
+	<VAR>io-&#62;db.freerecs</VAR> field. It is kept up to date internally.
+
+<A NAME="IDX553"></A>
+<A NAME="IDX554"></A>
+<A NAME="IDX555"></A>
+<A NAME="IDX556"></A>
+<A NAME="IDX557"></A>
+<A NAME="IDX558"></A>
+<DT><VAR>contigs</VAR>
+<DD>
+<DT><VAR>readings</VAR>
+<DD>
+<DT><VAR>annotations</VAR>
+<DD>
+<DT><VAR>templates</VAR>
+<DD>
+<DT><VAR>clones</VAR>
+<DD>
+<DT><VAR>vectors</VAR>
+<DD>
+	These are lookup arrays to convert structure numbers to record
+	numbers. For instance, all readings are numbered from 1 upwards.
+	Similarly for contigs. However reading number 1 and contig number 1
+	will have their own unique record numbers in the g database.
+
+	The extensible array package is used for storing this information. To
+	translate from reading number <VAR>N</VAR> to the record number use
+	"<CODE>arr(GCardinal, io-&#62;readings, N-1)</CODE>".
+
+<A NAME="IDX559"></A>
+<A NAME="IDX560"></A>
+<A NAME="IDX561"></A>
+<A NAME="IDX562"></A>
+<DT><VAR>relpos</VAR>
+<DD>
+<DT><VAR>length</VAR>
+<DD>
+<DT><VAR>lnbr</VAR>
+<DD>
+<DT><VAR>rnbr</VAR>
+<DD>
+	These are arrays of 4-byte integers of size
+	<VAR>io-&#62;db.actual_db_size</VAR>. They hold information about both
+	readings and contigs. 
+
+	For readings, the array contents hold copies of the <VAR>position</VAR>,
+	<VAR>sequence_length</VAR>, <VAR>left</VAR> and <VAR>right</VAR> fields of the
+	<VAR>GReadings</VAR> structures. Reading number <VAR>R</VAR> has this data
+	stored in array elements <VAR>R</VAR> (counting from element 0, which is
+	left blank).
+	
+	For contigs, the array contents hold copies of the <VAR>length</VAR>,
+	<VAR>left</VAR> and <VAR>right</VAR> fields of the <VAR>GContigs</VAR> structure. For
+	historical reasons the contig length is held in the <VAR>relpos</VAR>
+	array with the <VAR>length</VAR> array left blank. Contig number <VAR>C</VAR>
+	has this data stored in array elements <VAR>io-&#62;db.actual_db_size-C</VAR>.
+
+	For ease of use and future compatibility several macros have been
+	defined for accessing this data. See section <A HREF="scripting_121.html#SEC138">IO.h Macros</A>.
+	These should be used instead of direct access.	Thus to find the
+	length of reading <VAR>R</VAR> we use <CODE>io_length(io,R)</CODE> and to find
+	the length of contig <VAR>C</VAR> we use <CODE>io_clength(io,C)</CODE>.
+
+	NOTE: These arrays are not updated automatically. If you modify data
+	using one of the write functions you also need to update the arrays in
+	sync. This is one of the problems that the check database command
+	looks for so mistakes should be obvious.
+
+<A NAME="IDX563"></A>
+<DT><VAR>db_name</VAR>
+<DD>
+	The name of the database in a <I>file.version</I> syntax. This array is
+	allocated to be <CODE>DB_FILELEN</CODE> bytes long. The <CODE>io_name</CODE> macro
+	should be used for accessing this field.
+
+<A NAME="IDX564"></A>
+<DT><VAR>contig_order</VAR>
+<DD>
+	An array loaded from <VAR>io-&#62;db.contig_order</VAR>. This holds the left to
+	right ordering of contigs. It is automatically undated by the create
+	and delete contig function.
+
+<A NAME="IDX565"></A>
+<DT><VAR>contig_reg</VAR>
+<DD>
+	The contig registration scheme information. There's an entire chapter
+	on this topic. See section <A HREF="scripting_173.html#SEC192">Contig Registration Scheme</A>.
+
+<A NAME="IDX566"></A>
+<A NAME="IDX567"></A>
+<DT><VAR>reading</VAR>
+<DD>
+<DT><VAR>read_names</VAR>
+<DD>
+	These are cached copies of the <VAR>GReadings</VAR> structures and the
+	reading names referenced by the <VAR>GReadings.name</VAR> fields. They are
+	updated automatically when using the correct functions
+	(<CODE>gel_read</CODE> and <CODE>gel_write</CODE>). Use of lower level functions
+	is disallowed for accessing this data.
+
+<A NAME="IDX568"></A>
+<A NAME="IDX569"></A>
+<A NAME="IDX570"></A>
+<DT><VAR>freerecs_changed</VAR>
+<DD>
+<DT><VAR>updaterecs</VAR>
+<DD>
+<DT><VAR>tounlock</VAR>
+<DD>
+	These three are used internally for maintaining the update and
+	data flushing scheme. <VAR>freerecs_changed</VAR> is a flag to state
+	whether or not the <VAR>freerecs</VAR> bitmap needs writing to disk.
+	<VAR>updaterecs</VAR> and <VAR>tounlock</VAR> are bitmaps with a bit per record
+	to signify whether the record needs rewriting or unlocking. Their use
+	is not required outside of the low level functions.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_119.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_121.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,105 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Con-Quality</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_116.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_118.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-Quality -->
+
+
+<H2><A NAME="SEC188" HREF="gap4_toc.html#SEC188">Quality Consensus Output</A></H2>
+<P>
+<A NAME="IDX429"></A>
+<A NAME="IDX430"></A>
+<A NAME="IDX431"></A>
+
+</P>
+
+<P>
+The Quality Consensus Output option described here 
+(which is available from the gap4 File menu)
+applies either of the two simple
+consensus calculations
+(see section <A HREF="gap5_60.html#SEC98">Consensus Calculation Using Base Frequencies</A>) and 
+(see section <A HREF="gap5_61.html#SEC99">Consensus Calculation Using Weighted Base Frequencies</A>)
+to the data for each strand of the DNA separately. 
+The currently active consensus algorithm is selected from the
+"Consensus algorithm" dialogue in the main gap4 Options menu
+(see section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>).
+
+</P>
+<P>
+It produces, not a consensus sequence, but an encoding of the "quality"
+of the data which defines whether it has been determined on both
+strands, and whether the strands agree.
+The categories of data
+and the codes produced are shown in the table. For example  'c' means 
+bad data on one strand is aligned with good data on the other.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>a</VAR>
+<DD>
+<KBD>Good Good (in agreement)</KBD>
+<DT><VAR>b</VAR>
+<DD>
+<KBD>Good Bad</KBD>
+<DT><VAR>c</VAR>
+<DD>
+<KBD>Bad  Good</KBD>
+<DT><VAR>d</VAR>
+<DD>
+<KBD>Good None</KBD>
+<DT><VAR>e</VAR>
+<DD>
+<KBD>None Good</KBD>
+<DT><VAR>f</VAR>
+<DD>
+<KBD>Bad  Bad</KBD>
+<DT><VAR>g</VAR>
+<DD>
+<KBD>Bad  None</KBD>
+<DT><VAR>h</VAR>
+<DD>
+<KBD>None Bad</KBD>
+<DT><VAR>i</VAR>
+<DD>
+<KBD>Good Good (disagree)</KBD>
+<DT><VAR>j</VAR>
+<DD>
+<KBD>None None</KBD>
+</DL>
+
+<p>
+<img src="calc_consensus.quality.png" alt="[picture]">
+
+<P>
+The contigs for which to calculate a consensus can be a particular
+"single" contig, "all contigs", or a subset of contigs whose names are
+stored in a "file" or a "list". If a file or list is selected the
+browse button will be activated, and if it is clicked, an appropriate
+browser will be invoked. If the user selects "single" then the
+dialogue for choosing the contig and the section to process becomes
+active.
+
+</P>
+<P>
+The routine can only write its consensus sequence in "staden"
+format. The output file can be chosen with the aid of a file browser. 
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_116.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_118.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

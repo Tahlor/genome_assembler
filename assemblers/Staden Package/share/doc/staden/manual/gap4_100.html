@@ -1,0 +1,148 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - FIJ-Dialogue</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_99.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_101.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:FIJ-Dialogue -->
+
+
+<H3><A NAME="SEC171" HREF="gap4_toc.html#SEC171">Find Internal Joins Dialogue</A></H3>
+<P>
+<A NAME="IDX393"></A>
+
+</P>
+
+<p>
+<img src="fij.dialogue.png" alt="[picture]">
+
+<P>
+The contigs to use in the search can be defined as "all contigs", a list
+of contigs in a file "file", or a list of contigs in a list "list".
+If "file" or "list" is selected the browse button is activated
+and gives access to file or list browsers.
+Two types of search can be selected: one, "Probe all against all"
+compares all the contigs defined against one another; the other "Probe
+with single contig", compares one contig against all the contigs in the
+list. If this option is selected the Contig identifier panel in the
+dialogue box is ungreyed. Both sense of the sequences are compared.
+
+</P>
+
+<P>
+If users elect not to "Use standard consensus" they can either "Mark
+active tags" or "Mask active tags", in which cases the "Select tags"
+button will be activated. Clicking on this button will bring up a check
+box dialogue to enable the user to select the tags types they wish to
+activate. Masking the active tags means that all segments covered by
+tags that are "active" will not be used by the matching algorithms.
+A typical
+use of this mode is to avoid finding matches in segments covered by tags
+of type ALUS (ie segments thought to be Alu sequence)
+or REPT (ie segment that are known to be repeated elsewhere in
+the data (see section <A HREF="gap4_19.html#SEC26">Tag types</A>). "Marking" is of less use:
+matches will be found in marked
+segments during searching, but in the alignment shown
+in the Output Window, marked segments will be shown in lower case.
+
+</P>
+<P>
+Some alignments may be very large. For speed and ease of scrolling
+Gap4 does not display the textual form of the longest alignments,
+although they are still visible within the contig comparator
+window. The maximum length of the alignment to print up is controlled
+by the "Maximum alignment length to list (bp)" control.
+
+</P>
+<P>
+The default setting for the consensus
+is to "Use hidden data" which means that where possible the
+contigs are extended using the poor quality data from the readings near
+their ends. To ensure that this additional data is not so poor that
+matches will be missed, the program uses algorithms which can be configured
+from the "Edit hidden data parameters" dialogue. Two algorithms are available.
+Both slide a window along the reading until a set criteria is met.
+By default an algorithm which sums confidence values within the window is used.
+It stops when a window with &#60; "Minimum average confidence" is found. The other
+algorithm counts the number of uncalled bases in the window and stops when
+the total reaches "Max number of uncalled bases in window".
+The selected algorithm is applied to all the readings near the ends of contigs
+and the data that extends the contig the furthest is added to its consensus
+sequence. 
+
+</P>
+<P>
+If your total consensus sequence length (including a 20 character header for
+each contig that is used internally by the program) plus any hidden data 
+at the ends of contigs is greater than the current value of a parameter 
+called maxseq, Find Internal Joins may produce an error message advising 
+you to increase maxseq. Maxseq can be set on the command line
+(see section <A HREF="gap4_181.html#SEC269">Command line arguments</A>) or by using the options
+menu (see section <A HREF="gap4_172.html#SEC260">Set Maxseq</A>).
+
+</P>
+<P>
+The search algorithms first finds matching words of length "Word length",
+and only considers overlaps of length at least "Minimum overlap". Only
+alignments better than "Maximum percent mismatches" will be reported.
+
+</P>
+<P>
+There are two search algorithms: "Sensitive" or "Quick". The quick algorithm
+should be applied first, and then the sensitive one employed
+to find any less obvious
+overlaps. 
+
+</P>
+<P>
+The sensitive algorithm sums the lengths of
+the matching words of length "Word length" on each diagonal. It then finds
+the centre of gravity of the most significant diagonals. Significant diagonals
+are those whose probability of occurence is &#60; "Diagonal threshold". It then
+uses a dynamic programming algorithm to align around the centre of gravity,
+using a band size of "Alignment band size (percent)". For example: if the 
+overlap was 1000 bases long and the percentage set at 5, the aligner would 
+only consider alignments within 50 bases either side of the centre of gravity.
+Obviously the larger the percentage and the overlap, the slower the aligment.
+
+</P>
+<P>
+The quick algorithm can find overlaps and align 100,000 base sequences in a
+few seconds by considering, in its initial phase only matching segments of
+length "Minimum initial match length". However it does a dynamic programming
+alignment of all the chunks between the matching segments, and so produces an
+optimal alignment. Again a banded dynamic algorithm can be selected, but as
+this only applies to the chunks between matching segments, which for good
+alignments will be very short, it should make little difference to the speed.
+
+</P>
+<P>
+After the search the results will be sorted so that the best matches
+are at the top of a list where best is defined as a combination of
+alignment length and alignment percent identity (in some earlier Gap4
+releases this was scored purely on percent identity). This list can be
+stepped through, one result at a time using the Contig Joining Editor,
+by clicking on the "Next" button at the top left of the Contig
+Comparator.
+
+</P>
+<P>
+<A NAME="IDX394"></A>
+<A NAME="IDX395"></A>
+<A NAME="IDX396"></A>
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_99.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_101.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

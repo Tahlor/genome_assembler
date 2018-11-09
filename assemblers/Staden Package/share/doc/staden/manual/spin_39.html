@@ -1,0 +1,189 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from spin.htmlinfo on 25 April 2016 -->
+
+<TITLE>Spin - SPIN-Local alignment</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_38.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_40.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:SPIN-Local alignment -->
+
+
+<H2><A NAME="SEC49" HREF="spin_toc.html#SEC49">Aligning Sequences Locally</A></H2>
+<P>
+<A NAME="IDX93"></A>
+<A NAME="IDX94"></A>
+<A NAME="IDX95"></A>
+<A NAME="IDX96"></A>
+
+</P>
+<P>
+The local alignment routine is based around the program SIM by 
+Huang and Miller which is an implementation of the Smith-Waterman algorithm
+<CITE>Huang,X.Q. &#38; Miller, W. A Time-Efficient, Linear-Space Local Similarity Algorithm. Advances in Applied Mathematics 12 337-357 (1991)</CITE>.
+
+</P>
+<P>
+SIM finds k best non-intersecting alignments between two sequences or
+within a single 
+sequence using dynamic programming techniques. The alignments are
+reported in order of decreasing similarity score and share no aligned pairs.
+SIM requires space proportional to the sum of the input sequence lengths
+and the output alignment lengths, so it accommodates 100,000-base
+sequences on a workstation. Both sequences must be of the same type, ie both
+be DNA or both be protein.
+
+</P>
+
+<p>
+<img src="spin_local_align.png" alt="[picture]">
+
+<P>
+A dialogue box (shown above) requests the horizontal and vertical sequences 
+and the ranges over which they are to be aligned 
+(
+see section <A HREF="spin_49.html#SEC97">Selecting a sequence</A>). Either a specified
+number of alignments can be requested or alternatively, all alignments above
+a certain score. If the sequence
+is DNA, the scores for a matching aligned pair, a transition and a transversion
+must be provided. These values are used to generate a score matrix. For 
+protein sequences, the score matrix can be changed from the 
+"Options" menu (
+see section <A HREF="spin_40.html#SEC55">Changing the score matrix</A>). Both DNA and protein sequences require the penalty for opening
+a gap and the penalty for gap extension.
+
+</P>
+<P>
+The alignments are displayed in the Output Window along with the 
+percentage mismatch (see below) and on the SPIN Sequence Comparison Plot as a series of lines, each
+line corresonding to a single alignment. The
+line represents the path of alignments. 
+
+</P>
+
+<P>
+The following two plots show local alignments of two Xenopus Laevis
+sequences. The vertical sequence (xlactcag) is genomic DNA, and the
+horizontal sequence (xlacacr) is the corresponding cDNA.
+
+</P>
+<P>
+The first plot is of a local alignment using a higher than default
+penalty for each residue in the gap (1 as opposed to 0.2). It has also
+been specified that all alignments scoring more than 20 are to be shown.
+The result of this is seven aligned regions, represented by seven
+diagonal lines in the plot. These regions correspond to the exons that
+are present in both sequences, separated by the introns that are only
+present in the genomic sequence.
+
+</P>
+
+<p>
+<a href="spin_local_p1,5.31667in.png.html"><img src="spin_local_p1,5.31667in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+The second plot shows the result for the same two sequences when the
+default gap penalty is accepted and when only the highest scoring
+alignment is displayed. This best alignment covers five of the seven
+exons identified in the previous plot, with the lower gap penalty
+allowing it to span the introns that separate them.
+
+</P>
+
+<p>
+<a href="spin_local_p2,5.31667in.png.html"><img src="spin_local_p2,5.31667in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Below is a typical aligment as written to the Output Window.
+
+</P>
+
+<PRE>
+
+ Percentage mismatch  35.7
+               438       448       458       468       478       488
+               h caggcctgtgaggaccagcagtgctgtcctgagatgggcggctggtctggctgggggccc
+                 :::::::::::   :::: ::  ::: ::       :: : :::: :   :::::: :::
+               m caggcctgtgacacccagaagacctgccccacacatggggcctgggcatcctggggcccc
+               451       461       471       481       491       501
+
+               498       508       518
+               h tgggagccttgctctgtcacctgc
+                 :::   ::  :::: :   :::::
+               m tggagcccccgctcaggatcctgc
+               511       521       531
+
+</PRE>
+
+<P>
+Further operations available for local alignments are:
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>Information</VAR>
+<DD>
+This command gives a brief description of the sequences used in the 
+comparison and the input parameters used.
+
+
+<PRE>
+
+horizontal PERSONAL: h from 1 to 1553
+vertical PERSONAL: m from 1 to 1358
+number of alignments 3 
+score for match 1
+score for transition -1
+score for transversion -1
+penalty for starting gap 6
+penalty for each residue in gap 0.2
+
+</PRE>
+
+<DT><VAR>Configure</VAR>
+<DD>
+This option allows the line width and colour of the matches to be altered.
+See section <A HREF="interface_11.html#SEC13">Colour Selector</A>.
+A colour browser is displayed from which the desired line width or colour can 
+be configured. Pressing OK will update the SPIN Sequence Comparison Plot.
+
+<DT><VAR>Display sequences</VAR>
+<DD>
+Selecting this command invokes the Sequence Comparison Display 
+(
+see section <A HREF="spin_47.html#SEC71">Sequence Comparison Display</A>). 
+Moving the cursor in the sequence display will move the cursors of the
+same sequence in any SPIN Sequence Comparison Plot (
+see section <A HREF="spin_46.html#SEC67">Cursors</A>).
+To force the sequence display to show the nearest match,
+use the "nearest match" button in the sequence display plot.
+
+<DT><VAR>Hide</VAR>
+<DD>
+This option removes the points from the SPIN Sequence Comparison Plot but retains the information
+in memory.
+
+<DT><VAR>Reveal</VAR>
+<DD>
+This option will redisplay previously hidden points in the SPIN Sequence Comparison Plot.
+
+<DT><VAR>Remove</VAR>
+<DD>
+This command removes all the information regarding this particular
+invocation of Local alignment, and access to this data is lost.
+
+</DL>
+
+<HR>
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_38.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_40.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

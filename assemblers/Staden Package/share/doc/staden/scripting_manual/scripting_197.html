@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-tcl_register_id</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_196.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_198.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-tcl_register_id -->
+
+
+<H3><A NAME="SEC258" HREF="scripting_toc.html#SEC258">register_id</A></H3>
+<P>
+<A NAME="IDX888"></A>
+
+<PRE>
+register_id
+        
+Returns: the id.
+</PRE>
+
+<P>
+A Tcl interface to the <CODE>register_id</CODE> function.
+
+</P>
+<!-- NODE:Reg-tcl_result_names -->
+
+
+<H3><A NAME="SEC259" HREF="scripting_toc.html#SEC259">result_names</A></H3>
+<P>
+<A NAME="IDX889"></A>
+
+<PRE>
+result_names -io handle
+
+Returns: a list describing all results.
+</PRE>
+
+<P>
+A Tcl interface to the <CODE>result_names</CODE> function. This produces a single
+string describing the complete list of results. The format is
+"{contig regnum id string} ?{contig regnum id string}? ..." and so can
+be accessed as a Tcl list.
+
+</P>
+<!-- NODE:Reg-tcl_result_time -->
+
+
+<H3><A NAME="SEC260" HREF="scripting_toc.html#SEC260">result_time</A></H3>
+<P>
+<A NAME="IDX890"></A>
+
+<PRE>
+result_time -io handle -contig contig_number -id id_number
+
+Returns: the time in string format.
+</PRE>
+
+<P>
+A Tcl interface to the <CODE>result_time</CODE> function.
+
+</P>
+<!-- NODE:Reg-tcl_result_delete -->
+
+
+<H3><A NAME="SEC261" HREF="scripting_toc.html#SEC261">result_delete</A></H3>
+<P>
+<A NAME="IDX891"></A>
+
+<PRE>
+result_delete -io handle -id id_number
+
+Returns: nothing
+</PRE>
+
+<P>
+Sends a REG_DELETE request to a specific id.
+
+</P>
+<!-- NODE:Reg-tcl_result_quit -->
+
+
+<H3><A NAME="SEC262" HREF="scripting_toc.html#SEC262">result_quit</A></H3>
+<P>
+<A NAME="IDX892"></A>
+
+<PRE>
+result_quit -io handle -id id_number
+
+Returns: nothing
+</PRE>
+
+<P>
+Sends a REG_QUIT request to a specific id.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_196.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_198.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

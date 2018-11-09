@@ -1,0 +1,115 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Assembly-Map-bwa-aln</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_37.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_39.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Assembly-Map-bwa-aln -->
+
+
+<H2><A NAME="SEC73" HREF="gap5_toc.html#SEC73">Mapped assembly by bwa aln</A></H2>
+<P>
+<A NAME="IDX115"></A>
+<A NAME="IDX116"></A>
+
+</P>
+<P>
+This function runs the bwa program using the "aln" method for
+aligning sequences. It is appropriate for matching most types of
+short-read data.
+
+</P>
+<P>
+The GUI is little more than a wrapper around command line tools,
+which can essentially be repeatedly manually as follows.
+
+</P>
+
+<OL>
+<LI>
+
+Calculate and save the consensus for all contigs in the database in
+fastq format.
+
+<LI>
+
+Index the consensus sequence using "bwa index".
+
+<LI>
+
+Map our input data against the bwa index using "bwa aln".
+Repeat for reverse matches too.
+
+<LI>
+
+Generate SAM format from the alignments using "bwa samse" or "bwa
+sampe".
+
+<LI>
+
+Convert to BAM and sort by position.
+
+<LI>
+
+Import the BAM file, appending to the existing gap5 database
+(equivalent to <CODE>tg_index -a</CODE>).
+</OL>
+
+<!-- NODE:Assembly-Map-bwa-dbwtsw -->
+
+
+<H2><A NAME="SEC74" HREF="gap5_toc.html#SEC74">Mapped assembly by bwa dbwtsw</A></H2>
+<P>
+<A NAME="IDX117"></A>
+<A NAME="IDX118"></A>
+
+</P>
+<P>
+This function runs the bwa program using the "dbwtsw" method for
+aligning sequences. This should be used when attempting to align
+longer sequences or data with lots of indels.
+
+</P>
+<P>
+The GUI is little more than a wrapper around command line tools,
+which can essentially be repeatedly manually as follows.
+
+</P>
+
+<OL>
+<LI>
+
+Calculate and save the consensus for all contigs in the database in
+fastq format.
+
+<LI>
+
+Index the consensus sequence using "bwa index".
+
+<LI>
+
+Map our input data against the bwa index using "bwa dbwtsw".
+
+<LI>
+
+Convert to BAM and sort by position.
+
+<LI>
+
+Import the BAM file, appending to the existing gap5 database
+(equivalent to <CODE>tg_index -a</CODE>).
+</OL>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_37.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_39.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

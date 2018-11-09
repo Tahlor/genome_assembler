@@ -1,0 +1,167 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Misc</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_108.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_110.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Misc -->
+
+
+<H4><A NAME="SEC119" HREF="scripting_toc.html#SEC119">Miscellaneous Commands</A></H4>
+<P>
+<A NAME="IDX434"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>xview ?</CODE>position<CODE>?</CODE></VAR>
+<DD>
+<A NAME="IDX435"></A>
+ <A NAME="IDX436"></A>
+ 
+<DT><VAR><CODE>yview ?</CODE>position<CODE>?</CODE></VAR>
+<DD>
+These commands are used to query and change the horizontal and vertical
+position of the information displayed in the editor's window. Without
+specifying the optional <I>position</I> argument the current value is returned.
+Specifying <I>position</I> sets the position and updates the editor display.
+
+<A NAME="IDX437"></A>
+<DT><VAR><CODE>align</CODE></VAR>
+<DD>
+        Aligns the data covered by the selection with the consensus sequence.
+        The sequence is then padded automatically.
+
+<A NAME="IDX438"></A>
+<DT><VAR><CODE>configure ?</CODE>option<CODE>? ?</CODE>value option value ...<CODE>?</CODE></VAR>
+<DD>
+        Reconfigures the editor. NB: not all configuration options allowed at
+        startup operate correctly when reconfiguring. (This is a bug.)
+
+<A NAME="IDX439"></A>
+<DT><VAR><CODE>dump_contig</CODE> filename from to line_length</VAR>
+<DD>
+        Saves the contig display to a file within a specified region. The
+        output consists of the data and settings of the current display.
+
+<A NAME="IDX440"></A>
+<DT><VAR><CODE>edits_made</CODE></VAR>
+<DD>
+        Queries whether edits have been made. Returns 1 if they have, 0 if
+        they have not.
+
+<A NAME="IDX441"></A>
+<DT><VAR><CODE>find_read</CODE> identifier</VAR>
+<DD>
+        Converts a reading identifier to an internal editor sequence number.
+
+<A NAME="IDX442"></A>
+<DT><VAR><CODE>get_displayed_annos</CODE></VAR>
+<DD>
+        Returns a list of the displayed annotation types.
+
+<A NAME="IDX443"></A>
+<DT><VAR><CODE>get_extents</CODE></VAR>
+<DD>
+        Returns the start and end of the displayable contig positions. If
+        cutoff data is shown this will also include the cutoff data beyond the
+        normal contig ends.
+
+<A NAME="IDX444"></A>
+<DT><VAR><CODE>get_hidden_reads</CODE></VAR>
+<DD>
+        This returns the hidden reads as a list of reading name identifiers.
+
+<A NAME="IDX445"></A>
+<DT><VAR><CODE>get_name ?</CODE>gel_number<CODE>?</CODE></VAR>
+<DD>
+        Returns the gel name from a given internal reading number, or for the
+        reading underneath the editing cursor.
+
+<A NAME="IDX446"></A>
+<DT><VAR><CODE>get_number ?</CODE>xpos ypos<CODE>?</CODE></VAR>
+<DD>
+        Returns the editor's internal reading number covering the screen
+        coordinate (<I>xpos</I>,<I>ypos</I>).  If no <I>xpos</I> and <I>ypos</I> are
+        specified then the position of the editing cursor is used.
+
+<A NAME="IDX447"></A>
+<DT><VAR><CODE>get_read_number ?</CODE>xpos ypos<CODE>?</CODE></VAR>
+<DD>
+        Returns the reading number covering the screen coordinate
+        (<I>xpos</I>,<I>ypos</I>).  If no <I>xpos</I> and <I>ypos</I> are specified then
+        the position of the editing cursor is used.
+
+<A NAME="IDX448"></A>
+<DT><VAR><CODE>hide_read</CODE></VAR>
+<DD>
+        This command toggles the 'hidden' status of a reading. Hidden readings
+        are not used to compute the consensus.
+
+<A NAME="IDX449"></A>
+<DT><VAR><CODE>io</CODE></VAR>
+<DD>
+        This returns the IO handle used for this editor.
+
+<A NAME="IDX450"></A>
+<DT><VAR><CODE>join</CODE></VAR>
+<DD>
+        Performs a join in the join editor.
+
+<A NAME="IDX451"></A>
+<DT><VAR><CODE>join_align</CODE></VAR>
+<DD>
+        Performs an alignment (and pads automatically) on the overlapping
+        region in a join editor.
+
+<A NAME="IDX452"></A>
+<DT><VAR><CODE>join_mode</CODE></VAR>
+<DD>
+        Queries whether the editor is part of a join editor. Returns 1 if it
+        is and 0 if it is not.
+
+<A NAME="IDX453"></A>
+<DT><VAR><CODE>join_percentage</CODE></VAR>
+<DD>
+        Returns the percentage mismatch of the overlap for a join editor.
+
+<A NAME="IDX454"></A>
+<DT><VAR><CODE>save</CODE></VAR>
+<DD>
+        Saves the database, but doesn't quit.
+
+<A NAME="IDX455"></A>
+<DT><VAR><CODE>set_displayed_annos ?</CODE>type ...<CODE>?</CODE></VAR>
+<DD>
+        Sets the displayed annotation types to those specified. All other are
+        turned off.
+
+<A NAME="IDX456"></A>
+<DT><VAR><CODE>shuffle_pads</CODE></VAR>
+<DD>
+        Realigns pads along the total length of the consensus.
+
+<A NAME="IDX457"></A>
+<DT><VAR><CODE>undo</CODE></VAR>
+<DD>
+        Undoes the last compound operation (from a list of changes).
+
+<A NAME="IDX458"></A>
+<DT><VAR><CODE>write_mode</CODE></VAR>
+<DD>
+        This toggles the editor between read-write and read-only mode.
+
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_108.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_110.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

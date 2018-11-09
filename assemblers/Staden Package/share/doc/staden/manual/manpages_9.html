@@ -1,0 +1,177 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - GetABIfield</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-getABIfield -->
+
+
+<H1><A NAME="SEC47" HREF="manpages_toc.html#SEC47">GetABIfield</A></H1>
+<P>
+<A NAME="IDX8"></A>
+
+
+<H2><A NAME="SEC48" HREF="manpages_toc.html#SEC48">NAME</A></H2>
+
+<P>
+getABIfield -- extract arbitrary components from an ABI file
+
+</P>
+
+
+<H2><A NAME="SEC49" HREF="manpages_toc.html#SEC49">SYNOPSIS</A></H2>
+
+<P>
+<CODE>getABIfield</CODE> [<CODE>OPTIONS</CODE>] <I>filename</I> [<CODE>Field-ID</CODE> [
+<CODE>Count</CODE>]] ...
+
+</P>
+
+
+<H2><A NAME="SEC50" HREF="manpages_toc.html#SEC50">DESCRIPTION</A></H2>
+
+<P>
+The <CODE>getABIfield</CODE> command extracts specified blocks from an ABI
+file and displays them in a variety of formats. The ABI file may be
+considered as a directory structure with files (data blocks) contained
+within it. Supply just the ABI filename as an argument will give a
+listing of the blocks.
+
+</P>
+<P>
+To extract specific data one or more "name count" pairs need to be
+specified.
+
+</P>
+
+
+<H2><A NAME="SEC51" HREF="manpages_toc.html#SEC51">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-a</CODE>
+<DD>
+    Dump all blocks.
+
+<DT><CODE>-D</CODE> <I>separator</I>
+<DD>
+    Sets the output field separator for elements within a date and
+    time format. Dates default to "yyyy/mm/dd" format and times default
+    to "hh:mm:ss.xx".
+
+<DT><CODE>-F</CODE> <I>separator</I>
+<DD>
+    Sets the output field separator to be a specified character.
+    This defaults to space.
+
+<DT><CODE>-f</CODE> <I>format</I>
+<DD>
+    Reformat the data to a specific style. By default the data is
+    listed in the format specified within the ABI file.
+    <I>format</I> should be chosen of <CODE>1</CODE>(1-byte integer),
+    <CODE>4</CODE>(2-byte integer), <CODE>5</CODE>(4-byte integer),
+    <CODE>7</CODE>(4-byte real), <CODE>8</CODE>(8-byte real), <CODE>10</CODE>(date),
+    <CODE>11</CODE>(time), <CODE>18</CODE>(Pascal-string), <CODE>19</CODE>(C-string).
+
+<DT><CODE>-h</CODE>
+<DD>
+    Displays data in hex format. By default the output format will be
+    chosen based on the data type (eg string, integer, floating
+    point).
+
+<DT><CODE>-I</CODE> <I>fofn</I>
+<DD>
+    Instead of reading the single file specified on the argument list
+    this reads a list of filenames from <I>fofn</I>. If <I>fofn</I> is "-"
+    then the file of filenames is read from 'stdin'.
+
+<DT><CODE>-L</CODE> <I>separator</I>
+<DD>
+    Sets the line separator between multiple blocks listed within a
+    single file. Defaults to newline.
+
+<DT><CODE>-l</CODE>
+<DD>
+    Sets the output field separator to be a newline.
+
+    Query mode. Here no output is displayed, but it simply returns true
+    or false depending on whether any of requested comments were found.
+
+<DT><CODE>-r</CODE>
+<DD>
+    Displays data in raw byte format.
+    
+<DT><CODE>-t</CODE>
+<DD>
+    Enable tagged output format. Each name/count pair are listed on a
+    single line in the format "filename name count data...".
+</DL>
+
+
+
+<H2><A NAME="SEC52" HREF="manpages_toc.html#SEC52">EXAMPLES</A></H2>
+
+<P>
+To extract the run dates in a tagged format for all the ab1 files in
+the current working directory:
+
+</P>
+
+<PRE>
+ls *.ab1 | getABIfield -t -I - RUND
+</PRE>
+
+<P>
+To see the order of the processed data channels (e.g. "GATC") on a
+single file:
+
+</P>
+
+<PRE>
+getABIfield 3150.ab1 FWO_
+</PRE>
+
+<P>
+To see the processed trace data for the first channel (e.g. "G")
+with one sample point per line:
+
+</P>
+
+<PRE>
+getABIfield -l 3150.ab1 DATA 9
+</PRE>
+
+<P>
+To obtain the version numbers of the various trace processing steps:
+
+</P>
+
+<PRE>
+getABIfield -t 3150.ab1 SVER 1 SVER 2 SVER 3
+</PRE>
+
+
+
+<H2><A NAME="SEC53" HREF="manpages_toc.html#SEC53">SEE ALSO</A></H2>
+
+<P>See section <A HREF="manpages_10.html#SEC54">get_comment(1)</A>.
+
+</P>
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

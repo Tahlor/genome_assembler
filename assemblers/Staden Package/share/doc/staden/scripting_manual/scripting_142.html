@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_get_extension</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_141.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_143.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_get_extension -->
+
+
+<H3><A NAME="SEC161" HREF="scripting_toc.html#SEC161">io_get_extension</A></H3>
+<P>
+<A NAME="IDX675"></A>
+<A NAME="IDX676"></A>
+<A NAME="IDX677"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_get_extension(
+	GapIO  *io,
+	int	N,
+	char   *seq,
+	int	max_seq,
+	int    *length,
+	int    *complement);
+</PRE>
+
+<P>
+<CODE>io_get_extension</CODE> reads the usable 3' cutoff data for reading number
+<VAR>N</VAR>. The cutoff data is stored in <VAR>seq</VAR>. The length stored is the
+smaller of <VAR>max_seq</VAR> bytes or the length of the 3' cutoff data.
+The length of data stored in <VAR>seq</VAR> is written to the <VAR>length</VAR> pointer.
+The orientation of the reading is stored in the <VAR>complement</VAR> pointer.
+
+</P>
+<P>
+The reading annotations are also read to determine which segments are
+considered usable. The existance of a tag with type <CODE>IGNS</CODE> or
+<CODE>IGNC</CODE>, anywhere on the reading, indicates that there is no suitable
+cutoff data for this reading. <VAR>length</VAR> is set to 1 and the function
+returns 1.
+
+</P>
+<P>
+If a tag of type <CODE>SVEC</CODE> or <CODE>CVEC</CODE> exists within the 3' cutoff
+data the segment returned consists of that between the 3' cutoff point and
+the start of the vector tag.
+
+</P>
+<P>
+The function returns 0 for success and 1 for failure.
+
+</P>
+<P>
+NOTE: The current implementation looks any tags with types <CODE>IGN?</CODE> and
+<CODE>?VEC</CODE> rather than the specific types listed.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_141.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_143.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Script-flush</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_46.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_48.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Script-flush -->
+
+
+<H3><A NAME="SEC53" HREF="scripting_toc.html#SEC53">Flushing data</A></H3>
+<P>
+<A NAME="IDX141"></A>
+<A NAME="IDX142"></A>
+<A NAME="IDX143"></A>
+<A NAME="IDX144"></A>
+
+</P>
+<P>
+When updating the database information it is often necessary to perform
+several edits. Initially we assume that the database is consistent and
+correct. After updating the database we also wish for the database to be
+consistent and correct. However during update this may not be true.
+
+</P>
+<P>
+Consider the case of adding a new reading to the end of a contig. We need to
+write the new reading with it's left neighbour set to the original last
+reading in the contig; then need to update the original last reading's
+right neighbour to reference our new last reading; and finally we need to
+update the contig information. During this operation the database is
+inconsistent so should the program or system terminate unexpectedly we wish to
+revert back to the earlier consistent state.
+
+</P>
+<P>
+This is performed by use of controlled flushing. The database internally
+maintains a time stamp of the last flushed state. When we open a database that
+contains data written after the last flush we ignore the new data and use the
+data written at the last flush.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>io_flush</CODE> <I>io</I>
+<DD>
+A Tcl function to flush the data stored in the database reference by <I>io</I>.
+Always returns success.
+<P>
+<DT><CODE>void flush2t(</CODE><I>GapIO *io</I><CODE>)</CODE>
+<DD>
+A C function to flush the database. Void return type.
+<P>
+<DT><CODE>gap_auto_flush</CODE>
+<DD>
+A variable to control whether the Tcl level io write commands (eg.
+<CODE>io_write_reading</CODE>, <CODE>io_write_reading_name</CODE>, <CODE>io_add_reading</CODE>
+and <CODE>io_allocate</CODE>) automatically flush after performing the write. Note
+the consequences of this action. By default this is set to 0 which disables
+automatic flush. A non zero value enables automatic flush.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_46.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_48.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

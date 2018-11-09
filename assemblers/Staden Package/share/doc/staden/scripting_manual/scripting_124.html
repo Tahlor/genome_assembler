@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-io_write_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_123.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_125.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-io_write_seq -->
+
+
+<H3><A NAME="SEC143" HREF="scripting_toc.html#SEC143">io_write_seq</A></H3>
+<P>
+<A NAME="IDX623"></A>
+<A NAME="IDX624"></A>
+<A NAME="IDX625"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_write_seq(
+        GapIO  *io,
+        int     N,
+        int2   *length,
+        int2   *start,
+        int2   *end,
+        char   *seq,
+        int1   *conf,
+        int2   *opos);
+</PRE>
+
+<P>
+This function updates disk and memory details of reading number <VAR>N</VAR>. If
+this reading does not yet exist, all non existant readings up to and including
+<VAR>N</VAR> will be initialised first using the <CODE>io_init_readings</CODE> function.
+
+</P>
+<P>
+[FIXME: The current implement <STRONG>does not</STRONG> update the fortran lngth
+(io_length()) array. This needs to be done by the caller. ]
+
+</P>
+<P>
+The <VAR>length</VAR> argument is the total length of the sequence, and hence also
+the expected size of the <VAR>seq</VAR>, <VAR>conf</VAR> and <VAR>opos</VAR> arrays.
+<VAR>start</VAR> and <VAR>end</VAR> contain the last base number of the left cutoff data
+and the first base number of the right cutoff data.
+
+</P>
+<P>
+Unlike <VAR>io_read_seq</VAR>, all arguments to this function are mandatory.
+If the records on disk do not already exist then they are allocated first
+using the <CODE>allocate</CODE> function.
+
+</P>
+<P>
+This function returns 0 for success and non zero for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_123.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_125.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

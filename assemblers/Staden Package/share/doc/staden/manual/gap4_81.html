@@ -1,0 +1,66 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Techniques-Quality</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_80.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_82.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Techniques-Quality -->
+
+
+<H3><A NAME="SEC146" HREF="gap4_toc.html#SEC146">Poor Quality</A></H3>
+
+
+<PRE>
+Read1      ACC*AGT*CGTA
+Read2      ACC*AGT*CGTA
+Read3      ACC*AGT*CGTA
+Read4      ACCCAGTCCG
+Read5      ACC*AGT*CGTA
+Consensus  ACC*AGT*CGTA
+</PRE>
+
+<P>
+This is identical to the first case, except we have two edits within
+<CODE>Read4</CODE> in close proximity. This is usually due to a poor quality
+reading, which can be checked by examining the trace and confidence values.
+Whilst we could continue to make edits in the normal fashion it may be wiser
+to take another approach.
+
+</P>
+<P>
+One technique is to adjust the cutoff data for <CODE>Read4</CODE>. By marking the
+data as hidden, this portion of the reading will no longer be used for
+producing the consensus. However we can only extend the cutoff data at one end
+or the other; it is not possible to have "hidden" data part way through a
+reading except by modifying its confidence. Note though that adjusting the
+cutoff data may mean that we have no data for one strand, which should be
+solved by extra experiments.
+
+</P>
+<P>
+If the reading is poor quality along its entire length, then disassembly is
+also a viable option. Using Highlight Disagreements (
+see section <A HREF="gap4_63.html#SEC111">Highlight Disagreements</A>. 
+) or
+Check Assembly (see section <A HREF="gap5_49.html#SEC86">Check Assembly</A>) is a good
+way of finding such readings. Note that disassembling readings may have other
+implications. It could cause a hole in the contig (in which case it will be
+broken in two) or it could cause a single stranded segment. If this is the
+case, the user needs to weigh up the work involved with making many edits along
+the length of this reading against performing another experiment to obtain better
+quality data.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_80.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_82.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - chain_left</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_138.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_140.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:chain_left -->
+
+
+<H3><A NAME="SEC158" HREF="scripting_toc.html#SEC158">chain_left</A></H3>
+<P>
+<A NAME="IDX671"></A>
+<A NAME="IDX672"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int chain_left(
+        GapIO  *io,
+        int     gel);
+</PRE>
+
+<P>
+This function finds the left most reading number of the contig containing the
+reading numbered <VAR>gel</VAR>. This is done by chaining along the left neighbours
+of each reading in turn until the contig end is reached. The function detects
+possible loops and returns -1 in this case. Otherwise the left most reading
+number is returned.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_138.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_140.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

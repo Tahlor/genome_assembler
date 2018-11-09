@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-join_contig</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_89.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_91.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-join_contig -->
+
+
+<H2><A NAME="SEC98" HREF="scripting_toc.html#SEC98">join_contig</A></H2>
+<P>
+<A NAME="IDX312"></A>
+<A NAME="IDX313"></A>
+<A NAME="IDX314"></A>
+
+</P>
+
+<PRE>
+<CODE>join_contig</CODE>
+ -io            <I>io_handle:integer</I>
+ -contig1       <I>identifier:string</I>
+?-reading1      <I>identifier:string()</I>?
+?-pos1          <I>position:integer(1)</I>?
+ -contig2       <I>identifier:string</I>
+?-reading2      <I>identifier:string()</I>?
+?-pos2          <I>position:integer(1)</I>?
+</PRE>
+
+<P>
+This command brings up a join editor display. The display consists of two
+contig editors, one above the other. The function returns no value but will
+generate a Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contig1</CODE> identifier</VAR>
+<DD>
+<DT><VAR><CODE>-contig2</CODE> identifier</VAR>
+<DD>
+These specify the contigs to join.
+
+<P>
+<DT><VAR><CODE>-reading1</CODE> identifier</VAR>
+<DD>
+<DT><VAR><CODE>-reading2</CODE> identifier</VAR>
+<DD>
+<DT><VAR><CODE>-pos1</CODE> position</VAR>
+<DD>
+<DT><VAR><CODE>-pos2</CODE> position</VAR>
+<DD>
+By default the editors start with the display and cursor at the left end of
+the consensus. Use these options to specify a different reading and position.
+The position is relative to the start of the specified reading. To start the
+editors at specific positions in the consensus sequence use only
+<CODE>-pos</CODE><I>n</I>.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_89.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_91.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

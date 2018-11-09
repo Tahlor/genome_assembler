@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-disassemble_readings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_75.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_77.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-disassemble_readings -->
+
+
+<H2><A NAME="SEC84" HREF="scripting_toc.html#SEC84">disassemble_readings</A></H2>
+<P>
+<A NAME="IDX261"></A>
+<A NAME="IDX262"></A>
+<A NAME="IDX263"></A>
+
+</P>
+
+<PRE>
+<CODE>disassemble_readings</CODE>
+ -io            <I>io_handle:integer</I>
+ -readings      <I>identifiers:strings</I>
+?-all           <I>for_all:integer(1)</I>?
+?-remove        <I>to_remove:integer(1)</I>?
+</PRE>
+
+<P>
+This command disassembles readings by either removing them from the database
+or moving them to their own contigs.  The function returns no value but will
+generate a Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-readings</CODE> identifiers</VAR>
+<DD>
+Specifies the list of readings to disassemble.
+
+<P>
+<DT><VAR><CODE>-all</CODE> for_all</VAR>
+<DD>
+Controls whether to disassemble all readings or only those that are not
+"crucial" (those that would cause a contig to break into fragments). A
+non-zero value will disassemble all. The default is 1.
+
+<P>
+<DT><VAR><CODE>-remove</CODE> to_remove</VAR>
+<DD>
+Controls whether to completely remove the readings from the database or to
+move them to their own contigs. A non-zero value will remove them, otherwise
+they are moved. The default is 1.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_75.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_77.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - rmanno</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_162.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_164.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:rmanno -->
+
+
+<H2><A NAME="SEC182" HREF="scripting_toc.html#SEC182">rmanno</A></H2>
+<P>
+<A NAME="IDX727"></A>
+<A NAME="IDX728"></A>
+<A NAME="IDX729"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+int rmanno(
+        GapIO  *io,
+        int     anno,
+        int     lpos,
+        int     rpos);
+</PRE>
+
+<P>
+This function removes annotations in a specified region from an annotation
+list. The annotation list starts at annotation number <VAR>anno</VAR>. The new list
+head (which will change if we delete the first annotation) is returned. The
+region to remove annotations over is between base numbers <VAR>lpos</VAR> and
+<VAR>rpos</VAR> inclusive. Note that annotations overlapping this region, but not
+contained entirely within it, will have their either their position or length
+modified, or may need splitting in two. (Consider the case where a single tag
+spans the entire region to see where splitting is necessary.)
+
+</P>
+<P>
+When succeeding the the new annotation number to form the annotation list
+head. Otherwise returns 0.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_162.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_164.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

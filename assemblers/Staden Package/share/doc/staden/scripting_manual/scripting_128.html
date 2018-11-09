@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - allocate</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_127.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_129.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:allocate -->
+
+
+<H3><A NAME="SEC147" HREF="scripting_toc.html#SEC147">allocate</A></H3>
+<P>
+<A NAME="IDX637"></A>
+<A NAME="IDX638"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int allocate(
+        GapIO    *io,
+        GCardinal type);
+</PRE>
+
+<P>
+These allocate and deallocate records in the g database.
+
+</P>
+<P>
+Th <CODE>allocate</CODE> function allocates a new record from the g database. It
+finds a free record, or creates a new record, and returns this record number.
+The record will be automatically locked for exclusive read/write access. The
+type of the record is sent in <VAR>type</VAR>.  This must be one of following:
+
+</P>
+
+<UL>
+<LI><CODE>GT_Text</CODE>
+
+<LI><CODE>GT_Data</CODE>
+
+<LI><CODE>GT_Array</CODE>
+
+<LI><CODE>GT_Bitmap</CODE>
+
+<LI><CODE>GT_Database</CODE>
+
+<LI><CODE>GT_Contigs</CODE>
+
+<LI><CODE>GT_Readings</CODE>
+
+<LI><CODE>GT_Vectors</CODE>
+
+<LI><CODE>GT_Annotations</CODE>
+
+<LI><CODE>GT_Templates</CODE>
+
+<LI><CODE>GT_Clones</CODE>
+
+</UL>
+
+<P>
+The function does not initialise or even write the new record to disk. The
+record number is valid, but a <CODE>GT_Read</CODE> call will produce an error. It is
+up to the caller to initialise the structure and perform the first
+<CODE>GT_Write</CODE> (or equivalent) call.
+
+</P>
+<P>
+It returns the record number for success, and terminates the program for
+failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_127.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_129.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

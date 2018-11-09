@@ -1,0 +1,161 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - MakeSCF</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_16.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_18.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-makeSCF -->
+
+
+<H1><A NAME="SEC97" HREF="manpages_toc.html#SEC97">MakeSCF</A></H1>
+<P>
+<A NAME="IDX16"></A>
+
+
+<H2><A NAME="SEC98" HREF="manpages_toc.html#SEC98">NAME</A></H2>
+
+<P>
+makeSCF -- Converts trace files to SCF files.
+
+</P>
+
+
+<H2><A NAME="SEC99" HREF="manpages_toc.html#SEC99">SYNOPSIS</A></H2>
+
+<P>
+<CODE>makeSCF</CODE> [<CODE>-8</CODE>] [<CODE>-2</CODE>] [<CODE>-3</CODE>]
+-(<CODE>abi</CODE>|<CODE>alf</CODE>|<CODE>scf</CODE>|<CODE>pln</CODE>) <I>input_name</I>
+[<CODE>-compress</CODE> <I>compression_mode</I>] [<CODE>-normalise</CODE>
+[<CODE>-output</CODE> <I>output_name</I>]
+
+</P>
+
+
+<H2><A NAME="SEC100" HREF="manpages_toc.html#SEC100">DESCRIPTION</A></H2>
+
+<P>
+<CODE>MakeSCF</CODE> converts trace files to the SCF format. It can input ABI 373A,
+Pharmacia A.L.F., or previously created SCF files (although converting from
+SCF to SCF serves no useful purpose!). 
+
+</P>
+
+
+<H2><A NAME="SEC101" HREF="manpages_toc.html#SEC101">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-8</CODE>
+<DD>
+    Force conversion to 8 bit sample data. This shrinks the size of SCF
+    files using 16 bit sample values, but at a loss of resolution. For trace
+    display purposes this accuracy loss is acceptable.
+
+<DT><CODE>-2</CODE>
+<DD>
+    Force the output to be written in SCF version 2. By default the
+    latest version (3) is used.
+
+<DT><CODE>-3</CODE>
+<DD>
+    Force the output to be written in SCF version 3. This is the default.
+
+<DT><CODE>-s</CODE>
+<DD>
+    Silent mode. This prevents the output of the copyright message.
+
+<DT><CODE>-abi</CODE>, <CODE>-alf</CODE>, <CODE>-scf</CODE>, <CODE>-any</CODE>
+<DD>
+    Specify an input file format. A file format of "any" will force
+    <CODE>makeSCF</CODE> to automatically determine the correct input file type.
+
+<DT><CODE>-compress</CODE> <I>compression_mode</I>
+<DD>
+    Requests the generated SCF file to be passed through a separate compression
+    program before writing to disk. <CODE>makeSCF</CODE> does not contain any
+    compression algorithms itself. It requires the appropriately named tool to
+    be on the system and in the user's PATH.
+    Valid responses for <I>compression_mode</I> are (in order of best compression
+    first) <CODE>bzip</CODE>, <CODE>gzip</CODE>, <CODE>compress</CODE> and <CODE>pack</CODE>. Note
+    that <CODE>bzip</CODE> at present is only bzip version 1 and that bzip version 2
+    is incompatible.
+
+<DT><CODE>-normalise</CODE>
+<DD>
+    Performs some very simple trace normalisation. This subtracts the
+    background signal (by defining the background signal to be the lowest of
+    the four traces) and rescales the peak heights, averaging the height over
+    a `window' of 1000 trace sample points. This option may be useful
+    for some unscaled ALF files.
+
+<DT><CODE>-output</CODE> <I>file</I>
+<DD>
+    Specifies the filename for the SCF file to be produced. If this is not
+    specified the SCF file will be sent to standard output.
+</DL>
+
+
+
+<H2><A NAME="SEC102" HREF="manpages_toc.html#SEC102">EXAMPLES</A></H2>
+
+<P>
+To convert an ABI 373A trace:
+
+</P>
+
+<PRE>
+<CODE>makeSCF -8 -abi trace.abi -output trace.scf</CODE>
+</PRE>
+
+<P>
+To convert an ALF archive to individual SCF files (Warning! this 
+will most certainly fail if your clone names contain spaces):
+
+</P>
+
+<PRE>
+<CODE>alfsplit trace.alf | awk '/^Clone/ {print $3 "ALF"}' &#62; trace.files</CODE>
+
+<CODE>sh -c 'for i in `cat trace.files`;do makeSCF -alf $i -output</CODE>
+<CODE>    $i.scf;done</CODE>
+</PRE>
+
+
+
+<H2><A NAME="SEC103" HREF="manpages_toc.html#SEC103">NOTES</A></H2>
+
+<P>
+If ABI and A.L.F files are edited before input to makeSCF the contents of
+the resulting SCF files are unpredictable.
+To use Pharmacia A.L.F. files the <CODE>alfsplit</CODE> program should first
+be used. Then <CODE>makeSCF</CODE> should be run on each of the split files.
+See the example above.
+
+</P>
+
+
+<H2><A NAME="SEC104" HREF="manpages_toc.html#SEC104">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+<P>See section <A HREF="manpages_2.html#SEC2">convert_trace(1)</A>.
+
+</P>
+<P>See section <A HREF="manpages_5.html#SEC23">eba(1)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_16.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_18.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

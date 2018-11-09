@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - create_tag_for_gel</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_167.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_169.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:create_tag_for_gel -->
+
+
+<H2><A NAME="SEC187" HREF="scripting_toc.html#SEC187">create_tag_for_gel</A></H2>
+<P>
+<A NAME="IDX744"></A>
+<A NAME="IDX745"></A>
+<A NAME="IDX746"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void create_tag_for_gel(
+        GapIO  *io,
+        int     gel,
+        int     gellen,
+        char   *tag);
+</PRE>
+
+<P>
+This function is a textual analogue of the <CODE>insert_NEW_tag</CODE> function
+(which it uses). The function creates a new tag for a reading. The
+<VAR>gel</VAR> argument should contain the reading number and <VAR>gellen</VAR> the
+reading length. The tag to create is passed as the <VAR>tag</VAR> argument which is
+in the same format as taken by the <VAR>tag2values</VAR> function.
+See section <A HREF="scripting_164.html#SEC183">tag2values</A>.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_167.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_169.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

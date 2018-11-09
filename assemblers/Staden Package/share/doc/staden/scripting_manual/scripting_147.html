@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - get_read_name</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_146.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_148.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:get_read_name -->
+
+
+<H3><A NAME="SEC166" HREF="scripting_toc.html#SEC166">get_read_name, get_contig_name, get_vector_name, get_template_name, and get_clone_name</A></H3>
+<P>
+<A NAME="IDX688"></A>
+<A NAME="IDX689"></A>
+<A NAME="IDX690"></A>
+<A NAME="IDX691"></A>
+<A NAME="IDX692"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+char *get_read_name(
+	GapIO  *io,
+	int number);
+
+char *get_contig_name(
+	GapIO  *io,
+	int number);
+
+char *get_vector_name(
+	GapIO  *io,
+	int number);
+
+char *get_template_name(
+	GapIO  *io,
+	int number);
+
+char *get_clone_name(
+	GapIO  *io,
+	int number);
+</PRE>
+
+<P>
+These functions convert reading, contig, vector, template and clone numbers
+into reading, contig, vector, and clone names respectively. Each function
+takes a <VAR>number</VAR> argument and returns a string containing the name. The
+string is held in a static buffer and is valid only until the next call of the
+same function. If the name is unknown, the string "<CODE>???</CODE>" is returned.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_146.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_148.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

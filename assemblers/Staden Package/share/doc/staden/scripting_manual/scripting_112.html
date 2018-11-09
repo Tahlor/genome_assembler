@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-Database_Structures</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_111.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_113.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-Database_Structures -->
+
+
+<H2><A NAME="SEC129" HREF="scripting_toc.html#SEC129">Database Structures</A></H2>
+<P>
+Before using any of the functions a firm understanding of the data structures
+is needed. The main objects held within the database are readings, contigs,
+templates, vectors, clones and annotations. These reference additional records
+of other objects or one of the primitive types.
+
+</P>
+<P>
+There are five basic types from which the database structures are constructed.
+These are:
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>GCardinal</VAR>
+<DD>
+	A single 4 byte integer.
+
+<DT><VAR>Text</VAR>
+<DD>
+	An ascii string which may ending in a null. The null character may, or
+	may not, be present in the actual data stored on the disk.
+
+<DT><VAR>Array</VAR>
+<DD>
+	An extendable list of 4 byte integer values.
+
+<DT><VAR>Bitmap</VAR>
+<DD>
+	An extendable array of single bits.
+
+<DT><VAR>Data</VAR>
+<DD>
+	Any other data. This is handled in a similar manner to the Text type
+	except the null character may be present.
+</DL>
+
+<P>
+In the C code, the <VAR>GCardinal</VAR> is the basic type used in most database
+structures.  Other structure elements are larger and so are typically stored
+as another <CODE>GCardinal</CODE> containing the record number of the data itself.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_111.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_113.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

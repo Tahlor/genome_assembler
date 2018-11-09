@@ -1,0 +1,111 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-Mutations</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-Mutations -->
+
+
+<H2><A NAME="SEC39" HREF="pregap4_toc.html#SEC39">Mutation Detection</A></H2>
+<P>
+<A NAME="IDX59"></A>
+<A NAME="IDX60"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+<STRONG>Superceded by the newer modules:</STRONG>
+(
+see section <A HREF="pregap4_35.html#SEC41">Trace Difference</A>)
+and (
+see section <A HREF="pregap4_36.html#SEC42">Mutation Scanner</A>).
+
+This module compares each sequence chromatogram against a "wild type" or
+reference chromatogram to detect point mutations. The mutations are
+detected by aligning and subtracting each trace from the wild type trace to
+produce a "difference trace". The difference trace is then analysed to
+identify point mutations which are written back to the Experiment File and
+<CODE>MUTN</CODE> tags. This uses the <CODE>trace_diff</CODE> program
+<CITE>Bonfield, J.K., Rada, C. and Staden, R. Automated detection of point
+mutations using fluorescent sequence trace subtraction. Nucleic Acids Res. 26,
+3404-3409 (1998)</CITE>.
+
+Obviously the reference traces should be as similar as possible to the ones
+being compared against it. It should be prepared by sequencing the wild type
+from the same primer, and using the same chemistry as the readings being
+screened.  One good way to produce a reference trace is to run the wild type
+sequence on the gel along with the other samples.  It is also possible to get
+gap4 to produce a consensus trace. This requires using pregap4 twice. Firstly
+process the sequences through pregap4 with all the appropriate options except
+with the mutation detection module disabled.  Assemble these sequences into
+gap4. Within gap4, for each contig start up the Contig Editor and select Save
+Consensus Trace from the command menu. This will produce a trace which is the
+average of the traces in that contig. Then delete the gap4 database and
+reprocess the sequences using Pregap4, this time using mutation detection to
+compare against the consensus trace.
+
+<P>
+
+<DT><STRONG>Option: Wild type file (+ve strand)</STRONG>
+<DD>
+<DT><STRONG>Option: Wild type file (-ve strand)</STRONG>
+<DD>
+These are the filenames of the chromatogram for the wild type sequence on each
+strand. These may be in any allow trace format (SCF, ZTR, ABI, CTF or ALF).
+In the augment stage, these are represented in the <CODE>WT</CODE> line type using
+<I>plus_filename</I><CODE>|</CODE><I>minus_filename</I> notation.
+<P>
+
+<DT><STRONG>Option: Start position</STRONG>
+<DD>
+<DT><STRONG>Option: End position</STRONG>
+<DD>
+These define the range within each sequence in which to identify mutations.
+The algorithm works better on good quality data so including very bad sequence
+may give errors.
+<P>
+
+<DT><STRONG>Option: Score</STRONG>
+<DD>
+This a threshold used to determine when a peak in the difference trace is
+considered to be a mutation. The higher the value the more stringent the test.
+<P>
+
+<DT><STRONG>Option: Alignment band width</STRONG>
+<DD>
+The trace alignment is performed by firstly doing a sequence alignment on the
+text sequences contained in the two files. This parameter
+specifies the band width for
+this alignment. Smaller values give quicker alignments, but only work if the
+alignment is sufficiently close to the main diagonal.
+<P>
+
+<DT><STRONG>Option: Other arguments</STRONG>
+<DD>
+This allows for any other arguments to be passed to the <CODE>trace_diff</CODE>
+program. See the trace_diff documentation for more details.
+<P>
+</DL>
+<P>
+<STRONG>The module above is superceded by the newer modules:</STRONG>
+(see section <A HREF="pregap4_35.html#SEC41">Trace Difference</A>)
+and (see section <A HREF="pregap4_36.html#SEC42">Mutation Scanner</A>).
+
+</P>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

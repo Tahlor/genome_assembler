@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - deallocate</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_128.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_130.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:deallocate -->
+
+
+<H3><A NAME="SEC148" HREF="scripting_toc.html#SEC148">deallocate</A></H3>
+<P>
+<A NAME="IDX639"></A>
+<A NAME="IDX640"></A>
+<A NAME="IDX641"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int deallocate(
+        GapIO    *io,
+        int       rec);
+</PRE>
+
+<P>
+The <CODE>deallocate</CODE> function removes record <VAR>rec</VAR> from the g database.
+This uses the <CODE>g_remove</CODE> function, but unlocking is only performed at the
+next database flush.
+
+</P>
+<P>
+It returns 0 for success and 1 for failure.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_128.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_130.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

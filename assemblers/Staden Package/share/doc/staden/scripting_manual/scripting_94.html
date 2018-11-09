@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-show_relationships</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_93.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_95.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-show_relationships -->
+
+
+<H2><A NAME="SEC102" HREF="scripting_toc.html#SEC102">show_relationships</A></H2>
+<P>
+<A NAME="IDX323"></A>
+<A NAME="IDX324"></A>
+<A NAME="IDX325"></A>
+
+</P>
+
+<PRE>
+<CODE>show_relationships</CODE>
+ -io            <I>io_handle:integer</I>
+?-contigs       <I>identifiers:strings()</I>?
+?-order         <I>order:integer(1)</I>?
+</PRE>
+
+<P>
+This command performs the Gap4 Show Relationships function. The function
+returns no value but will generate a Tcl error if an error occurs.
+
+</P>
+
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+Specifies single segments of contigs for which to display the relationships
+data. In the current implementation only the first contig (and start and
+end position) in the identifier list is processed. Not specifying any
+contigs (which is the default) will make show_relationships process all
+contigs.
+
+<P>
+<DT><VAR><CODE>-order</CODE> order</VAR>
+<DD>
+Controls whether the output should be sorted on positional order or reading
+number order. This has no effect when <CODE>-contigs</CODE> is used. An <I>order</I>
+of 1 specifies that the output will list each contig in turn together with
+the readings within that contig listed in positional order. An <I>order</I> of
+0 lists all contig records first followed by all readings in contig and
+reading number order. The default is 1.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_93.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_95.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

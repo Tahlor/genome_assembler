@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-type_to_result</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_188.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_190.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-type_to_result -->
+
+
+<H3><A NAME="SEC248" HREF="scripting_toc.html#SEC248">type_to_result</A></H3>
+<P>
+<A NAME="IDX880"></A>
+
+<PRE>
+int type_to_result(GapIO *io, int type, int contig);
+
+Returns:  id value for success.
+          0 for failure.
+</PRE>
+
+<P>
+Returns the first id value found for a given id. If contig is specifed
+as a non zero value we search for id only within this contig.
+Otherwise all contigs are scanned.
+
+</P>
+<!-- NODE:Reg-type_notify -->
+
+
+<H3><A NAME="SEC249" HREF="scripting_toc.html#SEC249">type_notify</A></H3>
+<P>
+<A NAME="IDX881"></A>
+
+<PRE>
+int type_notify(GapIO *io, int type, reg_data *jdata, int all);
+        
+Returns:  0 for success
+         -1 when none of this type were found.
+</PRE>
+
+<P>
+Sends a notification request to registered data with the specified
+type. If 'all' is non zero then all registered data with this type
+will be notified, otherwise only the first instance of this type found
+will be notified.
+
+</P>
+<!-- NODE:Reg-type_contig_notify -->
+
+
+<H3><A NAME="SEC250" HREF="scripting_toc.html#SEC250">type_contig_notify</A></H3>
+<P>
+<A NAME="IDX882"></A>
+
+<PRE>
+int type_contig_notify(GapIO *io, int contig, int type,
+                       reg_data *jdata, int all);
+
+Returns:  0 for success
+         -1 when none of this type were found.
+</PRE>
+
+<P>
+Sends a notification request to registered data of a given type only
+within the specified contig. If 'all' is non zero then all registered
+data with this type in this contig will be notified, otherwise only
+the first instance of this type found will be notified. 
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_188.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_190.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

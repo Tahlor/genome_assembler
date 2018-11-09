@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-find_taq_terminator</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_86.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_88.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-find_taq_terminator -->
+
+
+<H2><A NAME="SEC95" HREF="scripting_toc.html#SEC95">find_taq_terminator</A></H2>
+<P>
+<A NAME="IDX300"></A>
+<A NAME="IDX301"></A>
+<A NAME="IDX302"></A>
+<A NAME="IDX303"></A>
+
+</P>
+
+<PRE>
+<CODE>find_taq_terminator</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-avg_len       <I>length:integer(350)</I>?
+</PRE>
+
+<P>
+This command searches for places where rerunning a reading as a dye terminator
+reaction will solve a problem. Currently these places are identified by the
+presence of a COMP (compression) or STOP annotation. The function returns no
+value but will generate a Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to search. The <I>{contig start end}</I>
+syntax may be used for an identifier to search only a region of the
+contig, otherwise all of it is searched.
+
+<P>
+<A NAME="IDX304"></A>
+<DT><VAR><CODE>-avg_len</CODE> length</VAR>
+<DD>
+This specifies the expected length achieved by a terminator reading . This is
+used to determine which readings are suitable for rerunning and for the amount
+of coverage available. The default is 350 base pairs.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_86.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_88.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

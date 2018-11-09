@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Menus</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Menus -->
+
+
+<H2><A NAME="SEC10" HREF="scripting_toc.html#SEC10">Specifying Menu Configurations</A></H2>
+<P>
+<A NAME="IDX23"></A>
+<A NAME="IDX24"></A>
+
+</P>
+<P>
+By specifying menu configurations within the application rc file we provide
+the ability for extensions to include their own menu additions. When combined
+with the dynamic linking ability this means that new C functions can be
+written complete with GUI and menu items. These can then be "wrapped up" into
+a package suitable for distribution to other users.
+
+</P>
+<P>
+Not all menus within our programs are specified within the configuration file,
+but typically the main menu is. Theoretically other menus (such as the gap4
+contig editor ones) could be defined in this manner too.
+
+</P>
+<P>
+An important concept in the menu code is menu states. At any time a menu item
+or a menu button can be either enabled or disabled (greyed out). Certain
+actions require a subset of the menu items to be enabled or disabled. Actions
+can be split into menu state changes that enable menu items and those that
+disable them. If an action needs to both enable and disable then two menu
+state changes should be applied. Menu states are specified as bit patterns
+with one bit per action.
+
+</P>
+<P>
+For example in gap4 we have several enable states and several disable states.
+
+</P>
+<P>
+<DL COMPACT>
+
+<DT><STRONG>bit</STRONG>
+<DD>
+<STRONG>Enable description</STRONG>
+<DT>0
+<DD>
+Startup settings
+<DT>2
+<DD>
+A new database has been opened
+<DT>3
+<DD>
+The database has data
+</DL>
+
+<P>
+<DL COMPACT>
+
+<DT><STRONG>bit</STRONG>
+<DD>
+<STRONG>Disable description</STRONG>
+<DT>1
+<DD>
+Busy mode has been set
+<DT>2
+<DD>
+The database has been closed
+<DT>3
+<DD>
+The database has no data
+<DT>4
+<DD>
+Read-only mode is enabled
+</DL>
+
+<P>
+Note that not all bits are used in the enable and disable settings. This is
+purely to simplify the numbering for the user. For example bits 2 and 3 
+have the same meaning for both the enable set and the disable set.
+
+</P>
+<P>
+Bit 0 is always the startup setting. If a menu item does not have this bit set
+then it is disabled, otherwise it is enabled.
+
+</P>
+<P>
+Bit 1 is always used by the busy mode. Busy mode disables items that have bit
+1 set in the disable settings. When busy mode is turned off the menu settings
+revert to their initial state (prior to busy mode being enabled) and so no
+enable bit is necessary.
+
+</P>
+<P>
+The other bits defined are application dependent. In this case bits 2 and 3
+define whether the database opened and whether it contains data.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

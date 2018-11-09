@@ -1,0 +1,183 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Names</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_52.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_54.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Names -->
+
+
+<H2><A NAME="SEC64" HREF="gap4_toc.html#SEC64">Names</A></H2>
+<P>
+<A NAME="IDX119"></A>
+<A NAME="IDX120"></A>
+<A NAME="IDX121"></A>
+<A NAME="IDX122"></A>
+<A NAME="IDX123"></A>
+
+</P>
+<P>
+At the left side of the editor window is a display containing the
+reading names and numbers. Each line consists of its orientation
+("+" or "-"), reading number, a coloured template consistency
+status and its name. The bottom line is always <CODE>CONSENSUS</CODE>. Also
+on the bottom line is the current edit status. This is modelled on
+<CODE>Emacs</CODE>, and consists of one of <CODE>----</CODE>, <CODE>-%%-</CODE> and
+<CODE>-**-</CODE>, to symbolise "No unsaved edits made", "No edits made -
+editor is in read only mode", and "Unsaved edits made".
+
+</P>
+<P>
+The maximum length of a reading name is 40 characters. Additionally there
+are 7 characters taken up with the direction and number of a reading. By
+default the names display only shows 23 characters (enough to show 16 letters
+of a reading name). A horizontal scrollbar just above the reading names can be
+used to scroll the reading names. Note that the numbers and orientation are
+always visible. To change the width of the editor names display set the
+<CODE>CONTIG_EDITOR.NAMES_WIDTH</CODE> setting in your <TT>`.gaprc'</TT>. For example:
+
+</P>
+
+<PRE>
+set_def CONTIG_EDITOR.NAMES_WIDTH	23
+</PRE>
+
+<P>
+The foreground colour for the text reveals whether the trace for this reading
+is shown - a grey foreground indicates that the trace is visible.  The
+background colour represents a user highlight and the disassembly mode. The
+default background colour is light grey (the same colour as the general editor
+background).  Clicking the left mouse button on a reading name toggles the
+background of the name component of number-name pair to black.  This is
+particularly useful for keeping track of an individual reading whilst
+scrolling the editor. As the editor scrolls an individual reading will move up
+and down the editor display. By highlighting this reading it becomes easy to
+track. The number component of the number-name pair is used to highlight
+readings that are to be disassembled. See section <A HREF="gap5_52.html#SEC89">Disassemble Readings</A>. In this case the background is dark grey.
+
+</P>
+<P>
+If the template display is in use, highlighting a reading name in the
+editor will select this reading in the template display (by marking
+it as bold). Similarly selecting a reading in the template display (left
+mouse button) will highlight the reading in the contig editor.
+Additionally the contig editor cursor is visible within the template
+display allowing the position of the editor to be controllable from the
+template display and connected plots (such as the quality plot). 
+
+</P>
+<P>See section <A HREF="gap4_29.html#SEC36">Template Display</A>.
+
+</P>
+<P>
+The readings contained within the "readings" list are automatically
+highlighted when the editor starts. Toggling the highlighted names in the
+editor updates the "readings" list accordingly.
+
+</P>
+<P>See section <A HREF="gap5_70.html#SEC108">Special List Names</A>.
+
+</P>
+<P>
+Once an output list for the editor has been set, pressing the middle
+mouse button, or Alt left mouse button, on the names display has the same effect as the using the
+left button, except that it adds (and never removes) the reading name to the
+specified list. See section <A HREF="gap4_63.html#SEC120">Set Output List</A>. This is similar
+to using the left mouse button to add names to the "readings" list, except
+that it allows for multiple lists to be built up.
+
+</P>
+<P>
+Pressing the right mouse button on a name will popup a menu containing
+a variety of operations to perform for that specific reading.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Goto...</STRONG>
+<DD>
+This is a cascading menu containing all other readings on the same
+template, including ones on other contigs. Selecting the appropriate
+read name will move the editor to the left-most base in that
+sequence. If the sequence is in another editor then either the other
+editor will be moved (and created if needed).
+
+<DT><STRONG>Join to...</STRONG>
+<DD>
+This is only shown when a template has more than one reading in it and
+the readings are within separate contigs. when this is the case a
+cascading menu presents the list of readings in other
+contigs. Selecting one of these will bring up the join editor with
+both sequences visible (so that you will need to manually scroll to
+approximately the correct position in order to find the join).
+
+<DT><STRONG>Select this reading</STRONG>
+<DD>
+<DT><STRONG>Select this reading and all to right</STRONG>
+<DD>
+<DT><STRONG>Deselect this reading</STRONG>
+<DD>
+<DT><STRONG>Deselect this reading and all to right</STRONG>
+<DD>
+<DT><STRONG>Select readings on this template</STRONG>
+<DD>
+<DT><STRONG>Deselect readings on this template</STRONG>
+<DD>
+These commands (de)select one or several readings. "Select this
+reading" is the most simple method and this acts in the same way as
+simply left clicking on a sequence name.
+
+The other modes allow the (de)selection of sequences on this template
+(regardless of which contig they are in) or ranges. The "and all to
+right" modes are designed with disassemble readings in
+mind. Disassembling all readings from a specific point onwards using
+the "Move readings to new contigs" mode is analogous to using break
+contig. Selecting all readings within a range may be achieved by a
+combination of "select this reading and all to right" and a
+subsequence "deselect this reading and all to right" further along
+the contig.
+
+<DT><STRONG>List notes</STRONG>
+<DD>
+This invokes the note selector with this reading already listed
+(see section <A HREF="gap4_149.html#SEC221">Selecting Notes</A>).
+
+<DT><STRONG>Set as reference sequence</STRONG>
+<DD>
+This marks the sequence as the Reference sequence
+(see section <A HREF="gap4_68.html#SEC129">Reference sequences</A>).
+
+<DT><STRONG>Set as reference trace</STRONG>
+<DD>
+This marks the trace as a Reference trace for use with trace
+differencing
+(see section <A HREF="gap4_69.html#SEC130">Reference traces</A>).
+
+<DT><STRONG>Remove reading (this only)</STRONG>
+<DD>
+<DT><STRONG>Remove reading and all to right</STRONG>
+<DD>
+This marks one or more readings as ready for removal by disassemble
+readings
+(see section <A HREF="gap4_64.html#SEC123">Removing readings from the contig</A>).
+You will then be prompted when you exit the editor whether you wish to
+disassemble the chosen readings.
+
+<DT><STRONG>Clear selection</STRONG>
+<DD>
+This clears the current reading selection.
+</DL>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_52.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_54.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-set_defx</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-set_defx -->
+
+
+<H3><A NAME="SEC9" HREF="scripting_toc.html#SEC9">set_defx</A></H3>
+<P>
+<A NAME="IDX22"></A>
+
+<PRE>
+<STRONG>set_defx</STRONG> <I>variable</I> <I>parameter</I> <I>value</I>
+</PRE>
+
+<P>
+When we have common values to set for many parameters we may use the
+<CODE>set_defx</CODE> command. For example take the following settings:
+
+</P>
+
+<PRE>
+set_def FIJ.HIDDEN.NAME         "Window size for good data scan"
+set_def FIJ.HIDDEN.MIN          1
+set_def FIJ.HIDDEN.MAX          200
+set_def FIJ.HIDDEN.VALUE        100
+
+set_def ASSEMBLE.HIDDEN.NAME    "Window size for good data scan"
+set_def ASSEMBLE.HIDDEN.MIN     1
+set_def ASSEMBLE.HIDDEN.MAX     200
+set_def ASSEMBLE.HIDDEN.VALUE   100
+</PRE>
+
+<P>
+The repetition here of common elements is tedious. Using <CODE>set_defx</CODE> the
+equivalent becomes:
+
+</P>
+
+<PRE>
+set_defx defs_hidden    NAME    "Window size for good data scan"
+set_defx defs_hidden    MIN     1
+set_defx defs_hidden    MAX     200
+set_defx defs_hidden    VALUE   100
+
+set_def  FIJ.HIDDEN             $defs_hidden
+set_def  ASSEMBLE.HIDDEN        $defs_hidden
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

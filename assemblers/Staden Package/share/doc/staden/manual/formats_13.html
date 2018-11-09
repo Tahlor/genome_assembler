@@ -1,0 +1,70 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - ZTR-Header</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:ZTR-Header -->
+
+
+<H3><A NAME="SEC14" HREF="formats_toc.html#SEC14">Header</A></H3>
+<P>
+<A NAME="IDX33"></A>
+
+</P>
+<P>
+The header consists of an 8 byte magic number (see below), followed by a 1-byte
+major version number and 1-byte minor version number.
+
+</P>
+<P>
+Changes in minor numbers should not cause problems for parsers. It indicates
+a change in chunk types (different contents), but the file format is the
+same.
+
+</P>
+<P>
+The major number is reserved for any incompatible file format changes (which
+hopefully should be never).
+
+</P>
+
+<PRE>
+/* The header */
+typedef struct {
+    unsigned char  magic[8];	  /* 0xae5a54520d0a1a0a (be) */
+    unsigned char  version_major; /* 1 */
+    unsigned char  version_minor; /* 2 */
+} ztr_header_t;
+
+/* The ZTR magic numbers */
+#define ZTR_MAGIC		"\256ZTR\r\n\032\n"
+#define ZTR_VERSION_MAJOR	1
+#define ZTR_VERSION_MINOR	2
+</PRE>
+
+<P>
+So the total header will consist of:
+
+</P>
+
+<PRE>
+Byte number   0  1  2  3  4  5  6  7  8  9
+            +--+--+--+--+--+--+--+--+--+--+
+Hex values  |ae 5a 54 52 0d 0a 1a 0d|01 02|
+            +--+--+--+--+--+--+--+--+--+--+
+</PRE>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,105 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from spin.htmlinfo on 25 April 2016 -->
+
+<TITLE>Spin - SPIN-String-Search</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_22.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_24.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:SPIN-String-Search -->
+
+
+<H2><A NAME="SEC33" HREF="spin_toc.html#SEC33">Subsequence search</A></H2>
+<P>
+<A NAME="IDX30"></A>
+<A NAME="IDX31"></A>
+<A NAME="IDX32"></A>
+<A NAME="IDX33"></A>
+<A NAME="IDX34"></A>
+<A NAME="IDX35"></A>
+<A NAME="IDX36"></A>
+<A NAME="IDX37"></A>
+<A NAME="IDX38"></A>
+<A NAME="IDX39"></A>
+<A NAME="IDX40"></A>
+
+</P>
+
+<P>
+Two subsequence or string searches are available. One, selected from the "Search" menu
+on the Output Window, produces both graphical and textual output, and
+the other, selected from the "Search" button in the Sequence display,
+moves the cursor to the position of the next match. Here we document the
+use of the first search, and the other is described in
+section <A HREF="spin_44.html#SEC64">Search</A>.
+
+</P>
+<P>
+As shown in the dialogue the user selects the range and strand over
+which the search should be performed, the search algorithm, the minimum percentage match,
+and the subsequence/string for which to search. The search algorithm allows either NC-IUB 
+codes <CITE>Cornish-Bowden, A. (1985) Nucl. Acids Res. 13, 3021-3030</CITE> or a 
+literal search. The literal search will search for exact matches eg
+inputting a search string of "n" will search for the letter "n". The NC-IUB 
+codes option can use any of the NC-IUB symbols
+shown in the figure below and the search is not case sensitive.
+
+</P>
+
+<PRE>
+              NC-IUB SYMBOLS
+ 
+        A,C,G,T
+        R        (A,G)        'puRine'
+        Y        (T,C)        'pYrimidine'
+        W        (A,T)        'Weak'
+        S        (C,G)        'Strong'
+        M        (A,C)        'aMino'
+        K        (G,T)        'Keto'
+        H        (A,T,C)      'not G'
+        B        (G,C,T)      'not A'
+        V        (G,A,C)      'not T'
+        D        (G,A,T)      'not C'
+        N        (G,A,C,T)    'aNy'
+
+</PRE>
+
+<p>
+<img src="spin_string_search_d.png" alt="[picture]">
+
+<P>
+The matches are plotted as vertical lines at the match positions with
+the heights of the lines in proportion to their score. The matches are
+also written in the Output Window as shown below.
+
+</P>
+
+<p>
+<a href="spin_string_search_p,6in.png.html"><img src="spin_string_search_p,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+
+<PRE>
+============================================================
+Tue 19 Oct 11:52:50 1999: string search
+------------------------------------------------------------
+Position 7837 score 9 percent match 90.000000
+ Percentage mismatch  10.0
+                 1
+          string atrytayrat
+                 ::..::..: 
+      atpase.seq atgctatgag
+              7837
+</PRE>
+
+<HR>
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_22.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_24.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,372 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - ZTR-Chunk Types</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_14.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_16.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:ZTR-Chunk Types -->
+
+
+<H3><A NAME="SEC28" HREF="formats_toc.html#SEC28">Chunk Types</A></H3>
+<P>
+<A NAME="IDX36"></A>
+
+</P>
+<P>
+As described above, each chunk has a type. The format of the data contained in 
+the chunk data field (when written in format 0) is described below.
+Note that no chunks are mandatory. It is valid to have no chunks at all.
+However some chunk types may depend on the existance of others. This will be
+indicated below, where applicable.
+
+</P>
+<P>
+Each chunk type is stored as a 4-byte value. Bit 5 of the first byte is used
+to indicate whether the chunk type is part of the public ZTR spec (bit 5 of
+first byte == 0) or is a private/custom type (bit 5 of first byte == 1). Bit
+5 of the remaining 3 bytes is reserved - they must always be set to zero.
+
+</P>
+<P>
+Practically speaking this means that public chunk types consist entirely of
+upper case letters (eg TEXT) whereas private chunk types start with a
+lowercase letter (eg tEXT). Note that in this example TEXT and tEXT are
+completely independent types and they may have no more relationship with each
+other than (for example) TEXT and BPOS types.
+
+</P>
+<P>
+It is valid to have multiples of some chunks (eg text chunks), but not for
+others (such as base calls). The order of chunks does not matter unless
+explicitly specified.
+
+</P>
+<P>
+A chunk may have meta-data associated with it. This is data about the data
+chunk. For example the data chunk could be a series of 16-bit trace samples,
+while the meta-data could be a label attached to that trace (to distinguish
+trace A from traces C, G and T). Meta-data is typically very small and so it
+is never need be compressed in any of the public chunk types (although
+meta-data is specific to each chunk type and so it would be valid to have
+private chunks with compressed meta-data if desirable).
+
+</P>
+<P>
+The first byte of each chunk data when uncompressed must be zero, indicating
+raw format. If, having read the chunk data, this is not the case then the
+chunk needs decompressing or reverse filtering until the first byte is
+zero. There may be a few padding bytes between the format byte and the first
+element of real data in the chunk. This is to make file processing simpler
+when the chunk data consists of 16 or 32-bit words; the padding bytes ensure
+that the data is aligned to the appropriate word size. Any padding bytes
+required will be listed in the appopriate chunk definition below.
+
+</P>
+
+<P>
+The following lists the chunk types available in 32-bit big-endian format.
+In all cases the data is presented in the uncompressed form, starting with the 
+raw format byte and any appropriate padding.
+
+</P>
+
+
+<H4><A NAME="SEC29" HREF="formats_toc.html#SEC29">SAMP</A></H4>
+
+
+<PRE>
+Meta-data:
+Byte number   0  1  2  3
+            +--+--+--+--+
+Hex values  | data name |
+            +--+--+--+--+
+
+Data:
+Byte number   0  1  2  3  4  5  6  7       N
+            +--+--+--+--+--+--+--+--+-     -+
+Hex values  | 0| 0| data| data| data|   -   |
+            +--+--+--+--+--+--+--+--+-     -+
+</PRE>
+
+<P>
+This encodes a series of 16-bit trace samples. The first data byte is the
+format (raw); the second data byte is present for padding purposes only. After 
+that comes a series of 16-bit big-endian values.
+
+</P>
+<P>
+The meta-data for this chunk contains a 4-byte name associated with the
+trace. If a name is shorter than 4 bytes then it should be right padded with
+nul characters to 4 bytes. For sequencing traces the four lanes representig A, 
+C, G and T signals have names "A\0\0\0", "C\0\0\0", "G\0\0\0" and "T\0\0\0".
+
+</P>
+<P>
+At present other names are not reserved, but it is recommended that (for
+consistency with elsewhere) you label private trace arrays with names starting 
+in a lowercase letter (specifically, bit 5 is 1).
+
+</P>
+<P>
+For sequencing traces it is expected that there will be four SAMP chunks,
+although the order is not specified.
+
+</P>
+
+
+
+<H4><A NAME="SEC30" HREF="formats_toc.html#SEC30">SMP4</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:
+Byte number   0  1  2  3  4  5  6  7       N
+            +--+--+--+--+--+--+--+--+-     -+
+Hex values  | 0| 0| data| data| data|   -   |
+            +--+--+--+--+--+--+--+--+-     -+
+</PRE>
+
+<P>
+The first byte is 0 (raw format). Next is a single padding byte (also 0).
+Then follows a series of 2-byte big-endian trace samples for the "A" trace,
+followed by a series of 2-byte big-endian traces samples for the "C" trace,
+also followed by the "G" and "T" traces (in that order). The assumption is
+made that there is the same number of data points for all traces and hence the 
+length of each trace is simply the number of data elements divided by four.
+
+</P>
+<P>
+This chunk is mutually exclusive with the SAMP chunks. If both sets are
+defined then the last found in the file should be used. Experimentation has
+shown that this gives around 3% saving over 4 separate SAMP chunks.
+
+</P>
+
+
+<H4><A NAME="SEC31" HREF="formats_toc.html#SEC31">BASE</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:
+Byte number   0  1  2  3      N  
+            +--+--+--+--  -  --+
+Hex values  | 0| base calls    |
+            +--+--+--+--  -  --+
+</PRE>
+
+<P>
+The first byte is 0 (raw format). This is followed by the base calls in ASCII
+format (one base per byte). The base call case an encoding set should be IUPAC
+characters [1].
+
+</P>
+
+
+<H4><A NAME="SEC32" HREF="formats_toc.html#SEC32">BPOS</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:
+Byte number   0  1  2  3  4  5  6  7       
+            +--+--+--+--+--+--+--+--+-     -+--+--+--+--+
+Hex values  | 0| padding|   data    |   -   |    data   |
+            +--+--+--+--+--+--+--+--+-     -+--+--+--+--+
+</PRE>
+
+<P>
+This chunk contains the mapping of base call (BASE) numbers to sample (SAMP)
+numbers; it defines the position of each base call in the trace data. The
+position here is defined as the numbering of the 16-bit positions held in the
+SAMP array, counting zero as the first value.
+
+</P>
+<P>
+The format is 0 (raw format) followed by three padding bytes (all 0). Next
+follows a series of 4-byte big-endian numbers specifying the position of each
+base call as an index into the sample arrays (when considered as a 2-byte
+array with the format header stripped off).
+
+</P>
+<P>
+Excluding the format and padding bytes, the number of 4-byte elements should
+be identical to the number of base calls. All sample numbers are counted from
+zero. No sample number in BPOS should be beyond the end of the SAMP arrays
+(although it should not be assumed that the SAMP chunks will be before this
+chunk). Note that the BPOS elements may not be totally in sorted order as
+the base calls may be shifted relative to one another due to compressions.
+
+</P>
+
+
+<H4><A NAME="SEC33" HREF="formats_toc.html#SEC33">CNF4</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:
+Byte number   0  1              N              4N
+            +--+--+--   -   --+--+----- -  -----+
+Hex values  | 0| call confidence | A/C/G/T conf |
+            +--+--+--   -   --+--+----- -  -----+
+
+(N == number of bases in BASE chunk)
+</PRE>
+
+<P>
+The first byte of this chunk is 0 (raw format). This is then followed by a
+series confidence values for the called base. Next comes all the remaining
+confidence values for A, C, G and T excluding those that have already been
+written (ie the called base). So for a sequence AGT we would store confidences
+A1 G2 T3 C1 G1 T1 A2 C2 T2 A3 C3 G3.
+
+</P>
+<P>
+The purpose of this is to group the (likely) highest confidence value (those
+for the called base) at the start of the chunk followed by the remaining
+values. Hence if phred confidence values are written in a CNF4 chunk the first
+quarter of chunk will consist of phred confidence values and the last three
+quarters will (assuming no ambiguous base calls) consist entirely of zeros.
+
+</P>
+<P>
+For the purposes of storage the confidence value for a base call that is not
+A, C, G or T (in any case) is stored as if the base call was T.
+
+</P>
+<P>
+The confidence values should be from the "-10 * log10 (1-probability)". These
+values are then converted to their nearest integral value.
+If a program wishes to store confidence values in a different range then this
+should be stored in a different chunk type.
+
+</P>
+<P>
+If this chunk exists it must exist after a BASE chunk.
+
+</P>
+
+
+<H4><A NAME="SEC34" HREF="formats_toc.html#SEC34">TEXT</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:	      0 
+            +--+-  -  -+--+-  -  -+--+-     -+-  -  -+--+-  -  -+--+--+
+Hex values  | 0| ident | 0| value | 0|   -   | ident | 0| value | 0| 0|
+            +--+-  -  -+--+-  -  -+--+-     -+-  -  -+--+-  -  -+--+--+
+</PRE>
+
+<P>
+This contains a series of "identifier\0value\0" pairs.
+
+</P>
+<P>
+The identifiers and values may be any length and may contain any data except
+the nul character. The nul character marks the end of the identifier or the
+end of the value. Multiple identifier-value pairs are allowable, with a double 
+nul character marking the end of the list.
+
+</P>
+<P>
+Identifiers starting with bit 5 clear (uppercase) are part of the public ZTR
+spec. Any public identifier not listed as part of this spec should be
+considered as reserved. Identifiers that have bit 6 set (lowercase) are for
+private use and no restriction is placed on these.
+
+</P>
+<P>
+See below for the text identifier list.
+
+</P>
+
+
+<H4><A NAME="SEC35" HREF="formats_toc.html#SEC35">CLIP</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:
+Byte number   0  1  2  3  4  5  6  7  8
+            +--+--+--+--+--+--+--+--+--+
+Hex values  | 0| left clip | right clip|
+            +--+--+--+--+--+--+--+--+--+
+</PRE>
+
+<P>
+This contains suggested quality clip points. These are stored as zero (raw
+data) followed by a 4-byte big endian value for the left clip point and a
+4-byte big endian value for the right clip point. Clip points are defined in
+units of base calls, with a value of 1 clipping the first base (so zero
+indicates no left clip and NumberOfBases+1 indicates no right clip).
+
+</P>
+
+
+
+<H4><A NAME="SEC36" HREF="formats_toc.html#SEC36">CR32</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:
+Byte number   0  1  2  3  4 
+            +--+--+--+--+--+
+Hex values  | 0|   CRC-32  |
+            +--+--+--+--+--+
+</PRE>
+
+<P>
+This chunk is always just 4 bytes of data containing a CRC-32 checksum,
+computed according to the widely used ANSI X3.66 standard. If present, the
+checksum will be a check of all of the data since the last CR32 chunk.
+This will include checking the header if this is the first CR32 chunk, and
+including the previous CRC32 chunk if it is not. Obviously the checksum will
+not include checks on this CR32 chunk.
+
+</P>
+
+
+
+<H4><A NAME="SEC37" HREF="formats_toc.html#SEC37">COMM</A></H4>
+
+
+<PRE>
+Meta-data: none present
+
+Data:
+Byte number   0  1        N
+            +--+--   -   --+
+Hex values  | 0| free text |
+            +--+--   -   --+
+</PRE>
+
+<P>
+This allows arbitrary textual data to be added. It does not require a
+identifier-value pairing or any nul termination.
+
+</P>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_14.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_16.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Sending</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_183.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_185.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Sending -->
+
+
+<H2><A NAME="SEC216" HREF="scripting_toc.html#SEC216">Sending a Notification</A></H2>
+<P>
+<A NAME="IDX829"></A>
+<A NAME="IDX830"></A>
+
+</P>
+<P>
+When a function modifies data it is the responsibility of this function to
+inform others, via the contig registration scheme, of this change. At the time
+of notification the data on disk and in memory should be consistent (ie that
+check_database should not fail). To illustrate this, when joining two contigs
+we should not start sending notifications until we've recomputed the lengths
+and left/right neighbours of the joined contig.
+
+</P>
+<P>
+To send a request, one of the notification functions should be used. The
+simplest of these is <CODE>contig_notify</CODE>. This function takes a <VAR>GapIO</VAR>
+pointer, a contig number, and a <VAR>reg_data</VAR> pointer as arguments. The
+<VAR>reg_data</VAR> is the union of notification types outlined in the above
+sections. The separate steps for notifying are:
+
+</P>
+
+<OL>
+<LI>
+
+Create a variable of the appropriate structure type (eg <CODE>reg_length</CODE>).
+<LI>
+
+Fill the job field of this structure with the correct definition (eg
+<CODE>REG_LENGTH</CODE>).
+<LI>
+
+Fill in any structure dependant fields of the structure (eg <VAR>length</VAR> in the
+case of <CODE>reg_length</CODE>).
+<LI>
+
+Call <CODE>contig_notify</CODE> with the <VAR>GapIO</VAR>, contig number and notification
+structure.  The notification structure should be cast back to a pointer to the
+<VAR>reg_data</VAR> union type.
+</OL>
+
+<P>
+An example illustrating the above steps would be:
+
+</P>
+
+<PRE>
+reg_length jl;
+
+[...]
+
+jl.job = REG_LENGTH;
+jl.length = some_length;
+contig_notify(io, contig_number, (reg_data *)&#38;jl);
+</PRE>
+
+<P>
+The available notification functions are <CODE>contig_notify</CODE>,
+<CODE>result_notify</CODE>, <CODE>type_notify</CODE> and <CODE>type_contig_notify</CODE>.
+See section <A HREF="scripting_186.html#SEC236">C Functions Available</A>.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_183.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_185.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

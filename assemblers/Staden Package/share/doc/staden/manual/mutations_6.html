@@ -1,0 +1,254 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from mutations.htmlinfo on 25 April 2016 -->
+
+<TITLE>Mutation Detection - Processing-Batches-Of-Mutation-Data-Trace-Files</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_5.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_7.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Processing-Batches-Of-Mutation-Data-Trace-Files -->
+
+
+<H3><A NAME="SEC10" HREF="mutations_toc.html#SEC10">Processing Batches Of Mutation Data Trace Files</A></H3>
+
+<P>
+It is not clear which is the best way of organising the data for the simplest
+and most efficient processing using the current programs, but 
+for now we make the following suggestions.
+
+</P>
+<P>
+We assume that the region of the DNA being studied has a standard set of 
+forward and reverse primer pairs covering all segments of interest and that
+a standard reference sequence in EMBL format is available.
+
+</P>
+<P>
+We recommend that batches of data from single primer pair combinations
+are processed separately, using separate temporary gap4 databases. 
+For example, exon 11 of BRCA1 can be covered by five
+pairs of forward and reverse primers and we suggest that
+batches of traces obtained from each of these primer pairs should be 
+processed using five gap4 databases.
+
+</P>
+<P>
+Each processing run should create a new database and should enter, not 
+only the
+new sets of patient data for that particular
+primer pair, but also the corresponding
+reference sequence and reference traces.
+
+</P>
+<P>
+Obviously when several primer pairs are needed to cover a given region of
+the DNA (eg for BRCA1) the same reference sequence would be used for
+all the primer pairs.
+
+</P>
+<P>
+An alternative to the above is to create a template database 
+for each primer pair which contains the data for the corresponding 
+forward and reverse 
+reference traces plus the fully annotated reference sequence.
+These template databases are copied to create a
+temporary database for each new batch of data for the given primer pair.
+
+</P>
+<P>
+Whichever of these two strategies is adopted
+each batch of new data is processed, analysed and 
+assembled into these temporary databases, inspected
+visually, and a mutation report generated.
+
+</P>
+<P>
+The use of separate temporary databases
+simplifies the assignment of reference traces and the use of the report
+generation function.
+
+</P>
+
+<p>
+<a href="mut_template_reads_single,6in.png.html"><img src="mut_template_reads_single,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 9. An overview of a database containing data for only one primer pair of BRCA1
+
+</P>
+<P>
+For long term storage and to facilitate larger studies, the content of each
+of these temporary databases is then transferred to archive databases, after
+which the temporary databases are no longer needed. 
+The archive databases could be restricted to individual primer pairs
+or could accommodate data covering the whole of the reference sequence.
+
+</P>
+<!-- NODE:Processing-Batches-Of-Mutation-Data-Trace-Files-Using-Pregap4 -->
+
+
+<H3><A NAME="SEC11" HREF="mutations_toc.html#SEC11">Processing Batches Of Mutation Data Trace Files Using Pregap4</A></H3>
+
+<P>
+All the data processing other than visual inspection of traces and report 
+generation is handled by the program pregap4
+(see section <A HREF="pregap4_3.html#SEC3">Pregap4 introduction</A>). 
+Pregap4 achieves this by
+running a set of individual programs selected by the user. 
+
+</P>
+
+<p>
+<img src="mut_pregap4.png" alt="[picture]">
+
+<P>
+Figure 10. The pregap4 Configure Modules window showing a typical list of mutation data option selections.
+
+</P>
+<P>
+The "Configure Modules" window shown in Figure 10. 
+is used to select which programs
+to apply to a batch of data, and to configure their usage. On the left is a list
+of programs and options, with "x" showing the ones that have been selected.
+If the user clicks on an option name its name is given a blue background and
+its configurable parameters are shown in the right hand panel to enable the
+user to alter them. Here "Reference Traces" has been selected which 
+enables the user to set the reference traces and sequence. 
+
+</P>
+<P>
+The other selected options (marked with "x") are typical of the ones used for
+mutation detection studies. Below we describe the use of each plus a few 
+alternatives. All of the options are descibed in more detail elsewhere in
+our documentation, our intention here is to give an overview of their use
+during mutation studies.
+
+</P>
+<P>
+Note that the window labelled "Files to Process" is used to
+tell the program which files to process as a batch.
+
+</P>
+
+
+<H3><A NAME="SEC12" HREF="mutations_toc.html#SEC12">Configuration Of Pregap4 For Mutation Data</A></H3>
+
+<DL COMPACT>
+
+<DT><VAR>General Configuration</VAR>
+<DD>
+This option allows the user to select whether the trace names used for
+the samples should be the same as their file names or should be the
+names stored inside the files.
+
+<DT><VAR>Phred</VAR>
+<DD>
+Phred is a base caller which also assigns confidence values to each base.
+Generally the data passed to pregap4 has already been base called. However
+not all base callers assign confidence values and so it can be useful to
+apply phred or ATQA (which does not base call but does assign confidence values).
+Alternatively "Estimate Base Accuracies" can be applied which is a simple
+program for providing numerical values which reflect the signal to noise ratio
+for each base, and which can be used instead of confidence values.
+(Note that if quality clipping is used, its score thresholds depend on 
+whether confidence values of eba values are used).
+
+<DT><VAR>Trace Format Conversion</VAR>
+<DD>
+This option can be used to convert bulky files such as those of ABI to a
+compact format such as SCF or ZTR without loss of the data required for
+trace display.
+
+<DT><VAR>Initialise Experiment Files</VAR>
+<DD>
+The input to gap4 and several of the other programs used here is a data
+format known as Experiment file format. This step, which has no
+configurable parameters is essential for mutation data processing.
+
+<DT><VAR>Augment Experiment Files</VAR>
+<DD>
+The section on Reference Traces outlined the use of "Naming Schemes" for
+associating pairs of forward and reverse readings, and for assigning
+reference traces. The naming scheme must be loaded from pregap4's File
+menu. "Augment Experiment Files" must be activated in order for the
+naming scheme to be applied. No parameters need be set.
+
+<DT><VAR>Quality Clip</VAR>
+<DD>
+The reliability of the base calls varies with position along the sequence.
+Near to both ends the data is less reliable. The "Quality Clip" option
+trims the ends of the sequences by analysing their confidence values or
+accuracy estimates (if present) or the density of unknown bases in the 
+sequence. By observing these "clip points" other processing programs
+will work more reliably.
+
+<DT><VAR>Reference Traces</VAR>
+<DD>
+As explained above it is necessary to specify a reference trace (preferably
+one for each strand of the data if processing data from both strands). The
+Reference sequence can also be set here.
+Note that
+even if our suggestion to preload the reference traces into the gap4
+database is followed, it is still necessary to specify them here for use
+by the
+mutation detection modules.
+
+<DT><VAR>Trace Difference</VAR>
+<DD>
+This is the program which compares the patient and reference traces to
+search for possible mutations. It adds data to the experiment files
+to mark each predicted mutation, and this data will appear as tags in the gap4
+database. It can also create a new trace file containing the difference
+of the reference and the sample. The numerical parameters control the
+sensitivity of the algorithms, and hence the ratio between the numbers
+of false positive and negative results.
+
+<DT><VAR>Heterozygote Scanner</VAR>
+<DD>
+This is the program which compares the patient and reference traces to
+search for possible heterozygous bases. It adds data to the experiment files
+to mark each predicted heterozygous base, 
+and this data will appear as tags in the gap4
+database. The numerical parameters control the
+sensitivity of the algorithms, and hence the ratio between the numbers
+of false positive and negative results.
+
+<DT><VAR>Gap4 shotgun assembly</VAR>
+<DD>
+In order to be able report the positions of mutations relative to the reference
+sequence, and to be able to compare sets of samples from patients, it is
+necessary to perform multiple sequence alignment on the data. This is termed
+"assembly" and is usually performed by gap4, although other programs can be
+operated via pregap4. If following the suggestion to preload the reference
+sequence to a temporary database for each batch, supply the name of this
+database here. Otherwise a new database should be named and created
+from this option. (If this strategy is adopted make sure that the reference 
+sequence and the references traces are assembled!) The parameters
+that control the assembly process and are described elsewhere.
+</DL>
+
+<P>
+Note that pregap4 has the facility to save its configuration and parameter
+settings. 
+This means that the current configuration will be set automatically next
+time the program is used (and hence the steps just described only need to be
+performed once). In addition pregap4 can be run non-interactively
+by typing a single line on the command line.
+Taking thse two capabilities together, means that only one line need be 
+typed in order to process all subsequent batches of data (assuming the
+file names are reused, which is easy to arrange.)
+
+</P>
+
+<HR>
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_5.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_7.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

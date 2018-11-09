@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Cursor</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_98.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_100.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Cursor -->
+
+
+<H4><A NAME="SEC109" HREF="scripting_toc.html#SEC109">The Editing Cursor</A></H4>
+<P>
+<A NAME="IDX345"></A>
+<A NAME="IDX346"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>cursor_left</CODE></VAR>
+<DD>
+<A NAME="IDX347"></A>
+ <A NAME="IDX348"></A>
+ <A NAME="IDX349"></A>
+ <A NAME="IDX350"></A>
+ 
+<DT><VAR><CODE>cursor_right</CODE></VAR>
+<DD>
+<DT><VAR><CODE>cursor_up</CODE></VAR>
+<DD>
+<DT><VAR><CODE>cursor_down</CODE></VAR>
+<DD>
+        Move the editing cursor in the appropriate direction. The exact
+        allowed movements depends on where the cursor is and whether cutoff
+        data is displayed.
+
+<A NAME="IDX351"></A>
+<A NAME="IDX352"></A>
+<DT><VAR><CODE>read_start</CODE></VAR>
+<DD>
+<DT><VAR><CODE>read_end</CODE></VAR>
+<DD>
+        Positions the cursor at the beginning or end of the used data for this
+        sequence.
+
+<A NAME="IDX353"></A>
+<A NAME="IDX354"></A>
+<DT><VAR><CODE>read_start2</CODE></VAR>
+<DD>
+<DT><VAR><CODE>read_end2</CODE></VAR>
+<DD>
+        Positions the cursor at the beginning or end of the displayed data for
+        this sequence. These differ from <CODE>read_start</CODE> and <CODE>read_end</CODE>
+        when cutoff data is displayed in that they use the ends of the
+        cutoff data.
+
+<A NAME="IDX355"></A>
+<A NAME="IDX356"></A>
+<DT><VAR><CODE>contig_start</CODE></VAR>
+<DD>
+<DT><VAR><CODE>contig_end</CODE></VAR>
+<DD>
+        Positions the cursor on the consensus line at the start or end of the
+        contig.
+
+<A NAME="IDX357"></A>
+<DT><VAR><CODE>cursor_set</CODE> xpos ypos</VAR>
+<DD>
+        Positions the cursor at the correct position and sequence based on an
+        (x,y) coordinate pair from the topleft corner of the screen. Units are
+        in bases unless '<CODE>@</CODE><I>xpos</I> <CODE>@</CODE><I>ypos</I>' is used, in
+        which case they are pixels.
+
+<A NAME="IDX358"></A>
+<DT><VAR><CODE>cursor_consensus ?</CODE>xpos<CODE>?</CODE></VAR>
+<DD>
+        Positions the cursor at an absolute position within the
+        consensus. If no <I>xpos</I> is given the existing position
+        within the contig is returned.
+
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_98.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_100.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

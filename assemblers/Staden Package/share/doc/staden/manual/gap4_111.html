@@ -1,0 +1,113 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Compressions</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_110.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_112.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Compressions -->
+
+
+<H2><A NAME="SEC182" HREF="gap4_toc.html#SEC182">Compressions and Stops</A></H2>
+<P>
+<A NAME="IDX414"></A>
+<A NAME="IDX415"></A>
+
+</P>
+<P>
+This option 
+(which is available from the gap4 Experiments menu)
+searches through a region of a contig looking for stop (STOP) or
+compression (COMP) tags.  These tags could have been added using the Contig
+Editor or by a suitable external program which can analyse traces to detect
+these types of problems. For each such tag found the routine produces a list
+of readings that could be resequenced to try to solve the problem. Obviously
+the types of experiments available will change as the technology
+improves but at present the program produces output that suggests "Taq
+terminator" experiments. We welcome suggestions for other experiment types or
+news of any programs that can automatically assign the tags. The results, in
+the form of suggestions, are written to the Output window.
+
+</P>
+
+<p>
+<img src="exp_suggest.comp.png" alt="[picture]">
+
+<P>
+Note that the Taq reading length is used as  a  guideline  for
+deciding  which  readings  are  suitable  candidates  for  solving a
+problem. All readings in the correct orientation and with their 5'  ends
+within  this  length  are  assumed  to solve the problem. The actual
+distance is listed in the output; an example of this is shown below.
+
+</P>
+
+<PRE>
+  Prob 1544..1545: COMP tag on strand 0 (forward)
+     Taq for xd26d8.s1          1365 179
+
+  Prob 1554..1554: STOP tag on strand 0 (forward)
+     Taq for xd26d8.s1          1365 189
+
+  Prob 5276..5288: COMP tag on strand 1 (reverse)
+     Taq for xc34g11.s1         5299  23
+     Taq for xc34g11.s1t        5298  22
+     Taq for xc34d6.s1          5316  40
+     Taq for xc45e1.s1          5463 187
+
+  Prob 24042..24046: COMP tag on strand 1 (reverse)
+     Taq for xc50a12.s1        24167 125
+     Taq for xc33d1.s1         24188 146
+     Taq for xc36h4.s1         24208 166
+     Taq for xc51c8.s1         24232 190
+</PRE>
+
+<P>
+The format of the above output is:
+
+</P>
+
+<PRE>
+  Prob &#60;start&#62;..&#60;end&#62;: &#60;type&#62; tag on strand &#60;st&#62;
+      Taq for &#60;read&#62; @ &#60;pos&#62; &#60;distance&#62;
+      ...
+</PRE>
+
+<P>
+Where:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>&#60;start&#62;..&#60;end&#62;</CODE>
+<DD>
+marks the inclusive range for the tag in the contig.
+<DT><CODE>&#60;type&#62;</CODE>
+<DD>
+is the type of the current tag.
+<DT><CODE>&#60;st&#62;</CODE>
+<DD>
+is the strand of the reading that the tag is placed upon
+<DT><CODE>&#60;read&#62;</CODE>
+<DD>
+is the gel reading name.
+<DT><CODE>&#60;pos&#62;</CODE>
+<DD>
+is the position of the 5' end of &#60;read&#62; in the contig.
+<DT><CODE>&#60;distance&#62;</CODE>
+<DD>
+is the distance of the 5' end from the tag.
+</DL>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_110.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_112.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

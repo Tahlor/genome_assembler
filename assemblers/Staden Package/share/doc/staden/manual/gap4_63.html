@@ -1,0 +1,684 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Settings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_62.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_64.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Settings -->
+
+
+<H2><A NAME="SEC102" HREF="gap4_toc.html#SEC102">The Settings Menu</A></H2>
+<P>
+<A NAME="IDX229"></A>
+<A NAME="IDX230"></A>
+<A NAME="IDX231"></A>
+<A NAME="IDX232"></A>
+<A NAME="IDX233"></A>
+<A NAME="IDX234"></A>
+<A NAME="IDX235"></A>
+
+</P>
+<P>
+The purpose of this menu is to configure the operation of the contig
+editor, including the consensus calculation, the active tags and the
+status lines. Settings can be saved using the "Save settings" button,
+but this does not save any tag macros. These may be saved using the
+"Save Macros" option. Settings for the following options can be changed.
+
+</P>
+
+
+<UL>
+<LI><A HREF="gap4_63.html#SEC103">Status Line</A>
+<LI><A HREF="gap4_63.html#SEC104">Trace Display</A>
+<LI><A HREF="gap4_63.html#SEC109">Consensus Algorithm</A>
+<LI><A HREF="gap4_63.html#SEC111">Highlight Disagreements</A>
+<LI><A HREF="gap4_63.html#SEC112">Compare Strands</A>
+<LI><A HREF="gap4_63.html#SEC113">Toggle auto-save</A>
+<LI><A HREF="gap4_63.html#SEC114">3 Character Amino Acids</A>
+<LI><A HREF="gap4_63.html#SEC115">Show reading/consensus quality</A>
+<LI><A HREF="gap4_63.html#SEC116">Show edits</A>
+<LI><A HREF="gap4_63.html#SEC117">Show Unpadded Positions</A>
+<LI><A HREF="gap4_63.html#SEC118">Show Template Names</A>
+<LI><A HREF="gap4_63.html#SEC119">Set Active Tags</A>
+<LI><A HREF="gap4_63.html#SEC120">Set Output List</A>
+<LI><A HREF="gap4_63.html#SEC121">Set Default Confidences</A>
+<LI><A HREF="gap4_63.html#SEC122">Set or unset saving of undo</A>
+</UL>
+
+<!-- NODE:Editor-Status -->
+
+
+<H3><A NAME="SEC103" HREF="gap4_toc.html#SEC103">Status Line</A></H3>
+<P>
+<A NAME="IDX236"></A>
+<A NAME="IDX237"></A>
+
+</P>
+<P>
+The contig editor can display several additional text lines underneath the
+consensus sequence. This "status" data is of textual form and can
+provide additional
+information about the data displayed above. Currently, there are two forms
+of status line available. These are "Strands" and "Translate Frame". Both
+status line types update automatically as edits are made that change the
+consensus.
+
+</P>
+<P>
+The status line menu is accessed by cascading off the settings menu.
+It contains the following.
+
+</P>
+
+<UL>
+<LI>Show Strands
+
+<LI>Translate using feature tables
+
+<LI>Translate frame 1+
+
+<LI>Translate frame 2+
+
+<LI>Translate frame 3+
+
+<LI>Translate frame 1-
+
+<LI>Translate frame 2-
+
+<LI>Translate frame 3-
+
+<LI>Translate + frames
+
+<LI>Translate - frames
+
+<LI>Translate all frames
+
+<LI>Remove all
+
+</UL>
+
+<P>
+<A NAME="IDX238"></A>
+<A NAME="IDX239"></A>
+
+</P>
+<P>
+"Show Strands" creates a single line consisting of the +, -, = and !
+characters.  These indicate: positive strand only, negative strand
+only, both strands (in agreement) and both strands (in disagreement)
+respectively.
+
+</P>
+<P>
+<A NAME="IDX240"></A>
+<A NAME="IDX241"></A>
+<A NAME="IDX242"></A>
+<A NAME="IDX243"></A>
+The frame translation  status lines provide translations in each of the
+six available  reading
+frames. Alternatively, using the "Translate using feature tables", only
+segments described in CDS records will be translated. The CDS records
+are those contained in the reference sequence. Translations can be
+displayed in either the single character or the three character amino
+acid codes.
+
+</P>
+<P>
+Pressing the right mouse button on the 'name' segment of the status
+line (on the left hand side) pops up a menu. The commands available
+may depend on the type of the status line chosen, however currently it
+will always only contain  the "Remove" command. This, as expected,
+removes the status line from the display. To remove all status lines
+use the "Remove all" command from the "Status Line" cascading menu.
+
+</P>
+<P>
+Note that
+the data in the status line cannot be cut and pasted, modified or
+searched; it is not possible to move the cursor into these lines.
+
+</P>
+<!-- NODE:Editor-Trace Display -->
+
+
+<H3><A NAME="SEC104" HREF="gap4_toc.html#SEC104">Trace Display</A></H3>
+<P>
+<A NAME="IDX244"></A>
+<A NAME="IDX245"></A>
+
+</P>
+<P>
+This is a cascading menu containing various options for configuring
+the trace views within the editor.
+
+</P>
+
+
+<H4><A NAME="SEC105" HREF="gap4_toc.html#SEC105">Auto-display Traces</A></H4>
+<P>
+<A NAME="IDX246"></A>
+<A NAME="IDX247"></A>
+
+</P>
+<P>
+When switched on, auto-display traces will direct certain searches to
+automatically display relevant traces to aid in solving problems.  This
+works in conjunction with most appropriate searches. The traces chosen to
+solve the "problem" will, by default, be the best trace from each strand which
+agrees with the consensus (which is calculated at a low 
+consensus cutoff) and the
+best trace from each strand which disagrees with the consensus. This selection
+of traces may be adjusted by modifying the
+<CODE>CONTIG_EDITOR.AUTO_DISPLAY_TRACES_CONF</CODE> configuration variable. The
+default setting of this is "<CODE>+ - +d -d</CODE>". Each of the space separated
+elements in this string corresponds to a trace file to choose. If one cannot
+be found, then it is ignored. The order listed here is the order in which they
+will be displayed in the trace window. The complete list of available trace
+specifiers is:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>+</CODE>
+<DD>
+Best +ve strand trace agreeing with consensus
+<DT><CODE>+p</CODE>
+<DD>
+Best +ve strand dye-primer trace agreeing with consensus
+<DT><CODE>+t</CODE>
+<DD>
+Best +ve strand dye-terminator trace agreeing with consensus
+<DT><CODE>-</CODE>
+<DD>
+Best -ve strand trace agreeing with consensus
+<DT><CODE>-p</CODE>
+<DD>
+Best -ve strand dye-primer trace agreeing with consensus
+<DT><CODE>-t</CODE>
+<DD>
+Best -ve strand dye-terminator trace agreeing with consensus
+<DT><CODE>d</CODE>
+<DD>
+Best trace disagreeing with consensus
+<DT><CODE>+d</CODE>
+<DD>
+Best +ve strand trace disagreeing with consensus
+<DT><CODE>-d</CODE>
+<DD>
+Best -ve strand trace disagreeing with consensus
+<DT><CODE>+2</CODE>
+<DD>
+Second best +ve strand trace agreeing with consensus
+<DT><CODE>+2p</CODE>
+<DD>
+Second best +ve strand dye-primer trace agreeing with consensus
+<DT><CODE>+2t</CODE>
+<DD>
+Second best +ve strand dye-terminator trace agreeing with consensus
+<DT><CODE>-2</CODE>
+<DD>
+Second best -ve strand trace agreeing with consensus
+<DT><CODE>-2p</CODE>
+<DD>
+Second best -ve strand dye-primer trace agreeing with consensus
+<DT><CODE>-2t</CODE>
+<DD>
+Second best -ve strand dye-terminator trace agreeing with consensus
+<DT><CODE>2d</CODE>
+<DD>
+Second best trace disagreeing with consensus
+<DT><CODE>+2d</CODE>
+<DD>
+Second best +ve strand trace disagreeing with consensus
+<DT><CODE>-2d</CODE>
+<DD>
+Second best -ve strand trace disagreeing with consensus
+</DL>
+
+
+
+<H4><A NAME="SEC106" HREF="gap4_toc.html#SEC106">Show Read-pair Traces</A></H4>
+<P>
+<A NAME="IDX248"></A>
+<A NAME="IDX249"></A>
+
+</P>
+<P>
+When double-clicking on a sequence to view a trace this option will
+automatically identify traces on both strands of this template. Both
+the forward strand and reverse strand traces will then be shown, in
+that order.
+
+</P>
+
+
+<H4><A NAME="SEC107" HREF="gap4_toc.html#SEC107">Auto-diff Traces</A></H4>
+<P>
+<A NAME="IDX250"></A>
+<A NAME="IDX251"></A>
+<A NAME="IDX252"></A>
+
+</P>
+<P>
+Once this is
+activated, whenever the user double clicks on a base in the editor
+sequence display, not only is the reading's trace displayed, but also
+its designated reference trace plus the difference between them. If its
+complementary reading is available, its trace and reference trace and
+their differences are also displayed.
+
+</P>
+<P>
+If no traces have been specified to be the reference traces then Gap4
+will attempt to automatically pick two. It choses the highest quality
+pair of traces that come from the same template and disagree with
+either the forward or reverse strand of the trace initially
+double-clicked upon.
+
+</P>
+
+<p>
+<a href="mut_traces_het,6in.png.html"><img src="mut_traces_het,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Trace differences display
+
+</P>
+<P>
+As is shown in the figure below, it is also possible to set the trace
+difference display to use positive and negative references
+
+</P>
+
+<p>
+<a href="mut_traces_positive,6in.png.html"><img src="mut_traces_positive,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+For further information about mutation detection, see
+
+</P>
+<P>section <A HREF="mutations_2.html#SEC2">Search for Mutations</A>.
+
+</P>
+
+
+<H4><A NAME="SEC108" HREF="gap4_toc.html#SEC108">Y scale differences</A></H4>
+<P>
+<A NAME="IDX253"></A>
+<A NAME="IDX254"></A>
+
+</P>
+<P>
+When performing trace alignments and differencing (using Auto-diff
+traces or via the manual "difference" option in the trace display)
+this option controls whether to perform a trace peak-height
+normalisation on both traces prior to alignment and substraction.
+
+</P>
+<!-- NODE:Editor-Consensus algorithm -->
+
+
+<H3><A NAME="SEC109" HREF="gap4_toc.html#SEC109">Consensus Algorithm</A></H3>
+<P>
+<A NAME="IDX255"></A>
+
+</P>
+<P>
+This allows selection of the consensus algorithm to use within the Contig
+Editor. Like the consensus and quality cutoff parameters, it is local to the
+specific editor being used. The main Consensus algorithm option should be used
+to globally change the algorithm being used.
+
+</P>
+<P>See section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>.
+
+</P>
+<!-- NODE:Editor-Group Readings -->
+
+
+<H3><A NAME="SEC110" HREF="gap4_toc.html#SEC110">Group Readings</A></H3>
+<P>
+<A NAME="IDX256"></A>
+<A NAME="IDX257"></A>
+<A NAME="IDX258"></A>
+
+</P>
+<P>
+This is a cascading menu allowing the readings viewed in the editor to
+be sorted and grouped by different criteria. By default the order (in
+Y) that readings are listed in the editor is sorted by the position of
+the left-most used based. This option provides a choice of by
+position, strand (plus first, then minus), name, number, template and
+clone.
+
+</P>
+<P>
+Where appropriate an automatic sub-ordering is applied. For example
+sorting by strand will group the readings primarily into "+" and
+"-" groups, but within the group the readings are still sorted by
+position. When grouping by template the sub-grouping is by strand.
+
+</P>
+<!-- NODE:Editor-Disagree -->
+
+
+<H3><A NAME="SEC111" HREF="gap4_toc.html#SEC111">Highlight Disagreements</A></H3>
+<P>
+<A NAME="IDX259"></A>
+<A NAME="IDX260"></A>
+<A NAME="IDX261"></A>
+<A NAME="IDX262"></A>
+
+</P>
+<P>
+This toggles between the normal sequence display (showing the current base
+assignments) and one in which those assignments that differ from the consensus
+are highlighted. It makes scanning for problems by eye much easier.
+
+</P>
+<P>
+Several modes of highlighting are available: "By dots" will only display the
+bases that differ from the consensus, displaying all other bases as full
+stops if they match or colons if they mismatch but are poor
+quality. The definition of poor quality here can be adjusted using the
+"Set quality threshold" option of the Settings menu. The base
+colours are as normal (ie reflecting tags and quality).
+
+</P>
+<P>
+Highlight disagreements "By foreground colour" and "By background
+colour" displays all base characters, but colours those that differ
+from the consensus. Bases which differ by are below the
+difference quality threshold are not coloured. This allows easier
+visual scanning of the context that a difference occurs in, but it may
+be wise to disable the displaying of tags (hint: control-Q toggles
+tags on and off).
+
+</P>
+<P>
+Finally the "Case sensitive" toggle controls whether upper and lower
+case bases of the same base type should be considered as differences.
+
+</P>
+<!-- NODE:Editor-Compare -->
+
+
+<H3><A NAME="SEC112" HREF="gap4_toc.html#SEC112">Compare Strands</A></H3>
+<P>
+<A NAME="IDX263"></A>
+<A NAME="IDX264"></A>
+
+</P>
+<P>
+This toggles the consensus calculation routine between
+treating both strands together or independently. In the independent
+case any difference between the two strands is shown in the
+consensus as a '-'. Hence these clashes are found as problems by the
+"Search by problem" option.
+
+</P>
+<!-- NODE:Editor-auto-save -->
+
+
+<H3><A NAME="SEC113" HREF="gap4_toc.html#SEC113">Toggle auto-save</A></H3>
+<P>
+<A NAME="IDX265"></A>
+<A NAME="IDX266"></A>
+<A NAME="IDX267"></A>
+<A NAME="IDX268"></A>
+
+</P>
+<P>
+Selecting auto-save toggles the auto save feature. Initially this is
+turned off each time the contig editor is invoked. Once toggled the
+adjacent checkbox will be set to indicate the feature is enabled and
+the contig will be saved. From that point onwards the contig editor
+will write its data to disk every 50 edits. Each time an auto save is
+performed it is announced in the output window. Saving more frequently
+can still be performed manually by using "Save Contig".
+
+</P>
+<P>
+Unlike "saves" made using the manual "Save Contig" command, 
+the "Undo" button will allow the user to undo edits regardless
+of when the last auto save occurred. 
+
+</P>
+<!-- NODE:Editor-3Char -->
+
+
+<H3><A NAME="SEC114" HREF="gap4_toc.html#SEC114">3 Character Amino Acids</A></H3>
+<P>
+<A NAME="IDX269"></A>
+<A NAME="IDX270"></A>
+
+</P>
+<P>
+By default, the codon translation within the status line displays
+single character amino acid codes. Selecting "3 Character
+Amino Acids" will toggle the status line to display three
+character amino acid codes.
+
+</P>
+<!-- NODE:Editor-Show Quality -->
+
+
+<H3><A NAME="SEC115" HREF="gap4_toc.html#SEC115">Show Reading and Consensus Quality</A></H3>
+<P>
+<A NAME="IDX271"></A>
+<A NAME="IDX272"></A>
+<A NAME="IDX273"></A>
+<A NAME="IDX274"></A>
+<A NAME="IDX275"></A>
+
+</P>
+<P>
+When the quality cutoff value is 0 or higher and either of the "show
+reading quality" or "show consensus quality" 
+toggles is set, the background for
+bases is shaded in a grey level dependent on their quality.  There are ten
+levels of shading with the darkest representing poor data and the lightest
+representing good data. So with the quality cutoff set to 50, all bases with a
+quality of less than fifty are shown with a red foreground and a dark grey
+background, bases with quality just above 50 will have the darkest grey
+background, and bases with a quality of 100 will have the lightest background.
+When tags are present the background colour is that of the tag rather than the
+quality.
+
+</P>
+<P>
+The colours used are adjustable by modifying your <TT>`.gaprc'</TT> file. The
+defaults are shown below.
+
+</P>
+
+<PRE>
+set_def CONTIG_EDITOR.QUAL0_COLOUR     "#494949"
+set_def CONTIG_EDITOR.QUAL1_COLOUR     "#696969"
+set_def CONTIG_EDITOR.QUAL2_COLOUR     "#898989"
+set_def CONTIG_EDITOR.QUAL3_COLOUR     "#a9a9a9"
+set_def CONTIG_EDITOR.QUAL4_COLOUR     "#b9b9b9"
+set_def CONTIG_EDITOR.QUAL5_COLOUR     "#c9c9c9"
+set_def CONTIG_EDITOR.QUAL6_COLOUR     "#d9d9d9"
+set_def CONTIG_EDITOR.QUAL7_COLOUR     "#e0e0e0"
+set_def CONTIG_EDITOR.QUAL8_COLOUR     "#e8e8e8"
+set_def CONTIG_EDITOR.QUAL9_COLOUR     "#f0f0f0"
+set_def CONTIG_EDITOR.QUAL_IGNORE      "#ff5050"
+</PRE>
+
+<!-- NODE:Editor-Show edits -->
+
+
+<H3><A NAME="SEC116" HREF="gap4_toc.html#SEC116">Show edits</A></H3>
+<P>
+<A NAME="IDX276"></A>
+<A NAME="IDX277"></A>
+
+</P>
+<P>
+When set, any change between the bases displayed and the original sequence
+held in the trace files is shown by changing the background colour of the
+changed base. The detection of these edits depends on the quality values
+and the "original position" data. Hence the traces do not need to be present
+in order to detect edits. The colour of the bases reflects the type of change
+found. The colours are adjustable by editing the <TT>`.gaprc'</TT> file. The
+following table lists the colour, gaprc variable name and the meaning.
+
+</P>
+<DL COMPACT>
+
+<DT><I>red</I>
+<DD>
+<CODE>CONTIG_EDITOR.EDIT_DEL_COLOUR </CODE> -- Deletion
+<DT><I>pink</I>
+<DD>
+<CODE>CONTIG_EDITOR.EDIT_BASE_COLOUR</CODE> -- Base change or insertion
+<DT><I>green</I>
+<DD>
+<CODE>CONTIG_EDITOR.EDIT_PAD_COLOUR </CODE> -- Padding character
+<DT><I>purple</I>
+<DD>
+<CODE>CONTIG_EDITOR.EDIT_CONF_COLOUR</CODE> -- Confidence value
+</DL>
+
+<!-- NODE:Editor-Show unpadded pos -->
+
+
+<H3><A NAME="SEC117" HREF="gap4_toc.html#SEC117">Show Unpadded Positions</A></H3>
+<P>
+<A NAME="IDX278"></A>
+<A NAME="IDX279"></A>
+
+</P>
+<P>
+The ruler at the top of the contig editor displays every tenth base number in
+the consensus sequence. Without "show unpadded positions" enabled any
+character in the consensus is counted, including padding characters. If "show
+unpadded positions" is enabled the ruler will only count non pad ("*")
+characters. Please note that this may considerably slow down the editor on
+large databases as the full consensus needs to be calculated in order to plot
+the ruler. If you just need to obtain the occasional unpadded position it is
+better to press the Enter key or to use the "unpadded position" search.
+
+</P>
+<!-- NODE:Editor-Show template names -->
+
+
+<H3><A NAME="SEC118" HREF="gap4_toc.html#SEC118">Show Template Names</A></H3>
+<P>
+<A NAME="IDX280"></A>
+<A NAME="IDX281"></A>
+
+</P>
+<P>
+The names panel on the left hand side of the editor normally shows the
+reading names. This option may be used to toggle this display to show
+the template names instead. When enabled the trace display also
+switches from showing reading names to template names.
+
+</P>
+<!-- NODE:Editor-Active Tags -->
+
+
+<H3><A NAME="SEC119" HREF="gap4_toc.html#SEC119">Set Active Tags</A></H3>
+<P>
+<A NAME="IDX282"></A>
+<A NAME="IDX283"></A>
+
+</P>
+<P>
+"Set Active Tags" allows configuration of which tag types should be displayed
+within the editor. Note that searches for tag annotations will only examine
+active tags, but searching for a specific tag type will find tags even when
+tags of this type are not visible. In this situation the tag will still be
+invisible, but as usual the tag location will be underlined. This option is
+particularly useful for exploring cases where a section of sequence has many
+overlapping tags. An alternative to using this dialogue is using the Control-Q
+key, which toggles the display of active tags.
+
+</P>
+
+<!-- NODE:Editor-Output List -->
+
+
+<H3><A NAME="SEC120" HREF="gap4_toc.html#SEC120">Set Output List</A></H3>
+<P>
+<A NAME="IDX284"></A>
+<A NAME="IDX285"></A>
+
+</P>
+<P>
+"Set output list" pops up a dialogue asking for a list name to be used
+when outputting reading names (see section <A HREF="gap5_69.html#SEC107">Lists</A>). 
+Once an output list has been specified,
+pressing the middle button, or Alt left mouse button,
+on a reading name will add the name to the
+end of list.  Note that selecting the same name more than once will add
+the name to the list more than once. The list is never cleared by the editor.
+This allows multiple editors to append to the same list. If required, use the
+list menu to clear the list.
+
+</P>
+<!-- NODE:Editor-Default Confidence -->
+
+
+<H3><A NAME="SEC121" HREF="gap4_toc.html#SEC121">Set Default Confidences</A></H3>
+<P>
+<A NAME="IDX286"></A>
+<A NAME="IDX287"></A>
+<A NAME="IDX288"></A>
+<A NAME="IDX289"></A>
+
+</P>
+<P>
+Replacing bases or inserting new bases in the editor can assign new confidence
+values to those bases. The default setting is to set these confidence values to 100
+which has the effect of forcing the consensus to be that base. The "Set
+Default Confidences" dialogue allows these default values to be changed.
+The allowable range of confidence values for a base is from 0 to 100
+inclusive. The dialogue also allows selection of confidence -1. This tells the
+editor to not change the confidence value. When replacing a base this keeps
+the same confidence value of the base that is being replaced. When inserting a
+base this uses the average of the confidence value of the two surrounding
+bases.
+
+</P>
+
+<!-- NODE:Editor-Store Undo -->
+
+
+<H3><A NAME="SEC122" HREF="gap4_toc.html#SEC122">Set or unset saving of undo</A></H3>
+<P>
+<A NAME="IDX290"></A>
+<A NAME="IDX291"></A>
+<A NAME="IDX292"></A>
+<A NAME="IDX293"></A>
+
+</P>
+<P>
+Storing the undo information takes up a great deal of computer
+memory and slows down the alignment algorithm. Particularly when using
+the Join Editor for very large overlaps (e.g. after copying batches of
+readings from one database to another), it can be useful to turn off
+the saving of undo information.
+For this reason the settings menu
+contains an option to turn off (or on) the saving of undo information.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_62.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_64.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

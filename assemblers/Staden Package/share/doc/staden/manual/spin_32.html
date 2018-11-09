@@ -1,0 +1,89 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from spin.htmlinfo on 25 April 2016 -->
+
+<TITLE>Spin - SPIN-Splice-Site-Search</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_31.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_33.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:SPIN-Splice-Site-Search -->
+
+
+<H3><A NAME="SEC42" HREF="spin_toc.html#SEC42">Splice site search</A></H3>
+<P>
+<A NAME="IDX74"></A>
+<A NAME="IDX75"></A>
+<A NAME="IDX76"></A>
+<A NAME="IDX77"></A>
+<A NAME="IDX78"></A>
+<A NAME="IDX79"></A>
+<A NAME="IDX80"></A>
+
+</P>
+<P>
+This method is used to search  for  mRNA  splice  junctions  
+using  a  weight
+matrix.  The  default  weight  matrix is still that derived from the
+paper of <CITE>Mount S.M, (1982) Nucl. Acids Res. 10, 459-472</CITE>, but
+we are about to create a whole new set which will be organism specific,
+and will include them in later releases and make them available via ftp.
+
+</P>
+<P>
+The  results are displayed in three colours, one colour for each
+reading frame. The donors are plotted upwards from the base of the
+panel and the acceptors are plotted downwards from the top of the
+panel. The donors and acceptors with the same colour are compatible; 
+eg red donors are compatible with red acceptors.
+Of course it is the  combination
+of  reading  frame  and splice sites that really matters, so donors
+and acceptors drawn in different colours can be compatible if the
+reading frame changes. By default all the sites are drawn in the same
+plot but in the figure shown below they have been separated by reading
+frame using the programs ability to reorganise the positions of
+graphical results. This layout of the donors and acceptors is designed
+to fit with the gene search methods and stop codon plots.
+The results are plotted as Log-Odds.
+
+</P>
+
+<p>
+<a href="spin_splice,6in.png.html"><img src="spin_splice,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+The  frequency  table  shown
+below  is  used  as  a  weight  matrix  and  AG  and GT are
+obligatory at the appropriate positions.
+ 
+
+<PRE>
+ Mount acceptors redone 16-4-91                              
+     18    15   0.0   10.0
+ P -14 -13 -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3
+ N 113 113 113 113 113 113 113 113 113 113 113 113 113 113 113 113 113 113
+ T  58  50  57  59  67  56  58  49  47  66  64  31  34   0   0  11  41  31
+ C  21  28  34  25  29  33  35  32  42  40  33  25  74   0   0  23  28  41
+ A  17  11  11  18   7  17  12  23  15   3  10  29   5 113   0  24  21  21
+ G  17  24  11  11  10   7   8   9   9   4   6  28   0   0 113  55  23  20
+ Mount donors redone 16-4-91                                 
+     12     4   0.0    8.0
+ P  -2  -1   0   1   2   3   4   5   6   7   8   9
+ N 136 136 136 136 136 136 136 136 136 136 136 136
+ T  28   8  15  17   0 136   9  16   7  84  30  36
+ C  41  60  16   7   0   0   3  13   3  17  28  39
+ A  40  56  89  12   0   0  83  91  12  23  53  33
+ G  27  12  16 100 136   0  41  16 114  12  25  28
+</PRE>
+
+<HR>
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_31.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_33.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

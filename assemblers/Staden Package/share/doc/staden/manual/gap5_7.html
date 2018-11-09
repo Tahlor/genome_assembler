@@ -1,0 +1,89 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Contig Comparator</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_6.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_8.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Contig Comparator -->
+
+
+<H2><A NAME="SEC12" HREF="gap5_toc.html#SEC12">Contig Comparator</A></H2>
+
+<UL>
+<LI><A HREF="gap5_8.html#SEC13">Examining Results</A>
+<LI><A HREF="gap5_9.html#SEC14">Automatic Match Navigation</A>
+</UL>
+
+<P>
+<A NAME="IDX20"></A>
+<A NAME="IDX21"></A>
+
+</P>
+<P>
+Gap5 commands such as Find Internal Joins
+(see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>) and Find Repeats (see section <A HREF="gap5_44.html#SEC81">Find Repeats</A>)
+automatically transform the Contig Selector (see section <A HREF="gap5_3.html#SEC8">Contig Selector</A>) to produce the Contig Comparator.  To
+produce this transformation a copy of the Contig Selector is added at
+right angles to the original window to create a two dimensional
+rectangular surface on which to display the results of comparing or
+checking contigs. Each of the functions plots its results as diagonal
+lines of different colours.  If the plotted points are close to the main
+diagonal they represent results from pairs of contigs that are in the
+correct relative order.  Lines parallel to the main diagonal represent
+contigs that are in the correct relative orientation to one another.
+Those perpendicular to the main diagonal show results for which one
+contig would need to be reversed before the pair could be joined.  The
+manual contig dragging procedure can be used to change the relative
+positions of contigs.  See section <A HREF="gap5_5.html#SEC10">Changing the Contig Order</A>. As the contigs are dragged the plotted results
+will be automatically moved to their corresponding new positions.  This
+means that if users drag the contigs to move their plotted results close
+to the main diagonal they will be simultaneously putting their contigs
+into the correct relative positions.
+
+</P>
+
+<P>
+By use of popup menus the plotted results can be used to invoke a subset
+of commands.  For example if the user clicks the right mouse button over
+a result from Find Internal Joins a menu containing Invoke Join Editor
+(see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>) and Invoke
+Contig Editors (see section <A HREF="gap5_11.html#SEC20">Editing in gap5</A>)
+will pop up. If the user selects Invoke Join Editor the Join Editor will
+be started with the two contigs aligned at the match position contained
+in the result. If required one of the contigs will be complemented to
+allow their alignment.
+
+</P>
+<P>
+A typical display from the Contig Comparator is shown below. It
+includes results for Find Internal Joins in black, Find Repeats in
+red and Sequence Search in green. The currently highlighted item is
+shown in pink with a summary at the bottom of the screen. The
+orientation of this is from top-left to bottom-right indicating that
+the match is in the same orientation within both contigs (we can see
+some in the opposite orientation indicating that we need to reverse
+complement either of the two contigs before attempting any joins,
+although this will happen automatically).
+The crosshairs show the positions for a pair of contigs. The vertical
+line continues into the Contig Selector part of the display, and the
+position represented by the horizontal line is also duplicated there.
+
+</P>
+
+<p>
+<a href="gap5_comparator,5.25833in.png.html"><img src="gap5_comparator,5.25833in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_6.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_8.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

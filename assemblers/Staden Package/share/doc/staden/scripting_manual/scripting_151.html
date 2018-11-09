@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_delete_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_150.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_152.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_delete_seq -->
+
+
+<H2><A NAME="SEC170" HREF="scripting_toc.html#SEC170">io_delete_seq</A></H2>
+<P>
+<A NAME="IDX696"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_delete_seq(
+        int2    maxgel,
+        int2   *length,
+        int2   *start,
+        int2   *end,
+        char   *seq,
+        int1   *conf,
+        int2   *opos,
+        int2    pos,
+        int2    Nbases);
+</PRE>
+
+<P>
+<CODE>io_delete_seq</CODE> removes one or more bases from the sequence, confidence
+and original positions arrays specified. No database I/O is performed.
+
+</P>
+<P>
+The existing sequence, confidence values, and original positions arrays are
+passed as <VAR>seq</VAR>, <VAR>conf</VAR>, and <VAR>opos</VAR> arguments. All are mandatory.
+The length of sequence and hence the number of used elements in these arrays
+is passed as <VAR>length</VAR>, with <VAR>start</VAR> and <VAR>end</VAR> containing the left
+and right cutoff positions. The allocated size of these arrays is
+<VAR>maxgel</VAR>, however it is not required by this function (FIXME).
+
+</P>
+<P>
+The <VAR>pos</VAR> and <VAR>Nbases</VAR> arguments specify where and how many bases to
+delete, counting with the first base as base number 1. The <VAR>length</VAR>
+argument is described by <VAR>Nbases</VAR> and the <VAR>seq</VAR>, <VAR>conf</VAR> and
+<VAR>opos</VAR> arrays shuffled accordingly. The <VAR>start</VAR> and <VAR>end</VAR> values
+may be decrememnted, depending on where the deletion occurs.
+
+</P>
+<P>
+The function returns 0 for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_150.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_152.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,135 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Gap4-Cline</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_180.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Gap4-Cline -->
+
+
+<H1><A NAME="SEC269" HREF="gap4_toc.html#SEC269">Command Line Arguments</A></H1>
+<P>
+<A NAME="IDX638"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>-bitsize</CODE>
+<DD>
+<A NAME="IDX639"></A>
+ <A NAME="IDX640"></A>
+ <A NAME="IDX641"></A>
+ 
+Specifies whether the database file size is 32-bit or
+64-bit. Practically speaking due to the use of signed numbers in
+places and the restriction of 32-bit for the number of records in a
+database (even when using <CODE>-bitsize 64</CODE> for 64-bit file offsets)
+the practical limits are 2Gb filesize for <CODE>-bitsize 32</CODE> and
+somewhere around about 100-million sequences for <CODE>-bitsize 64</CODE>. 
+
+Gap4 only needs this option for creating new databases. The bit-size
+of existing databases is automatically detected when they are opened.
+
+Databases produced in 64-bit format are not compatible with older
+versions of Gap4, but old and newly created 32-bit databases still work with
+the 64-bit Gap4 (and are maintained in 32-bit format so editing them
+will not invalidate their use by older Gap4s). The <CODE>copy_db</CODE>
+program (see section <A HREF="manpages_3.html#SEC10">Copy_db</A>) can be used to
+convert file formats.
+
+<P>
+<A NAME="IDX642"></A>
+<A NAME="IDX643"></A>
+<DT><CODE>-maxdb</CODE>
+<DD>
+Specifies the maximum number of readings plus contigs. This value is not
+automatically adjusted whilst the program is running, but is not allowed to be
+set to a value too small for the database to be opened. It controls the size
+of some areas of memory (approximately <CODE>16*maxdb</CODE> bytes) used during
+execution of gap. The default value is <CODE>8000</CODE>.
+<P>
+<A NAME="IDX644"></A>
+<A NAME="IDX645"></A>
+<DT><CODE>-maxseq</CODE>
+<DD>
+Specifies the maximum number of characters used in the concatenated consensus
+sequences. This parameter is generally not required as the value is normally
+computed and adjusted automatically. However a few functions (such as
+assembly) still need to know a maximum size before hand. The default is
+<CODE>100000</CODE> bases.
+<P>
+<DT><CODE>-ro</CODE>
+<DD>
+<DT><CODE>-read_only</CODE>
+<DD>
+<A NAME="IDX646"></A>
+<A NAME="IDX647"></A>
+Opens the database (if specified on the command line) in read only mode. This
+does not apply to databases opened using the file browser.
+<P>
+<A NAME="IDX648"></A>
+<A NAME="IDX649"></A>
+<A NAME="IDX650"></A>
+<A NAME="IDX651"></A>
+<DT><CODE>-check</CODE>
+<DD>
+<DT><CODE>-no_check</CODE>
+<DD>
+Specifies whether to run the "Check Database" option when opening new
+databases. <CODE>-check</CODE> forces this to always be done and <CODE>-nocheck</CODE>
+forces it to never be done. By default Check Database is always performed when
+opening databases in read-write mode and never performed when opening in
+read-only mode.
+<P>
+<DT><CODE>-exec_notes</CODE>
+<DD>
+<DT><CODE>-no_exec_notes</CODE>
+<DD>
+<A NAME="IDX652"></A>
+<A NAME="IDX653"></A>
+<A NAME="IDX654"></A>
+Controls whether to search for and execute any Notes of type
+<CODE>OPEN</CODE> or <CODE>CLOS</CODE>. This may be an important security measure
+if you are using foreign databases. Gap4 defaults to -no_check_notes.
+<P>
+<DT><CODE>-rawdata_note</CODE>
+<DD>
+<DT><CODE>-no_rawdata_note</CODE>
+<DD>
+<A NAME="IDX655"></A>
+<A NAME="IDX656"></A>
+Controls whether to make use of the <CODE>RAWD</CODE> note type for
+specifying the trace file search path. Defaults to -rawdata_note.
+<P>
+<DT><CODE>-csel</CODE>
+<DD>
+<DT><CODE>-no_csel</CODE>
+<DD>
+<A NAME="IDX657"></A>
+<A NAME="IDX658"></A>
+Controls whether to automatically start up the contig selector when
+opening a new gap4 database. In some cases (such as when dealing with
+many EST clusters each in their own contig) the contig selector is not
+a practical tool; this simply offers a way of speeding up database
+opening. Defaults to -csel.
+<P>
+<DT><CODE>--</CODE>
+<DD>
+Treat this as the last command line option. Only useful if the database name
+is specified and the name starts with a minus character (not
+recommended!).
+</DL>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_180.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

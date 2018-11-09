@@ -1,0 +1,96 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Extract_fastq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_6.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_8.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-extract_fastq -->
+
+
+<H1><A NAME="SEC35" HREF="manpages_toc.html#SEC35">Extract_fastq</A></H1>
+<P>
+<A NAME="IDX6"></A>
+
+
+<H2><A NAME="SEC36" HREF="manpages_toc.html#SEC36">NAME</A></H2>
+
+<P>
+extract_fastq -- extracts sequence and quality from a trace or experiment file.
+
+</P>
+
+
+<H2><A NAME="SEC37" HREF="manpages_toc.html#SEC37">SYNOPSIS</A></H2>
+
+<P>
+<CODE>extract_fastq</CODE>
+[<CODE>-</CODE>(<CODE>abi</CODE>|<CODE>alf</CODE>|<CODE>scf</CODE>|<CODE>ztr</CODE>|<CODE>exp</CODE>|<CODE>pln</CODE>)]
+[<CODE>-good_only</CODE>] [<CODE>-clip_cosmid</CODE>] [<CODE>-fasta_out</CODE>]
+[<CODE>-output</CODE> <I>output_name</I>] [<I>input_name</I>] <CODE>...</CODE>
+
+</P>
+
+
+<H2><A NAME="SEC38" HREF="manpages_toc.html#SEC38">DESCRIPTION</A></H2>
+
+<P>
+<CODE>extract_fastq</CODE> extracts the sequence and quality information
+from binary trace files or Experiment files. The input can be read
+either from standard input or read from files listed directly as
+arguments or contained within a "file of filenames". Output is
+either sent to standard output or a named file. It contains the
+sequence and confidence stored in single-line fastq format.
+
+</P>
+
+
+<H2><A NAME="SEC39" HREF="manpages_toc.html#SEC39">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-abi</CODE>, <CODE>-alf</CODE>, <CODE>-scf</CODE>, <CODE>-ztr</CODE>, <CODE>-exp</CODE>, <CODE>-pln</CODE>
+<DD>
+    Specify an input file format. This is not usually required as
+    <CODE>extract_seq</CODE> will automatically determine the correct input file
+    type. This option is supplied incase the automatic determination is
+    incorrect (which is possible, but has never been observed).
+
+<DT><CODE>-output</CODE> <I>file</I>
+<DD>
+    The sequence will be written to <I>file</I> instead of standard
+    output.
+
+<DT><CODE>-fofn</CODE> <I>file_of_filenames</I>
+<DD>
+    Read the reading names from <I>file_of_filenames</I> with one per line.
+</DL>
+
+
+
+<H2><A NAME="SEC40" HREF="manpages_toc.html#SEC40">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_18.html#SEC40">ExperimentFile(4)</A>.
+
+</P>
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+<P>
+@xref{Man-extract_seq extract_seq(1),Man-extract_seq extract_seq(1),extract_seq.1,,}.
+<CODE>Read</CODE>(4)
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_6.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_8.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

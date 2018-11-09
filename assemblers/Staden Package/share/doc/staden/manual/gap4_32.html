@@ -1,0 +1,104 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Template-Templates-Operations</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_31.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_33.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Template-Templates-Operations -->
+
+
+<H4><A NAME="SEC40" HREF="gap4_toc.html#SEC40">Reading and Template Plot Operations</A></H4>
+
+<P>
+<A NAME="IDX81"></A>
+<A NAME="IDX82"></A>
+<A NAME="IDX83"></A>
+
+</P>
+
+<P>
+The contig editor can be invoked by double clicking the middle mouse button,
+or Alt the left mouse button, 
+in any of the displays, ie template, ruler, quality or restriction enzyme
+plots. The editor will start up with the editing cursor on the base that 
+corresponds to the position clicked on in the Template Display. If more than 
+one contig is currently being displayed the editor decides which contig to show
+using the following rules. If the user clicks on the Quality Plot, the contig
+lines or the Restriction Enzyme Display, the corresponding contigs will
+be shown. If the user clicks on a gap between these displays the nearest contig
+will be selected. If the user clicks on
+the template or reading lines, the editor will show the contig whose left
+end is to the left of and closest to the cursor.
+
+</P>
+<P>
+The long blue vertical line seen in the previous 
+figure is the position of the 
+editing cursor within a Contig Editor. Each editor will produce its own cursor
+and each will be visible. Moving the editing 
+cursor within a contig editor automatically moves its cursor within the 
+Template Display. Similarly, clicking and dragging the editor cursor with the 
+middle mouse button, or Alt left mouse button, within the Template
+Display scrolls the associated Contig Editor.
+
+</P>
+
+<P>
+The order of the contigs can be changed within the Template Display by
+clicking with the middle mouse button, or Alt left mouse button, 
+on a contig line and dragging the line to
+the new position. The Template Display will update automatically once the 
+mouse button is released. The change of a dark yellow template to bright
+yellow is indicative that the two contigs are now in consistent positions
+and orientations. The order of the contigs in the gap4 database, as 
+displayed in the contig selector, can be updated by selecting the 
+"Update contig order" command in the Edit menu.
+
+</P>
+<P>
+By clicking on any of the contig lines in the ruler a popup menu is invoked.
+From this, information on the contig can be obtained, the contig editor can be
+started, the contig can be complemented, and the templates within the
+contig can be highlighted (shown by changing their line width).
+
+</P>
+<P>
+A list named <CODE>readings</CODE> always exists. It contains the
+list of readings that are highlighted in all the currently shown
+template displays.  See section <A HREF="gap5_69.html#SEC107">Lists</A>. The highlighting
+mechanism used is to draw the readings as thicker, bolder, lines. The
+"clear Active Readings" command from the View menu clears this list. The
+"highlight reading list" command loads a new set of readings to use for
+the "readings" list and then highlights these.
+
+</P>
+<P>
+To interactively add and remove readings from the active list use the
+left mouse button. Clicking on an individual reading will toggle its
+state from active to non active and back again. Pressing and holding the
+left mouse button, and moving the mouse, will drag out a bounding box.
+When the button is released all readings that are contained entirely
+within the bounding box will be toggled.
+
+</P>
+<P>
+Activating a reading (using any of the above methods) when an editor is
+running, will also highlight the reading within the editor. Similarly,
+highlighting the reading in the editor activates it within the template
+display and adds it to the active reading list.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_31.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_33.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - FIJ</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_98.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_100.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:FIJ -->
+
+
+<H2><A NAME="SEC170" HREF="gap4_toc.html#SEC170">Find Internal Joins</A></H2>
+<P>
+<A NAME="IDX384"></A>
+<A NAME="IDX385"></A>
+<A NAME="IDX386"></A>
+<A NAME="IDX387"></A>
+<A NAME="IDX388"></A>
+<A NAME="IDX389"></A>
+<A NAME="IDX390"></A>
+<A NAME="IDX391"></A>
+<A NAME="IDX392"></A>
+
+</P>
+<P>
+The purpose of this function (which is invoked from the gap4 View menu)
+is to use sequences already in the database
+to find possible joins between contigs.  Generally these will be joins
+that were missed or judged to be unsafe during assembly and this
+function allows users to examine the overlaps and decide if they should
+be made. During assembly joins may have been missed because of poor
+data, or not been made because the sequence was repetitive.  Also it may
+be possible to find potential joins by extending the consensus sequences
+with the data from the 3' ends of readings which was considered to be
+too unreliable to align during assembly i.e. we can search in the
+"hidden data".
+
+</P>
+<P>
+If it has not already occurred, use of this function will automatically
+transform the Contig Selector into the Contig Comparator.  Each match
+found is plotted as a diagonal line in the Contig Comparator, and is
+written as an alignment in the Output Window. The length of the diagonal
+line is proportional to the length of the aligned region. If the match
+is for two contigs in the same orientation the diagonal will be parallel
+to the main diagonal, if they are not in the same orientation the line
+will be perpendicular to
+the main diagonal. The matches displayed in the Contig Comparator can be
+used to invoke the Join Editor (see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>) 
+or Contig Editor.  See section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>. 
+Alternatively, the "Next" button at the top left of the Contig
+Comparator can be used to select each result in turn, starting with the
+best, and ending with the worst. When this is in use, users can find the 
+match in the Contig Comparator which corresponds to the next result by
+placing the cursor over the Next button. The plotted match and the contigs
+involved will turn white.
+
+</P>
+
+<p>
+<a href="comparator,5.325in.png.html"><img src="comparator,5.325in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+A typical display from the Contig Comparator is shown in the figure
+above. 
+
+</P>
+<P>
+To define the match all numbering is relative to base number one in the
+contig: matches to the left (i.e.  in the hidden data) have negative
+positions, matches off the right end of the contig (i.e. in the hidden
+data) have positions greater than that of the contig length.  The
+convention for reporting the positions of overlaps is as follows: if
+neither contig needs to be complemented the positions are as shown.  If
+the program says "contig x in the - sense" then the positions shown
+assume contig x has been complemented. For example, in the results given
+below the positions for the first overlap are as reported, but those for
+the second assume that the contig in the minus sense (i.e. 443) has been
+complemented.
+
+</P>
+
+<PRE>
+Possible join between contig   445 in the + sense and contig   405
+Percentage mismatch after alignment =  4.9
+       412        422        432        442        452        462
+    405  TTTCCCGACT GGAAAGCGGG CAGTGAGCGC AACGCAATTA ATGTGAG,TT AGCTCACTCA
+          ::::::::: : ::::::::  ::::: ::: :::::::::: :::::::::: ::::::::::
+    445  *TTCCCGACT G,AAAGCGGG TAGTGA,CGC AACGCAATTA ATGTGAG*TT AGCTCACTCA
+      -127       -117       -107        -97        -87        -77
+       472        482        492        502        512
+    405  TTAGGCACCC CAGGCTTTAC ACTTTATGCT TCCGGCTCGT AT
+         :::::::::: :::::::::: :::::::::: :::::::::: ::
+    445  TTAGGCACCC CAGGCTTTAC ACTTTATGCT TCCGGCTCGT AT
+       -67        -57        -47        -37        -27
+Possible join between contig   443 in the - sense and contig   423
+Percentage mismatch after alignment = 10.4
+        64         74         84         94        104        114
+    423  ATCGAAGAAA GAAAAGGAGG AGAAGATGAT TTTAAAAATG AAACG*CGAT GTCAGATGGG
+         :::: ::::: :::::::::: :::::::::: ::::::  :: ::::: :::: :::::::::
+    443  ATCG,AGAAA GAAAAGGAGG AGAAGATGAT TTTAAA,,TG AAACGACGAT GTCAGATGG,
+      3610       3620       3630       3640       3650       3660
+       124        134        144        154        164
+    423  TTG*ATGAAG TAGAAGTAGG AG*AGGTGGA AGAGAAGAGA GTGGGA
+         ::: :::::: :::::::::: :: :::::::  ::: ::::: :: ::
+    443  TTGGATGAAG TAGAAGTAGG AGGAGGTGGA ,GAG,AGAGA GTTGG*
+      3670       3680       3690       3700       3710
+</PRE>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_98.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_100.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

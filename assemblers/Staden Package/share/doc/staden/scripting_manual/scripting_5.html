@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-load_package</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-load_package -->
+
+
+<H3><A NAME="SEC6" HREF="scripting_toc.html#SEC6">load_package</A></H3>
+<P>
+<A NAME="IDX15"></A>
+<A NAME="IDX16"></A>
+<A NAME="IDX17"></A>
+
+<PRE>
+<STRONG>load_package</STRONG> <I>name</I>
+</PRE>
+
+<P>
+This loads the dynamic library named (eg) lib<I>name</I>.so. The "lib" and
+".so" components of this library name a system dependent strings. The system
+will automatically use the correct local terminology depending on the system
+type.
+
+</P>
+<P>
+Firstly the <CODE>$STADLIB/</CODE><I>name</I> directory is appended to Tcl auto_path
+variable. Next the <CODE>$STADTABL/</CODE><I>name</I><CODE>rc</CODE> file is used to specify
+the package menus and defaults (which are saved as a keyed list in the global
+tcl variable <I>name</I>_defs). The <CODE>.</CODE><I>name</I><CODE>rc</CODE> file is also loaded
+up from the callers HOME directory and from the current directory, if they
+exist, in this order.  This means that a user can override defaults specified
+in the <CODE>STADTABL</CODE> directory by creating an rc file in their home
+directory, and then to override these specifications further in a
+project-by-project fashion by adding configurations to the current directory.
+
+</P>
+<P>
+Next the library itself is dynamically loaded. The file to be loaded is held
+within the <CODE>$STADLIB/$MACHINE-binaries</CODE> directory. If the library does
+not exist within this directory then it is not loaded and no error is
+produced.
+
+</P>
+<P>
+Finally if existent, the package initialisation function in C will then be
+called with a Tcl interpreter as the sole argument and returns an integer
+(TCL_OK or TCL_ERROR). It is this function which performs the registering of
+new commands to the Tcl language. The C function name must be the package name
+with the first character as upper case, the following characters as lowercase,
+and suffixed by <CODE>_Init</CODE>. See the Tcl load manual page for full details.
+
+</P>
+<P>
+So for the tk_utils library the <CODE>$STADLIB/tk_utils</CODE> directory is added to
+the auto_path variable, the <CODE>$STADTABL/tk_utilsrc</CODE> file is processed, and
+executes the C function <CODE>Tk_utils_Init()</CODE>. 
+
+</P>
+<P>
+<hr>
+<P>
+<A NAME="IDX18"></A>
+
+<PRE>
+<STRONG>load_package</STRONG> <I>tcldir libdir name ?init?</I>
+</PRE>
+
+<P>
+This is the more versatile form of the load_package command. The procedures
+performed are the same, however the location of the files is no longer
+controlled solely by environment variables.
+
+</P>
+<P>
+<I>Tcldir</I> specifies the directory to add to the Tcl auto_path variable and is
+used for the search path of the <I>name</I><CODE>rc</CODE> file. As with the simpler
+form of load_package the <CODE>STADTABL</CODE>, HOME, and current directory versions
+of the rc file are also loaded, with each file overriding values specified in
+the earlier copies.
+
+</P>
+<P>
+The <I>libdir</I> argument specifies the location to find the dynamic library
+file to load. Specifying this as a single <CODE>-</CODE> (minus sign) requests that
+no dynamic library is to be loaded. In this way libraries consisting solely of
+Tcl files may be used. Specifying <I>libdir</I> as a blank string (either "" or
+{}) indicates that the library is to be searched for in the users
+<CODE>LD_LIBRARY_PATH</CODE> instead.
+
+</P>
+<P>
+Both the <I>tcldir</I> and <I>libdir</I> variables allow a few substitutions to
+expand up to common locations.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>%L</VAR>
+<DD>
+Expands to <CODE>$STADLIB</CODE>
+<DT><VAR>%S</VAR>
+<DD>
+Expands to <CODE>$STADENROOT/src</CODE>
+<DT><VAR>%%</VAR>
+<DD>
+Expands to a single percent sign
+</DL>
+
+<P>
+The <I>init</I> argument is used to indicate whether the dynamic library loaded
+has an initialisation routine. It should be set to 0 or 1. The current
+implementation always attemps to execute the initialisation routine, but
+when <I>init</I> is 0 errors will be ignored.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

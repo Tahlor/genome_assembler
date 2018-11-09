@@ -1,0 +1,71 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - GapDB-CopyDatabase</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_155.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_157.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GapDB-CopyDatabase -->
+
+
+<H2><A NAME="SEC228" HREF="gap4_toc.html#SEC228">Making Backups of Databases</A></H2>
+<P>
+<A NAME="IDX543"></A>
+<A NAME="IDX544"></A>
+<A NAME="IDX545"></A>
+<A NAME="IDX546"></A>
+
+</P>
+<P>
+The importance of making regular backups of your data cannot be over stated.
+Using the "Copy database" command from the File menu brings up a dialogue
+asking for a new database version. Type in a single character for the
+new version and press "ok" or return. If the new database already exists
+you will be asked whether you wish to overwrite it. Any subsequent changes you
+make will still be to the database that you originally opened, not to the
+database you have just saved to.
+
+</P>
+<P>
+The database file may sometimes become fragmented. An option available when
+saving is to use garbage collection. This creates the new database by only
+copying over the used portions of data (and hence reduces fragmentation).
+However it is quite a lot slower than the standard "Copy database" mechanism,
+so if this causes problems add "<CODE>set_def COPY_DATABASE.COLLECT 0</CODE>" to
+your <TT>`.gaprc'</TT> file to change the default to no garbage collection. It
+should be noted that garbage collection also performs a rigorous database
+consistency check.
+
+</P>
+<P>
+Do not always use the same version character for you backups. Instead
+keep several different backups. Otherwise you may find that both your
+current database and the backup have problems. It is also wise to run
+"check database" to verify data integrity. 
+
+</P>
+<P>See section <A HREF="gap4_160.html#SEC233">Check Database</A>.
+
+</P>
+<P>
+It is also possible to backup databases from outside gap4 by using
+standard unix commands to copy <STRONG>both</STRONG> the record and index files.
+Care should be taken when doing this to ensure that the database is not
+being modified whilst copying. See your unix or 
+Windows manuals for further details or
+the <CODE>copy_db</CODE> manual page (see section <A HREF="manpages_3.html#SEC10">Copy_db</A>) for
+the external garbage collecting database copy program.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_155.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_157.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

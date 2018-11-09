@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-double_strand</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_76.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_78.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-double_strand -->
+
+
+<H2><A NAME="SEC85" HREF="scripting_toc.html#SEC85">double_strand</A></H2>
+<P>
+<A NAME="IDX264"></A>
+<A NAME="IDX265"></A>
+<A NAME="IDX266"></A>
+
+</P>
+
+<PRE>
+<CODE>double_strand</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-max_nmismatch <I>count:integer(8)</I>
+?-max_pmismatch <I>percentage:float(8.)</I>
+</PRE>
+
+<P>
+This command searches for single stranded regions and attempts to make them
+double stranded data by finding neighbouring readings with hidden data that
+is good enough to reveal. The function returns no value but will generate a
+Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to double strand. The <I>{contig start
+end}</I> syntax may be used for an identifier to double strand only a region of
+the contig, otherwise all of it is double stranded.
+
+<P>
+<A NAME="IDX267"></A>
+<DT><VAR><CODE>-max_nmismatch</CODE>
+<DD>
+This</VAR> cifies the maximum number of mismatches allowed in the extended dat
+between the reading and the consensus. The default is 8.
+
+<P>
+<A NAME="IDX268"></A>
+<DT><VAR><CODE>-max_pmismatch</CODE>
+<DD>
+This</VAR> cifies the maximum percentage mismatch allowed in the extended dat
+between the reading and the consensus. The default is 8.0.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_76.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_78.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

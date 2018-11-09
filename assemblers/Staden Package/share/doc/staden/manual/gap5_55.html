@@ -1,0 +1,59 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Remove Pad Columns</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_54.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_56.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Remove Pad Columns -->
+
+
+<H2><A NAME="SEC93" HREF="gap5_toc.html#SEC93">Remove Pad Columns</A></H2>
+<P>
+<A NAME="IDX161"></A>
+
+</P>
+<P>
+There are cases where we may have multiple alignments where every single
+sequence has a padding character such that the complete column is
+"*". This can occur when disassembling data from a falsely made join.
+
+</P>
+<P>
+The Shuffle Pads algorithm will remove entire columns of pads when it
+finds them, but it is time consuming and it may also edit alignments
+elsewhere. The Remove Pad Columns function is a faster, more specific
+solution to this problem.
+
+</P>
+
+<p>
+<img src="gap5_remove_pad_columns.png" alt="[picture]">
+
+<P>
+By default the function will only ever delete columns where 100% of the
+sequences have a pad/gap. However with appropriate due care it is
+possible to reduce this and allow removal of columns where a few
+sequences have a real base provided the overall percentage is still
+high. This is achieved by reducing the "Percentage pad needed"
+parameter.
+
+</P>
+<P>
+Reducing from 100% is not recommended though as it is removal of data
+purely for tidyness sake, while the consensus algorithm will
+automatically find the correct solution.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_54.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_56.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

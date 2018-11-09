@@ -1,0 +1,282 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Info</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_24.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_26.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Info -->
+
+
+<H2><A NAME="SEC53" HREF="gap5_toc.html#SEC53">The Editor Information Line</A></H2>
+<P>
+<A NAME="IDX82"></A>
+<A NAME="IDX83"></A>
+<A NAME="IDX84"></A>
+<A NAME="IDX85"></A>
+
+</P>
+<P>
+The very bottom line of the editor display is text line used by the editor to
+display pieces of useful information. Currently this gives information on
+individual bases, readings, the contig, and tags, as the mouse is moved over
+the appropriate object. Each type of object we move the mouse pointer
+over (sequence base, consensus base, sequence name panel, annotation)
+has its own list of information to display which can be configured
+using a format string stored in your <I>$HOME/.gap5rc</I> file.
+
+</P>
+<P>
+Typically you will not need to modify these, but if you choose to do
+so the default values to start from are shown below.
+
+</P>
+
+
+<PRE>
+# Mouse-over a sequence the reading name panel
+set_def READ_BRIEF_FORMAT \
+        {Reading:%n(#%Rn)  Tech:%V  Length:%l(%L)  MappingQ:%m%**/%*m  Pos:%S%p / %*S%*p}
+
+# Mouse-over the "Consensus" label in the name panel
+set_def CONTIG_BRIEF_FORMAT  \
+        {Contig:%n(#%Rn)   Length:%l  Start:%s  End:%e}
+
+# Mouse-over a base in a sequence
+set_def BASE_BRIEF_FORMAT1  \
+        { Base %b confidence:%4.1c (Prob. %Rc, raw %4.1A %4.1C %4.1G %4.1T)   Position %Rp  %n}
+
+# Mouse-over a base in the consensus
+set_def BASE_BRIEF_FORMAT2  \
+        {Base confidence:%4.1c (Prob. %Rc)  A=%4.1A C=%4.1C G=%4.1G T=%4.1T *=%4.1*  Position %p}
+
+# Mouse-over an annotation
+set_def TAG_BRIEF_FORMAT  \
+        {Tag type:%t  Comment:"%.100c"}
+</PRE>
+
+<P>
+The text output is as listed above, but replacing percent-code strings
+with a relevant piece of text. In many cases a capital R indicates raw
+mode to display a numerical value instead of a string. For example
+<CODE>%n</CODE> in READ_BRIEF_FORMAT will be replaced by the sequence name
+while <CODE>%Rn</CODE> will be replaced by the sequence record number. The
+full syntax of percent expansion is as follows:
+
+</P>
+
+<UL>
+<LI>
+
+        A percent sign.
+<LI>
+
+        An optional minus sign to request left alignment of the information.
+        When displaying information in a specific field with where that data
+        does not fill the entire space allowed the information will, by
+        default, be right justified. Adding a minus character here requests
+        left justification.
+<LI>
+
+        An optional minimum field width. This is a decimal number indicating
+        how much space to leave for this information.
+<LI>
+
+        An optional precision for numbers or maximum field width for strings.
+        This is given as a fullstop followed by a decimal number.
+<LI>
+
+        An optional 'R' to specify Raw mode. This changes the meaning of many
+        (but not all) of the expansion requests to give a numercial
+        representation of the data. For example %n is a reading name
+        and %Rn is a reading number.
+<LI>
+
+        Th expansion type itself. This is either one or two letters. See below
+        for full details of their meanings.
+</UL>
+
+<P>
+To programmers this syntax may seem very similar to <CODE>printf</CODE>. This is
+intentional, but do not assume it is the same. Specifically the print syntax
+of <CODE>%#</CODE>, <CODE>%+</CODE> and <CODE>%0</CODE> will not work.
+
+</P>
+
+
+<H3><A NAME="SEC54" HREF="gap5_toc.html#SEC54">Reading Information</A></H3>
+<P>
+<A NAME="IDX86"></A>
+<A NAME="IDX87"></A>
+<A NAME="IDX88"></A>
+
+</P>
+<P>
+Used when we move the mouse over a sequence name in the names panel or
+a sequence base-call. Example output is <B>Reading:xc04a1.s1(#74)
+Tech:Sanger  Length:295(474)  MappingQ:50</B>. Note that not all
+expansions make sense when used in the names panel as no cursor
+X position is available.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>%%</STRONG>
+<DD>
+        A single % sign
+<DT><STRONG>%n</STRONG>
+<DD>
+        Reading name. Raw mode: record number
+<DT><STRONG>%#</STRONG>
+<DD>
+        Reading record number
+<DT><STRONG>%p</STRONG>
+<DD>
+        Position in sequence. Raw mode: position in contig.
+<DT><STRONG>%l</STRONG>
+<DD>
+        Clipped sequence length
+<DT><STRONG>%L</STRONG>
+<DD>
+        Unclipped sequence length
+<DT><STRONG>%s</STRONG>
+<DD>
+        Start of clip
+<DT><STRONG>%e</STRONG>
+<DD>
+        End of clip
+<DT><STRONG>%S</STRONG>
+<DD>
+        Sense (whether complemented) - "&#60;&#60;" or "&#62;&#62;". Raw mode: 0/1
+<DT><STRONG>%d</STRONG>
+<DD>
+        Strand - "+" or "-". Raw mode: 0/1
+<DT><STRONG>%b</STRONG>
+<DD>
+        Base call
+<DT><STRONG>%c</STRONG>
+<DD>
+        Confidence value of called base (phred style). Raw mode: probability
+<DT><STRONG>%A</STRONG>
+<DD>
+<DT><STRONG>%C</STRONG>
+<DD>
+<DT><STRONG>%G</STRONG>
+<DD>
+<DT><STRONG>%T</STRONG>
+<DD>
+        Individual confidence (phred style) of A,C,G,T component in
+        log-odds form. Raw mode: probability value.
+<DT><STRONG>%m</STRONG>
+<DD>
+        Mapping Quality. Raw mode: probability of correctly mapped.
+<DT><STRONG>%V</STRONG>
+<DD>
+        Instrument type - Sanger, Illumina, SOLiD, 454 or Unknown.
+</DL>
+
+
+
+<H3><A NAME="SEC55" HREF="gap5_toc.html#SEC55">Contig Information</A></H3>
+<P>
+<A NAME="IDX89"></A>
+<A NAME="IDX90"></A>
+<A NAME="IDX91"></A>
+
+</P>
+<P>
+For the CONTIG_BRIEF_FORMAT and BASE_BRIEF_FORMAT2 the following
+expansions apply. These operate on contigs and the consensus
+sequence. 
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>%%</STRONG>
+<DD>
+        Single % sign
+<DT><STRONG>%n</STRONG>
+<DD>
+        Contig name. Raw mode: contig record number.
+<DT><STRONG>%#</STRONG>
+<DD>
+        Contig record number
+<DT><STRONG>%p</STRONG>
+<DD>
+        Position in contig
+<DT><STRONG>%l</STRONG>
+<DD>
+        Length of contig
+<DT><STRONG>%s</STRONG>
+<DD>
+        Contig start coordinate
+<DT><STRONG>%e</STRONG>
+<DD>
+        Contig end coordinate
+<DT><STRONG>%b</STRONG>
+<DD>
+        Called consensus base
+<DT><STRONG>%c</STRONG>
+<DD>
+        Score for called consensus base. Raw mode: probability value
+<DT><STRONG>%A</STRONG>
+<DD>
+<DT><STRONG>%C</STRONG>
+<DD>
+<DT><STRONG>%G</STRONG>
+<DD>
+<DT><STRONG>%T</STRONG>
+<DD>
+<DT><STRONG>%*</STRONG>
+<DD>
+        Individual confidence for A,C,G,T,* base types in log-odds
+        form. Raw mode: as a probability value.
+</DL>
+
+
+
+<H3><A NAME="SEC56" HREF="gap5_toc.html#SEC56">Tag Information</A></H3>
+<P>
+<A NAME="IDX92"></A>
+<A NAME="IDX93"></A>
+
+</P>
+<P>
+The TAG_BRIEF_FORMAT string is used to display annotation
+summaries. The possible percent encodings are as follows.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>%%</STRONG>
+<DD>
+        Single % sign
+<DT><STRONG>%p</STRONG>
+<DD>
+        Tag position
+<DT><STRONG>%t</STRONG>
+<DD>
+        Tag type (always 4 characters)
+<DT><STRONG>%l</STRONG>
+<DD>
+        Tag length
+<DT><STRONG>%#</STRONG>
+<DD>
+        Tag number (0 if unknown)
+<DT><STRONG>%c</STRONG>
+<DD>
+        Tag comment
+</DL>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_24.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_26.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

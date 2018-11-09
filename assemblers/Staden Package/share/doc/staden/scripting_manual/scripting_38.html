@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Other</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_37.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_39.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Other -->
+
+
+<H2><A NAME="SEC39" HREF="scripting_toc.html#SEC39">Other Utility Commands</A></H2>
+
+<!-- NODE:TkU-Tkinit -->
+
+
+<H3><A NAME="SEC40" HREF="scripting_toc.html#SEC40">tkinit</A></H3>
+<P>
+<A NAME="IDX95"></A>
+<A NAME="IDX96"></A>
+
+</P>
+
+<PRE>
+<CODE>tkinit</CODE>
+</PRE>
+
+<P>
+This command calls the <CODE>Tk_Init</CODE> C function. The purpose of this function
+is to allow the <CODE>stash</CODE> program to be used in a non windowing
+environment. To achieve this the initialisation of Tk has been delayed until
+this command is ran. Hence one binary can be used for both text work (no
+<CODE>tkinit</CODE> call) and graphics work (with a <CODE>tkinit</CODE> call).
+
+</P>
+<!-- NODE:TkU-Capture -->
+
+
+<H3><A NAME="SEC41" HREF="scripting_toc.html#SEC41">capture</A></H3>
+<P>
+<A NAME="IDX97"></A>
+<A NAME="IDX98"></A>
+<A NAME="IDX99"></A>
+
+</P>
+
+<PRE>
+<CODE>capture</CODE> <I>command</I> ?<I>varname</I>?
+</PRE>
+
+<P>
+This command executes <I>command</I> and stores any text written to stdout in the
+tcl variable named in <I>varname</I>. If <I>varname</I> is not specified then the
+output is returned, otherwise the return codes from the <CODE>Tcl_Eval</CODE>
+routine are used (ie <CODE>TCL_OK</CODE> for success).
+
+</P>
+<P>
+For example the command "<CODE>set x [capture {puts foo}]</CODE>" and
+"<CODE>capture {puts foo} x</CODE>" both set <I>x</I> to contain "<I>foo\n</I>".
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_37.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_39.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

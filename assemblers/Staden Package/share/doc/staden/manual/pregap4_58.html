@@ -1,0 +1,99 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-ManualConfig-Global</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-ManualConfig-Global -->
+
+
+<H2><A NAME="SEC64" HREF="pregap4_toc.html#SEC64">Low Level Global Configuration</A></H2>
+<P>
+<A NAME="IDX114"></A>
+<A NAME="IDX115"></A>
+<A NAME="IDX116"></A>
+
+</P>
+<P>
+The <CODE>[module_list]</CODE> section contains definitions of the
+<CODE>MODULE_PATH</CODE> and <CODE>MODULES</CODE> variables. The <CODE>MODULE_PATH</CODE> is a
+space delimited list of directory names in which to search for the pregap4
+modules (<CODE>*.p4m</CODE> files). The <CODE>MODULES</CODE> variable is the default list
+of modules to list in the configuration window. The order of modules in this
+list determines the order that they will be executed in. The default
+<CODE>[module_list]</CODE> section is as follows:
+
+</P>
+
+<PRE>
+[module_list]
+set MODULE_PATH "$env(STADLIB)/pregap4/modules ."
+set MODULES {
+    phred
+    atqa
+    convert_trace
+    eba
+    compress_trace
+    init_exp
+    augment_exp
+    quality_clip
+    trace_clip
+    sequence_vector_clip
+    cross_match_svec
+    cloning_vector_clip
+    screen_vector
+    screen_seq
+    blast
+    interactive_clip
+    repeat_masker
+    tag_repeats
+    trace_diff
+    gap4_assemble
+    cap2_assemble
+    cap3_assemble
+    fakii_assemble
+    phrap_assemble
+    enter_assembly
+    email
+}
+</PRE>
+
+<P>
+The <CODE>[global_variables]</CODE> section defines the values for each of the
+Experiment File line types. These are currently primarily used by the Augment
+Experiment Files module, but may also be used by the vector clipping and
+mutation detection modules. The default <CODE>[global_variables]</CODE> section is
+blank.
+
+</P>
+<P>
+As an example, the following section defines the sequencing vector file for
+each sequence to be <CODE>m13mp18.vector</CODE> with <CODE>6249</CODE> and <CODE>41</CODE> as
+the cut site and primer site. Each sequence has a primer type of 1 (forward
+universal primer) and the template name is derived from the sequence name by
+taking the segment of the string preceding the full stop.
+
+</P>
+
+<PRE>
+[global_variables]
+set SF m13mp18.vector
+set SC 6249
+set SP 41
+set PR 1
+proc TN_com {} { global lines; return [lindex [split $lines(ID) .] 0] }
+</PRE>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

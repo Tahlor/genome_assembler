@@ -1,0 +1,129 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Conf-Trace File Location</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_176.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_178.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Conf-Trace File Location -->
+
+
+<H2><A NAME="SEC265" HREF="gap4_toc.html#SEC265">Trace File Location</A></H2>
+<P>
+<A NAME="IDX625"></A>
+<A NAME="IDX626"></A>
+
+</P>
+<P>
+Gap4 does not store the trace data within the gap4 database. Instead it stores
+the filename of the trace file. Usually the trace files are kept within the
+same directory as the gap4 database. If this is not the case
+gap4 needs to know where they are.
+
+</P>
+<P>
+To make sure that gap4 can still display the traces we need to specify any
+alternative locations where traces may be found. The "Trace File Location"
+command (which is available from the gap4 Options menu) performs this task. It
+brings up a dialogue asking for the directory names. If there is just one
+directory to specify, its name should be typed in. If there are several
+directories to search through, they must all be typed in, separated by the
+colon character (":"). To include a directory name that contains a colon, use
+a double colon.
+
+</P>
+<P>
+For example, on windows to specify two directories, use (eg)
+"<CODE>F::\tfiles1:G::\tfiles2</CODE>".
+
+</P>
+<P>
+In addition to specifying directories, RAWDATA may also be used to indicate
+that the trace files come from a variety of other sources using the
+general format SOURCETYPE=path. These can be combined with directories
+if desired. For example "<CODE>.:/trace_cache:TAR=/traces/archived.tar</CODE>".
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>TAR=filename.tar</CODE>
+<DD>
+<A NAME="IDX627"></A>
+ 
+Searches for the trace name in the Unix tar archive named
+<I>filename.tar</I>. 
+
+If <I>filename.tar.index</I> exists and is of the format created using
+the <CODE>index_tar</CODE> program then the trace name will be looked up in
+the index instead of sequentially scanning through the tar file. In
+order to speed up accessing of traces within the tar file a command
+line utility named <CODE>index_tar</CODE> may be used. This produces a text
+index containing the filenames held within the tar and their offsets
+within it. Programs will then use this index file to provide a fast
+way of accessing the trace. The syntax for <CODE>index_tar</CODE> is:
+<CODE>index_tar</CODE> <I>tar_filename</I> <CODE>&#62;</CODE>
+<I>tar_filename</I><CODE>.index</CODE>. (For example "<CODE>index_tar
+traces.tar &#62; traces.tar.index</CODE>".)
+
+<A NAME="IDX628"></A>
+<DT><CODE>SFF=filename.sff</CODE>
+<DD>
+Searches for the trace name in a 454 SFF archive named <I>filename.sff</I>. 
+SFF files have their own binary-sorted index which allows for random
+access.
+
+<A NAME="IDX629"></A>
+<DT><CODE>HASH=archive.hash</CODE>
+<DD>
+This method supersedes the TAR= accessor. Tar files may be "hashed"
+using the <CODE>hash_tar</CODE> tool. Similarly 454 SFF archives may be
+hashed using <CODE>hash_sff</CODE>. In theory any type of archive may be
+indexed as a ".hash" provided that the traces are stored
+uncompressed (or compressed only using their own methods, such as with
+ZTR) so that random access is possible within the archive.
+
+The Hash file contains a precomputed binary index of all the traces
+contained within it stored in such a way that random access is very
+fast.
+
+<A NAME="IDX630"></A>
+<DT><CODE>URL=url</CODE>
+<DD>
+This uses the external <CODE>wget</CODE> tool (<STRONG>not</STRONG> supplied as part of the
+Staden Package) to fetch a given url. Anywhere that <CODE>%s</CODE> occurs
+within the specified <I>url</I> will be replaced by the trace
+name. Hence, for example,
+<CODE>URL=http://trace.server.org/cgi-bin/lookup.pl?trace=%s</CODE> could be
+used to fetch named traces from a remote site. There are plans for
+such URL access to be made available via the Ensembl TraceArchive.
+</DL>
+
+<P>
+If the gap4 database has been opened with write-access this directory
+location will be stored as a database <CODE>RAWD</CODE> note
+(see section <A HREF="gap4_151.html#SEC223">Special Note Types</A>), which is read by gap4 when
+it opens the database. The demonstration data supplied with the package
+includes an example database (named DEMO.0) that has a RAWD note to specify
+that traces are fetched from a tar file within the same directory.
+
+</P>
+<P>
+An alternative way of specifying the trace file location is by setting the
+<CODE>RAWDATA</CODE> environment variable. On Unix and Windows NT this is
+straightforward (although system and shell specific). However on Windows 95
+this may prove difficult (and at least require a reboot), so manually setting
+the environment variable is no longer recommended.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_176.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_178.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

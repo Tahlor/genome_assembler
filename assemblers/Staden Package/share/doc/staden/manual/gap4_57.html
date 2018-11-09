@@ -1,0 +1,92 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Quality Values</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_56.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_58.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Quality Values -->
+
+
+<H3><A NAME="SEC68" HREF="gap4_toc.html#SEC68">Adjusting the Quality Values</A></H3>
+<P>
+<A NAME="IDX159"></A>
+<A NAME="IDX160"></A>
+<A NAME="IDX161"></A>
+<A NAME="IDX162"></A>
+
+</P>
+<P>
+Each base has its own quality value. Assembly will allow only
+values between 1 and 99 inclusive. A quality value of 0 means that this base
+should be ignored. A quality value of 100 means that this base is definitely
+correct and the consensus will be forced to be the same base type and will be
+given a consensus confidence of 100. If two conflicting bases both have a
+quality of 100 the consensus will be a dash with a confidence of 0.
+
+</P>
+<P>
+Newly added bases or replaced bases are assigned their own quality values. By
+default these are both 100. The "Set Default Confidence" option in the
+settings menu allows these values to be changed.
+
+</P>
+<P>
+Several keyboard commands are available to edit the quality value of an
+individual base. The '[' and ']' keys set the quality to 0 and 100
+repsectively. To increment or decrement the confidence of a base by 1 use
+Shift plus the Up and Down arrow keys. To increment or decrement by 10 use
+Control plus the Up and Down arrow keys. The editor will beep if you reach
+quality 0 or 100. Finally note that quality values can also be made visible by
+the use of grey scales for the sequence background colour. See section <A HREF="gap4_63.html#SEC115">Show Reading and Consensus Quality</A>.
+
+</P>
+<!-- NODE:Editor-Cutoffs -->
+
+
+<H3><A NAME="SEC69" HREF="gap4_toc.html#SEC69">Adjusting the Cutoff Data</A></H3>
+<P>
+<A NAME="IDX163"></A>
+<A NAME="IDX164"></A>
+<A NAME="IDX165"></A>
+
+</P>
+<P>
+The cutoff data is displayed by pressing the "Cutoffs"
+toggle at the top of the editor. The cutoff sequence will be
+displayed in grey. We call the boundary between the cutoff data and
+the used data the cutoff position. These positions can be shifted
+left or right for each end of the reading using the Meta Left-arrow
+and Meta Right-arrow keys respectively. As keyboards may not have a
+meta key, Control Left-arrow and Control Right-arrow also have the
+same effect. These key combinations adjust the cutoff positions by a
+single base at a time. They only work when the cursor is on the very
+first or very last "used" base, depending on which cutoff you wish
+to adjust.
+
+</P>
+<P>
+If large changes are required the cutoffs can be "zapped" to
+new positions using the "&#60;" and "&#62;" keys. To use these, place the
+editing cursor to the position required (which may be within the
+cutoff data or the used data) and press the "&#60;" key to set the left
+cutoff to the base between the cursor and the base leftwards of the
+cursor. Similarly "&#62;" sets the right cutoff to the base between the
+cursor and the base leftwards of the cursor. Note that many
+keyboards have "&#60;" and "&#62;" above the "," and "." keys. In this case
+you will need to press Shift in conjunction with "," and "." to
+perform the operations.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_56.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_58.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

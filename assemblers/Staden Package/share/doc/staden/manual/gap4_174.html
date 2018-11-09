@@ -1,0 +1,55 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Conf-Configure Menus</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_173.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_175.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Conf-Configure Menus -->
+
+
+<H2><A NAME="SEC262" HREF="gap4_toc.html#SEC262">Configuring Menus</A></H2>
+<P>
+<A NAME="IDX614"></A>
+<A NAME="IDX615"></A>
+<A NAME="IDX616"></A>
+
+</P>
+<P>
+When used for the first time
+gap4 will start up in beginner mode. What this means is that some of
+the less widely used options will not appear in the menus. The "Configure
+menus" command in the Options menu may be used to change between "beginner" and
+"expert" mode. In expert mode all the menu items will be displayed.
+
+</P>
+<P>
+To permanently set the menu level users select the appropriate level
+and press
+the "OK Permanent" button. This will save the menu level information to the
+<TT>`.gaprc'</TT> file in their home directory.
+
+</P>
+<P>
+If desired, other menu levels may be created by the package
+administrator. This is achieved by editing the
+<TT>`$STADENROOT/tables/gaprc_menu_full'</TT> file, changing the <CODE>MENU_LEVELS</CODE>
+definition and adding the appropriate labels to the end of each command. Each
+command specified in the menu file ends in a list of menu levels in which it
+is active. To make a command active for several levels, enclose the level
+identifiers in a Tcl list, such as <CODE>{m e}</CODE>. If this is missing,
+the command will be active at all menu levels.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_173.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_175.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

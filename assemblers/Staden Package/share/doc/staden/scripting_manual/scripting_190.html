@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Locking</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_189.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_191.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Locking -->
+
+
+<H2><A NAME="SEC251" HREF="scripting_toc.html#SEC251">Locking Mechanisms</A></H2>
+<P>
+<A NAME="IDX883"></A>
+
+</P>
+<P>
+When preparing to update data it is essential that a function checks whether
+other displays are currently accessing this data, and if so whether these
+displays are allowing the data to be modified.
+
+</P>
+<P>
+This is implemented with use of the REG_GET_LOCK and REG_SET_LOCK
+notifications. These notifications both both include a lock field within their
+structures. This is initially set to the mode of access desired (currently
+REG_LOCK_WRITE is the only one we support). The <CODE>contig_notify</CODE> call is
+then used to send this notification to all appropriate data callbacks. If a
+callback wishes to block the request to write it should clear this lock flag.
+
+</P>
+<P>
+The calling code then checks the returned status of the lock flag. If the
+REG_LOCK_WRITE bit is still set then it knows locking is allowed. In this case
+notification of the acceptance of this lock is sent around using the
+REG_SET_LOCK request. An example of the communication follows. To send the
+lock request we do:
+
+</P>
+
+<PRE>
+    reg_get_lock lg;
+
+    lg.job = REG_GET_LOCK;
+    lg.lock = REG_LOCK_WRITE;
+
+    contig_notify(io, contig, (reg_data *)&#38;lg);
+</PRE>
+
+<P>
+The default action of ignoring the REG_GET_LOCK request will allow the write
+operation to take place. The contig editor does not support updates of the
+contig that it is editing other than those made by itself, so it needs to
+block such locks. The callback procedure of the contig editor contains:
+
+</P>
+
+<PRE>
+    case REG_GET_LOCK:
+        /*
+         * We need exclusive access, so clear any write lock
+         */
+        if (jdata-&#62;glock.lock &#38; REG_LOCK_WRITE)
+            jdata-&#62;glock.lock &#38;= ~REG_LOCK_WRITE;
+
+        break;
+</PRE>
+
+<P>
+The calling code should now check the status of the lock and send a
+REG_SET_LOCK request if the lock was not blocked:
+
+</P>
+
+<PRE>
+    if (lg.lock &#38; REG_LOCK_WRITE) {
+        reg_set_lock ls;
+
+        ls.job = REG_SET_LOCK;
+        ls.lock = REG_LOCK_WRITE;
+
+        contig_notify(io, contig, (reg_data *)&#38;ls);
+
+        [ ... ]
+    }
+</PRE>
+
+<P>
+To simplify this procedure, the <CODE>contig_lock_write</CODE> function performs
+the above lock request and acknowledge protocol.
+
+</P>
+
+<PRE>
+int contig_lock_write(GapIO *io, int contig);
+
+Returns:  0 for success (write granted)
+         -1 for failure (write blocked)
+
+</PRE>
+
+<P>
+In some cases, where large amounts of data are modified in unpredictable
+fashion, it is easier to simply shut down all displays viewing the database
+before proceding. This is especially true of functions such as assembly where
+all contigs maybe modified. In this case we use the locking mechanism once
+more, except with a REG_QUIT call instead of REG_GET_LOCK. The same procedure
+of checking and clearing (if necessary) the lock flag is used. Once again, an
+example from the contig editor callback illustrates the procedure.
+
+</P>
+
+<PRE>
+    case REG_QUIT:
+        /*
+         * We are being asked to quit. We can only allow this is we
+         * haven't made changes.
+         */
+        if (_editsMade(db)) {
+            jdata-&#62;glock.lock &#38;= ~REG_LOCK_WRITE;
+        } else {
+            DBI_callback(db, DBCALL_QUIT, 0, 0, NULL);
+        }
+
+        break;
+</PRE>
+
+<P>
+The code above checks whether the editor has made any edits. If not the editor
+is shutdown, otherwise the REG_LOCK_WRITE flag is cleared.
+
+</P>
+<P>
+The <CODE>tcl_quit_displays</CODE> function can be used to perform the REG_QUIT
+locking procedure. Currently this is an interface to Tcl and no C interface,
+other than using the contig_notify with REG_QUIT, exists.
+See section <A HREF="scripting_194.html#SEC255">Tcl Interfaces</A>.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_189.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_191.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

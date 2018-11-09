@@ -1,0 +1,149 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Gap-Intro-Interface-CE</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Gap-Intro-Interface-CE -->
+
+
+<H3><A NAME="SEC13" HREF="gap4_toc.html#SEC13">Introduction to the Contig Editor</A></H3>
+
+<P>
+The gap4 Contig Editor is designed to allow rapid checking and editing of
+characters in assembled readings. Very large savings in time can be achieved
+by its sophisticated problem finding procedures which automatically direct the
+user only to the bases that require attention.  The following is a selection of
+screenshots to give an overview of its use.
+
+</P>
+
+<p>
+<a href="contig_editor.screen,6in.png.html"><img src="contig_editor.screen,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+The figure above shows a screendump from the Contig Editor
+which contains segments of aligned
+readings, their consensus and a six phase translation. The Commands menu
+is also shown.  The main components are: the controls at
+the top; reading names on the left; sequences to their right; and status lines
+at the bottom. Some of the reading names are written in light grey which
+indicates that their traces/chromatograms are being displayed (in
+another window, see below).
+
+</P>
+<P>
+One reading name is written with inverse colours, which indicates that it
+has been selected by the user. To the left of each reading name is the reading
+number, which is negative for readings which have been reversed and complemented.
+The first of the status lines, labelled "Strands", is showing a
+summary of strand coverage. The left half of the segment of sequence
+being displayed is covered
+only by readings from one strand of the DNA, but the right half contains data
+from both strands.
+
+</P>
+<P>
+Along the top of the editor window is a row of command buttons
+and menus. The rightmost pair of buttons provide help
+and exit.  To their left are two menus, one of which is currently in use.  To
+the left of this is a button which initially displays a search dialogue,
+and then pressing it again, will perform the selected search. 
+Further left is the undo button:
+each time the user clicks on this box the program reverses the previous edit
+command.  The next button, labelled "Cutoffs" is used to toggle between
+showing or hiding the reading data that is of poor quality or is vector
+sequence. In this figure it has been activated, showing the poor quality
+data in light grey. Within this, sequencing vector is displayed in
+lilac. The next button to the left is the Edit Modes menu
+which allows users to select which editing commands are enabled. The
+next command toggles between insert and replace and so governs the effect of
+typing in the edit window.
+
+</P>
+<P>
+One of the readings contains a yellow tag, and elsewhere some bases are
+coloured red, which indicates they are of poor quality.  The Information Line
+at the bottom of the window can show 
+information about readings, annotations and
+base calls. In this case it is showing information about the reliability of
+the base beneath the editing cursor.
+
+</P>
+
+<p>
+<a href="contig_editor_grey_scale,6in.png.html"><img src="contig_editor_grey_scale,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+A better way of displaying the accuracy of bases is to shade their
+surroundings so that the lighter the background the better the data.
+In the figure above, this grey scale encoding of the base accuracy or
+confidence has been activated for bases in the readings and the
+consensus. This
+screenshot also shows the Contig Editor displaying disagreements and edits.
+Disagreements between the consensus and individual base calls are shown
+in dark green. Notice that these disagreements are in poor
+quality base calls. Edits (here they are all pads) are shown with a
+light green background. When they are present, replacements/insertions
+are shown in pink, deletions in red and confidence value changes in purple.
+The consensus confidence takes into account several factors, including
+individual base confidences, sequencing chemistry, and strand coverage.
+It can be seen that the consensus for 
+the section covered by data from only one strand has been calculated to
+be of lower confidence than the rest. The Status Line includes two
+positions marked with exclamation marks (!) which means that the
+sequence is covered by data from both strands, but that the consensus
+for each of the two strands is different.
+The Information Line at the bottom of the window is showing
+information about the reading under the cursor: its name, number,
+clipped length, full length, sequencing vector and BAC clone name.
+
+</P>
+
+<p>
+<a href="contig_editor.traces,6in.png.html"><img src="contig_editor.traces,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+The Contig Editor can rapidly display the traces for any reading or set
+of readings. The number of rows and columns of traces 
+displayed can be set by the user. The traces scroll in register with one
+another, and with the cursor in the Contig Editor. Conversely, the
+Contig Editor cursor can be scrolled by the trace cursor. 
+A typical view is shown above.
+
+</P>
+<P>
+This figure is an example of the Trace Display showing three traces
+from readings in the previous two Contig Editor screendumps.
+These are the best two traces from each strand plus a trace from a
+reading which contains a disagreement with the consensus. The program
+can be configured to automatically 
+bring up this combination of traces for each
+problem located by the "Next search" option.
+The histogram or vertical bars plotted top down show the confidence
+value for each base call. The reading number, together with the direction of
+the reading (+ or -) and the chemistry by which it was determined, is given at
+the top left of each sub window.  There are three buttons ('Info', 'Diff', and
+'Quit') arranged vertically with X and Y scale bars to their right. The Info
+button produces a window like the one shown in the bottom right hand
+corner. The Diff button is mostly used for mutation detection, and causes a
+pair of traces to be subtracted from one another and the result plotted, hence
+revealing their differences.  (see section <A HREF="gap5_24.html#SEC52">Traces</A>).
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

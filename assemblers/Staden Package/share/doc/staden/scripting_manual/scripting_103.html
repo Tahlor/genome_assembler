@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Edits</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_102.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_104.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Edits -->
+
+
+<H4><A NAME="SEC113" HREF="scripting_toc.html#SEC113">Editing Commands</A></H4>
+<P>
+<A NAME="IDX374"></A>
+<A NAME="IDX375"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>transpose_left</CODE></VAR>
+<DD>
+<A NAME="IDX376"></A>
+ <A NAME="IDX377"></A>
+ 
+<DT><VAR><CODE>transpose_right</CODE></VAR>
+<DD>
+        Moves a base in a sequence either left or right one character. Does
+        not work on the consensus sequence. Only pads can be moved unless the
+        appropriate superedit mode is enabled.
+
+<A NAME="IDX378"></A>
+<A NAME="IDX379"></A>
+<A NAME="IDX380"></A>
+<A NAME="IDX381"></A>
+<DT><VAR><CODE>extend_left</CODE></VAR>
+<DD>
+<DT><VAR><CODE>extend_right</CODE></VAR>
+<DD>
+<DT><VAR><CODE>zap_left</CODE></VAR>
+<DD>
+<DT><VAR><CODE>zap_right</CODE></VAR>
+<DD>
+        Adjusts the current left or right cutoff for a sequence. The
+        <CODE>extend_</CODE> commands move the cutoff by a single base and require
+        the editing cursor to be at the appropriate end of the used data. The
+        <CODE>zap_</CODE> commands set the appropriate end of the used data to be
+        the current cursor position.
+
+<A NAME="IDX382"></A>
+<A NAME="IDX383"></A>
+<DT><VAR><CODE>delete_key</CODE></VAR>
+<DD>
+<DT><VAR><CODE>delete_left_key</CODE></VAR>
+<DD>
+        Delete comes in two modes. Both delete the base to the left of the
+        editing cursor. <CODE>delete_key</CODE> then moves the sequence to the right
+        and the editing cursor left by one base to fill the removed base.
+        <CODE>delete_left_key</CODE> moves the sequence to the left of the editing
+        cursor right by one base, and hence changes the sequence start
+        position too. Typically the <KBD>DEL</KBD> key is bound to
+        <CODE>delete_key</CODE> and <KBD>CTRL-DEL</KBD> is bound to
+        <CODE>delete_left_key</CODE>.
+
+<A NAME="IDX384"></A>
+<DT><VAR><CODE>edit_key</CODE> character</VAR>
+<DD>
+        Other general key presses. Typically any other key press is bound to
+        this call, which then handles the actual editing or replacing of
+        bases. The key character should be passed over as an argument.
+
+<A NAME="IDX385"></A>
+<DT><VAR><CODE>set_confidence</CODE> value</VAR>
+<DD>
+        Sets the confidence value of a base to <I>value</I>. In the current
+        implementation only values of 0 and 100 are allowed.
+
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_102.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_104.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,110 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Eba</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-eba -->
+
+
+<H1><A NAME="SEC23" HREF="manpages_toc.html#SEC23">Eba</A></H1>
+<P>
+<A NAME="IDX4"></A>
+
+
+<H2><A NAME="SEC24" HREF="manpages_toc.html#SEC24">NAME</A></H2>
+
+<P>
+eba -- Estimates Base Accuracy in an SCF or ZTR file
+
+</P>
+
+
+<H2><A NAME="SEC25" HREF="manpages_toc.html#SEC25">SYNOPSIS</A></H2>
+
+<P>
+<CODE>eba</CODE> [<I>trace_file</I>]
+
+</P>
+
+
+<H2><A NAME="SEC26" HREF="manpages_toc.html#SEC26">DESCRIPTION</A></H2>
+
+<P>
+<CODE>Eba</CODE> will calculate numerical estimates of base accuracy for each
+base in an SCF or ZTR file. The figures calculated should not be considered as
+reliable and better values can be obtained from phred or ATQA.
+
+</P>
+<P>
+The method employed by eba to estimate the base accuracies performs the
+following calculation for each base. Calculate the area under the peaks
+for each base type. Divide the area under the called base by the largest
+area under the other three bases. From the 2002 release these values are
+normalised to the phred scale (this was achieved by comaring the
+original eba values and phred values for 4.6 million base calls of
+Sanger Centre data).
+
+</P>
+<P>
+With no filename as an argument eba reads from standard input and writes
+to standard output. This enables eba to be used as a filter, or to
+estimate base accuracies for unwritable files. If a file is specified on
+the command line then the accuracy figures will be written to this file.
+
+</P>
+
+
+<H2><A NAME="SEC27" HREF="manpages_toc.html#SEC27">EXAMPLES</A></H2>
+
+<P>
+To write base accuracy figures to an SCF file named <CODE>e04f10.s1SCF</CODE>.
+
+</P>
+
+<PRE>
+<CODE>eba e04f10.s1SCF</CODE>
+</PRE>
+
+<P>
+To write base accuracy figures on the original eba scale to an SCF file 
+named <CODE>e04f10.s1SCF</CODE>.
+
+</P>
+
+<PRE>
+<CODE>eba -old_scale e04f10.s1SCF</CODE>
+</PRE>
+
+<P>
+To write base accuracy figures to a ZTR file named <CODE>e04f10.s1.ztr</CODE>
+in another users directory, and to store the updated file in the
+current directory:
+
+</P>
+
+<PRE>
+<CODE>eba &#60; ~user/e04f10.s1.ztr &#62; e04f10.s1.ztr</CODE>
+</PRE>
+
+
+
+<H2><A NAME="SEC28" HREF="manpages_toc.html#SEC28">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

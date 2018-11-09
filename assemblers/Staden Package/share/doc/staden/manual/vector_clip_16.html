@@ -1,0 +1,63 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from vector_clip.htmlinfo on 25 April 2016 -->
+
+<TITLE>Vector clipping - Screen_Seq-Examples</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Screen_Seq-Examples -->
+
+
+<H2><A NAME="SEC18" HREF="vector_clip_toc.html#SEC18">Examples</A></H2>
+
+<P>
+Screen the readings whose names are stored in fofn against a batch of
+possible contaminant sequences whose names are stored in vnames. Write
+the names of the readings that pass to file p and those that fail to
+file f. Increase the maximum sequence length to 5000,000 characters and
+require a minimum match of 20.
+
+</P>
+
+<PRE>
+<CODE>screen_seq -i fofn -s vnames -p p -f f -l20 -m5000000 </CODE>
+</PRE>
+
+<P>
+Screen the single reading stored in xpg33.g1 against a batch of
+possible contaminant sequences whose names are stored in vnames. If the
+reading does not match write its name to file p, otherwise to
+file f. Increase the maximum sequence length to 5000,000 characters and
+require a minimum match of 20.
+
+</P>
+
+<PRE>
+<CODE>screen_seq -I xpg33.g1 -s vnames -p p -f f -l20 -m5000000 </CODE>
+</PRE>
+
+<P>
+Screen the readings whose names are stored in fofn against a single
+possible contaminant sequence stored in ecoli.seq. Write
+the names of the readings that pass to file pass and those that fail to
+file fails. Increase the maximum sequence length to 5000,000 characters and
+require minimum match of 20.
+
+</P>
+
+<PRE>
+<CODE>screen_seq -i fofn -S ecoli.seq -p pass -f fails -l20 -m5000000 </CODE>
+</PRE>
+
+<HR>
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

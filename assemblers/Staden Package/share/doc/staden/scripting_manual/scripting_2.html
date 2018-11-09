@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Tk_utils Library</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Tk_utils -->
+
+
+<H1><A NAME="SEC3" HREF="scripting_toc.html#SEC3">Tk_utils Library</A></H1>
+<P>
+<A NAME="IDX1"></A>
+<A NAME="IDX2"></A>
+<A NAME="IDX3"></A>
+<A NAME="IDX4"></A>
+<A NAME="IDX5"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="scripting_3.html#SEC4">Keyed Lists</A>
+<LI><A HREF="scripting_4.html#SEC5">Runtime Loading of Libraries.</A>
+<LI><A HREF="scripting_6.html#SEC7">Default Files</A>
+<LI><A HREF="scripting_9.html#SEC10">Specifying Menu Configurations</A>
+<LI><A HREF="scripting_17.html#SEC18">Controlling Menu Behaviour</A>
+<LI><A HREF="scripting_24.html#SEC25">Common Dialogue Components</A>
+<LI><A HREF="scripting_25.html#SEC26">Text Output and Errors</A>
+<LI><A HREF="scripting_38.html#SEC39">Other Utility Commands</A>
+</UL>
+
+<P>
+The <I>tk_utils</I> library provides basic Tcl and Tk extensions suitable for all
+applications. The common components of the programs, such as the text output
+display, keyed lists, and the configuration file handling are contained within
+this library.
+
+</P>
+<P>
+The <CODE>stash</CODE> executable is a modified version of <CODE>wish</CODE> that contains
+these commands. When not using <CODE>stash</CODE> the Tcl load command must be used
+to dynamically link the library. From wish it is necessary to use the
+following startup code:
+
+</P>
+
+<PRE>
+lappend auto_path $env(TKUTILS_LIBRARY)
+catch {load libmisc.so}
+catch {load libread.so}
+load libtk_utils.so
+</PRE>
+
+<P>
+The above assumes that the <CODE>TKUTILS_LIBRARY</CODE> and <CODE>LD_LIBRARY_PATH</CODE>
+environment variables have been set correctly. These are automatically done if
+the package initialisation files (<TT>`staden.profile'</TT> or
+<TT>`staden.login'</TT>) are sourced.
+
+</P>
+<P>
+Once either <CODE>stash</CODE> or a boot-strapped <CODE>wish</CODE> is running the
+tk_utils library code is available.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

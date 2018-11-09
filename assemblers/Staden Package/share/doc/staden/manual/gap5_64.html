@@ -1,0 +1,119 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Con-Evaluation</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_63.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_65.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-Evaluation -->
+
+
+<H2><A NAME="SEC102" HREF="gap5_toc.html#SEC102">List Consensus Confidence</A></H2>
+<P>
+<A NAME="IDX175"></A>
+<A NAME="IDX176"></A>
+<A NAME="IDX177"></A>
+<A NAME="IDX178"></A>
+<A NAME="IDX179"></A>
+
+</P>
+<P>
+The Confidence Value consensus algorithm 
+(see section <A HREF="gap5_62.html#SEC100">Consensus Calculation Using Confidence Values</A>)
+produces a consensus
+sequence for which the expected error rate for each base is known.
+The option described here 
+(which is available from the gap4 View menu)
+uses this information to calculate 
+the expected number of errors in a particular consensus sequence and
+to tabulate them.
+
+</P>
+<P>
+The decibel type scale introduced in the Phred program uses the formula
+-10xlog10(error_rate) to produce confidence values for the base calls. A
+confidence value of 10 corresponds to an error rate of 1/10; 20 to
+1/100; 30 to 1/1000; etc.
+
+</P>
+<P>
+So for example, if 50 bases in the consensus had confidence
+10, we would expect those 50 bases (with an error rate of 1/10) to
+contain 5 errors; and if 200 bases had confidence 20, we would expect
+them to contain 2 errors. If these 50 bases with confidence 10, and 200
+bases with confidence 20 were the least accurate parts of the consensus,
+they are the bases which we should check and edit first. In so doing we
+would be dealing with the places most likely to be wrong, and would
+raise the confidence of the whole consensus. The output produced by List
+Confidence shows the effect of working through all the lowest quality
+bases first, until the desired level of accuracy is reached. To do this
+it shows the cumulative number of errors that would be fixed by checking
+every consensus base with a confidence value less than a
+particular threshold.
+
+</P>
+<P>
+The List Confidence option is available from within the Commands menu of
+the Contig Editor and the main gap4 View menu. From the main menu
+the dialogue simply allows selection of one or more contigs. Pressing OK then
+produces a table similar to the following:
+
+</P>
+
+<PRE>
+Sequence length = 164068 bases.
+Expected errors =  168.80 bases (1/971 error rate).
+
+Value   Frequencies     Expected  Cumulative    Cumulative      Cumulative
+                        errors    frequencies   errors          error rate
+--------------------------------------------------------------------------
+  0          0             0.00         0          0.00         1/971
+  1          1             0.79         1          0.79         1/976
+  2          0             0.00         1          0.79         1/976
+  3          3             1.50         4          2.30         1/985
+  4         30            11.94        34         14.24         1/1061
+  5          2             0.63        36         14.87         1/1065
+  6        263            66.06       299         80.94         1/1867
+  7        151            30.13       450        111.06         1/2841
+  8        164            25.99       614        137.06         1/5168
+  9         96            12.09       710        149.14         1/8344
+ 10         80             8.00       790        157.14         1/14069
+</PRE>
+
+<P>
+The output above states that there are 164068 bases in the consensus sequence
+with an expected 169 errors (giving an average error rate of one in 971).
+Next it lists each confidence value along with its frequency of occurrence and
+the expected number of errors (as explained above, frequency x
+error_rate).  For any particular confidence value the
+cumulative columns state: how many bases in the sequence have the same or
+lower confidence, how many errors are expected in those bases, and the
+new error rate if all these bases were checked and all the errors fixed.
+
+</P>
+<P>
+Above it states that there are 790 bases with confidence values of
+10 or less, and estimates there to be 157 errors in those 790 bases. 
+As we expect there to be about 169 errors in the whole consenus 
+this implies that manually checking
+those 790 bases would leave only 12 undetected errors. Given that the sequence
+length is 164068 bases this means an average error rate of 1 in 14069. 
+It is important to note that by using this editing strategy, this error
+rate  would be achieved by checking only 0.48% of the total number of
+consensus bases. This strategy is realised by use of the consensus
+quality search in the gap4 Contig Editor
+(see section <A HREF="gap5_21.html#SEC41">Search by Consensus Quality</A>).
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_63.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_65.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

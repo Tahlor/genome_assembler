@@ -1,0 +1,73 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - List-Special</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_69.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_71.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:List-Special -->
+
+
+<H2><A NAME="SEC108" HREF="gap5_toc.html#SEC108">Special List Names</A></H2>
+<P>
+<A NAME="IDX190"></A>
+<A NAME="IDX191"></A>
+<A NAME="IDX192"></A>
+<A NAME="IDX193"></A>
+<A NAME="IDX194"></A>
+
+</P>
+<P>
+Some lists are automatically updated or are generated on-the-fly as needed.
+The lists named "contigs" and "readings" correspond to the currently selected
+contigs in the contig selector window and the currently selected readings in
+the template displays. Note that lists (with any names) can also be created
+from selected items in the contig editor.
+
+</P>
+<P>See section <A HREF="gap4_63.html#SEC120">Set Output List</A>.
+The "allcontigs" and "allreadings" lists are created as needed and always
+contain an identifier for every contig and every reading identifier.
+
+</P>
+<P>
+Because of the way the lists are implemented, as is outlined below,
+there are some useful "tricks" that can be employed.
+A list name consisting of a contig identifier surrounded by square
+brackets ('[' and ']') will cause the creation of a list containing all of the
+readings within that contig. For example, to use the Extract Readings
+option (see section <A HREF="gap4_132.html#SEC203">Extract Readings</A>)
+to extract all the readings from
+contig 'xb54f8.s1', the list name given in the Extract Readings dialogue
+would be '[xb54f8.s1]'.
+
+</P>
+<P>
+A list name surrounded by curly brackets ('{' and '}') will cause the
+creation of a list containing all of the readings in the contigs
+named in the
+specified list name. So '{contigs}' is equivalent to all the readings
+in the
+contigs contained in the 'contigs' list. Hence the 'allreadings' list is
+identical to '{allcontigs}'.
+
+</P>
+<P>
+These tricks can be used anywhere where a list name is required except for
+editing and deletion of lists. As a final example,
+to produce a file of filenames for the
+currently selected contigs, save the list named '{contigs}' to a file.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_69.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_71.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

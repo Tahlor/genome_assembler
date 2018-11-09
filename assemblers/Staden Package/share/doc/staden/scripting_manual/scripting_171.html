@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - tag_shift_for_delete</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_170.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_172.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:tag_shift_for_delete -->
+
+
+<H2><A NAME="SEC190" HREF="scripting_toc.html#SEC190">tag_shift_for_delete</A></H2>
+<P>
+<A NAME="IDX755"></A>
+<A NAME="IDX756"></A>
+<A NAME="IDX757"></A>
+<A NAME="IDX758"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void tag_shift_for_delete(
+        GapIO  *io,
+        int     N,
+        int     pos);
+</PRE>
+
+<P>
+This function shifts or shrinks tags by a single base. The purpose is to
+handle cases where we need to delete a base within a sequence. An deletion at
+position <VAR>pos</VAR> will mean moving every tag to the right of this position
+one base leftwards.  A tag that spans position <VAR>pos</VAR> will have it's length
+decreased by one.  If <VAR>N</VAR> is positive it specifies the reading number to
+operate on, otherwise it specifies the contig number (negated).
+
+</P>
+<P>
+NOTE: This function <STRONG>does not</STRONG> work correctly for complemented
+readings. Also, it does not remove the tag when a deletion shrinks it's size
+to 0. It is planned to fix these problem by creating a new function that
+operates in a more intelligent fashion. To work around this problem, use logic
+similar to the example in <CODE>tag_shift_for_insert</CODE>.
+See section <A HREF="scripting_170.html#SEC189">tag_shift_for_insert</A>.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_170.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_172.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

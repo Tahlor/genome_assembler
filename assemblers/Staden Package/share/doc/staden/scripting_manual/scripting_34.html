@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Output-vfuncheader</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_33.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_35.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Output-vfuncheader -->
+
+
+<H3><A NAME="SEC35" HREF="scripting_toc.html#SEC35">vfuncheader</A></H3>
+<P>
+<A NAME="IDX80"></A>
+<A NAME="IDX81"></A>
+
+</P>
+<P>
+<A NAME="IDX82"></A>
+
+<PRE>
+<CODE>#include &#60;text_output.h&#62;</CODE>
+<CODE>void vfuncheader(char *fmt, ...);</CODE>
+</PRE>
+
+<P>
+This C function displays the name of a function in the output window. The
+function header consists of ruler lines, the date and time, and the formatted
+string specified by the <VAR>fmt</VAR> and subsequent arguments.  These arguments
+should be specified in the standard <CODE>printf</CODE> style. The header, after
+formatting, must be less than 8192 bytes long.
+
+</P>
+<P>
+<A NAME="IDX83"></A>
+
+<PRE>
+<CODE>vfuncheader</CODE> <VAR>title</VAR>
+</PRE>
+
+<P>
+This is the Tcl interface to the vfuncheader C function. It takes a single
+argument named <VAR>title</VAR> and uses this as the function title. The <VAR>title</VAR>
+must be less 8192 bytes long.
+
+</P>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_33.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_35.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

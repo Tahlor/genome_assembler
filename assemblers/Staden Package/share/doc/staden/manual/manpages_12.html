@@ -1,0 +1,80 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Hash_exp</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-hash_exp -->
+
+
+<H1><A NAME="SEC66" HREF="manpages_toc.html#SEC66">Hash_exp</A></H1>
+<P>
+<A NAME="IDX11"></A>
+
+
+<H2><A NAME="SEC67" HREF="manpages_toc.html#SEC67">NAME</A></H2>
+
+<P>
+hash_exp -- produces an index for a file of concatenated experiment files.
+
+</P>
+
+
+<H2><A NAME="SEC68" HREF="manpages_toc.html#SEC68">SYNOPSIS</A></H2>
+
+<P>
+<CODE>hash_exp</CODE> <I>exp_archive</I>
+
+</P>
+
+
+<H2><A NAME="SEC69" HREF="manpages_toc.html#SEC69">DESCRIPTION</A></H2>
+
+<P>
+<CODE>hash_exp</CODE> adds a hash-table index on to the end of a
+concatenated file of experiment files. It's purpose is simply to
+provide random access to experiment files while also reducing the
+number of separate disk files.
+
+</P>
+<P>
+The <CODE>hash_list</CODE> program will list the contents of the hashed
+archive. The entry names stored in the archive are taken from the
+<CODE>ID</CODE> lines in the experiment files rather than their original
+filenames.
+
+</P>
+<P>
+Within Gap4 you can assemble a hashed experiment file archive and it will
+automatically assemble all files within it. For finer grain control
+use <CODE>hash_list</CODE> to produce a file of filenames and then edit this
+accordingly before supplying it as a "fofn" to gap4. In this case
+you will also need to configure Gap4 to set the <CODE>EXP_PATH</CODE>
+environment variable to contain <CODE>HASH=</CODE><I>exp_archive_filename</I>.
+
+</P>
+
+
+<H2><A NAME="SEC70" HREF="manpages_toc.html#SEC70">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_18.html#SEC40">ExperimentFile(4)</A>.
+
+</P>
+<P>See section <A HREF="manpages_14.html#SEC77">hash_list(1)</A>.
+<CODE>Read</CODE>(4)
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

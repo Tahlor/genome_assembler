@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-io_read_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_122.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_124.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-io_read_seq -->
+
+
+<H3><A NAME="SEC142" HREF="scripting_toc.html#SEC142">io_read_seq</A></H3>
+<P>
+<A NAME="IDX620"></A>
+<A NAME="IDX621"></A>
+<A NAME="IDX622"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_read_seq(
+        GapIO  *io,
+        int     N,
+        int2   *length,
+        int2   *start,
+        int2   *end,
+        char   *seq,
+        int1   *conf,
+        int2   *opos);
+</PRE>
+
+<P>
+This function loads from memory and disk information on gel readings and
+stores this in the paramaters passed over.
+
+</P>
+<P>
+The reading number to read should be passed as <VAR>N</VAR>. The integers pointed
+to by <VAR>length</VAR>, <VAR>start</VAR> and <VAR>end</VAR> pointers are then written to
+with the total length (<VAR>GReadings.length</VAR>), the last base number (counting
+from 1) of the left hand cutoff data, and the first base number of te right
+hand cutoff data.
+
+</P>
+<P>
+The sequence, confidence and original position data is then loaded and stored
+in the address pointed to by <VAR>seq</VAR>, <VAR>conf</VAR> and <VAR>opos</VAR> respectively.
+This is expected to be allocated to the correct size by the caller of this
+function. Either or both of <VAR>conf</VAR> and <VAR>opos</VAR> can be NULL, in which
+case the data is not loaded or stored. <VAR>seq</VAR> must always be non NULL.
+
+</P>
+<P>
+This function returns 0 for success and non zero for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_122.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_124.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

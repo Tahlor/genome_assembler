@@ -1,0 +1,64 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Cursor</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_54.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_56.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Cursor -->
+
+
+<H3><A NAME="SEC66" HREF="gap4_toc.html#SEC66">Moving the editing cursor</A></H3>
+<P>
+<A NAME="IDX126"></A>
+<A NAME="IDX127"></A>
+
+</P>
+<P>
+Nearly all editing operations happen at the location of the editing cursor.
+This cursor appears as a solid block. The simplest mechanism of moving the
+cursor is simply use the left mouse button. Alternatively the following keys
+can be used.
+
+</P>
+
+<PRE>
+ Left arrow or Control b        Move left one base
+ Right arrow or Control f       Move right one base
+ Up arrow or Control p          Move up one base
+ Down arrow or Control n        Move down one base
+ Control a                      Move editing cursor to start of used
+ Control e                      Move editing cursor to end of used
+ Meta a                         Move editing cursor to start of cutoff
+ Meta e                         Move editing cursor to end of cutoff
+ Meta &#60;                         Move editing cursor to start of contig
+ Meta &#62;                         Move editing cursor to end of contig
+</PRE>
+
+<P>
+The difference between the last four Control and Meta key combinations
+depends on whether "Cutoffs" is set. If it is, then "Control a"
+will move to the start of the used data for this reading and "Meta a"
+will move to the start of the cutoff data for this reading. Otherwise
+they both move to the same point (the used data start). Similarly for
+"Control e" and "Meta e". The action of these four key presses in the
+consensus line is simply to move to the start or end of the entire
+consensus sequence.
+
+</P>
+<P>
+The cursor can be placed on any sequence data shown in the editor.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_54.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_56.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-find_long_gels</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_80.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_82.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-find_long_gels -->
+
+
+<H2><A NAME="SEC89" HREF="scripting_toc.html#SEC89">find_long_gels</A></H2>
+<P>
+<A NAME="IDX278"></A>
+<A NAME="IDX279"></A>
+<A NAME="IDX280"></A>
+
+</P>
+
+<PRE>
+<CODE>find_long_gels</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-avg_len       <I>length:integer(500)</I>?
+</PRE>
+
+<P>
+This command searches for places where rerunning a reading as a long gel will
+solve a problem. The function returns no value but will generate a Tcl error
+if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to search. The <I>{contig start end}</I>
+syntax may be used for an identifier to search only a region of the
+contig, otherwise all of it is searched.
+
+<P>
+<A NAME="IDX281"></A>
+<DT><VAR><CODE>-avg_len</CODE> length</VAR>
+<DD>
+This specifies the length expected for a long reading. This is used to
+determine which readings are suitable for rerunning and the amount of
+coverage available. The default is 500 base pairs.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_80.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_82.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

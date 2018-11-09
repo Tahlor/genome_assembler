@@ -1,0 +1,74 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-Extract Seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_29.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_31.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-Extract Seq -->
+
+
+<H2><A NAME="SEC36" HREF="pregap4_toc.html#SEC36">Extract Sequence</A></H2>
+<P>
+<A NAME="IDX53"></A>
+<A NAME="IDX54"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module uses the <CODE>extract_seq</CODE> program to extract the sequence
+information from binary trace files, Experiment files, or from the old
+Staden format plain files. The output contains the sequences split onto
+lines of at most 60 characters each, in plain or fasta format. The input
+files are passed unchanged onto subsequent modules.
+<P>
+
+<DT><STRONG>Option: Output only the good sequence</STRONG>
+<DD>
+    When reading an experiment file or trace file containing clip marks, output
+    only the good sequence which is contained within the boundaries marked
+    by the <CODE>QL</CODE>, <CODE>QR</CODE>, <CODE>SL</CODE>, <CODE>SR</CODE>, <CODE>CL</CODE>, <CODE>CR</CODE>
+    and <CODE>CS</CODE> line types.
+<P>
+
+<DT><STRONG>Option: Consider cosmid as good sequence</STRONG>
+<DD>
+    When the <CODE>Output only the good sequence</CODE> option is specified
+    this controls whether the cosmid sequence should be considered
+    good.
+<P>
+
+<DT><STRONG>Option: Output in fasta format</STRONG>
+<DD>
+    Specifies that the output should be in fasta format rather than
+    plain text.
+<P>
+
+<DT><STRONG>Option: Output in one file only</STRONG>
+<DD>
+    If this option is selected then the output from every sequence is
+    sent to one file. This is best used with the
+    <CODE>Output in fasta format</CODE> option selected, and is useful for
+    feeding into BLAST searches, for example. The file to write to is
+    specified in the <CODE>File name</CODE> filed.
+
+    If this option is unselected then the output is sent to separate
+    files, one per sequence. The output files have the same name as
+    the input files, except with an extra suffix specified in the
+    <CODE>File name suffix</CODE> field.
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_29.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_31.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

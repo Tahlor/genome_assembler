@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-add_tags</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_60.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_62.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-add_tags -->
+
+
+<H2><A NAME="SEC68" HREF="scripting_toc.html#SEC68">add_tags</A></H2>
+<P>
+<A NAME="IDX202"></A>
+<A NAME="IDX203"></A>
+<A NAME="IDX204"></A>
+
+</P>
+
+<PRE>
+<CODE>add_tags</CODE>
+ -io            <I>io_handle:integer</I>
+ -tags          <I>tag_list:strings</I>
+</PRE>
+
+<P>
+This command adds a series of annotations to readings and contigs within the
+database.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-tags</CODE> tag_list</VAR>
+<DD>
+This specifies the list of annotations to add. The format of <I>tag_list</I> is
+as a Tcl list of tag items, each of the format:
+
+<I>reading_number tag_type direction start</I><CODE>..</CODE><I>end comment_lines</I>
+
+If the <I>reading_number</I> is negative the tag is added to the consensus of the
+contig numbered -<I>reading_number</I>. The <I>tag_type</I> should be the four
+character tag type. The <I>direction</I> should be one of "+", "-" or "=" (both).
+The <I>start</I> and <I>end</I> specify the inclusive range of bases the annotation
+covers. These count from 1 in the original orientation of the sequence. The
+<I>comment_lines</I> hold the text for the annotation.  Several lines may be
+included.
+</DL>
+
+<P>
+The following example adds two tags. The first is to reading #12 from
+position 10 to 20 inclusive. The second is to contig #1.
+
+</P>
+
+<PRE>
+set t "{12 COMM + 10..20 comment} {-1 REPT = 22..23 multi-line\ncomments}"
+add_tags -io $io -tag_list $t
+</PRE>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_60.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_62.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

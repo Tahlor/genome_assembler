@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-find_probes</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_83.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_85.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-find_probes -->
+
+
+<H2><A NAME="SEC92" HREF="scripting_toc.html#SEC92">find_probes</A></H2>
+<P>
+<A NAME="IDX291"></A>
+<A NAME="IDX292"></A>
+<A NAME="IDX293"></A>
+
+</P>
+
+<PRE>
+<CODE>find_probes</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-min_size      <I>length:integer(15)</I>?
+?-max_size      <I>length:integer(19)</I>?
+?-max_pmatch    <I>fraction:float(90.0)</I>?
+?-from          <I>position:integer(10)</I>?
+?-to            <I>position:integer(100)</I>?
+?-vectors       <I>filename:string()</I>?
+</PRE>
+
+<P>
+This command performs the Gap4 "Suggest Probes" function. It searches for
+unique sequences at the ends of contigs suitable for probing clone
+libraries to pick overlapping sequences and hence to extend contigs.  The
+command returns a newline separated list of probes in the form
+"<CODE>Contig</CODE> <I>ident</I> <CODE>position</CODE> <I>int</I> <CODE>Tm</CODE> <I>int</I>
+<CODE>sequence</CODE> <I>string</I>".
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to use. Only the contig identifier is
+currently used, although the syntax specifying start and end ranges is valid.
+
+<P>
+<DT><VAR><CODE>-min_size</CODE> length</VAR>
+<DD>
+<DT><VAR><CODE>-max_size</CODE> length</VAR>
+<DD>
+These specify an inclusive range of the allowed lengths of probes chosen.
+The defaults are <I>min_size</I> of 15 and <I>max_size</I> of 19.
+
+<P>
+<DT><VAR><CODE>-max_pmatch</CODE> fraction</VAR>
+<DD>
+Each potential probe sequence is comparared against all contig sequences
+and, optionally, several vector sequences. This option specifies the
+maximum percentage match between the probe and the comparison sequences.
+Only sequences with no matches above this percentage match are considered
+unique.  sequences.  The default is 90.0.
+
+<P>
+<DT><VAR><CODE>-from</CODE> position</VAR>
+<DD>
+<DT><VAR><CODE>-to</CODE> position</VAR>
+<DD>
+These specify the area in which to look for probes as an offset from the
+ends of the contigs. The defaults are <I>from</I> 10 <I>to</I> 100.
+
+<P>
+<DT><VAR><CODE>-vectors</CODE> filename</VAR>
+<DD>
+This specifies a file of vector filenames. NB: This will possibly be changed
+to a Tcl list of vector filenames. The uniqueness search will then also check
+the vector files for matches. The vector files can be in any format readable
+by the <I>seq_utils</I> library (currently Staden, EMBL, CODATA, GENBANK and
+FASTA). The default is blank, which implies no vectors to check.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_83.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_85.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

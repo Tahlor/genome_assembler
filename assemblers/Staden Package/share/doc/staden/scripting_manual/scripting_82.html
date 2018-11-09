@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-find_oligo</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_81.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_83.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-find_oligo -->
+
+
+<H2><A NAME="SEC90" HREF="scripting_toc.html#SEC90">find_oligo</A></H2>
+<P>
+<A NAME="IDX282"></A>
+<A NAME="IDX283"></A>
+<A NAME="IDX284"></A>
+<A NAME="IDX285"></A>
+
+</P>
+
+<PRE>
+<CODE>find_oligo</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-min_pmatch    <I>percentage:float(75.0)</I>?
+?-seq           <I>sequence:string()</I>?
+?-tag_types     <I>types:string()</I>?
+</PRE>
+
+<P>
+This command searches for short sequence segments and plots them in the Contig
+Selector. It will fail when not running in a graphical environment containing
+the Contig Selector. The function returns no value but will generate a Tcl
+error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to search. The <I>{contig start end}</I>
+syntax may be used for an identifier to search only a region of the
+contig, otherwise all of it is searched.
+
+<P>
+<DT><VAR><CODE>-min_pmatch</CODE> percentage</VAR>
+<DD>
+Only matches with this level of similarity or better will be displayed. The
+default is 75%.
+
+<P>
+<DT><VAR><CODE>-seq</CODE> sequence</VAR>
+<DD>
+The command will search for the <I>sequence</I> in each of the specified
+contigs, plotting matches above (or equal to) the mininum percentage match.
+This option takes precedence over the <CODE>-tag_types</CODE> option. The default
+is a blank string, which implies no searching.
+
+<P>
+<DT><VAR><CODE>-tag_types</CODE> types</VAR>
+<DD>
+If a list of tag types is specified the algorithm first obtains the sequence
+underneath each tag of these types. For each sequence the search is
+independently performed with that sequence as the search string. If
+<CODE>-seq</CODE> has also been specified this option is invalid. The default is a
+blank list of tag types, which implies no tags will be searched for.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_81.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_83.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-pre_assemble</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_91.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_93.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-pre_assemble -->
+
+
+<H2><A NAME="SEC100" HREF="scripting_toc.html#SEC100">pre_assemble</A></H2>
+<P>
+<A NAME="IDX318"></A>
+<A NAME="IDX319"></A>
+
+</P>
+
+<PRE>
+<CODE>pre_assemble</CODE>
+ -io            <I>io_handle:integer</I>
+ -files         <I>filenames:strings</I>
+</PRE>
+
+<P>
+This command performs the Gap4 "Enter Preassembled Data" function. It
+assembles data that contains the PC, SE, ON and AV Experiment File line types
+to specify exactly the position data. This is superseded by the
+assemble_direct command and should no longer be used. The function returns no
+value but will generate a Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-files</CODE> filenames</VAR>
+<DD>
+<I>Filenames</I> must contain a Tcl list of files to assemble.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_91.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_93.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

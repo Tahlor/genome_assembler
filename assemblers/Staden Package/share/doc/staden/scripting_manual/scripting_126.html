@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_init_reading</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_125.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_127.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_init_reading -->
+
+
+<H3><A NAME="SEC145" HREF="scripting_toc.html#SEC145">io_init_reading, io_init_contig and io_init_annotations</A></H3>
+<P>
+<A NAME="IDX630"></A>
+<A NAME="IDX631"></A>
+<A NAME="IDX632"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_init_reading(
+        GapIO  *io,
+        int     N);
+
+int io_init_contig(
+        GapIO  *io,
+        int     N);
+
+int io_init_annotations(
+        GapIO  *io,
+        int     N);
+</PRE>
+
+<P>
+These functions create new reading, contig and annotations structures. Each
+takes two arguments; the first being the <VAR>GapIO</VAR> pointer, and the second
+being the new reading, contig or annotation number to create. This is not the
+number of new structures, but rather the highest allowed number for this
+structure.
+For instance, if we have 10 readings, "<CODE>io_init_reading(io, 12)</CODE>" will
+create two more, numbered 11 and 12.
+
+</P>
+<P>
+For readings, the records are recovered (by increasing the <VAR>GDatabase</VAR>
+<VAR>NumReadings</VAR> field to <VAR>NReadings</VAR>) if available. The new
+<VAR>GReadings</VAR> structure are not guaranteed to be clear.
+
+</P>
+<P>
+For contigs, the records are recovered if available. The contig_order array is
+also updated with the new contigs being added at the rightmost position. The
+new contigs are added to the registration scheme with blank registration
+lists. The new <VAR>GContigs</VAR> structures are not guaranteed to be clear.
+
+</P>
+<P>
+For annotations, new records are always allocated from disk. It is up to the
+caller to first check that there are no free annotations in the
+<VAR>free_annotations</VAR> list. The new <VAR>GAnnotations</VAR> structures are not
+guaranteed to be clear.
+
+</P>
+<P>
+All functions returns return 0 for success, and -1 for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_125.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_127.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

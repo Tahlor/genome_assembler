@@ -1,0 +1,65 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Scf-Sequence</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_5.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_7.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Scf-Sequence -->
+
+
+<H3><A NAME="SEC6" HREF="formats_toc.html#SEC6">Sequence Information.</A></H3>
+<P>
+<A NAME="IDX21"></A>
+<A NAME="IDX22"></A>
+<A NAME="IDX23"></A>
+
+</P>
+<P>
+Information relating to the base interpretation of the trace is stored
+at byte offset Header.bases_offset from the start of the file. 
+Stored for each base are: its
+character representation and a number (an index into the Samples data
+structure) indicating its position within the trace. The relative
+probabilities of each of the 4 bases occurring at the point where the
+base is called can be stored in <STRONG>prob_A</STRONG> , <STRONG>prob_C</STRONG> ,
+<STRONG>prob_G</STRONG> and <STRONG>prob_T</STRONG>.
+
+</P>
+<P>
+From version 3.00 these items are stored in the following order: all
+"peak indexes", i.e. the positions in the sample points to which the
+bases corresponds; all the accuracy estimates for base type A, all for
+C,G and T; the called bases; this is followed by 3 sets of empty int1
+data items. These values are read into the following data structure by
+the routines in the io library.
+
+</P>
+
+<PRE>
+/*
+ * Type definition for the sequence data
+ */
+typedef struct {
+    uint_4 peak_index;        /* Index into Samples matrix for base posn */
+    uint_1 prob_A;            /* Probability of it being an A */
+    uint_1 prob_C;            /* Probability of it being an C */
+    uint_1 prob_G;            /* Probability of it being an G */
+    uint_1 prob_T;            /* Probability of it being an T */
+    char   base;              /* Called base character        */
+    uint_1 spare[3];          /* Spare */
+} Base;
+</PRE>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_5.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_7.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

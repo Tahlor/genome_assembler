@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - remove_gel_tags</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_161.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_163.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:remove_gel_tags -->
+
+
+<H2><A NAME="SEC181" HREF="scripting_toc.html#SEC181">remove_contig_tags</A></H2>
+<P>
+<A NAME="IDX723"></A>
+<A NAME="IDX724"></A>
+<A NAME="IDX725"></A>
+<A NAME="IDX726"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void remove_gel_tags(
+        GapIO  *io,
+        int     gel,
+        int     posl,
+        int     posr);
+</PRE>
+
+<P>
+This function removes annotations over the region defined as <VAR>posl</VAR> to
+<VAR>posr</VAR> from the reading numbered <VAR>gel</VAR>. Passing <VAR>posl</VAR> and
+<VAR>posr</VAR> as zero implies the entire reading. This uses the <CODE>rmanno</CODE>
+function for the main portion of the work.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_161.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_163.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

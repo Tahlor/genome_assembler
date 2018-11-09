@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - flush2t</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_134.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_136.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:flush2t -->
+
+
+<H3><A NAME="SEC154" HREF="scripting_toc.html#SEC154">flush2t</A></H3>
+<P>
+<A NAME="IDX658"></A>
+<A NAME="IDX659"></A>
+<A NAME="IDX660"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+void flush2t(
+        GapIO *io);
+</PRE>
+
+<P>
+This functions checks out all written data by updating the database time
+stamp. If Gap4 crashes, upon restarting any data written since the last time
+stamp is ignored. The purpose of this is to ensure that the data in the
+database is internally consistent. Hence you should only call this function
+when the database writes are consistent.
+
+</P>
+<P>
+An example of this is in deleting a reading <VAR>N</VAR> which has left and right
+neighbours of <VAR>L</VAR> and <VAR>R</VAR>. The operation of writes may be:
+
+</P>
+
+<UL>
+<LI>set right neighbour of <VAR>L</VAR> to be <VAR>R</VAR>
+
+<LI>set left neighbour of <VAR>R</VAR> to be <VAR>L</VAR>
+
+<LI>deallocate <VAR>N</VAR>.
+
+</UL>
+
+<P>
+The database is consistent before these operations, and after these
+operations, but not at any stage in between.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_134.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_136.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

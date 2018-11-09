@@ -1,0 +1,69 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Clip-NBases</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_136.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_138.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Clip-NBases -->
+
+
+<H3><A NAME="SEC208" HREF="gap4_toc.html#SEC208">N-Base Clipping</A></H3>
+<P>
+<A NAME="IDX471"></A>
+<A NAME="IDX472"></A>
+
+</P>
+
+<p>
+<img src="NBase_clip.png" alt="[picture]">
+
+<P>
+The purpose of this function is to remove runs of <CODE>N</CODE>s or <CODE>-</CODE>s
+from the ends of sequences. Other bases may be interspersed in a run of
+dashes and the run will still be clipped, provided there are a
+sufficient number of non-A/C/G/T base calls. The exact algorithm for
+determining where a 'run' will stop is as follows:
+
+</P>
+
+<OL>
+<LI>
+
+Set score to zero
+
+<LI>
+
+For each base call add 1 for <CODE>N</CODE> or <CODE>-</CODE>, -1 for <CODE>A</CODE>,
+<CODE>C</CODE>, <CODE>G</CODE> or <CODE>T</CODE>, zero for anything else.
+
+<LI>
+
+Terminate when the score &#60; -10.
+
+<LI>
+
+Set the clip point at the highest score observed.
+</OL>
+
+<P>
+Generally this will have no effect (when on good data). It can never
+'grow' a sequence (by extending the cutoffs into the good data). It will
+never form a hole in a contig by clipping all sequences in a region (as
+it will extend the data from both ends of the hole to join it back
+together again).
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_136.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_138.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

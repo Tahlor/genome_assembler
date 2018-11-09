@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - tag_shift_for_insert</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_169.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_171.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:tag_shift_for_insert -->
+
+
+<H2><A NAME="SEC189" HREF="scripting_toc.html#SEC189">tag_shift_for_insert</A></H2>
+<P>
+<A NAME="IDX751"></A>
+<A NAME="IDX752"></A>
+<A NAME="IDX753"></A>
+<A NAME="IDX754"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void tag_shift_for_insert(
+        GapIO  *io,
+        int     N,
+        int     pos);
+</PRE>
+
+<P>
+This function shifts or extends tags by a single base. The purpose is to
+handle cases where we need to insert into a sequence. An edit at position
+<VAR>pos</VAR> will mean moving every tag to the right of this one base rightwards.
+A tag that spans position <VAR>pos</VAR> will have it's length increased by one.
+If <VAR>N</VAR> is positive it specifies the reading number to operate on,
+otherwise it specifies the contig number (negated).
+
+</P>
+<P>
+NOTE: This function <STRONG>does not</STRONG> work correctly for complemented
+readings. It is planned to fix this problem by creating a new function that
+operates in a more intelligent fashion. To work around this problem, logic
+similar to the following needs to be used.
+
+</P>
+
+<PRE>
+    /*
+     * Adjust tags
+     * NOTE: Must always traverse reading in reverse of original sense
+     */
+    if (complemented) {
+        for(i=j=0; i &#60; gel_len; i++) {
+            if (orig_seq[i] != padded_seq[j]) {
+                tag_shift_for_insert(io, gel_num, length-j);
+            } else
+                j++;
+        }
+    } else {
+        for(i=j=gel_len-1; i &#62;= 0; i--) {
+            if (orig_seq[i] != padded_seq[j]) {
+                tag_shift_for_insert(io, gel_num, j+1);
+            } else
+                j--;
+        }
+    }
+</PRE>
+
+<P>
+In the above example <VAR>padded_seq</VAR> is a padded copy of <VAR>orig_seq</VAR>. The
+function calls <CODE>tag_shift_for_insert</CODE> for each pad. Note that the order
+of the insertions is important and differs depending on whether the reading is
+complemented or not.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_169.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_171.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Introduction</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_173.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_175.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Introduction -->
+
+
+<H2><A NAME="SEC193" HREF="scripting_toc.html#SEC193">Introduction</A></H2>
+<P>
+<A NAME="IDX763"></A>
+
+</P>
+<P>
+Each function wishing to access a contig on a long term basis needs to
+register itself before accessing the data. For example, the template display
+and contig editors should register, but show relationships produces a report
+taken from a single snap shot of the data and so does not need to register.
+
+</P>
+<P>
+The idea of registering is to allow communication between views of the same
+(or derived) data, this insuring that they can be automatically kept up to
+date when modifications are made, and can provide mechanisms to prevent
+multiple, incompatible, edits of the same data. An example can be seen in the
+template display. Suppose we have the display showing contig 4. A join contig
+operation links this to contig 7 and produces a new contig -- number 10.
+Other contig numbers may have shuffled too: if we had 9 contigs then contig 9
+may well be renumbered to contig 4.
+
+</P>
+<P>
+Therefore we need to notify any functions displaying contig 9 of a contig
+number change. We also need to notify displays of contig 4 that the number is
+now 10, and both this and contig 7 that the contents and length has changed.
+
+</P>
+<P>
+Central to the scheme is the result manager. This displays a list of which
+data is registered and provides a further method for the user to interrogate
+specific results.
+
+</P>
+<P>
+Notifications may also be for requesting data as well as informing changes.
+All registered items must respond to certain notifications, such as for
+determining the name of the function, so that it can be listed in the results
+manager.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_173.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_175.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

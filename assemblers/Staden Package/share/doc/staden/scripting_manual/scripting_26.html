@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Output-tout_init</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_25.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_27.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Output-tout_init -->
+
+
+<H3><A NAME="SEC27" HREF="scripting_toc.html#SEC27">tout_init</A></H3>
+<P>
+<A NAME="IDX63"></A>
+
+</P>
+
+<PRE>
+<CODE>tout_init</CODE> <I>output_path</I> <I>error_path</I>
+</PRE>
+
+<P>
+This command initialises the redirection of the text output commands. The two
+rrquired arguments specify the Tk pathnames of text widgets for the output and
+errors to be sent to. The function returns nothing.
+
+</P>
+<P>
+The following example illustrates the usage. In practise the
+<CODE>tout_create_wins</CODE> command should be used instead to provide a common
+style interface.
+
+</P>
+
+<PRE>
+pack [text .output -height 5] [text .error -height 5] -side top
+tout_init .output .error
+vmessage This appears in the output window
+verror ERR_WARN This appears in the error window
+</PRE>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_25.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_27.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

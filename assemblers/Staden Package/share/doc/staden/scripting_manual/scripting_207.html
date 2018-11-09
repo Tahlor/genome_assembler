@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-GUI-Dialogue</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_206.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_208.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-GUI-Dialogue -->
+
+
+<H3><A NAME="SEC276" HREF="scripting_toc.html#SEC276">The Dialogue Creation</A></H3>
+<P>
+<A NAME="IDX944"></A>
+<A NAME="IDX945"></A>
+
+</P>
+<P>
+Firstly, we need to create the dialogue. This is done using both standard Tk
+commands and extra widgets defined in the tk_utils package. For the
+composition package the dialogue procedure is as follows.
+
+</P>
+
+<PRE>
+proc Composition {io} {
+    global composition_defs
+
+    # Create a dialogue window
+    set t [keylget composition_defs COMPOSITION.WIN]
+    if [winfo exists $t] {
+        raise $t
+        return
+    }
+    toplevel $t
+
+    # Add the standard contig selector dialogues
+    contig_id $t.id -io $io
+    lorf_in $t.infile [keylget composition_defs COMPOSITION.INFILE] \
+        "{contig_id_configure $t.id -state disabled}
+         {contig_id_configure $t.id -state disabled}
+         {contig_id_configure $t.id -state disabled}
+         {contig_id_configure $t.id -state normal}
+        " -bd 2 -relief groove
+
+    # Add the ok/cancel/help buttons
+    okcancelhelp $t.but \
+        -ok_command "Composition2 $io $t $t.id $t.infile" \
+        -cancel_command "destroy $t" \
+        -help_command "show_help %composition Composition"
+
+    pack $t.infile $t.id $t.but -side top -fill both
+}
+</PRE>
+
+<P>
+Firstly we define the procedure name. In this case we'll call it
+<CODE>Composition</CODE>. It takes a single argument which is the IO handle of an
+opened Gap4 database.
+
+</P>
+<P>
+Next we need to create a new window. We've stored the Tk pathname of this
+window in the <CODE>COMPOSITION.WIN</CODE> keyed list value in the defaults for this
+package. As our package is called <VAR>composition</VAR> the defaults are
+<VAR>composition_defs</VAR>. We define them as global and use <CODE>keylget</CODE> to
+fetch the window pathname. It is wise to check that the dialogue window
+doesn't already exist before attempting to create a new one. This could happen
+if the user selects the option from the main menu twice without closing down
+the first dialogue window.
+
+</P>
+<P>
+Then the real dialogue components are added. In this case these consist of
+<CODE>contig_id</CODE>, <CODE>lorf_in</CODE> and <CODE>okcancelhelp</CODE> widgets. These are
+explained (FIXME: will be...) in the tk_utils and gap4 chapters. Note that the
+<CODE>okcancelhelp</CODE> command requires three Tcl scripts to execute when each of
+the Ok, Cancel and Help buttons are pressed.
+
+</P>
+<P>
+For the Ok button we call the <CODE>Composition2</CODE> procedure with the widget
+pathnames containing the users selections. The Cancel button is easy as we
+simply need to destroy the dialogue window. The Help button will call the
+<CODE>show_help</CODE> command to display the appropriate documentation. More on
+this later.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_206.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_208.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

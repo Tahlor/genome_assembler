@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-GUI-Callback</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_207.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_209.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-GUI-Callback -->
+
+
+<H3><A NAME="SEC277" HREF="scripting_toc.html#SEC277">Calling the New Command</A></H3>
+<P>
+<A NAME="IDX946"></A>
+<A NAME="IDX947"></A>
+<A NAME="IDX948"></A>
+<A NAME="IDX949"></A>
+<A NAME="IDX950"></A>
+<A NAME="IDX951"></A>
+<A NAME="IDX952"></A>
+
+</P>
+<P>
+Once the Ok callback from the <CODE>okcancelhelp</CODE> widget in the main dialogue
+has been executed we need to process any options the user has changed within
+the dialogue and pass these on to the main algorithms.
+
+</P>
+<P>
+For the extension widget we set the OK callback to execute a
+<CODE>Composition2</CODE> procedure. This starts as follows.
+
+</P>
+
+<PRE>
+# The actual gubbins. This can be either in straight tcl, or using Tcl and
+# C. In this example, for efficiency, we'll do most of the work in C.
+proc Composition2 {io t id infile} {
+    # Process the dialogue results:
+    if {[lorf_in_get $infile] == 4} {
+        # Single contig
+        set name [contig_id_gel $id]
+        set lreg [contig_id_lreg $id]
+        set rreg [contig_id_rreg $id]
+        SetContigGlobals $io $name $lreg $rreg
+        set list "{$name $lreg $rreg}"
+    } elseif {[lorf_in_get $infile] == 3} {
+        # All contigs
+        set list [CreateAllContigList $io]
+    } else {
+        # List or File of contigs
+        set list [lorf_get_list $infile]
+    }
+
+    # Remove the dialogue
+    destroy $t
+
+    # Do it!
+    SetBusy
+    set res [composition -io $io -contigs $list]
+    ClearBusy
+</PRE>
+
+<P>
+For this Gap4 command we have used the <CODE>lorf_in</CODE> widget to let the user
+select operations for a single contig, all contigs, a list of contigs, or a
+file of contigs. We firstly process this to build up the appropriate values to
+send to the <CODE>-list</CODE> option of the <CODE>composition</CODE> Tcl command. The
+processes involved here are explained in the <CODE>lorf_in</CODE> widget
+documentation. (FIXME: to write).
+
+</P>
+<P>
+Next we remove the dialogue window, enable the busy mode to grey out other
+menu items, and execute the command itself saving its result in the Tcl
+<VAR>res</VAR> variable.
+
+</P>
+<P>
+The procedure then continues by stepping through the <VAR>res</VAR> variable using
+tcl list and formatting commands to output to the main text window with the
+<CODE>vmessage</CODE> command. The complete code for this can be found in the
+appendices.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_207.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_209.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

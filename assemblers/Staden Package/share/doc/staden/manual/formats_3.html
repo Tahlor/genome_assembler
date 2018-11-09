@@ -1,0 +1,68 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Formats-Scf</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Formats-Scf -->
+
+
+<H2><A NAME="SEC3" HREF="formats_toc.html#SEC3">SCF</A></H2>
+<P>
+<A NAME="IDX11"></A>
+
+</P>
+<P>
+SCF format files are used to store data from DNA sequencing
+instruments. Each file contains the data for a single reading and
+includes: its trace sample points, its called sequence, the positions
+of the bases relative to the trace sample points, and numerical
+estimates of the accuracy of each base. Comments and "private data"
+can also be stored. The format is machine
+independent and the first version was described in Dear, S and Staden, R. "A
+standard file format for data from DNA sequencing instruments", DNA
+Sequence 3, 107-110, (1992). 
+
+</P>
+<P>
+Since then it has undergone several important changes. The first allowed for
+different sample point resolutions. The second, in response to the need to
+reduce file sizes for large projects, involved a major reorganisation of the
+ordering of the data items in the file and also in the way they are
+represented.  Note that despite these changes we have retained the original
+data structures into which the data is read. Also this reorganisation in
+itself has not made the files smaller but it has produced files that are more
+effectively compressed using standard programs such as gzip. The io library
+included in the package contains routines that can read and write all the
+different versions of the format (including reading of compressed files). The
+header record was not affected by this change. This documentation covers both
+the format of scf files and the data structures that are used by the io
+library. Prior to version 3.00 these two things corresponded much more
+closely.
+
+</P>
+
+
+<UL>
+<LI><A HREF="formats_4.html#SEC4">Header record</A>
+<LI><A HREF="formats_5.html#SEC5">Sample points</A>
+<LI><A HREF="formats_6.html#SEC6">Sequence information</A>
+<LI><A HREF="formats_7.html#SEC7">Comments</A>
+<LI><A HREF="formats_8.html#SEC8">Private data</A>
+<LI><A HREF="formats_9.html#SEC9">File structure</A>
+<LI><A HREF="formats_10.html#SEC10">Notes</A>
+</UL>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

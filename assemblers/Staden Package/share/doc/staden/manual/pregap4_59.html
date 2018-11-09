@@ -1,0 +1,56 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-ManualConfig-Components</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_58.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_60.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-ManualConfig-Components -->
+
+
+<H2><A NAME="SEC65" HREF="pregap4_toc.html#SEC65">Low Level Component Configuration</A></H2>
+<P>
+<A NAME="IDX117"></A>
+
+</P>
+<P>
+Pregap4 Components may each contain their own configuration section. Where
+several components are mutually exclusive, such as components describing
+naming conventions, it makes sense to give each component the same
+configuration section. This will ensure that loading a new component will
+overwrite the old one. At present the only defined components both create a
+<CODE>[naming_scheme]</CODE> section.
+
+</P>
+<P>
+Components may redefine items which could appear in other configuration
+sections. In this case the last definition of that setting will take priority.
+For instance if a component defines the <CODE>TN_com</CODE> procedure and this is
+also defined in the <CODE>[global_variables]</CODE> section then the component will
+only take priority if it is after the global section in the configuration file.
+
+</P>
+<P>
+Components may also be used to define parameters for modules. Once again the
+components need to be listed after the module definitions being overridden. To
+define module components in this way, use the <CODE>module</CODE> command. An example
+follows.
+
+</P>
+
+<PRE>
+<CODE>module tag_repeats {set repeat_file repeats.list}</CODE>
+</PRE>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_58.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_60.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

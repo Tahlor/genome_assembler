@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-db_info</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_58.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_60.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-db_info -->
+
+
+<H2><A NAME="SEC66" HREF="scripting_toc.html#SEC66">db_info</A></H2>
+<P>
+<A NAME="IDX186"></A>
+<A NAME="IDX187"></A>
+<A NAME="IDX188"></A>
+<A NAME="IDX189"></A>
+<A NAME="IDX190"></A>
+<A NAME="IDX191"></A>
+<A NAME="IDX192"></A>
+<A NAME="IDX193"></A>
+<A NAME="IDX194"></A>
+<A NAME="IDX195"></A>
+<A NAME="IDX196"></A>
+<A NAME="IDX197"></A>
+<A NAME="IDX198"></A>
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>num_readings</CODE> <I>io</I>
+
+</P>
+<P>
+This command returns the number of readings in the database.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>num_contigs</CODE> <I>io</I>
+
+</P>
+<P>
+This command returns the number of contigs in the database.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>t_contig_length</CODE> <I>io</I>
+
+</P>
+<P>
+This command returns the total number of characters in the consensus for all
+contigs.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>t_read_length</CODE> <I>io</I>
+
+</P>
+<P>
+This command returns the total number of bases used in all the readings.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>get_read_num</CODE> <I>io</I> <I>reading_identifier</I>
+
+</P>
+<P>
+This command returns the reading number (between 1 and <I>num_contigs</I>) for a
+specific reading. For instance, to convert the reading name
+<CODE>xb64a10.s1</CODE> to its reading number we use:
+
+</P>
+
+<PRE>
+set rnum [db_info get_read_num $io xb64a10.s1]
+</PRE>
+
+<P>
+If the reading name is not found, -1 is returned.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>get_contig_num</CODE> <I>io</I> <I>reading_identifier</I>
+
+</P>
+<P>
+This command returns the contig number for a specific reading. The
+number returned is the number of the contig structure, not the number of the
+left most reading within this contig. It returns -1 for failure.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>chain_left</CODE> <I>io</I> <I>reading_identifier</I>
+
+</P>
+<P>
+This command returns the left most reading number within a contig specified by
+the <I>reading_identifier</I>. It returns -1 for failure.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>longest_contig</CODE> <I>io</I>
+
+</P>
+<P>
+This command returns the contig number (not the left most reading number) of
+the longest contig in the database.
+
+</P>
+<P>
+<CODE>db_info</CODE> <CODE>db_name</CODE> <I>io</I>
+
+</P>
+<P>
+This command returns the name of the database opened with the specified <I>io</I>
+handle. The name returned includes the version number, so an example result
+would be <CODE>TEST.0</CODE>.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_58.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_60.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

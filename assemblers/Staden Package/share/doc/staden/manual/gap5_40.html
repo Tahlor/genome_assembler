@@ -1,0 +1,75 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - ExportTags</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_39.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_41.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:ExportTags -->
+
+
+<H2><A NAME="SEC76" HREF="gap5_toc.html#SEC76">Export Tags</A></H2>
+<P>
+<A NAME="IDX121"></A>
+<A NAME="IDX122"></A>
+<A NAME="IDX123"></A>
+
+</P>
+<P>
+This dialogue allows annotations ("tags") to be written to disk as
+a GFF version 3 file.
+
+</P>
+<P>
+Currently this just uses the GFF "remark" type, but future plans
+will be to support a more wide variety of GFF types. 
+
+</P>
+
+<p>
+<img src="gap5_export_tags.png" alt="[picture]">
+
+<P>
+By default the coordinates generated are de-padded, such that "*"s
+in the consensus sequence are not counted when identifying the
+coordinate of an annotation. This may be disabled by deselecting the
+"Unpadded coordinates" checkbox.
+
+</P>
+<P>
+The object a tag is attached to is typically the contig it is within,
+with the contig name being used in the first column of the GFF
+file. This applies even for annotations place on a sequence rather
+than the consensus. This feature may also be disabled by deselecting
+the "Map sequence tags to consensus" checkbox.
+
+</P>
+<P>
+Example GFF output follows, with "..." to denote lines truncated for
+illustrative purposes.
+
+</P>
+
+<PRE>
+Contig6  gap5  remark  4745  4745  .  .  .  type=COMM;Note=Possible SNP?
+Contig2  gap5  remark  3178  3196  .  .  .  type=OLIG;Note=Template%09xb63f10%0AOligoname%09??%0A...
+</PRE>
+
+<P>
+Note we can see URL style percent encoding being used to avoid GFF
+format metacharacters, as per the GFFv3 specification.
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_39.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_41.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

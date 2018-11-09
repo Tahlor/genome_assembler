@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-assemble_direct</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_67.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_69.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-assemble_direct -->
+
+
+<H2><A NAME="SEC76" HREF="scripting_toc.html#SEC76">assemble_direct</A></H2>
+<P>
+<A NAME="IDX214"></A>
+<A NAME="IDX215"></A>
+<A NAME="IDX216"></A>
+
+</P>
+
+<PRE>
+<CODE>assemble_direct</CODE>
+ -io            <I>io_handle:integer</I>
+ -files         <I>filenames:strings</I>
+?-output_mode   <I>mode:integer(0)</I>?
+?-max_pmismatch <I>percentage:float(-1)</I>?
+</PRE>
+
+<P>
+This performs the gap4 directed assembly function. It takes a list of
+Experiment File filenames and processes these according to their content. The
+Experiment Files should contain AP lines to govern their positions in the
+assembly.
+
+</P>
+<P>
+The function returns a list of failed files separated by newlines.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-files</CODE> filenames</VAR>
+<DD>
+A Tcl list of Experiment File filenames.
+
+<P>
+<DT><VAR><CODE>-output_mode</CODE> mode</VAR>
+<DD>
+Whether to display alignments when assembling sequences containing a
+tolerance of zero or more. A <I>mode</I> of non-zero displays alignments, 0 does
+not. This is an optional argument with the default as 0.
+
+<P>
+<DT><VAR><CODE>-max_pmismatch</CODE> percentage</VAR>
+<DD>
+When aligning sequences (tolerance &#62;= 0) the aligned sequences must match the
+consensus sequence with &#60;= <I>percentage</I> mismatch. A <I>percentage</I> of -1
+implies no check should be made. The default for this option is -1.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_67.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_69.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

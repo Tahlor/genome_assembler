@@ -1,73 +1,19 @@
-Wed Nov  7 17:24:27 2018
- ./assemblers/velvet_1.2.10/velveth ./data/results/2 synthetic.example.noerror.small 17 ./data/2 synthetic.example.noerror.small.fasta -short
-Version 1.2.10
-Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-Compilation settings:
-CATEGORIES = 2
-MAXKMERLENGTH = 31
-
-Wed Nov  7 17:24:27 2018
- ./assemblers/velvet_1.2.10/velvetg ./data/results/2 synthetic.example.noerror.small
-Version 1.2.10
-Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-Compilation settings:
-CATEGORIES = 2
-MAXKMERLENGTH = 31
-
-Final graph has 1 nodes and n50 of 568, max 568, total 568, using 0/48 reads
-Wed Nov  7 17:26:32 2018
- ./assemblers/velvet_1.2.10/velveth ./data/results/2 synthetic.example.noerror.small 17 ./data/2 synthetic.example.noerror.small.fasta -short2
-Version 1.2.10
-Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-Compilation settings:
-CATEGORIES = 2
-MAXKMERLENGTH = 31
-
-Wed Nov  7 17:26:32 2018
- ./assemblers/velvet_1.2.10/velvetg ./data/results/2 synthetic.example.noerror.small
-Version 1.2.10
-Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-Compilation settings:
-CATEGORIES = 2
-MAXKMERLENGTH = 31
-
-Final graph has 1 nodes and n50 of 568, max 568, total 568, using 0/48 reads
-Wed Nov  7 17:27:14 2018
- ./assemblers/velvet_1.2.10/velveth ./data/results/2 synthetic.example.noerror.small 17 ./data/2 synthetic.example.noerror.small.fasta
-Version 1.2.10
-Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-Compilation settings:
-CATEGORIES = 2
-MAXKMERLENGTH = 31
-
-Wed Nov  7 17:27:14 2018
- ./assemblers/velvet_1.2.10/velvetg ./data/results/2 synthetic.example.noerror.small
-Version 1.2.10
-Copyright 2007, 2008 Daniel Zerbino (zerbino@ebi.ac.uk)
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-Compilation settings:
-CATEGORIES = 2
-MAXKMERLENGTH = 31
-
-Final graph has 1 nodes and n50 of 568, max 568, total 568, using 0/48 reads
-Thu Nov 08 17:58:22 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\2 synthetic.example.noerror.small 17 ./data\2 synthetic.example.noerror.small.fasta
-Thu Nov 08 17:58:22 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\2 synthetic.example.noerror.small
-Final graph has 1 nodes and n50 of 568, max 568, total 568, using 0/48 reads
-Thu Nov 08 18:03:55 2018
+Fri Nov 09 09:40:05 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\2 synthetic.example.noerror.small 15 ./data\2 synthetic.example.noerror.small.fasta
-Thu Nov 08 18:03:55 2018
+Fri Nov 09 09:40:06 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\2 synthetic.example.noerror.small
-Final graph has 1 nodes and n50 of 568, max 568, total 568, using 0/48 reads
+Fri Nov 09 09:40:21 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\2 synthetic.example.noerror.small 15 ./data\2 synthetic.example.noerror.small.fasta
+Fri Nov 09 09:40:24 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\2 synthetic.example.noerror.small
+Final graph has 1 nodes and n50 of 570, max 570, total 570, using 0/48 reads
+Fri Nov 09 09:41:23 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\2 synthetic.example.noerror.small 15 ./data\2 synthetic.example.noerror.small.fasta
+Fri Nov 09 09:41:26 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\2 synthetic.example.noerror.small
+Final graph has 1 nodes and n50 of 570, max 570, total 570, using 0/48 reads
+Fri Nov 09 09:44:25 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\2 synthetic.example.noerror.small 15 ./data\2 synthetic.example.noerror.small.fasta
+Fri Nov 09 09:44:28 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\2 synthetic.example.noerror.small
+Final graph has 1 nodes and n50 of 570, max 570, total 570, using 0/48 reads

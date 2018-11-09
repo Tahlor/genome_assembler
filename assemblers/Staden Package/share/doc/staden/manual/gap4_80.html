@@ -1,0 +1,61 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Techniques-Disagree</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_79.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_81.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Techniques-Disagree -->
+
+
+<H3><A NAME="SEC145" HREF="gap4_toc.html#SEC145">Multiple Base Disagreements</A></H3>
+
+
+<PRE>
+Read1      ACCGAG
+Read2      ACCGAG
+Read3      AC*GAG
+Read4      ACCGAG
+Read5      AC*GAG
+Consensus  AC-GAG
+</PRE>
+
+<P>
+Now we have a more complex case. Two disagreements out of five readings. Care
+should be taken to check these traces. Also note the strand of each reading.
+If the database is highly repetitive, and <CODE>Read1</CODE>, <CODE>Read2</CODE>, and
+<CODE>Read4</CODE> are all from one strand, with <CODE>Read3</CODE> and <CODE>Read5</CODE> from
+the opposite strand then there is a chance that a misassembly has occurred or
+that the problem is a strand dependent sequencing artifact.
+
+</P>
+<P>
+Typically this is clear when using the "Highlight disagreements"
+mode. 
+See section <A HREF="gap4_63.html#SEC111">Highlight Disagreements</A>. 
+By selecting this mode
+and by also highlighting the reading names (see section <A HREF="gap5_13.html#SEC22">The sequence names display</A>) scanning along the contig will quickly show
+whether there are other disagreements in common with these two readings versus
+the other three (which would support the evidence of misassembly).
+
+</P>
+<P>
+If any misassembled readings have been spotted then mark them for disassembly
+(see section <A HREF="gap4_64.html#SEC123">Remove Readings</A>) and they'll
+no longer cause conflicts in the consensus. If the problem is a simple case of
+needing to edit, then making the edit in the consensus will require only one
+key stroke instead of the two needed to edit the individual readings.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_79.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_81.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

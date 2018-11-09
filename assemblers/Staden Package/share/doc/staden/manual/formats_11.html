@@ -1,0 +1,52 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Scf-Notes-Compression</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_10.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_12.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Scf-Notes-Compression -->
+
+
+<H4><A NAME="SEC12" HREF="formats_toc.html#SEC12">Compression of SCF Files</A></H4>
+
+<P>
+The SCF format version 3.00 has been designed with file compression in mind.
+No new information is recorded when compared to the version 2.02 format,
+except the data is stored in a manner conducive to efficient compression.
+
+</P>
+<P>
+Experimentation <A NAME="FOOT1" HREF="formats_foot.html#FOOT1">(1)</A> has shown that 16 bit SCF version 3.00 files can achieve a
+9:1 compression ratio and 8 bit SCF files a 14.5:1 compression ratio. These
+figures are for SCF files without quality values compressed using the
+<CODE>bzip</CODE> utility. <CODE>gzip</CODE> tends to give between 20 to 40% larger files
+than <CODE>bzip</CODE>. Compressed SCF files containing accuracy values tend to be
+around 10% larger than those without accuracy values.
+
+</P>
+<P>
+Whilst compression is not a specific part of the SCF standard, the size of
+trace files and the compression ratios attainable suggests that it is wise to
+handle compressed files. The Staden Package utilities, such as gap4 and trev,
+automatically uncompress and compress SCF files as needed.
+
+</P>
+<P>
+Note that at present, on the fly compression, as just described, is not
+implemented for the Windows version of the package.
+
+</P>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_10.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_12.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

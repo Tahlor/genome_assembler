@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - write_rname</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_145.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_147.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:write_rname -->
+
+
+<H3><A NAME="SEC165" HREF="scripting_toc.html#SEC165">write_rname</A></H3>
+<P>
+<A NAME="IDX686"></A>
+<A NAME="IDX687"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int write_rname(
+	GapIO  *io,
+	int	rnum,
+	char   *name);
+</PRE>
+
+<P>
+This writes a new reading name <VAR>name</VAR> for reading number <VAR>rnum</VAR>.
+This updates both the disk and memory copies of the reading structure and the
+reading name cache, using the <CODE>gel_write</CODE> and <CODE>io_wname</CODE> functions.
+If reading <VAR>rnum</VAR> does not exist, it is created first using the
+<CODE>io_init_reading</CODE> function.
+
+</P>
+<P>
+It returns 0 for success and -1 for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_145.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_147.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

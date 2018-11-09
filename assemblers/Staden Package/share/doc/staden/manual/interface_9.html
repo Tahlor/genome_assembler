@@ -1,0 +1,136 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from interface.htmlinfo on 25 April 2016 -->
+
+<TITLE>The User Interface - UI-Output</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="interface_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="interface_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="interface_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="interface_16.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="interface_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:UI-Output -->
+
+
+<H2><A NAME="SEC9" HREF="interface_toc.html#SEC9">The Output and Error Windows</A></H2>
+<P>
+<A NAME="IDX18"></A>
+<A NAME="IDX19"></A>
+<A NAME="IDX20"></A>
+<A NAME="IDX21"></A>
+<A NAME="IDX22"></A>
+<A NAME="IDX23"></A>
+
+</P>
+<P>
+The main screen has three portions; the menubar, the output window and the
+error window. Of these, the output and error windows are identical except for
+the data that appears within them. Here we describe the general operation of
+the output window only, although the details apply to the error window too.
+
+</P>
+
+<p>
+<a href="interface.output,5.13333in.png.html"><img src="interface.output,5.13333in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+The output window consists of a text window with a set of labels and buttons
+above it. At the top left is the window name followed by a colon. After
+the colon the name of the current output file will be shown in blue italic
+letters. All new output appearing in this window will also be sent to this
+file. Initially no output file is specified and this label is blank (as can be
+seen in the error window). Using the "Redirect" menu located at the top right
+of the window a new file can be opened, or an existing one closed (in which
+case output is no longer sent to the specified file). The output and error
+windows may both have redirection files.
+
+</P>
+<P>
+The "Search" button invokes a dialogue box requesting a string to search
+and whether to search forwards or backwards from the current position of
+the cursor. The search is case insensitive. Hitting the the OK button finds 
+the next match.The bell is sounded if no more matches can be found. 
+
+</P>
+<P>
+The "Scroll on output" check button toggles whether the window should
+automatically scroll when new output appears to ensure that it is
+visible. The default (as seen in the illustration) state is to
+scroll. The "Clear" button removes all output from the window.
+
+</P>
+<P>
+Each command, when run, adds a title to the output window. This
+contains the current time together with the command name. Output for
+this command then appears beneath the header. In the illustration the
+output from three commands is visible. Of these the "edit contig"
+command produces no output, but still has a header.
+
+</P>
+<P>
+Pressing the right button with the cursor above a piece of output
+(either in its header or the text beneath it) will pop up a menu of
+operations. This operation is not valid for the error window. The
+commands are:
+
+</P>
+<P>
+<CODE>Show input parameters</CODE>
+
+<BLOCKQUOTE>
+<P>
+Inserts the input parameters of the command, if any, beneath the 
+command header
+</BLOCKQUOTE>
+
+<P>
+<CODE>Remove</CODE>
+
+<BLOCKQUOTE>
+<P>
+Deletes this text from the output window
+</BLOCKQUOTE>
+
+<P>
+<CODE>Output to disk</CODE>
+
+<BLOCKQUOTE>
+<P>
+Sends this text to a specified file
+</BLOCKQUOTE>
+
+<P>
+<CODE>Output to list</CODE>
+
+<BLOCKQUOTE>
+<P>
+Sends this text to a specified list
+</BLOCKQUOTE>
+
+<P>
+The output operations allow the user to specify whether the header, input 
+parameters or text for the command, in any combination, are sent to the
+output.
+
+</P>
+
+<P>
+The text in the error window has a different format to the output
+window. Instead of large portions of text separated by headers, each
+item in the error window consists of a single line containing the
+date, the name of the function producing the error, and a brief
+description of the error. Many error messages will be displayed in
+their own dialogue boxes (eg not having write access to a file) and
+hence will not appear in the error window.  Each time an error message
+is added the bell is rung.
+
+</P>
+<HR>
+<A HREF="interface_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="interface_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="interface_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="interface_16.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="interface_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from vector_clip.htmlinfo on 25 April 2016 -->
+
+<TITLE>Vector clipping - Vector_Clip-Options</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Vector_Clip-Options -->
+
+
+<H2><A NAME="SEC5" HREF="vector_clip_toc.html#SEC5">Options</A></H2>
+
+
+<PRE>
+Usage: vector_clip [options] file_of_filenames
+Where options are:
+    [-s mark sequencing vector]      [-c mark cloning vector]
+    [-h hgmp primer]                 [-r vector rearrangements]
+    [-w word_length (4)]             [-n num_diags (7)]
+    [-d diagonal score (0.35)]       [-l minimum match (20)]
+    [-L minimum % 5' match (60)]     [-R minimum % 3' match (80)]
+    [-m default 5' position]         [-t test only]
+    [-M Max vector length (100000)]  [-P max Probability]
+    [-v vector_primer filename]      [-i vector_primer filename]
+    [-V vector_primer length]
+    [-p passed fofn]                 [-f failed fofn]
+</PRE>
+
+<P>
+Options:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>-s</CODE>
+<DD>
+Mark sequencing vector. Searches for 5' primer, 3' running into vector.
+<DT><CODE>-c</CODE>
+<DD>
+Mark cloning vector. Searches both strands for cloning vector.
+<DT><CODE>-h</CODE>
+<DD>
+Hgmp primer. Searches 3' end for a primer.
+<DT><CODE>-i vector_primer filename</CODE>
+<DD>
+Mark transposon data.
+<DT><CODE>-r</CODE>
+<DD>
+Vector rearrangements. Searches for sequencing vector rearrangements.
+<DT><CODE>-t</CODE>
+<DD>
+Test only. Does not change the experiment files, displays hits.
+</DL>
+
+<!-- NODE:Vector_Clip-Parameters -->
+
+
+
+<H2><A NAME="SEC6" HREF="vector_clip_toc.html#SEC6">Parameters (defaults in brackets)</A></H2>
+<DL COMPACT>
+
+<DT><VAR><CODE>-L</CODE> minimum percentage match 5' end (60)</VAR>
+<DD>
+sequencing vector searches and transposon search
+<DT><VAR><CODE>-R</CODE> minimum percentage match 3' end (80)</VAR>
+<DD>
+sequencing vector searches and transposon search
+<DT><VAR><CODE>-m</CODE> minimum 5' position</VAR>
+<DD>
+allows a minimum 5' end cutoff to be set if a sufficiently good match is not 
+found (i.e. it is really a default 5' cutoff position). 
+If a value of -1 is used the program will set the cutoff to be the 
+distance between the primer and the cloning site.
+<DT><VAR><CODE>-v</CODE> vector-primer-pair filename</VAR>
+<DD>
+sequencing vector search using vector-primer-pair file
+<DT><VAR><CODE>-V</CODE> vector_primer length</VAR>
+<DD>
+the length of the sequence stored in the vector_primer file to use for
+the 5' search
+<DT><VAR><CODE>-w</CODE> word_length (4)</VAR>
+<DD>
+cloning vector search hash length
+<DT><VAR><CODE>-P</CODE> probability</VAR>
+<DD>
+cloning vector search, (a score less likely than P is a match)
+<DT><VAR><CODE>-n</CODE> num_diags (7)</VAR>
+<DD>
+cloning vector search, old score based algorithm: number of diagonals to combine
+<DT><VAR><CODE>-d</CODE> diagonal score (0.35)</VAR>
+<DD>
+cloning vector search, old score based algorithm
+<DT><VAR><CODE>-l</CODE> minimum match (20)</VAR>
+<DD>
+sequencing vector rearrangements and transposon search minimum match length
+<DT><VAR><CODE>-M</CODE> maximum vector length (100000)</VAR>
+<DD>
+all algorithms, reset for vectors &#62;100000 bases
+<DT><VAR><CODE>-p</CODE> passed fofn</VAR>
+<DD>
+file of file names for passed files
+<DT><VAR><CODE>-f</CODE> failed fofn</VAR>
+<DD>
+file of file names for failed files
+<DT><VAR>input fofn ...</VAR>
+<DD>
+input file of file names
+</DL>
+
+<HR>
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

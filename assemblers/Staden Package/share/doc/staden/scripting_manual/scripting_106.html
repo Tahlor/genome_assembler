@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Primer</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_105.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_107.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Primer -->
+
+
+<H4><A NAME="SEC116" HREF="scripting_toc.html#SEC116">Primer Selection</A></H4>
+<P>
+<A NAME="IDX412"></A>
+<A NAME="IDX413"></A>
+<A NAME="IDX414"></A>
+
+</P>
+<P>
+These control the searching for and creation of oligo primers. Together they
+form the Select Primer functionality of the contig editor.  The
+<CODE>generate</CODE> command must be run first. All other commands have undefined
+behaviour when the generate command has not been run since the last quit
+command.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>select_oligos generate</CODE> sense forward backward avg_length</VAR>
+<DD>
+<A NAME="IDX415"></A>
+ 
+
+        Generates a list of oligos suitable for use on the <I>sense</I> strand,
+        within <I>forward</I> bases rightwards of the cursor and <I>backward</I>
+        bases leftwards. Returns the number of oligos found, or -1 for error.
+
+<A NAME="IDX416"></A>
+<DT><VAR><CODE>select_oligos next</CODE></VAR>
+<DD>
+        Picks the next oligo in the list produced by the <CODE>generate</CODE>
+        command (or the first if this hasn't been called yet). This remembers
+        the current active oligo number and returns the default template
+        followed by the complete list of templates (including the default)
+        suitable for this oligo.
+
+<A NAME="IDX417"></A>
+<DT><VAR><CODE>select_oligos accept</CODE> template</VAR>
+<DD>
+        Adds the tag to the database for this oligo using the named
+        <I>template</I> ("" can be specified here if none is required). Returns a
+        status line containing the template name and the oligo sequence. 
+
+<A NAME="IDX418"></A>
+<DT><VAR><CODE>select_oligos quit</CODE></VAR>
+<DD>
+        Frees up memory allocated by <CODE>generate</CODE> command.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_105.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_107.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

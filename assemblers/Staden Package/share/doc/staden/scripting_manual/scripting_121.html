@@ -1,0 +1,278 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-Macros</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_120.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_122.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-Macros -->
+
+
+<H2><A NAME="SEC138" HREF="scripting_toc.html#SEC138">IO.h Macros</A></H2>
+
+<P>
+There are many C macros defined to interact with the <VAR>GapIO</VAR> structure.
+These both simplify and improve readeability of the code and also provide a
+level of future proofing. Where the macros are available it is always
+advisable to use these instead of accessing the <VAR>GapIO</VAR> structure
+directly.
+
+</P>
+<P>
+Note that not all of these macros are actually held within the <TT>`IO.h'</TT>
+file, rather some are in files included by <TT>`IO.h'</TT>. However whenever
+wishing to use one of these macros you should still use "<CODE>#include
+&#60;IO.h&#62;</CODE>".
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>io_dbsize(<VAR>io</VAR>)</CODE>
+<DD>
+<A NAME="IDX571"></A>
+ 
+	<VAR>io</VAR><CODE>-&#62;db.actual_db_size</CODE><P>
+	The maximum number of readings plus contigs allowed.
+
+<A NAME="IDX572"></A>
+<A NAME="IDX573"></A>
+<A NAME="IDX574"></A>
+<A NAME="IDX575"></A>
+<DT><CODE>max_gel_len(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;max_gel_len</CODE><P>
+	The maximum reading length.
+
+<A NAME="IDX576"></A>
+<DT><CODE>NumContigs(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.num_contigs</CODE><P>
+	The number of used contigs.
+
+<A NAME="IDX577"></A>
+<DT><CODE>NumReadings(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.num_readings</CODE><P>
+	The number of used readings.
+
+<A NAME="IDX578"></A>
+<DT><CODE>Ncontigs(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.Ncontigs</CODE><P>
+	The number of allocated contigs.
+
+<A NAME="IDX579"></A>
+<DT><CODE>Nreadings(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.Nreadings</CODE><P>
+	The number of allocated readings.
+
+<A NAME="IDX580"></A>
+<DT><CODE>Nannotations(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.Nannotations</CODE><P>
+	The number of allocated annotations.
+
+<A NAME="IDX581"></A>
+<DT><CODE>Ntemplates(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.Ntemplates</CODE><P>
+	The number of annotated templates.
+
+<A NAME="IDX582"></A>
+<DT><CODE>Nclones(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.Nclones</CODE><P>
+	The number of allocated clones.
+
+<A NAME="IDX583"></A>
+<DT><CODE>Nvectors(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db.Nvectors</CODE><P>
+	The number of allocated vectors.
+
+<A NAME="IDX584"></A>
+<DT><CODE>io_relpos(<VAR>io,g</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;relpos[(</CODE><VAR>g</VAR><CODE>)]</CODE><P>
+	The position of a reading <VAR>g</VAR>.
+
+<A NAME="IDX585"></A>
+<DT><CODE>io_length(<VAR>io,g</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;length[(</CODE><VAR>g</VAR><CODE>)]</CODE><P>
+	The length of a reading <VAR>g</VAR>. If the reading is complemented this
+	value is negative, but still represents the length.
+
+<A NAME="IDX586"></A>
+<DT><CODE>io_lnbr(<VAR>io,g</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;lnbr[(</CODE><VAR>g</VAR><CODE>)]</CODE><P>
+	The reading number of the left neighbour of reading <VAR>g</VAR>.
+
+<A NAME="IDX587"></A>
+<DT><CODE>io_rnbr(<VAR>io,g</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;rnbr[(</CODE><VAR>g</VAR><CODE>)]</CODE><P>
+	The reading number of the right neighbour of reading <VAR>g</VAR>.
+
+<A NAME="IDX588"></A>
+<DT><CODE>io_clength(<VAR>io,c</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;relpos[io_dbsize(</CODE><VAR>io</VAR><CODE>)-(</CODE><VAR>c</VAR><CODE>)]</CODE><P>
+	The length of contig <VAR>c</VAR>.
+
+<A NAME="IDX589"></A>
+<DT><CODE>io_clnbr(<VAR>io,c</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;lnbr[io_dbsize(</CODE><VAR>io</VAR><CODE>)-(</CODE><VAR>c</VAR><CODE>)]</CODE><P>
+	The leftmost reading number of contig <VAR>c</VAR>.
+
+<A NAME="IDX590"></A>
+<DT><CODE>io_crnbr(<VAR>io,c</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;rnbr[io_dbsize(</CODE><VAR>io</VAR><CODE>)-(</CODE><VAR>c</VAR><CODE>)]</CODE><P>
+	The rightmost reading number of contig <VAR>c</VAR>.
+
+<A NAME="IDX591"></A>
+<DT><CODE>io_name(<VAR>io</VAR>)</CODE>
+<DD>
+	<VAR>(io)</VAR><CODE>-&#62;db_name</CODE><P>
+	The database name.
+
+<A NAME="IDX592"></A>
+<DT><CODE>io_rdonly(<VAR>io</VAR>)</CODE>
+<DD>
+	This returns 1 when the database has been opened as read-only; 0
+	otherwise.
+
+<A NAME="IDX593"></A>
+<DT><CODE>io_rname(<VAR>io,g</VAR>)</CODE>
+<DD>
+	This returns the reading name for reading number <VAR>g</VAR>. This is
+	fetched from the in memory cache.
+
+<A NAME="IDX594"></A>
+<DT><CODE>io_wname(<VAR>io,g,n</VAR>)</CODE>
+<DD>
+	Sets the in-memory copy of the reading name for reading number <VAR>g</VAR>
+	to be the string <VAR>n</VAR>. This does not write to disk.
+
+<A NAME="IDX595"></A>
+<DT><CODE>PRIMER_TYPE(<VAR>r</VAR>)</CODE>
+<DD>
+	This returns the type of the primer used for sequencing reading number
+	<VAR>r</VAR>. This information is calculated from the <VAR>primer</VAR> and
+	<VAR>strand</VAR> fields of the <VAR>GReadings</VAR> structure. It returns one
+	of <CODE>GAP_PRIMER_UNKNOWN</CODE>, <CODE>GAP_PRIMER_FORWARD</CODE>,
+	<CODE>GAP_PRIMER_REVERSE</CODE>, <CODE>GAP_PRIMER_CUSTFOR</CODE> and
+	<CODE>GAP_PRIMER_CUSTREV</CODE>.
+
+<A NAME="IDX596"></A>
+<DT><CODE>PRIMER_TYPE_GUESS(<VAR>r</VAR>)</CODE>
+<DD>
+	As <CODE>PRIMER_TYPE</CODE> except always choose a sensible guess in place
+	of <CODE>GAP_PRIMER_UNKNOWN</CODE>.
+
+<A NAME="IDX597"></A>
+<DT><CODE>STRAND(<VAR>r</VAR>)</CODE>
+<DD>
+	Returns the strand (one of <CODE>GAP_STRAND_FORWARD</CODE> or
+	<CODE>GAP_STRAND_REVERSE</CODE>) from the primer information for reading
+	number <VAR>r</VAR>. The reason for these primer and strand macros is that
+	the meaning of the <VAR>primer</VAR> and <VAR>strand</VAR> fields of
+	<VAR>GReadings</VAR> has changed slightly from early code in that we now
+	make a distinction between custom forward primers and custom reverse
+	primers. The <VAR>strand</VAR> field may become completely redundant in
+	future as it can now be derived entirely from the primer.
+
+<A NAME="IDX598"></A>
+<A NAME="IDX599"></A>
+<A NAME="IDX600"></A>
+<A NAME="IDX601"></A>
+<A NAME="IDX602"></A>
+<A NAME="IDX603"></A>
+<A NAME="IDX604"></A>
+<A NAME="IDX605"></A>
+<DT><CODE>contig_read(<VAR>io, cn, c</VAR>)</CODE>
+<DD>
+<DT><CODE>gel_read(<VAR>io, gn, g</VAR>)</CODE>
+<DD>
+<DT><CODE>tag_read(<VAR>io, tn, t</VAR>)</CODE>
+<DD>
+<DT><CODE>vector_read(<VAR>io, vn, v</VAR>)</CODE>
+<DD>
+<DT><CODE>clone_read(<VAR>io, cn, c</VAR>)</CODE>
+<DD>
+	Reads one of the basic database structures. For contigs,
+	<CODE>contig_read</CODE> reads contig number <VAR>cn</VAR> and stores in the
+	<VAR>GContigs</VAR> structure named <VAR>c</VAR>. Eg to read the a contig:
+
+
+<PRE>
+	GContigs c;
+	contig_read(io, contig_num, c);
+</PRE>
+
+	This is functionally equivalent to:
+
+
+<PRE>
+	GContigs c;
+	GT_Read(io, arr(GCardinal, io-&#62;contigs, contig_num-1),
+		&#38;c, sizeof(c), GT_Contigs);
+</PRE>
+
+	The exception to this is <CODE>gel_read</CODE> which reads from a cached
+	copy held in memory.
+
+<A NAME="IDX606"></A>
+<A NAME="IDX607"></A>
+<A NAME="IDX608"></A>
+<A NAME="IDX609"></A>
+<A NAME="IDX610"></A>
+<DT><CODE>contig_write(<VAR>io, cn, c</VAR>)</CODE>
+<DD>
+<DT><CODE>gel_write(<VAR>io, gn, g</VAR>)</CODE>
+<DD>
+<DT><CODE>tag_write(<VAR>io, tn, t</VAR>)</CODE>
+<DD>
+<DT><CODE>vector_write(<VAR>io, vn, v</VAR>)</CODE>
+<DD>
+<DT><CODE>clone_write(<VAR>io, cn, c</VAR>)</CODE>
+<DD>
+	Writes one of the basic types in a similar fashion to the read
+	functions. To write to annotation number <VAR>anno</VAR> we should use:
+
+
+<PRE>
+	GAnnotations a;
+	/* ... some code to manipulate 'a' ... */
+	tag_write(io, anno, a);	       
+</PRE>
+
+	This is functionally equivalent to:
+
+
+<PRE>
+	GT_Write(io, arr(GCardinal, io-&#62;annotations, anno-1),
+		 &#38;a, sizeof(a), GT_Annotations);
+</PRE>
+
+	Note that the <CODE>gel_write</CODE> function <STRONG>must</STRONG> be used instead
+	of <CODE>GT_Write</CODE> as <CODE>gel_write</CODE> will also update the reading
+	memory cache.
+
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_120.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_122.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

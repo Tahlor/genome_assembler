@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - to_contigs_only</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_137.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_139.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:to_contigs_only -->
+
+
+<H3><A NAME="SEC157" HREF="scripting_toc.html#SEC157">to_contigs_only</A></H3>
+<P>
+<A NAME="IDX670"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int *to_contigs_only(
+        int     num_contigs,
+        contig_list_t *cl);
+</PRE>
+
+<P>
+This functions converts an array of <VAR>contig_list_t</VAR> structures to an array
+of integers containing only the contig number information. The <VAR>cl</VAR> and
+<VAR>num_contigs</VAR> elements correspond to the returned <VAR>rargv</VAR> and
+<VAR>rargc</VAR> arguments from the <CODE>lget_contig_num</CODE> function.
+
+</P>
+<P>
+It returns a malloc array of integers for success or <CODE>NULL</CODE> for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_137.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_139.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Output-start_message</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_36.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_38.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Output-start_message -->
+
+
+<H3><A NAME="SEC38" HREF="scripting_toc.html#SEC38">start_message and end_message</A></H3>
+<P>
+<A NAME="IDX91"></A>
+<A NAME="IDX92"></A>
+
+</P>
+<P>
+<A NAME="IDX93"></A>
+<A NAME="IDX94"></A>
+
+<PRE>
+<CODE>#include &#60;text_output.h&#62;</CODE>
+<CODE>void start_message(void);</CODE>
+<CODE>void end_message(void);</CODE>
+</PRE>
+
+<P>
+Sometimes we wish to bring up a separate window containing simple message
+outputs (eg in gap4 this could be information about a reading that was clicked
+on). The <CODE>start_message</CODE> function clears the current message buffer and
+starts copying all subsequent output to the stdout window to this buffer.
+
+</P>
+<P>
+The <CODE>end_message</CODE> function disables this message copying and display the
+current contents of the message buffer in a separate window.
+
+</P>
+<P>
+At present, there are no Tcl interface to these routines.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_36.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_38.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,76 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - List Libraries</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_66.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_68.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:List Libraries -->
+
+
+<H1><A NAME="SEC105" HREF="gap5_toc.html#SEC105">List Libraries</A></H1>
+<P>
+<A NAME="IDX182"></A>
+<A NAME="IDX183"></A>
+<A NAME="IDX184"></A>
+
+</P>
+<P>
+The List Libraries window is perhaps misnamed as it handles arbitrary
+groups of reads, possibly due to the use of multiple libraries,
+multiple instrument types or simply multiple lanes on a single
+instrument. For SAM/BAM files this informations comes from the
+<CODE>@RG</CODE> header lines. For other formats Gap5 typically makes use of
+the input filename to group data together.
+
+</P>
+
+<p>
+<img src="gap5_list_libraries.png" alt="[picture]">
+
+<P>
+The basic plot shows a list of library names and how frequently read
+pairs have been identified as matching to the same contig. This is
+computed at the time of import via tg_index and so will not be updated
+on contig joining or breakage. The <I>Type</I> field indicates
+the instrument platform type (for example Illumina or 454), although
+this is often absent from the input BAM files.
+
+</P>
+<P>
+The <I>Insert size</I> and standard deviation (<I>s.d.</I>) are derived from
+the sequence alignments, with assumptions of an approximately Gaussian
+distribution. While not entirely accurate this is typically sufficient
+for most libraries when viewed in a summary table. Finally the
+<I>Orientation</I> field indicates the relative orientation in which most
+of the read-pairs have been assembled. This will be one of
+"<CODE>-&#62; &#60;-</CODE>", "<CODE>&#60;- -&#62;</CODE>" or "<CODE>-&#62; -&#62; / &#60;- &#60;-</CODE>" to
+indicate the relative orientations of the read-pair. Whether the observed
+orientation is correct will depend on the particular sequencing
+strategy used.
+
+</P>
+<P>
+Underneath the list is a histogram of observed insert sizes for the
+currently selected library. The graph is currently very rudimentary
+with no controls, but it will auto-scale to fit the data. The example
+shown above is an Illumina large insert library showing two distinct
+distributions with the smaller being where the biotin enrichment failed
+and short templates were included in the library. (Note in this example
+the sequence orientations have been flipped so the bulk of the data is
+in the orientation expected by other tools.)
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_66.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_68.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

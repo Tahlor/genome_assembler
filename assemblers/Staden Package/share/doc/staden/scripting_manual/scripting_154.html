@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - calc_consensus</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_153.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_155.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:calc_consensus -->
+
+
+<H2><A NAME="SEC173" HREF="scripting_toc.html#SEC173">calc_consensus</A></H2>
+<P>
+<A NAME="IDX699"></A>
+<A NAME="IDX700"></A>
+
+</P>
+
+<PRE>
+#include &#60;qual.h&#62;
+
+int calc_consensus(
+        int     contig,
+        int     start,
+        int     end,
+        int     mode,
+        char   *con,
+        char   *con2,
+        float  *qual,
+        float  *qual2,
+        float   cons_cutoff,
+        int     qual_cutoff,
+        int    (*info_func)(int          job,
+                            void        *mydata,
+                            info_arg_t  *theirdata),
+        void   *info_data);
+
+int database_info(
+        int          job,
+        void        *mydata,
+        info_arg_t  *theirdata);
+</PRE>
+
+<P>
+This function calculates the consensus sequence for a given segment of a
+contig. It can produce a single consensus sequence using all readings, or
+split it into two sequences; one for each strand. Additionally, it can produce
+either one (combinded strands) or two (individual strands) sets of values
+relating to the accuracy of the returned consensus.
+
+</P>
+<P>
+The <VAR>contig</VAR>, <VAR>start</VAR> and <VAR>end</VAR> arguments hold the contig and
+range to calculate the consensus for. The ranges are inclusive and start
+counting with the first base as position 1.
+
+</P>
+<P>
+<VAR>con</VAR> and <VAR>con2</VAR> are buffers to store the consensus. These are
+allocated by the caller to be at least of size <VAR>end-start+1</VAR>. If
+<VAR>con2</VAR> is <CODE>NULL</CODE> both strands are calculated as a single consensus to
+be stored in <VAR>con</VAR>. Otherwise the top strand is stored in <VAR>con</VAR> and
+the bottom strand is stored in <VAR>con2</VAR>.
+
+</P>
+<P>
+<VAR>mode</VAR> should be one of <CODE>CON_SUM</CODE> or <CODE>CON_WDET</CODE>. <CODE>CON_SUM</CODE>
+is the "normal" mode, which indicates that the consensus sequence is simply
+the most likely base or a dash (depending on <VAR>cons_cutoff</VAR>. The
+<CODE>CON_WDET</CODE> mode is used to return special characters for bases that are
+good quality and identical on both strands. Where one strand has a dash, the
+consensus base for the other strand is used. Where both strands differ, and
+are not dashes, the consensus is returned as dash. Note that despite requiring
+the consensus for each starnd independently, this mode requires that
+<VAR>con2</VAR> is <CODE>NULL</CODE>. To summarise the action of the <CODE>CON_WDET</CODE>
+mode, the final consensus is derived as follows:
+
+</P>
+
+<PRE>
+ Top     Bottom   Resulting
+Strand   Strand     Base
+---------------------------
+   A        A         d
+   C        C         e
+   G        G         f
+   T        T         i
+   -        -         -
+   -        <VAR>x</VAR>         <VAR>x</VAR>
+   <VAR>x</VAR>        -         <VAR>x</VAR>
+   <VAR>x</VAR>        <VAR>y</VAR>         -
+</PRE>
+
+<P>
+[Where <VAR>x</VAR> and <VAR>y</VAR> are one of A, C, G or T, and <VAR>x</VAR> != <VAR>y</VAR>.]
+
+</P>
+<P>
+<VAR>qual_cutoff</VAR> and <VAR>cons_cutoff</VAR> hold the quality and consensus cutoff
+paramaters used in the consensus algorithm for determining which bases are of
+sufficient quality to use and by how big a majority this base type must have
+before it is returned as the consensus base (otherwise "-" is used). For a
+complete description of how these parameters operate see the consensus
+algorithm description in the main Gap4 manual. (FIXME: should we duplicate
+this here?)
+
+</P>
+<P>
+The <VAR>qual</VAR> and <VAR>qual2</VAR> buffers are allocated by the caller to be the
+same size as the <VAR>con</VAR> and <VAR>con2</VAR> buffers. They are filled with the
+a floating point representing the ratio of score for the consensus base type
+to the score for all base types (where the definition of score depends on the
+<VAR>qual_cutoff</VAR> parameter). This is the value compared against
+<VAR>cons_cutoff</VAR> to determine whether the consensus base is a dash.
+Either or both of <VAR>qual</VAR> and <VAR>qual2</VAR> can be passed as NULL if no
+accuracy information is required. Note that the accuracy information for
+<VAR>qual2</VAR> is only available when <VAR>con2</VAR> has also been passed as non NULL.
+
+</P>
+<P>
+The algorithm uses <VAR>info_func</VAR> to obtain information about the readings
+from the database. <VAR>info_data</VAR> is passed as the second argument
+(<VAR>mydata</VAR>) to <VAR>info_func</VAR>. <VAR>info_func</VAR> is called each time some
+information is required about a reading or contig. It's purpose is to abstract
+out the algorithm from the data source. There are currently two such
+functions, the most commonly used of which is <CODE>database_info</CODE> function
+(the other being <CODE>contEd_info</CODE> to fetch data from the contig editor
+structures). The <CODE>database_info</CODE> function obtains the sequence details
+from the database. It requires a <VAR>GapIO</VAR> pointer to be passed as
+<VAR>info_data</VAR>.
+
+</P>
+<P>
+The function returns 0 for success, -1 for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_153.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_155.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

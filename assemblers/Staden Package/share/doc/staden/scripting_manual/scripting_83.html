@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-find_primers</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_82.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_84.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-find_primers -->
+
+
+<H2><A NAME="SEC91" HREF="scripting_toc.html#SEC91">find_primers</A></H2>
+<P>
+<A NAME="IDX286"></A>
+<A NAME="IDX287"></A>
+<A NAME="IDX288"></A>
+
+</P>
+<P>
+This command performs the Gap4 "Suggest Primers" function. It searches for
+locations where choosing an oligo primer for "walking" off another reading
+will solve a problem. The command returns a list of primer
+information in the form "<I>template_name reading_name primer_identifier
+sequence position direction</I>", separated by newlines.
+
+</P>
+
+<PRE>
+<CODE>find_primers</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings()</I>
+?-search_from   <I>position:integer(20)</I>?
+?-search_to     <I>position:integer(60)</I>?
+?-num_primers   <I>count:integer(1)</I>?
+?-primer_start  <I>count:integer(1)</I>?
+?-params        <I>OSP_params:string</I>?
+</PRE>
+
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to search. The <I>{contig start end}</I>
+syntax may be used for an identifier to search only a region of the
+contig, otherwise all of it is searched.
+
+<P>
+<DT><VAR><CODE>-search_from</CODE> position</VAR>
+<DD>
+<DT><VAR><CODE>-search_to</CODE> position</VAR>
+<DD>
+These two options control the region, relative to the problem, in which to
+look for suitable oligos. The defaults are <I>from</I> 20 <I>to</I> 60, which
+means that to cover an area starting at position 1000 in the forward strand
+the command will pick oligos from the sequence at positions 940 to 980.
+
+<P>
+<DT><VAR><CODE>-num_primers</CODE> count</VAR>
+<DD>
+This controls how many oligos to pick to solve each problem. The default is 1.
+
+<P>
+<DT><VAR><CODE>-primer_start</CODE> count</VAR>
+<DD>
+Each oligo is given a primer name consisting of the database name followed by
+the primer number. The numbers start at <I>count</I> and increment for each new
+primer. The default is 1.
+
+<P>
+<A NAME="IDX289"></A>
+<A NAME="IDX290"></A>
+<DT><VAR><CODE>-params</CODE> OSP_params</VAR>
+<DD>
+This specifies the parameters to the OSP algorithm as a keyed list. The
+defaults are undefined unless the gaprc file has been parsed. In this case the
+defaults are as used by Gap4. Not all of the OSP parameters listed below are
+needed or used, but we don't have further details. The defaults listed in the
+gaprc file are:
+
+
+<PRE>
+#----------------------------------------------
+# The OSP Prm defaults
+#----------------------------------------------
+set_def OSP.prod_len_low                0
+set_def OSP.prod_len_high               200
+set_def OSP.prod_gc_low                 0.40
+set_def OSP.prod_gc_high                0.55
+set_def OSP.prod_tm_low                 70.0
+set_def OSP.prod_tm_high                90.0
+
+set_def OSP.min_prim_len                17
+set_def OSP.max_prim_len                23
+set_def OSP.prim_gc_low                 0.30
+set_def OSP.prim_gc_high                0.70
+set_def OSP.prim_tm_low                 50
+set_def OSP.prim_tm_high                55
+
+set_def OSP.self3_hmlg_cut              8
+set_def OSP.selfI_hmlg_cut              14
+set_def OSP.pp3_hmlg_cut                8
+set_def OSP.ppI_hmlg_cut                14
+set_def OSP.primprod3_hmlg_cut          0
+set_def OSP.primprodI_hmlg_cut          0
+set_def OSP.primother3_hmlg_cut         0.0
+set_def OSP.primotherI_hmlg_cut         0.0
+set_def OSP.delta_tm_cut                2.0
+set_def OSP.end_nucs                    S
+
+set_def OSP.wt_prod_len                 0
+set_def OSP.wt_prod_gc                  0
+set_def OSP.wt_prod_tm                  0
+set_def OSP.wt_prim_s_len               0
+set_def OSP.wt_prim_a_len               0
+set_def OSP.wt_prim_s_gc                0
+set_def OSP.wt_prim_a_gc                0
+set_def OSP.wt_prim_s_tm                0
+set_def OSP.wt_prim_a_tm                0
+set_def OSP.wt_self3_hmlg_cut           2
+set_def OSP.wt_selfI_hmlg_cut           1
+set_def OSP.wt_pp3_hmlg_cut             2
+set_def OSP.wt_ppI_hmlg_cut             1
+set_def OSP.wt_primprod3_hmlg_cut       0
+set_def OSP.wt_primprodI_hmlg_cut       0
+set_def OSP.wt_primother3_hmlg_cut      0
+set_def OSP.wt_primotherI_hmlg_cut      0
+set_def OSP.wt_delta_tm_cut             0
+set_def OSP.AT_score                    2
+set_def OSP.CG_score                    4
+set_def OSP.wt_ambig                    avg
+</PRE>
+
+To change a default you need to specify the full OSP parameters with modified
+values. For instance:
+
+
+<PRE>
+global gap_defs
+
+set osp_defs [keylget gap_defs OSP]
+keylset osp_defs min_prim_len 18
+
+find_primers \
+        -params $osp_defs \
+        <I>(etc)</I>
+</PRE>
+
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_82.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_84.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

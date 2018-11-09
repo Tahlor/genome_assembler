@@ -1,0 +1,70 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - List-SearchSequenceNames</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_144.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_146.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:List-SearchSequenceNames -->
+
+
+<H2><A NAME="SEC217" HREF="gap4_toc.html#SEC217">Search Sequence Names</A></H2>
+<P>
+<A NAME="IDX505"></A>
+<A NAME="IDX506"></A>
+<A NAME="IDX507"></A>
+<A NAME="IDX508"></A>
+
+</P>
+<P>
+This command allows searching for sequences matching a given pattern. The
+function produces both a list in the text output window and a gap4 "list" of
+reading names. The highlighted output is clickable, with the left mouse button 
+invoking the contig editor and the right mouse button displaying a popup-menu
+allowing additional operations (contig editor, template display, reading notes 
+and contig notes).
+
+</P>
+<P>
+The text search may be performed as either case-sensitive or
+case-insensitive. Additionally the pattern search types are available.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>sub-string</STRONG>
+<DD>
+Matches any reading name where the pattern matches all or part of the name.
+
+<DT><STRONG>wild-cards</STRONG>
+<DD>
+Searches for a pattern using normal filename wild-card matching syntax. So
+<CODE>*</CODE> matches any sequence of characters, <CODE>?</CODE> matches any single
+character, <CODE>[</CODE><I>chars</I><CODE>]</CODE> matches a set of characters defined by
+<I>chars</I>, and <CODE>\</CODE><I>char</I> matches the literal character
+<I>char</I>. Character sets may use a minus sign to match a range. For example
+<CODE>x*.[fr][1-9]</CODE> matches any name starting with <CODE>x</CODE> and ending with
+fullstop followed by either <CODE>f</CODE> or <CODE>r</CODE> followed by a single digit
+between 1 and 9 inclusive. To match a substring using wild-cards prepend or
+append the search string with <CODE>*</CODE>.
+
+<DT><STRONG>regular expression</STRONG>
+<DD>
+This uses the Tcl regular expression syntax to perform a match. These patterns
+are naturally sub-strings unless anchored to one or both ends using the
+<CODE>^</CODE><I>expression</I><CODE>$</CODE> syntax. A full description of regular
+expressions is beyond the scope of this manual.
+</DL>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_144.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_146.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

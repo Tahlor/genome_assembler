@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Appendix-Composition-composition.tcl</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_215.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_217.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Appendix-Composition-composition.tcl -->
+
+
+<H2><A NAME="SEC285" HREF="scripting_toc.html#SEC285">composition.tcl</A></H2>
+<P>
+<A NAME="IDX970"></A>
+
+</P>
+
+<PRE>
+
+<PRE>
+# The main command procedure to bring up the dialogue
+proc Composition {io} {
+    global composition_defs
+
+    # Create a dialogue window
+    set t [keylget composition_defs COMPOSITION.WIN]
+    if [winfo exists $t] {
+        raise $t
+        return
+    }
+    toplevel $t
+
+    # Add the standard contig selector dialogues
+    contig_id $t.id -io $io
+    lorf_in $t.infile [keylget composition_defs COMPOSITION.INFILE] \
+        "{contig_id_configure $t.id -state disabled}
+         {contig_id_configure $t.id -state disabled}
+         {contig_id_configure $t.id -state disabled}
+         {contig_id_configure $t.id -state normal}
+        " -bd 2 -relief groove
+
+    # Add the ok/cancel/help buttons
+    okcancelhelp $t.but \
+        -ok_command "Composition2 $io $t $t.id $t.infile" \
+        -cancel_command "destroy $t" \
+        -help_command "show_help %composition Composition"
+
+    pack $t.infile $t.id $t.but -side top -fill both
+}
+
+# The actual gubbins. This can be either in straight Tcl, or using Tcl and
+# C. In this example, for efficiency, we'll do most of the work in C.
+proc Composition2 {io t id infile} {
+    # Process the dialogue results:
+    if {[lorf_in_get $infile] == 4} {
+        # Single contig
+        set name [contig_id_gel $id]
+        set lreg [contig_id_lreg $id]
+        set rreg [contig_id_rreg $id]
+        SetContigGlobals $io $name $lreg $rreg
+        set list "{$name $lreg $rreg}"
+    } elseif {[lorf_in_get $infile] == 3} {
+        # All contigs
+        set list [CreateAllContigList $io]
+    } else {
+        # List or File of contigs
+        set list [lorf_get_list $infile]
+    }
+
+    # Remove the dialogue
+    destroy $t
+
+    # Do it!
+    SetBusy
+    set res [composition -io $io -contigs $list]
+    ClearBusy
+
+    # Format the output
+    set count 0
+    set tX 0
+    set tA 0
+    set tC 0
+    set tG 0
+    set tT 0
+    set tN 0
+    foreach i $res {
+        vmessage "Contig [lindex [lindex $list $count] 0]"
+        incr count
+
+        set X [lindex $i 0]; incr tX $X
+        if {$X &#60;= 0} continue;
+
+        set A [lindex $i 1]; incr tA $A
+        set C [lindex $i 2]; incr tC $C
+        set G [lindex $i 3]; incr tG $G
+        set T [lindex $i 4]; incr tT $T
+        set N [lindex $i 5]; incr tN $N
+        vmessage "  Length  [format %6d $X]"
+        vmessage "  No. As  [format {%6d %5.2f%%} $A [expr 100*${A}./$X]]"
+        vmessage "  No. Cs  [format {%6d %5.2f%%} $C [expr 100*${C}./$X]]"
+        vmessage "  No. Gs  [format {%6d %5.2f%%} $G [expr 100*${G}./$X]]"
+        vmessage "  No. Ts  [format {%6d %5.2f%%} $T [expr 100*${T}./$X]]"
+        vmessage "  No. Ns  [format {%6d %5.2f%%} $N [expr 100*${N}./$X]]\n"
+    }
+
+    if {$count &#62; 1} {
+        vmessage "Total length [format %6d $tX]"
+        vmessage "Total As     [format {%6d %5.2f%%} $tA [expr 100*${A}./$tX]]"
+        vmessage "Total Cs     [format {%6d %5.2f%%} $tC [expr 100*${C}./$tX]]"
+        vmessage "Total Gs     [format {%6d %5.2f%%} $tG [expr 100*${G}./$tX]]"
+        vmessage "Total Ts     [format {%6d %5.2f%%} $tT [expr 100*${T}./$tX]]"
+        vmessage "Total Ns     [format {%6d %5.2f%%} $tN [expr 100*${N}./$tX]]"
+    }
+}
+</PRE>
+
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_215.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_217.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

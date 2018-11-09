@@ -1,0 +1,63 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Assembly</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_34.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_36.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Assembly -->
+<P>
+<A NAME="IDX110"></A>
+<A NAME="IDX111"></A>
+
+</P>
+<P>
+There are two main types of assembly - denovo and mapped - with the
+latter not really being a true assembly at all.
+
+</P>
+<P>
+Denovo assembly consists of an assembly of DNA fragments without
+typically knowing any of the goal target sequence. Hence it compares
+sequence fragments against each other in order to form contigs.
+Mapped assembly makes uses of a known reference sequence and compares
+all sequence fragments against the reference, which is a far simpler
+and faster process than denovo assembly.
+
+</P>
+<P>
+Gap5 however has neither denovo or mapped assembly built-in. Instead
+it relies on externally running standard command-line tools. At
+present this consists purely of using bwa for a mapped assembly, but
+in future this will be expanded upon.
+
+</P>
+<P>
+This means that the Assembly menu currently only contains a "Map
+Reads" sub-menu, which is turn has multiple choices for bwa
+usage. You will not be directly able to join contigs using these
+facilities or to fill holes in the contig, although this is possible
+by manually following some of the steps outlined below and using an
+alternate step for generating the SAM file.
+
+</P>
+
+<UL>
+<LI><A HREF="gap5_36.html#SEC71">Importing with tg_index</A>
+<LI><A HREF="gap5_37.html#SEC72">Importing fasta/fastq files</A>
+<LI><A HREF="gap5_38.html#SEC73">Mapped assembly by bwa aln</A>
+<LI><A HREF="gap5_38.html#SEC74">Mapped assembly by bwa dbwtsw</A>
+</UL>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_34.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_36.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - ctagget</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_168.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_170.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:ctagget -->
+
+
+<H2><A NAME="SEC188" HREF="scripting_toc.html#SEC188">ctagget and vtagget</A></H2>
+<P>
+<A NAME="IDX747"></A>
+<A NAME="IDX748"></A>
+<A NAME="IDX749"></A>
+<A NAME="IDX750"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+GAnnotations *ctagget(
+        GapIO  *io,
+        int     gel,
+        char   *type);
+
+GAnnotations *vtagget(
+        GapIO  *io,
+        int     gel,
+        int     num_t,
+        char  **type);
+</PRE>
+
+<P>
+These function provides a mechanism of iterating around all the available tags
+of particular types on a given reading or contig number. The <CODE>ctagget</CODE>
+function searches for a single tag type, passed in <VAR>type</VAR> as a 4 byte
+string. The <CODE>vtagget</CODE> function searches for a set of tag types, passed as
+an array of <VAR>num_t</VAR> 4 byte strings.
+
+</P>
+<P>
+To use the functions, call them with a non zero <VAR>gel</VAR> number and the tag
+type(s). The function will return a pointer to a <VAR>GAnnotations</VAR> structure
+containing the first tag on this reading or contig of this type. If none are
+found, <CODE>NULL</CODE> is returned.
+
+</P>
+<P>
+To find the next tag on this reading or contig, of the same type, call the
+function with <VAR>gel</VAR> set to 0. To find all the tags of this type, keep
+repeating this until <CODE>NULL</CODE> is returned.
+
+</P>
+<P>
+Returns a <VAR>GAnnotations</VAR> pointer for success, <CODE>NULL</CODE> for "not found",
+and <CODE>(GAnnotations *)-1</CODE> for failure. The annotation pointer returned is
+valid until the next call of the function.
+
+</P>
+<P>
+For example, the following function prints information on all vector tags for
+a given reading.
+
+</P>
+
+<PRE>
+void print_tags(GapIO *io, int rnum) {
+    char *type[] = {"SVEC", "CVEC"};
+    GAnnotations *a;
+
+    a = vtagget(io, rnum, sizeof(types)/sizeof(*types), types);
+
+    while (a &#38;&#38; a != (GAnnotations *)-1) {
+        printf("position %d, length %d\n",
+            a-&#62;position, a-&#62;length);e
+
+        a = vtagget(io, 0, sizeof(types)/sizeof(*types), types);
+    }
+}
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_168.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_170.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

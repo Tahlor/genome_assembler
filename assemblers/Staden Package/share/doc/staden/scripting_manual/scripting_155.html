@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - calc_quality</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_154.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_156.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:calc_quality -->
+
+
+<H2><A NAME="SEC174" HREF="scripting_toc.html#SEC174">calc_quality</A></H2>
+<P>
+<A NAME="IDX701"></A>
+<A NAME="IDX702"></A>
+<A NAME="IDX703"></A>
+
+</P>
+
+<PRE>
+#include &#60;qual.h&#62;
+
+int calc_quality(
+        int     contig,
+        int     start,
+        int     end,
+        char   *qual,
+        float   cons_cutoff,
+        int     qual_cutoff,
+        int   (*info_func)(int          job,
+                           void        *mydata,
+                           info_arg_t  *theirdata),
+        void   *info_data)
+
+int database_info(
+        int          job,
+        void        *mydata,
+        info_arg_t  *theirdata);
+</PRE>
+
+<P>
+This function calculates the quality codes for a given segment of a contig
+consensus sequence. The quality information is stored in the <VAR>qual</VAR>
+buffer, which should be allocated by the caller to be at least
+<VAR>end-start+1</VAR> bytes long. The contents of this buffer is one byte per
+base, consisting of a letter between 'a' and 'j'. There are #defines in
+<TT>`qual.h'</TT> assigning meanings to these codes, which should be used in
+preference to hard coding the codes themselves. The defines and meanings are
+as follows.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>a - R_GOOD_GOOD_EQ</CODE>
+<DD>
+Data is good on both strands and both strands agree on the same consensus base.
+<DT><CODE>b - R_GOOD_BAD</CODE>
+<DD>
+Data is good on the top strand, but poor on the bottom strand.
+<DT><CODE>c - R_BAD_GOOD</CODE>
+<DD>
+Data is good on the bottom strand, but poor on the top strand.
+<DT><CODE>d - R_GOOD_NONE</CODE>
+<DD>
+Data is good on the top strand, but no data is available on the bottom strand.
+<DT><CODE>e - R_NONE_GOOD</CODE>
+<DD>
+Data is good on the bottom strand, but no data is available on the top strand.
+<DT><CODE>f - R_BAD_BAD</CODE>
+<DD>
+Data is available on both strands, but both strands are poor data.
+<DT><CODE>g - R_BAD_NONE</CODE>
+<DD>
+Data is poor on the top strand, with no data on the bottom strand.
+<DT><CODE>h - R_NONE_BAD</CODE>
+<DD>
+Data is poor on the bottom strand, with no data on the top strand.
+<DT><CODE>i - R_GOOD_GOOD_NE</CODE>
+<DD>
+Data is good on both strands, but the consensus base differs between top and
+bottom strand.
+<DT><CODE>j - R_NONE_NONE</CODE>
+<DD>
+No data is available on either strand (this should never occur).
+</DL>
+
+<P>
+The <VAR>contig</VAR>, <VAR>start</VAR> and <VAR>end</VAR> arguments hold the contig and
+range to calculate the quality for. The ranges are inclusive and start
+counting with the first base as position 1.
+
+</P>
+<P>
+<VAR>qual_cutoff</VAR> and <VAR>cons_cutoff</VAR> hold the quality and consensus cutoff
+parameters. These are used in an identical manner to the <CODE>calc_quality</CODE>
+function. See section <A HREF="scripting_155.html#SEC174">calc_quality</A>.
+
+</P>
+<P>
+The <VAR>info_func</VAR> and <VAR>info_data</VAR> arguments are also used in the same
+way as <CODE>calc_quality</CODE>. Generally <VAR>info_func</VAR> should be
+<CODE>database_info</CODE> and <VAR>info_data</VAR> should be a <VAR>GapIO</VAR> pointer.
+This will then read the sequence data from the Gap4 database.
+
+</P>
+<P>
+The function returns 0 for success, -1 for failure.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_154.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_156.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

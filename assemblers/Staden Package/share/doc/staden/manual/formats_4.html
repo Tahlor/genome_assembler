@@ -1,0 +1,101 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Scf-Header</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Scf-Header -->
+
+
+<H3><A NAME="SEC4" HREF="formats_toc.html#SEC4">Header Record</A></H3>
+<P>
+<A NAME="IDX12"></A>
+<A NAME="IDX13"></A>
+<A NAME="IDX14"></A>
+<A NAME="IDX15"></A>
+<A NAME="IDX16"></A>
+
+</P>
+<P>
+The file begins with a 128 byte header record that describes the
+location and size of the chromatogram data in the file. Nothing is
+implied about the order in which the components (samples, sequence and
+comments) appear. The version field is a 4 byte character array
+representing the version and revision of the SCF format. The current
+value of this field is "3.00".
+
+</P>
+
+<PRE>
+/*
+ * Basic type definitions
+ */
+typedef unsigned int   uint_4;
+typedef signed   int    int_4;
+typedef unsigned short uint_2;
+typedef signed   short  int_2;
+typedef unsigned char  uint_1;
+typedef signed   char   int_1;
+
+/*
+ * Type definition for the Header structure
+ */
+#define SCF_MAGIC (((((uint_4)'.'&#60;&#60;8)+(uint_4)'s'&#60;&#60;8) \
+                     +(uint_4)'c'&#60;&#60;8)+(uint_4)'f')
+
+typedef struct {
+    uint_4 magic_number;
+    uint_4 samples;          /* Number of elements in Samples matrix */
+    uint_4 samples_offset;   /* Byte offset from start of file */
+    uint_4 bases;            /* Number of bases in Bases matrix */
+    uint_4 bases_left_clip;  /* OBSOLETE: No. bases in left clip (vector) */
+    uint_4 bases_right_clip; /* OBSOLETE: No. bases in right clip (qual) */
+    uint_4 bases_offset;     /* Byte offset from start of file */
+    uint_4 comments_size;    /* Number of bytes in Comment section */
+    uint_4 comments_offset;  /* Byte offset from start of file */
+    char version[4];         /* "version.revision", eg '3' '.' '0' '0' */
+    uint_4 sample_size;      /* Size of samples in bytes 1=8bits, 2=16bits*/
+    uint_4 code_set;         /* code set used (but ignored!)*/
+    uint_4 private_size;     /* No. of bytes of Private data, 0 if none */
+    uint_4 private_offset;   /* Byte offset from start of file */
+    uint_4 spare[18];        /* Unused */
+} Header;
+</PRE>
+
+
+<BLOCKQUOTE>
+<P>
+For versions of SCF files 2.0 or greater (<STRONG>Header.version</STRONG> is `greater
+than' "2.00"), the version number, precision of data, the uncertainty code set
+are specified in the header.  Otherwise, the precision is assumed to be 1
+byte, and the code set to be the default code set.  The following uncertainty
+code sets are recognised (but still ignored by our programs!).
+</BLOCKQUOTE>
+
+
+<PRE>
+0       {A,C,G,T,-}   (default)
+1       Staden
+2       IUPAC (NC-IUB)
+3       Pharmacia A.L.F. (NC-IUB)
+4       {A,C,G,T,N}   (ABI 373A)
+5       IBI/Pustell
+6       DNA*
+7       DNASIS
+8       IG/PC-Gene
+9       MicroGenie
+</PRE>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

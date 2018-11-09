@@ -1,0 +1,125 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Naming-Sanger_names_old</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_48.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_50.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Naming-Sanger_names_old -->
+
+
+<H2><A NAME="SEC55" HREF="pregap4_toc.html#SEC55">Old Sanger Centre Naming Scheme</A></H2>
+<P>
+<A NAME="IDX91"></A>
+<A NAME="IDX92"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Filename</STRONG>
+<DD>
+sanger_names_old.p4t
+<P>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This scheme extracts information from sequence names by assuming that they
+adhere to the old-style Sanger Centre naming scheme. The information extracted
+consists of the template name, primer type and chemistry information. The
+format of a reading name is as follows.
+<P>
+&#60;<I>template_name</I>&#62;<CODE>.</CODE>&#60;<I>strand</I>&#62;&#60;<I>primer</I>&#62;&#60;<I>conditions</I>&#62;&#60;<I>repetition</I>&#62;
+<P>
+In the above, <I>strand</I> and <I>primer</I> are each one character long and are
+defined according to the following tables. <I>Conditions</I> can be
+0, 1 or 2 characters indicating none, one or two sequencing conditions.
+<I>Repetitions</I> is optional and is used purely for creating unique names when
+resequencing a template with the same strand, primer and conditions as a
+previous sequencing reaction.
+
+<P>
+<DL COMPACT>
+
+<DT><STRONG>Strand</STRONG>
+<DD>
+<STRONG>Description</STRONG>
+<DT><CODE>s</CODE>, <CODE>f</CODE>
+<DD>
+Forward, single stranded template.
+<DT><CODE>r</CODE>
+<DD>
+Reverse, single stranded template.
+<DT><CODE>p</CODE>
+<DD>
+Forward, double stranded template.
+<DT><CODE>q</CODE>
+<DD>
+Reverse, double stranded template.
+</DL>
+
+<P>
+<DL COMPACT>
+
+<DT><STRONG>Primer</STRONG>
+<DD>
+<STRONG>Description</STRONG>
+<DT><CODE>1</CODE>
+<DD>
+Universal primer (end of insert).
+<DT><CODE>2</CODE>, <CODE>3</CODE>, etc
+<DD>
+Custom primer.
+</DL>
+
+<P>
+<DL COMPACT>
+
+<DT><STRONG>Conditions</STRONG>
+<DD>
+<STRONG>Description</STRONG>
+<DT><CODE>t</CODE>
+<DD>
+Dye terminator chemistry.
+<DT><CODE>l</CODE>
+<DD>
+Long gel
+</DL>
+
+<P>
+<DL COMPACT>
+
+<DT><STRONG>Repetition</STRONG>
+<DD>
+<STRONG>Description</STRONG>
+<DT><CODE>a</CODE>, <CODE>b</CODE>, <CODE>c</CODE>, ...
+<DD>
+Any letter except l and t
+</DL>
+
+<P>
+For example "<CODE>U16F10.p1t</CODE>" is a forward dye-terminator sequence from the
+double stranded template named <CODE>U16F10</CODE> using the universal primer.
+<P>
+
+<DT><STRONG>Configuration section</STRONG>
+<DD>
+<CODE>[naming_scheme]</CODE>
+<P>
+
+<DT><STRONG>Configuration elements</STRONG>
+<DD>
+<CODE>PR_com</CODE>, <CODE>TN_com</CODE>, <CODE>CH_com</CODE>.
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_48.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_50.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

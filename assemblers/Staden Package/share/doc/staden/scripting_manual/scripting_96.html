@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Configure</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_95.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_97.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Configure -->
+
+
+<H3><A NAME="SEC106" HREF="scripting_toc.html#SEC106">Configuration Options</A></H3>
+<P>
+<A NAME="IDX331"></A>
+<A NAME="IDX332"></A>
+
+</P>
+<P>
+These options are specified when creating the editor widget to configure its
+look and feel. In addition to the options listed below the editor supports the
+<CODE>-width</CODE>, <CODE>-height</CODE>, <CODE>-font</CODE>, <CODE>-borderWidth</CODE>,
+<CODE>-relief</CODE>, <CODE>-foreground</CODE>, <CODE>-background</CODE>, <CODE>-xscrollcommand</CODE>
+and <CODE>-yscrollcommand</CODE>. These are described in detail in the Tk
+<I>options</I> manual page. Note that the <CODE>-width</CODE> and <CODE>-height</CODE> values
+are measured in characters.
+
+</P>
+<P>
+In the descriptions below `Command-Line Name' refers to he switch used
+  in class commands and <CODE>configure</CODE> widget commands to set this value.
+`Database Name' refers to the option's name in the option database (e.g.  in
+<TT>`.Xdefaults'</TT> files).  `Database Class' refers to the option's class value
+in the option database.
+
+</P>
+<P>
+<DL COMPACT>
+
+<DT>Command-Line Name: <CODE>-lightcolour</CODE>
+<DD>
+<DT>Database Name: <CODE>lightColour</CODE>
+<DD>
+<DT>Database Class: <CODE>Foreground</CODE>
+<DD>
+<A NAME="IDX333"></A>
+<A NAME="IDX334"></A>
+
+        Specifies the foreground colour to use when displaying the cutoff
+        data.
+
+<P>
+<DT>Command-Line Name: <CODE>-max_height</CODE>
+<DD>
+<DT>Database Name: <CODE>maxHeight</CODE>
+<DD>
+<DT>Database Class: <CODE>MaxHeight</CODE>
+<DD>
+<A NAME="IDX335"></A>
+<A NAME="IDX336"></A>
+
+        Specifies the maximum height the editor is allowed to display, in
+        units of characters. The vertical scrollbar will be used when more
+        than this many sequences are displayed.
+
+<P>
+<DT>Command-Line Name: <CODE>-qualcolour</CODE><I>n</I> (0 &#60;= <I>n</I> &#60;= 9)
+<DD>
+<DT>Database Name: <CODE>qualColour</CODE><I>n</I>
+<DD>
+<DT>Database Class: <CODE>Background</CODE>
+<DD>
+<A NAME="IDX337"></A>
+<A NAME="IDX338"></A>
+
+        These specify the 10 colours to be used for the background of the
+        bases when <CODE>show_quality</CODE> is enabled. <CODE>-qualcolour0</CODE> should
+        be the darkest (defaults to '<CODE>#494949</CODE>') and <CODE>-qualcolour9</CODE>
+        should be the lightest (defaults to '<CODE>#d9d9d9</CODE>').
+
+<P>
+<DT>Command-Line Name: <CODE>-qual_fg</CODE>
+<DD>
+<DT>Database Name: <CODE>qualForeground</CODE>
+<DD>
+<DT>Database Class: <CODE>Foreground</CODE>
+<DD>
+<A NAME="IDX339"></A>
+<A NAME="IDX340"></A>
+
+        This specifies the foreground colour of bases with poorer
+        quality than the current quality cutoff. By default this is
+        redish ('<CODE>#ff5050</CODE>').
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_95.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_97.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

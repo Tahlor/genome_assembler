@@ -1,0 +1,456 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Database I/O in C</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_110.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_112.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:C-IO -->
+
+
+<H1><A NAME="SEC122" HREF="scripting_toc.html#SEC122">Database I/O in C</A></H1>
+
+<UL>
+</UL>
+
+<!-- NODE:G4Cio-Introduction -->
+
+
+<H2><A NAME="SEC123" HREF="scripting_toc.html#SEC123">Introduction and Overview</A></H2>
+<P>
+<A NAME="IDX462"></A>
+<A NAME="IDX463"></A>
+
+</P>
+<P>
+[General notes to go somewhere: It is better to check success return codes
+rather than failure ones as the failure ones are often variable (-1, 1, &#62;0,
+etc) but most return 0 for success.]
+
+</P>
+<P>
+The Gap4 I/O access from within C consists of several layers. These layers
+provide ways of breaking down the tasks into discrete methods, and of hiding
+most of the implementation details. For the programmer willing to extend Gap4,
+only the higher layer levels are of interest. Hence the lowest levels are
+described only briefly.
+
+</P>
+
+
+<H3><A NAME="SEC124" HREF="scripting_toc.html#SEC124">"g" Level - Raw Database Access</A></H3>
+
+<P>
+At the final end of any I/O is the actual code to read and write information
+to the disk. In Gap4 this is handled through a library named "g". This
+contains code for reading, writing, locking and updating of the physical
+database. It does not describe the structures contained in the gap database
+format itself, but rather provides functions to read and write arbitrary
+blocks of data. Don't delve into this unless you're feeling brave!
+
+</P>
+<P>
+The code for this library is contained within the <TT>`src/g'</TT> directory.
+No documentation is currently available on these functions.
+
+</P>
+
+
+<H3><A NAME="SEC125" HREF="scripting_toc.html#SEC125">"Communication" Level - Interfaces to the "g" Level</A></H3>
+
+<P>
+This level of code deals with describing the real Gap4 data structures and
+the interfacing with the g library. Generally this code should not be used.
+
+</P>
+<P>
+This code is contained within the <TT>`src/gap4'</TT> directory and breaks down as
+follows:
+
+</P>
+<DL COMPACT>
+
+<DT><TT>`gap-if.c'</TT>
+<DD>
+<DT><TT>`gap-local.c'</TT>
+<DD>
+<DT><TT>`gap-remote.c'</TT>
+<DD>
+	Interface functions with the g library. These are to provide
+	support for a local (ie compiled in) or remote (unimplemented)
+	database server.
+
+<DT><TT>`gap-io.c'</TT>
+<DD>
+	Contains <CODE>GAP_READ</CODE> and <CODE>GAP_WRITE</CODE> functions in byte swap
+	and non byte swap forms (depending on the system arch.). The
+	<CODE>gap_io_init()</CODE> function automatically determines the machine
+	endian and sets up function pointers to call the correct functions.
+
+<DT><TT>`gap-error.c'</TT>
+<DD>
+	Definitions of <CODE>GAP_ERROR</CODE> and <CODE>GAP_ERROR_FATAL</CODE> functions.
+
+<DT><TT>`gap-dbstruct.c'</TT>
+<DD>
+<DT><TT>`gap-create.c'</TT>
+<DD>
+	Functions for creation, initialisation, and copying of database
+	files.
+
+<DT><TT>`gap-dbstruct.h'</TT>
+<DD>
+	<STRONG>VERY USEFUL!</STRONG> The definitions of the gap structures that are
+	stored in the database.
+
+<DT><TT>`gap-init.c'</TT>
+<DD>
+	Initialises communication with the "g" database server by use of
+	<CODE>gap_init()</CODE>, <CODE>gap_open_server()</CODE> and
+	<CODE>gap_shutdown_server()</CODE> functions.
+</DL>
+
+<P>
+No documentation is currently available on these functions.
+
+</P>
+
+
+<H3><A NAME="SEC126" HREF="scripting_toc.html#SEC126">Basic Gap4 I/O</A></H3>
+
+<P>
+This level contains the basic functions for reading, writing, creation and
+deletion of the Gap4 structures, such as readings and templates as well as
+higher level functions built on top of these. It is this level of code that
+should generally be used by the programmer. The implementation of this level
+has function code and prototypes spread over a variety of files, but the
+programmer should only <CODE>#include</CODE> the <TT>`IO.h'</TT> file.
+
+</P>
+<P>
+The primary functions are:
+
+</P>
+<DL COMPACT>
+
+<DT><TT>`IO.c'</TT>
+<DD>
+<DL COMPACT>
+
+<DT><CODE>open_db</CODE>
+<DD>
+<DT><CODE>close_db</CODE>
+<DD>
+<DT><CODE>del_db</CODE>
+<DD>
+	Opening/creation, closing and deletion of databases.
+
+<DT><CODE>GT_Read, GT_Write, GT_Write_cached</CODE>
+<DD>
+<DT><CODE>TextRead, TextAllocRead, TextWrite</CODE>
+<DD>
+<DT><CODE>DataRead, DataWrite</CODE>
+<DD>
+<DT><CODE>ArrayRead, ArrayWrite</CODE>
+<DD>
+<DT><CODE>BitmapRead, BitmapWrite</CODE>
+<DD>
+	The basic IO calls. Note that the GT ones are for handling structures
+	(eg GReadings) and the others for data of the associated type.
+
+<DT><CODE>io_init_contig</CODE>
+<DD>
+<DT><CODE>io_init_annotations</CODE>
+<DD>
+<DT><CODE>io_init_reading</CODE>
+<DD>
+	Some functions for initialising new data structures. These in turn
+	call the <CODE>allocate()</CODE> function to create new database records.
+
+<DT><CODE>io_read_seq</CODE>
+<DD>
+<DT><CODE>io_write_seq</CODE>
+<DD>
+	Reads and writes sequence information.
+
+<DT><CODE>io_read_rd</CODE>
+<DD>
+	Fetches the trace type and name values for a reading.
+
+<DT><CODE>io_read_annotation</CODE>
+<DD>
+<DT><CODE>io_write_annotation</CODE>
+<DD>
+	Reading and writing of annotations (also known as tags).
+
+<DT><CODE>allocate</CODE>
+<DD>
+<DT><CODE>deallocate</CODE>
+<DD>
+<DT><CODE>io_deallocate_reading</CODE>
+<DD>
+        Allocation and deallocation of records.
+
+<DT><CODE>flush2t</CODE>
+<DD>
+        Flushes changes back to disk. The various write commands write the
+        data to disk, but until a flush occurs they will not be committed as
+        the up to date copies.
+</DL>
+
+<DT><TT>`io_handle.c'</TT>
+<DD>
+<DL COMPACT>
+
+<DT><CODE>io_handle</CODE>
+<DD>
+<DT><CODE>handle_io</CODE>
+<DD>
+        Converts between C <VAR>GapIO</VAR> pointer and an integer value which can
+        be passed around in Tcl and Fortran. The integer handle is used in the
+        Tcl scripting language.
+</DL>
+
+<DT><TT>`io_utils.[ch]'</TT>
+<DD>
+<DL COMPACT>
+
+<DT><CODE>get_gel_num, lget_gel_num</CODE>
+<DD>
+<DT><CODE>get_contig_num, lget_contig_num</CODE>
+<DD>
+        Converts single or lists of reading identifiers into reading or contig
+        numbers (with start and end ranges).
+
+<DT><CODE>to_contigs_only</CODE>
+<DD>
+        Converts a list of reading identifiers to contig numbers.
+
+<DT><CODE>get_read_name</CODE>
+<DD>
+<DT><CODE>get_contig_name</CODE>
+<DD>
+<DT><CODE>get_vector_name</CODE>
+<DD>
+<DT><CODE>get_template_name</CODE>
+<DD>
+<DT><CODE>get_clone_name</CODE>
+<DD>
+        Converts a structure number into its textual name.
+
+<DT><CODE>chain_left</CODE>
+<DD>
+        Finds the left most reading number in a contig from a given reading
+        number.
+
+<DT><CODE>rnumtocnum</CODE>
+<DD>
+        Converts from a reading number into a contig number.
+</DL>
+</DL>
+
+
+
+<H3><A NAME="SEC127" HREF="scripting_toc.html#SEC127">Other I/O Functions</A></H3>
+
+<P>
+Still more I/O functions exist that aren't listed under the "Basic Gap4 I/O"
+header. The reason for this is primarily due to code structure rather than any
+particular grouping based on functionality. Specifically, these functions
+cannot be easily linked into "external" applications without a considerable
+amount of effort.
+
+</P>
+<P>
+The file break down is as follows.
+
+</P>
+<DL COMPACT>
+
+<DT><TT>`IO2.c'</TT>
+<DD>
+<DL COMPACT>
+
+<DT><CODE>io_complement_seq</CODE>
+<DD>
+	Complements, in memory, a sequence and associated structures.
+
+<DT><CODE>io_insert_seq</CODE>
+<DD>
+<DT><CODE>io_delete_seq</CODE>
+<DD>
+<DT><CODE>io_replace_seq</CODE>
+<DD>
+	Modifies in memory sequence details.
+
+<DT><CODE>io_insert_base</CODE>
+<DD>
+<DT><CODE>io_modify_base</CODE>
+<DD>
+<DT><CODE>io_delete_base</CODE>
+<DD>
+        Modifies a single base in a sequence on the disk.
+
+<DT><CODE>pad_consensus</CODE>
+<DD>
+        Inserts pads to the consensus sequence and all the readings at that
+        point.
+
+<DT><CODE>io_delete_contig</CODE>
+<DD>
+        Removes a contig structure.
+</DL>
+
+<DT><TT>`IO3.c'</TT>
+<DD>
+<DL COMPACT>
+
+<DT><CODE>get_read_info</CODE>
+<DD>
+<DT><CODE>get_vector_info</CODE>
+<DD>
+<DT><CODE>get_clone_info</CODE>
+<DD>
+	Fetches miscellaneous information for reads (primers, insert size,
+	etc), vectors and clones.
+
+<DT><CODE>io_get_extension</CODE>
+<DD>
+	Returns the right cutoff of a reading. Found by checking the cut
+	points and any vector tags.
+
+<DT><CODE>io_mod_extension</CODE>
+<DD>
+	Modifies the cutoffs of readings.
+
+<DT><CODE>write_rname</CODE>
+<DD>
+        Updates a reading name in memory and disk.
+</DL>
+</DL>
+
+
+
+<H2><A NAME="SEC128" HREF="scripting_toc.html#SEC128">Compiling and Linking with Other Programs</A></H2>
+<P>
+<A NAME="IDX464"></A>
+<A NAME="IDX465"></A>
+<A NAME="IDX466"></A>
+<A NAME="IDX467"></A>
+<A NAME="IDX468"></A>
+
+</P>
+<P>
+If you require usage of the Gap4 I/O functions in a program other than Gap4
+itself you will need to compile and link in particular ways to use the
+function prototypes and to add the Gap4 functions to your binary. At present,
+the object files required for database access do not comprise a library.
+
+</P>
+<P>
+The compiler include search path needs adjusting to add the
+<TT>`$STADENROOT/src/gap4'</TT> directory and possibly the
+<TT>`$STADENROOT/src/g'</TT> directory. Once your own object files are compiled,
+they need to be linked with the following gap4 object files.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/actf.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-create.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-dbstruct.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-error.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-if.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-init.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-io.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-local.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/gap-remote.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/IO.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/io_handle.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/io-reg.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/io_utils.o</CODE>
+<DD>
+<DT><CODE>$STADENROOT/src/gap4/$MACHINE-binaries/text-io-reg.o</CODE>
+<DD>
+</DL>
+
+<P>
+Finally, a library search path of <TT>`$STADENROOT/lib/$MACHINE-binaries'</TT>
+should be used to link the <CODE>-lg -ltext_utils -lmisc</CODE> libraries.
+
+</P>
+<P>
+All of the above definitions have been added to a single Makefile held in
+<TT>`$STADENROOT/src/mk/gap4_defs.mk'</TT> as the <CODE>GAPDB_EXT_INC</CODE>,
+<CODE>GAPDB_EXT_OBJS</CODE> and <CODE>GAPDB_EXT_LIBS</CODE> variables. When possible,
+these should be used in preference to hard coding the variable object
+filenames as this provides protection against future coding changes.
+So for example, if we have a program held in the file <TT>`demo.c'</TT> we could
+have a simple Makefile as follows.
+
+</P>
+
+<PRE>
+SRCROOT=$(STADENROOT)/src
+include $(SRCROOT)/mk/global.mk
+include $(SRCROOT)/mk/$(MACHINE).mk
+
+OBJS = $(O)/demo.o
+
+LIBS = $(MISC_LIB)
+
+$(O)/demo: $(OBJS)
+        $(CLD) -o $ $(OBJS) $(LIBS) $(LIBSC)
+</PRE>
+
+<P>
+If we now extend this program so that it requires the Gap4 I/O routines, the
+Makefile should be modified to:
+
+</P>
+
+<PRE>
+SRCROOT=$(STADENROOT)/src
+include $(SRCROOT)/mk/global.mk
+include $(SRCROOT)/mk/$(MACHINE).mk
+include $(SRCROOT)/mk/gap4_defs.mk
+
+INCLUDES_E += $(GAPDB_EXT_INC)
+
+OBJS = $(O)/demo.o $(GAPDB_EXT_OBJS)
+
+LIBS = $(MISC_LIB) $(GAPDB_EXT_LIBS)
+
+$(O)/demo: $(OBJS)
+        $(CLD) -o $ $(OBJS) $(LIBS) $(LIBSC)
+</PRE>
+
+<P>
+If you require an example of a program that utilises the Gap4 I/O functions,
+see the <CODE>convert</CODE> program in <TT>`$STADENROOT/src/convert/'</TT>.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_110.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_112.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

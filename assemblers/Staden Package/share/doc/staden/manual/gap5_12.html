@@ -1,0 +1,94 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Movement</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Movement -->
+
+
+<H2><A NAME="SEC21" HREF="gap5_toc.html#SEC21">Moving the visible segment of the contig</A></H2>
+<P>
+<A NAME="IDX33"></A>
+
+</P>
+<P>
+The contig editor displays only one segment of the entire contig,
+although several contig editors can be in use at once.  Below the
+sequence is a scrollbar and below that a "jog" control. The
+scrollbar behaves as expected, allowing rapid positioning anywhere
+within the contig using the middle mouse button or left-clicking and
+dragging the slider. However with extremely long contigs (for example
+100Mb) it can become tricky to move by the desired amount. Each pixel
+on the scrollbar may represent 100Kb worth of data, so dragging the
+scrollbar is only approximate positioning. Equally so clicking in the
+trough to move a screen-full at a time can be too small. This is where
+the jog-control can be of use.
+
+</P>
+<P>
+By default this is always centred. Clicking and dragging this left or
+right starts to scroll the editor, at a speed proportional to how far
+away from the centre the jog is dragged. Releasing the mouse button
+stops automatically scrolling and recentres the jog control.
+
+</P>
+<P>
+The final, more precise, manner of positioning the editor view is with
+the text entry box in the bottom left corner. Type in any coordinate
+here and press return to jump straight to that location. Note however
+that Gap5's coordinates are currently always in padded form; that is
+to say that a gap in the consensus caused by an insertion in one of
+the aligned sequences is still counted as a base position.
+
+</P>
+<P>
+For particularly deep displays the vertical scrollbar on the right
+edge of the window will also be useful. While scrolling in X, the
+editor attempts to keep the same sequences visible on screen. To do
+this it may automatically adjust the Y scrollbar for you due to
+changing layout of sequences. (By default the top-most sequence is
+always the sequence that starts furthest left and the bottom most is
+the sequence starting furthest right.)
+
+</P>
+<P>
+If you have a mouse wheel, this may also be used for small
+scrolling. By itself it scrolls in Y one sequence at a time. With the
+Control key held down it scrolls in larger increments. Using the Shift
+key in conjunction with the mouse wheel scrolls in X instead, with
+Shift+Control to scroll in larger increments.
+
+</P>
+<P>
+The displayed portion of the contig is separate from the current
+location of the editing cursor. This is displayed as a black rectangle
+with typically a light coloured letter inside it. Any editing keys
+operate on the base underneath this or to the base immediately
+preceding it for Delete. We cover the topic of editing later
+(see section <A HREF="gap5_14.html#SEC23">Editing</A>), however moving the
+editing cursor is also another way of scrolling the editor.
+
+</P>
+<P>
+Finally the Page Up and Page Down keys scroll the editor left or right
+by 90% of current screen width.  Used with Shift the moves in
+increments of 1Kb, with Control in increments of 10Kb and with both
+Shift and Control in increments of 100Kb. The Home and End keys jump
+to the start or end of the current item underneath the editing curosr
+- either a sequence or the consensus.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

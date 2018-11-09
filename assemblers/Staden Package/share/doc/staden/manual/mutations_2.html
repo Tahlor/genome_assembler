@@ -1,0 +1,223 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from mutations.htmlinfo on 25 April 2016 -->
+
+<TITLE>Mutation Detection - Mutation-Detection-Introduction</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Mutation-Detection-Introduction -->
+
+
+<H2><A NAME="SEC2" HREF="mutations_toc.html#SEC2">Introduction to mutation detection</A></H2>
+<P>
+<A NAME="IDX1"></A>
+<A NAME="IDX2"></A>
+
+</P>
+<P>
+Our methods for detecting mutations are based on the alignment and comparison
+of the fluorescent traces produced by Sanger DNA sequencing. To use clinical
+terminology, samples from patients are compared to standard reference traces.
+Patient and reference traces should be produced using the same primers and 
+sequencing chemistry, ideally from both strands of the DNA. The data shown
+in the examples below is from exon 11 of the BRCA1 gene.
+
+</P>
+<P>
+The basic idea is illustrated in the following two figures which are screen
+dumps from our program gap4(see section <A HREF="gap4_3.html#SEC3">Gap4 introduction</A>). The first shows
+a sample containing a point mutation and the second contains a heterozygous
+base position. The displays are bisected vertically: at the top left is the 
+sample trace
+from one strand of the DNA, below that the reference trace for that 
+strand, and underneath the difference between these traces which is 
+obtained by 
+subtracting one from the other.
+On the right is corresponding data from the other DNA strand (shown 
+complemented).
+
+</P>
+
+<p>
+<a href="mut_traces_point,6in.png.html"><img src="mut_traces_point,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 1. Top and bottom strand differences for a point mutation.
+
+</P>
+
+<p>
+<a href="mut_traces_het,6in.png.html"><img src="mut_traces_het,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 2. Top and bottom strand differences for a heterozygous base.
+
+</P>
+<P>
+As can be seen, although no vertical scaling is performed the difference trace
+is quite flat or is consistently either above or below the mid-line, except 
+at the sites of mutations. Near these are strong peaks, but notice that only
+for the mutated base are there peaks both above and below the mid-line. The
+context effects caused by the mutation produce peaks only in one direction.
+
+</P>
+<P>
+It is perhaps necessary to point out that analysis of the traces is essential
+because base callers make mistakes: they can assign the wrong base types and
+also assign single bases where the DNA is heterozygous. An example of the latter
+can be observed in Figure 2: on one strand the base caller has assigned
+a "-" symbol at position 251, at least indicating uncertainty, but on the
+other strand it has assigned "T". The DNA is clearly heterozygous at this
+position. This means that simply looking for differences between patient
+sequences and reference sequences will cause point mutations and heterozygous
+bases to be missed (of course base calling errors will also create
+false differences).
+
+</P>
+<P>
+These trace displays alone are very useful for visual inspection of data 
+and are all
+some users want. However we also have programs which automatically analyse 
+the trace differences and tag the bases which have significant peaks as possible
+sites of mutation.
+
+</P>
+
+<P>
+Trace viewing is initiated from within the gap4 editor(see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>).
+Each record in the editor shows an individual reading with its number and name
+at the left. Negative numbers denote readings which have been complemented.
+Several sequences have special status. At the top is a sequence labelled with
+a letter S at the left edge. This is the reference sequence, here the EMBL
+entry HSLBRCA1 which covers the entirety of the BRCA1 gene. The numbering
+at the top of the display corresponds to positions in this reference sequence.
+The program has also coloured (green) all exons on the reference sequence.
+The bottom DNA sequence in the editor is labelled "CONSENSUS". For mutation
+detection work this sequence is forced to be identical to the reference.
+Below the CONSENSUS sequence is the amino acid sequence for the reference.
+This is calculated on the fly using the feature table of the reference 
+sequence and so translates only exons and in their correct reading frames.
+Two other sequences (near the top) are labelled R and F. These are the readings
+providing the reverse
+and forward reference traces for this segment of the data.
+
+</P>
+
+<p>
+<a href="mut_contig_editor5,6in.png.html"><img src="mut_contig_editor5,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 3. A set of aligned sequence readings displayed in the gap4 editor.
+
+</P>
+<P>
+At the very bottom of the editor is an information line which is used to
+display data about items touched by the mouse cursor. Here it is showing
+data about one of the positions tagged as possibly being heterozygous. 
+It includes the
+observed base types (G and A) and the scores achieved by the automated analysis.
+
+</P>
+<P>
+The editor can be set to show only differences between readings and the 
+reference; all matching bases appear as dots. For example, Figure 4.
+shows the same data as Figure 3, but with the editor set to show differences,
+and the information line showing details about a possible mutation.
+
+</P>
+
+<p>
+<a href="mut_contig_editor_dis5,6in.png.html"><img src="mut_contig_editor_dis5,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 4. An alternative view of aligned sequence readings in the gap4 editor.
+
+</P>
+
+<P>
+One column contains several bases tagged in  red, signifying possible
+heterozygotes, and some in orange denoting possible point mutations. 
+During visual inspection the program can be made to move the cursor from 
+one tag to the next and to display the aligned traces as shown
+above in Figures 1 and 2.
+
+</P>
+<P>
+It is also possible to have positive controls for displaying the trace 
+differences; i.e. reference traces which contain the mutation. In this case the traces
+appear as shown in figure 5. Here the forward and reverse positive controls
+are shown to the right of the normal plots. In Figure 5 the positive control
+difference plots are quite flat hence, in this case, providing confirmation 
+of the presence of the heterozygous base.
+
+</P>
+
+<p>
+<a href="mut_traces_positive,6in.png.html"><img src="mut_traces_positive,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 5. Top and bottom strand differences and positive control for a heterozygous base.
+
+</P>
+<P>
+As mentioned above the package contains programs which can automatically
+compare the traces and their reference sequences. The output from these
+programs are the tags shown in the editor. Users can check the traces at
+these positions using the displays shown in Figures 1, 2 and 5; if necessary
+removing or adding tags. Alternatively users can rely entirely on visual
+inspection and create all tags themselves.
+
+</P>
+<P>
+Once all the mutations are correctly tagged the program can produce a report
+which includes the reading names, mutation positions relative to the reference
+sequence, the actual change, its effect, and the evidence. An example is shown
+below in Figure 6.
+
+</P>
+
+<PRE>
+
+001321_11aF 33885T&#62;Y (silent F) (strand - only)
+001321_11aF 34407G&#62;K (expressed E&#62;[ED]) (strand - only)
+001321_11cF 35512T&#62;Y (silent L) (double stranded)
+001321_11cF 35813C&#62;Y (expressed P&#62;[PL]) (double stranded)
+001321_11dF 36314A&#62;R (expressed E&#62;[EG]) (double stranded)
+001321_11eF 36749A&#62;R (expressed K&#62;[KR]) (double stranded)
+001321_11eF 37313T&#62;K (noncoding) (strand - only)
+000256_11eF 36749A&#62;G (expressed K&#62;R) (double stranded)
+
+</PRE>
+
+<P>
+Figure 6. How gap4 reports mutations.
+<A NAME="IDX3"></A>
+
+</P>
+
+<P>
+Here the first record is for reading 001321_11aF, position 33885, T changed
+to T and C (i.e. is heterozygous) to produce no amino acid change, with evidence coming only from
+the complementary strand. The last record is for reading 000256_11eF, position
+36749, A changed to G, producing an amino acid change K to R, with evidence
+from both strands of the sequence. The penultimate record denotes a 
+heterozygote in a noncoding region.
+
+</P>
+<HR>
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

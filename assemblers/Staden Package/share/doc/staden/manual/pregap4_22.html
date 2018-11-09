@@ -1,0 +1,128 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-Quality Clip</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_21.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_23.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-Quality Clip -->
+
+
+<H2><A NAME="SEC28" HREF="pregap4_toc.html#SEC28">Quality Clip</A></H2>
+<P>
+<A NAME="IDX37"></A>
+<A NAME="IDX38"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module determines where the sequence quality is too poor to use for
+reliable assembly. It supercedes the Uncalled Base Clip module.  This uses the
+<CODE>qclip</CODE> program which reads and writes to Experiment Files. Its default
+quality evaluation is based on the range of values produced by the Estimate
+Base Accuracies module (quality value 70, averaged over 100 bases). For use
+with phred, try lower values such as quality value 15 averaged over 50 bases.
+When quality values are not available it will use the same method as the
+Uncalled Base Clip module; to analyse the base calls and count the number of
+undetermined bases within a given window of sequence. Both 5' and 3' ends may
+be quality clipped.
+
+For the confidence mode of clipping the method starts from the point of
+highest average quality, and then steps outwards in both directions until the
+average quality is below a defined threshold.
+
+For the sequence mode of clipping the method starts from a defined position
+and steps outwards in both directions until the number of uncalled bases
+within a given window length exceeds a predefined threshold. For
+more details see the <CODE>qclip</CODE> documentation
+(see section <A HREF="manpages_20.html#SEC118">qclip</A>).
+
+Note that the Phrap assembly algorithm works best without quality clipping and
+it can make use of the full length of readings (due to the use of the Phred
+confidence values).
+<P>
+
+<DT><STRONG>Option: Clip mode</STRONG>
+<DD>
+This may be one of "by sequence" or "by confidence". The "by sequence" mode is
+equivalent to the Uncalled Clip module. The "by confidence" mode uses
+Phred-scaled confidence values to determine the quality for clipping. This
+does not work with <CODE>eba</CODE> confidence values.
+<P>
+
+<DT><STRONG>Option: Minimum extent</STRONG>
+<DD>
+The lowest allowable 5' clip position.
+<P>
+
+<DT><STRONG>Option: Maximum extent</STRONG>
+<DD>
+The largest allowable 3' clip position.
+<P>
+
+<DT><STRONG>Option: Minimum length</STRONG>
+<DD>
+If after quality clipping the good portion of a sequence is shorter than the
+specified length, then this file will be rejected with the message "qclip:
+Sequence too short".
+<P>
+
+<DT><STRONG>Option: Window length</STRONG>
+<DD>
+The window length over which the confidence will be averaged.
+This option is only relevant for the "clip by confidence" mode.
+<P>
+
+<DT><STRONG>Option: Average confidence</STRONG>
+<DD>
+The minimum average confidence (over `window length' bases) for sequence to be
+accepted as good quality.
+This option is only relevant for the "clip by confidence" mode.
+<P>
+
+<DT><STRONG>Option: Start offset</STRONG>
+<DD>
+The base number to start the 5' and 3' good quality searches from.
+This option is only relevant for the "clip by sequence" mode.
+<P>
+
+<DT><STRONG>Option: 3' window length</STRONG>
+<DD>
+The window length in which to count uncalled bases.
+This option is only relevant for the "clip by sequence" mode.
+<P>
+
+<DT><STRONG>Option: 3' number of uncalled bases</STRONG>
+<DD>
+The maximum allowed count of uncalled bases in a single window length.
+This option is only relevant for the "clip by sequence" mode.
+<P>
+
+<DT><STRONG>Option: 5' window length</STRONG>
+<DD>
+The window length in which to count uncalled bases.
+This option is only relevant for the "clip by sequence" mode.
+<P>
+
+<DT><STRONG>Option: 5' number of uncalled bases</STRONG>
+<DD>
+The maximum allowed count of uncalled bases in a single window length.
+This option is only relevant for the "clip by sequence" mode.
+<P>
+
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_21.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_23.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

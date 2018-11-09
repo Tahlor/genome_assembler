@@ -1,0 +1,89 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Notes-Special</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_150.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_152.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Notes-Special -->
+
+
+<H2><A NAME="SEC223" HREF="gap4_toc.html#SEC223">Special Note Types</A></H2>
+<P>
+<A NAME="IDX520"></A>
+
+</P>
+<P>
+Several types of note have special meanings. These include the
+<CODE>OPEN</CODE>, <CODE>CLOS</CODE> and <CODE>RAWD</CODE> note types.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>OPEN</CODE>
+<DD>
+<A NAME="IDX521"></A>
+ <A NAME="IDX522"></A>
+ 
+<DT><CODE>CLOS</CODE>
+<DD>
+Notes of type OPEN and CLOS
+should contain pure Tcl code. If they exist, they will be
+executed when the database is opened (<CODE>OPEN</CODE>) and closed (<CODE>CLOS</CODE>).
+Take great care in creating and editing a note with these types! The purpose
+is to allow configuration options to be attached to a database, and
+hence allow for different gap4 configurations to be used when a UNIX directory
+contains more than one database. In general use of the <TT>`.gaprc'</TT> file 
+(see section <A HREF="gap4_170.html#SEC258">Options Menu</A>) is probably safer.
+
+If there is a problem with a database containing a malformed <CODE>OPEN</CODE> or
+<CODE>CLOS</CODE> note, it may be opened using <CODE>gap4 -no_exec_notes</CODE>. This will
+prevent gap4 from executing the <CODE>OPEN</CODE> and <CODE>CLOS</CODE> notes and so allow
+them to be fixed using the Note Editor.
+<P>
+
+<A NAME="IDX523"></A>
+<A NAME="IDX524"></A>
+<DT><CODE>RAWD</CODE>
+<DD>
+This note specifies an alternative to the <CODE>RAWDATA</CODE> environment
+variable and should be set to be the full directory name for the
+location of the trace files for the database.
+If both the environment variable and the note are exist then
+the note will take priority. This automatic use of this note can be disabled
+be using the <CODE>-no_rawdata_note</CODE> command line option to gap4.
+<P>
+
+<A NAME="IDX525"></A>
+<DT><CODE>INFO</CODE>
+<DD>
+When created on a reading or a contig, this note may be displayed in the
+contig editor "information line"
+(see section <A HREF="gap5_25.html#SEC53">The Editor Information Line</A>)
+when the user moves the mouse over the editor sequence name list.
+</DL>
+
+<P>
+It is possible to create your own types by editing the 
+<TT>`$STADENROOT/tables/NOTEDB'</TT>
+file. The format is fairly self explainatory, and is very similar to the
+<TT>`GTAGDB'</TT> file. Each note type should consist of the long name followed by
+a colon and <CODE>id=</CODE><I>4_letter_short_name</I>, optionally followed by
+<CODE>dt="</CODE><I>any default text for this note</I><CODE>"</CODE>. Lines may be split at
+colons by adding a backslash to the end of the line. See the standard
+<TT>`NOTEDB'</TT> file for examples.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_150.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_152.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

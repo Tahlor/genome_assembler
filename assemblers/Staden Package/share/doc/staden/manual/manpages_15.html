@@ -1,0 +1,200 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Hash_tar</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_14.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_16.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-hash_tar -->
+
+
+<H1><A NAME="SEC83" HREF="manpages_toc.html#SEC83">Hash_tar</A></H1>
+<P>
+<A NAME="IDX14"></A>
+
+
+<H2><A NAME="SEC84" HREF="manpages_toc.html#SEC84">NAME</A></H2>
+
+<P>
+hash_tar -- Adds a hash table index to a tar file
+
+</P>
+
+
+<H2><A NAME="SEC85" HREF="manpages_toc.html#SEC85">SYNOPSIS</A></H2>
+
+<P>
+<CODE>hash_tar</CODE> [OPTIONS] <I>tarfile</I> &#62; <I>tarfile</I>.hash
+<P>
+<CODE>hash_tar</CODE> -A [OPTIONS] <I>tarfile</I> &#62;&#62; <I>tarfile</I>
+
+</P>
+
+
+<H2><A NAME="SEC86" HREF="manpages_toc.html#SEC86">DESCRIPTION</A></H2>
+
+<P>
+<CODE>hash_tar</CODE> adds an index to a tar file so that random access may
+be performed on it. It is a successor to the <CODE>index_tar</CODE>
+program.
+
+</P>
+<P>
+The index is a hash table which may be appended, prepended or stored
+in a separate file. Then the <CODE>hash_list</CODE> and <CODE>hash_extract</CODE>
+programs may be used to query the contents and to extract contents
+from the indexed tar archive. Note that it's not possible to add to
+such tar archives without also having to rebuild the index.
+
+</P>
+<P>
+Various <I>io_lib</I> based tools also support transparent reading out of
+tar files when indexed using this tool, so this provides a quick and
+easy way to remove the clutter of thousands of small trace files on
+disk.
+
+</P>
+<P>
+In separate file mode the hash index is stored in its own file. It's
+the most flexible method as it means that the tar file can be modified
+and appended to with ease provided that the hash index is
+recomputed. In order for this to work the hash index file also needs
+to store the filename of its associated tar file (see the -a option).
+
+</P>
+<P>
+In append mode the hash index is assumed to be appended on the end of
+the tar file itself. As tar files normally end in a blank block this
+does not damage the tar and <CODE>tar tvf</CODE> will still work
+correctly. However appending to the tar file will cause problems.
+
+</P>
+<P>
+In prepend mode the hash index comes first and the tar follows. This
+breaks normal tar commands, but is the the fastest way to retrieve
+data (it avoids a read and a seek call compared to append mode).
+
+</P>
+<P>
+For space saving reasons it's possible to add a header and a footer to
+each entry too. In this case a named entry from the tar file is
+prepended or appended at extraction time.
+
+</P>
+
+
+<H2><A NAME="SEC87" HREF="manpages_toc.html#SEC87">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-a</CODE> <I>archive_filename</I>
+<DD>
+    Use this if reading from stdin and you wish to create a hash index
+    that is to be stored as a separate file.
+
+<DT><CODE>-A</CODE>
+<DD>
+    Append mode. No archive name will be stored in the index and so
+    the extraction tools assume the index is appended to the same file
+    as the archive itself.
+
+<DT><CODE>-b</CODE>
+<DD>
+    Store the "base name" of the tar file names. That is if the tar
+    holds file <I>a/b/c</I> then the item held in the index will be <I>c</I>.
+
+<DT><CODE>-d</CODE>
+<DD>
+    Index directory names too. (Most likely a useless feature!)
+
+<DT><CODE>-f</CODE> <I>name</I>
+<DD>
+    Set tar entry 'name' to be a file footer
+
+<DT><CODE>-h</CODE> <I>name</I>
+<DD>
+    Set tar entry 'name' to be a file header
+
+<DT><CODE>-O</CODE>
+<DD>
+    Prepend mode. It is assumed that all offsets within the archive
+    file start from the end of the index (ie the index is the first
+    bit in the file).
+
+<DT><CODE>-v</CODE>
+<DD>
+    Verbose mode.
+
+</DL>
+
+
+
+<H2><A NAME="SEC88" HREF="manpages_toc.html#SEC88">EXAMPLES</A></H2>
+
+<P>
+The most common usage is just to append an index to an existing tar
+file. Then extract a file from it.
+
+</P>
+
+<PRE>
+hash_tar -A file.tar &#62;&#62; file.tar
+hash_extract file.tar xyzzy/plugh &#62; plugh
+</PRE>
+
+<P>
+For absolute maximum speed maybe you wish to prepend the hash
+index. This speeds up the "magic number" detection and avoids
+unnecessary seeks.
+
+</P>
+
+<PRE>
+hash_tar -O file.tar &#62; file.tar.hash
+cat file.tar.hash file.tar &#62; hashedfile.tar
+</PRE>
+
+<P>
+Finally, if we have a tar file of Experiment Files maybe we wish to
+add a footer indicating a date and comment to each experiment file so
+that upon extraction we get a concatenation of the original experiment
+file and the footer.
+
+</P>
+
+<PRE>
+(echo "CC   Comment";date "+DT   %Y-%m-%d") &#62; exp_foot
+tar rf file.tar exp_foot
+hash_tar -f exp_foot -A file.tar &#62;&#62; file.tar
+# Now test:
+hash_extract file.tar xyzzy.exp &#62; xyzzy.exp
+tail -2 xyzzy.exp
+</PRE>
+
+
+
+<H2><A NAME="SEC89" HREF="manpages_toc.html#SEC89">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_18.html#SEC40">ExperimentFile(4)</A>.
+
+</P>
+<P>See section <A HREF="manpages_14.html#SEC77">hash_list(1)</A>.
+
+</P>
+<P>See section <A HREF="manpages_13.html#SEC71">hash_extract(1)</A>.
+<CODE>Read</CODE>(4)
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_14.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_16.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

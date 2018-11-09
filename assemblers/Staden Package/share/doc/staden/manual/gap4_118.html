@@ -1,0 +1,188 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Con-Calculation</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_117.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_119.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-Calculation -->
+
+
+<H2><A NAME="SEC189" HREF="gap4_toc.html#SEC189">The Consensus Algorithms</A></H2>
+<P>
+<A NAME="IDX432"></A>
+<A NAME="IDX433"></A>
+<A NAME="IDX434"></A>
+<A NAME="IDX435"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="gap4_119.html#SEC190">Consensus Calculation Using Base Frequencies</A>
+<LI><A HREF="gap4_120.html#SEC191">Consensus Calculation Using Weighted Base Frequencies</A>
+<LI><A HREF="gap4_121.html#SEC192">Consensus Calculation Using Confidence Values</A>
+<LI><A HREF="gap4_122.html#SEC193">The Quality Calculation</A>
+<LI><A HREF="gap4_123.html#SEC194">List Consensus Confidence</A>
+</UL>
+
+<P>
+The consensus calculation is a very important component of gap4. It is
+used to produce an "on-the-fly" consensus, responding to every
+individual change in the Contig Editor
+(see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>)
+and is used to produce the final sequence for submission to the sequence
+libraries. Some years ago
+<I>Bonfield, J.K. and Staden, R. The application of numerical estimates of
+base calling accuracy to DNA sequencing projects. Nucleic Acids Res. 23,
+1406-1410 (1995)</I> we put forward the idea of using base call 
+accuracy estimates in sequencing projects, and this has been partially
+realised with the values from the Phred program
+(<I>Ewing, B. and Green, P.
+Base-Calling of Automated Sequencer Traces Using Phred. II. Error
+Probabilities. Genome Research. Vol 8 no 3. 186-194 (1998)</I>).
+These values are widely used and have defined a decibel type
+scale for base call confidence values and gap4 is currently set to use 
+confidence values defined on this scale.
+An overview of our use of confidence values is contained in the
+introductory sections of the manual
+(see section <A HREF="gap4_16.html#SEC23">The use of numerical estimates of base calling accuracy</A>).
+
+</P>
+<P>
+As is described elsewhere
+(see section <A HREF="gap5_64.html#SEC102">List Consensus Confidence</A>)
+being able to calculate the confidence for each base in the consensus
+sequence makes it possible to estimate the number of errors it contains,
+and hence the number of errors that will be removed if particular bases
+are checked and, if necessary, edited. 
+
+</P>
+<P>
+Gap4 caters for base calls
+with and without confidence values and hence provides a choice of
+algorithms. 
+There are currently three consensus algorithms that may be used. The
+choice of the best algorithm will depend on the data that you have available
+and the purpose for which you are using gap4.
+
+</P>
+<P>
+The currently active consensus algorithm is selected from the
+"Consensus algorithm" dialogue in the main gap4 Options menu
+(see section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>).
+
+</P>
+<P>
+The only way to produce a consensus sequence for which the reliability
+of each base is known, is to use reading data with base call confidence
+values. Their use, in combination with the Confidence Value 
+algorithm 
+(see section <A HREF="gap5_62.html#SEC100">Consensus Calculation Using Confidence Values</A>).
+is strongly recommended.
+
+</P>
+<P>
+For base calls without confidence values use the Base Frequencies algorithm
+(see section <A HREF="gap5_60.html#SEC98">Consensus Calculation Using Base Frequencies</A>).
+This is also a fast algorithm so
+it may be appopriate for very high depth assemblies such those 
+for mutation studies.
+
+</P>
+<P>
+For data with simple base call accuracy estimates rather than those on
+the decibel scale, the Weighted Base Frequencies algorithm should be used
+(see section <A HREF="gap5_61.html#SEC99">Consensus Calculation Using Weighted Base Frequencies</A>).
+
+</P>
+<P>
+All confidence values lie in the range 0 to 100.
+When readings are entered into a database, gap4 assigns a confidence of
+99 to all bases 
+without confidence values. 
+For all three algorithms, a base with confidence of 100 is
+used to force the consensus base to that base type and to have a
+confidence of 100. However,if two or more base types at any position
+have confidence 100, the consensus will be set to "unknown", i.e. "-",
+and will have a confidence of 0.
+Note that dash ("-") is our preferred symbol for "unknown" as, within a
+sequence, it is more easily distinguished from A,C,G,T than "N". 
+
+</P>
+<P>
+The consensus sequence is also assigned a confidence, even when base
+call confidence values
+are not used to calculate it. 
+The scale and meaning of the consensus confidence changes
+between consensus algorithms. However the consensus cutoff parameter always
+has the same meaning. A consensus base with a confidence 'X' will be called as
+a dash when 'X' is lower than the consensus cutoff, otherwise it is the
+determined base type.
+
+</P>
+<P>
+Both the consensus cutoff and quality cutoff values can be set by using
+the "Configure cutoffs" command in the
+"Consensus algorithm" dialogue in the main gap4 Options menu
+(see section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>).
+Within
+the Contig Editor (see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>) these
+values can be adjusted by clicking on the "&#60;" and "&#62;" symbols adjacent
+to the "C:" (consensus cutoff) and "Q:" (quality cutoff) displays in the
+top left corner of the editor. These buttons are repeating buttons - the
+values will adjust for as long as the left mouse button is held down.
+Changing these values lasts only as long as that invocation of the
+contig editor.
+
+</P>
+<P>
+The consensus algorithms are usually configured to produce only the
+characters A,C,G,T,* and "-", but it is possible to set them to produce
+the complete set of IUB codes. This mode is useful for some types of
+work and allows the range of observed base types at any position to be
+coded in the consensus. The IUB code at any position is determined in
+the following way.
+
+</P>
+<P>
+We assume that the user wants to know which base types have occurred at
+any point, but may want some control over the quality and relative
+frequency of those that are used to calculate the "consensus".
+For the simplest consensus algorithm there is no control
+over the quality of the base calls that are included, but the Consensus
+Cutoff can be used to control how the relative frequency affects the
+chosen IUB code. All base types whose computed "confidence" exceeds the
+Consensus Cutoff will be included in the selection of the IUB code. For
+example if only base type T reaches the Consenus Cutoff the IUB code
+will be T; if both T and C reach the cutoff the code will be Y; if A, C
+and T each reach the cutoff the code will be H; if A, C, G and T all
+reach the cutoff the code will be "N". For the Confidence Value
+algorithm the Quality Cutoff can be used to exclude base calls of low
+quality, so that all those that do not reach the Quality Cutoff are
+excluded from the IUB code calculation. Otherwise the logic of the code
+selection is the same as for the two simpler algorithms.
+
+</P>
+<P>
+Both the consensus cutoff and quality cutoff values can be set by using
+the "Configure cutoffs" command in the
+"Consensus algorithm" dialogue in the main gap4 Options menu
+(see section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>).
+
+</P>
+<P>
+The algorithms are explained below.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_117.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_119.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

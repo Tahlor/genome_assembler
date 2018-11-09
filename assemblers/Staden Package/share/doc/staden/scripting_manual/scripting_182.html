@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-REG_GET_OPS</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_181.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_183.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-REG_GET_OPS -->
+
+
+<H3><A NAME="SEC210" HREF="scripting_toc.html#SEC210">REG_GET_OPS</A></H3>
+<P>
+<A NAME="IDX813"></A>
+<A NAME="IDX814"></A>
+
+<PRE>
+reg_get_ops         get_ops;
+
+typedef struct {
+    int    job;      /* REG_GET_OPS */
+    char  *ops;      /* Somewhere to place ops in, unalloced to start with */
+} reg_get_ops;
+</PRE>
+
+<P>
+Within the Results Manager a popup menu is available for choosing from a list
+of tasks to be performed on this data. These can include anything, but
+typically include deleting the data and listing textual information.  The
+<VAR>ops</VAR> field will intitially point to <CODE>NULL</CODE> when the callback
+function is called. The callback function should then assign ops to a static
+string listing <CODE>NULL</CODE> separated items to appear on the popup menu, ending
+in a double <CODE>NULL</CODE>. If an item in this string is "<CODE>SEPARATOR</CODE>", a
+separator line on the menu will appear. If an item is "<CODE>PLACEHOLDER</CODE>",
+then nothing for this item will appear in the menu, but the numbering used for
+<CODE>REG_INVOKE_OP</CODE> will count "<CODE>PLACEHOLDER</CODE>" as an option. An example
+of the acknowledging code follows:
+
+</P>
+
+<PRE>
+case REG_GET_OPS:
+    if (r-&#62;all_hidden)
+        jdata-&#62;get_ops.ops = "Information\0PLACEHOLDER\0"
+            "Hide all\0Reveal all\0SEPARATOR\0Remove\0";
+    else
+        jdata-&#62;get_ops.ops = "Information\0Configure\0"
+            "Hide all\0Reveal all\0SEPARATOR\0Remove\0";
+    break;
+</PRE>
+
+<P>
+Here we have a menu containing, "Information", "Configure", "Hide all",
+"Reveal all" and "Remove". In this example, if <CODE>r-&#62;all_hidden</CODE> is set
+then the "Configure" option does not appear, but the later options (eg Remove)
+will always be given the same number (4 in this case).
+
+</P>
+<!-- NODE:Reg-REG_INVOKE_OP -->
+
+
+<H3><A NAME="SEC211" HREF="scripting_toc.html#SEC211">REG_INVOKE_OP</A></H3>
+<P>
+<A NAME="IDX815"></A>
+<A NAME="IDX816"></A>
+
+<PRE>
+reg_invoke_op       invoke_op;
+
+typedef struct {
+    int    job;        /* REG_INVOKE_OP */
+    int    op;         /* Operation to perform */
+} reg_invoke_op;
+</PRE>
+
+<P>
+When the user has chosen an option from the Results Manager popup window (from
+the list returned by <CODE>REG_GET_OPS</CODE>), <CODE>REG_INVOKE_OP</CODE> is called with
+an integer value (held in the <VAR>op</VAR> field) detailing which operation was
+chosen. <VAR>op</VAR> starts counting from zero for the first item returned from
+<CODE>REG_GET_OPS</CODE>, and counts up one each time for each operation or
+<CODE>PLACEHOLDER</CODE> listed. An example of an acknowledge for
+<CODE>REG_INVOKE_OP</CODE> to complement the example given in <CODE>REG_GET_OPS</CODE>
+follows:
+
+</P>
+
+<PRE>
+case REG_INVOKE_OP:
+    switch (jdata-&#62;invoke_op.op) {
+    case 0: /* Information */
+        csmatch_info((mobj_repeat *)r, "Find Repeats");
+        break;
+    case 1: /* Configure */
+        csmatch_configure(io, cs-&#62;window, (mobj_repeat *)r);
+        break;
+    case 2: /* Hide all */
+        csmatch_hide(our_interp, cs-&#62;window, (mobj_repeat *)r, csplot_hash);
+        break;
+    case 3: /* Reveal all */
+        csmatch_reveal(our_interp, cs-&#62;window, (mobj_repeat *)r, csplot_hash);
+        break;
+    case 4: /* Remove */
+        csmatch_remove(io, cs-&#62;window, (mobj_repeat *)r, csplot_hash);
+        break;
+    }
+    break;
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_181.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_183.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

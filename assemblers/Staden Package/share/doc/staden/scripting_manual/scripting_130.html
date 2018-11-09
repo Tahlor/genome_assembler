@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_deallocate_reading</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_129.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_131.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_deallocate_reading -->
+
+
+<H3><A NAME="SEC149" HREF="scripting_toc.html#SEC149">io_deallocate_reading</A></H3>
+<P>
+<A NAME="IDX642"></A>
+<A NAME="IDX643"></A>
+<A NAME="IDX644"></A>
+<A NAME="IDX645"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_deallocate_reading(
+        GapIO  *io,
+        int     N);
+</PRE>
+
+<P>
+The <CODE>io_deallocate_reading</CODE> function deallocates the records linked to by
+reading number <VAR>N</VAR>. These are the <VAR>name</VAR>, <VAR>trace_name</VAR>,
+<VAR>trace_type</VAR>, <VAR>sequence</VAR>, <VAR>confidence</VAR> and <VAR>orig_positions</VAR>
+fields of the <VAR>GReadings</VAR> structure.
+
+</P>
+<P>
+The reading itself is not deallocated. The operation of Gap4 requires that
+reading numbers are sequential with all numbers used. It is up to the caller
+of this routine to make sure that this is still true.
+
+</P>
+<P>
+It returns 0 for success and &#62;=1 for failure.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_129.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_131.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

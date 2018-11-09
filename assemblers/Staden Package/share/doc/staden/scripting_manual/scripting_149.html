@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_complement_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_148.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_150.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_complement_seq -->
+
+
+<H2><A NAME="SEC168" HREF="scripting_toc.html#SEC168">io_complement_seq</A></H2>
+<P>
+<A NAME="IDX693"></A>
+<A NAME="IDX694"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_complement_seq(
+        int2   *length,
+        int2   *start,
+        int2   *end,
+        char   *seq,
+        int1   *conf,
+        int2   *opos);
+</PRE>
+
+<P>
+This function complements a sequence held in memory. No database I/O is
+performed.  A sequence of length <VAR>*length</VAR> is passed in the <VAR>seq</VAR>
+argument with associated confidence values (<VAR>conf</VAR>) and original positions
+(<VAR>opos</VAR>) arrays. The <VAR>start</VAR> and <VAR>end</VAR> arguments contain the left
+and right cutoff points within this sequence.
+
+</P>
+<P>
+The function will reverse and comlement the sequence, negate the <VAR>start</VAR>
+and <VAR>end</VAR> values, and reverse the <VAR>conf</VAR> and <VAR>opos</VAR> arrays. If
+either of <VAR>conf</VAR> or <VAR>opos</VAR> are passed as <CODE>NULL</CODE>, neither will be
+reversed. <VAR>length</VAR> is not modified, despite the fact that it is passed by
+reference.
+
+</P>
+<P>
+The function returns 0 for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_148.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_150.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

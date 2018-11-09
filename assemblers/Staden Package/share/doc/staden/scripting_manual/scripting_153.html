@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - pad_consensus</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_152.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_154.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:pad_consensus -->
+
+
+<H2><A NAME="SEC172" HREF="scripting_toc.html#SEC172">pad_consensus</A></H2>
+<P>
+<A NAME="IDX698"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int pad_consensus(
+        GapIO  *io,
+        int     contig,
+        int     pos,
+        int     npads);
+</PRE>
+
+<P>
+This function inserts <VAR>npads</VAR> pads into the consensus for contig number
+<VAR>contig</VAR> at position <VAR>pos</VAR> by inserting into all of the readings
+creating the consensus at this point.
+
+</P>
+<P>
+The function deals with inserting to the appropriate readings including
+adjustment of cutoff positions and annotations, moving of all the readings
+to the right of <VAR>pos</VAR>, and adjustment of the annotations on the consensus
+sequence.
+
+</P>
+<P>
+It returns 0 for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_152.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_154.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Structures</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_174.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_176.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Structures -->
+
+
+<H2><A NAME="SEC194" HREF="scripting_toc.html#SEC194">Data Structures</A></H2>
+<P>
+<A NAME="IDX764"></A>
+
+</P>
+<P>
+For each contig we maintain a list of displays of this data. We register by
+supplying a function (of a specific type) to our registration scheme, along
+with any data of our own (called our <I>client_data</I>) that we wish to be
+passed back. When an operation is performed on this contig the function that
+we specified is called along with our own client_data and a description of the
+operation made. A function often does not need to be told of all changes, so
+when registering it's possible to list only those operations that should be
+responded to.
+
+</P>
+<P>
+In addition to maintaining the above information, each registration contains
+an identifier, a time stamp, a type, and an "id" value.
+
+</P>
+<P>
+The identifier is a simply number that is used to specify a single registered
+data, or a group of registered data. An example of it's use is within the
+contig selector; the selector is registered on all contigs, but each
+registration has the same identifier. A new identifier is returned by calling
+the <CODE>register_id</CODE> function.
+
+</P>
+<P>
+The time stamp is allocated automatically when the <CODE>contig_register</CODE>
+function is called. It is displayed within the results manager.
+
+</P>
+<P>
+<A NAME="IDX765"></A>
+<A NAME="IDX766"></A>
+<A NAME="IDX767"></A>
+<A NAME="IDX768"></A>
+<A NAME="IDX769"></A>
+<A NAME="IDX770"></A>
+<A NAME="IDX771"></A>
+<A NAME="IDX772"></A>
+<A NAME="IDX773"></A>
+<A NAME="IDX774"></A>
+<A NAME="IDX775"></A>
+<A NAME="IDX776"></A>
+<A NAME="IDX777"></A>
+<A NAME="IDX778"></A>
+The type is used to flag a registered data as belonging to a specific
+function. This is useful for when we wish to send a notification to all
+instances of a particular display, or to query whether the contig editor is
+running (such as performed by the stop codon display). The current types known
+are:
+
+</P>
+
+<PRE>
+REG_TYPE_UNKNOWN
+REG_TYPE_EDITOR
+REG_TYPE_FIJ
+REG_TYPE_READPAIR
+REG_TYPE_REPEAT
+REG_TYPE_QUALITY
+REG_TYPE_TEMPLATE
+REG_TYPE_RESTRICTION
+REG_TYPE_STOPCODON
+REG_TYPE_CONTIGSEL
+REG_TYPE_CHECKASS
+REG_TYPE_OLIGO
+</PRE>
+
+<P>
+The id value is used to distinguish which pieces of data are connected. Each
+"result" has a single id value, but may consist of multiple pieces of
+registered data, all sharing the same id.
+
+</P>
+<P>
+<A NAME="IDX779"></A>
+<A NAME="IDX780"></A>
+So the registration consists of the following structure:
+
+</P>
+
+<PRE>
+typedef struct {
+    void  (*func)(
+                  GapIO    *io,
+                  int       contig,
+                  void     *fdata,
+                  reg_data *jdata);
+    void   *fdata;
+    int     id;
+    time_t  time;
+    int     flags;
+    int     type;
+    int     uid; /* A _unique_ identifier for this contig_reg_t */
+} contig_reg_t;
+</PRE>
+
+<P>
+The <CODE>func</CODE> and <CODE>fdata</CODE> are the callback functions and
+client_data. <VAR>uid</VAR> is a number unique to all registrations, even those
+that have common <VAR>id</VAR> values. You need not be concerned about it's use; it
+is internal to the registration system.
+
+</P>
+<P>
+Hence the total memory used by the registration system is an array of arrays
+of above structures. One array per contig, containing an array of
+<VAR>contig_reg_t</VAR> structs.
+
+</P>
+<P>
+A notification of an action involves creating a <VAR>reg_data</VAR> structure and
+sending this to one of the notification functions (such as
+<CODE>contig_notify</CODE>). The <VAR>reg_data</VAR> structure is infact a union of many
+structure types; one for each notification type. In common to all these types
+is the job field. This must be filled out with the current notification type.
+See section <A HREF="scripting_178.html#SEC197">The Notifications Available</A>.
+
+</P>
+<P>
+As <VAR>reg_data</VAR> is a union of structures, it must be access by a further
+pointer indirection. For instance, to determine the position of the contig
+editor cursor from a <CODE>REG_CURSOR_NOTIFY</CODE> notification we need to write
+"<CODE>reg_data-&#62;cursor_notify-&#62;pos</CODE>" rather than simply
+"<CODE>reg_data-&#62;pos</CODE>". The complete list of union names can be found in
+io-reg.h. The current list is summarised below. The types and use of these
+structures will be discussed in further detail later.
+
+</P>
+<P>
+<A NAME="IDX781"></A>
+<A NAME="IDX782"></A>
+
+<PRE>
+typedef union _reg_data {
+    /* MUST be first here and in job data structs */
+    int job;
+    
+    reg_generic         generic;
+    reg_number          number;
+    reg_join            join;
+    reg_order           order;
+    reg_length          length;
+    reg_query_name      name;
+    reg_delete          delete;
+    reg_complement      complement;
+    reg_get_lock        glock;
+    reg_set_lock        slock;
+    reg_quit            quit;
+    reg_get_ops         get_ops;
+    reg_invoke_op       invoke_op;
+    reg_params          params;
+    reg_cursor_notify   cursor_notify;
+    reg_anno            annotations;
+    reg_register        c_register;
+    reg_deregister      c_deregister;
+    reg_highlight_read  highlight;
+    reg_buffer_start    buffer_start;
+    reg_buffer_end      buffer_end;
+} reg_data;
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_174.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_176.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

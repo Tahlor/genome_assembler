@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Joining two contigs</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_192.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_194.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Joining two contigs -->
+
+
+<H3><A NAME="SEC254" HREF="scripting_toc.html#SEC254">Joining two contigs</A></H3>
+<P>
+<A NAME="IDX885"></A>
+
+</P>
+<P>
+The order of events within the joining is crucial. In the past several bugs
+have arisen due to this order being incorrect. We need to notify both the left
+and right contigs of the change, to join the two registration lists, and to
+delete the contig. Deleting the contig must be the last operation as this may
+renumber one of our contigs.
+
+</P>
+<P>
+The order used is as follows, assuming we are joining two contigs together.
+We join 'left' to 'right', giving a new contig 'left'.
+
+</P>
+
+<OL>
+<LI>
+
+Perform the actual join of the data. This involves updating everything
+except without notifications and without modifying the registration
+lists.
+<LI>
+
+Send a REG_JOIN_TO request to 'right' informing the new contig number
+is 'left'. This also includes the offset of 'right' within 'left'.
+<LI>
+
+Merge the registration lists using <CODE>contig_register_join</CODE>. We copy
+'right' to 'left', leaving 'right' unchanged. It is required to leave
+'right' unchanged so that the delete request is acknowledged.
+<LI>
+
+Notify 'left' of a change of length using REG_LENGTH. Note that this
+now also includes notifying items previously register with 'right'.
+<LI>
+
+Delete contig 'right'. As shown above, this will generate REG_DELETE
+and possibly REG_NUMBER_CHANGE requests.
+</OL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_192.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_194.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,153 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from vector_clip.htmlinfo on 25 April 2016 -->
+
+<TITLE>Vector clipping - Vector_Clip-Vector_Primer-Files</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Vector_Clip-Vector_Primer-Files -->
+
+
+<H2><A NAME="SEC9" HREF="vector_clip_toc.html#SEC9">Vector_Primer file format</A></H2>
+<P>
+<A NAME="IDX7"></A>
+<A NAME="IDX8"></A>
+
+</P>
+<P>
+The vector_primer files store
+the data for each vector/primer pair combination as a single record
+(line) and up to 100 records can be contained in a file. The items on each
+line must be separated by spaces or tabs (only the file name can contain spaces)
+and a newline character ends the record. 
+It is important to realise that the format has been simplified since the first
+version of the method appeared in release 1999.0 and any files created for the
+1999.0 release will need to be edited!
+
+</P>
+<P>
+The items in a record are:
+
+</P>
+<P>
+name seq_r seq_f file_name
+
+</P>
+<P>
+name is an arbitrary record name.
+seq_r is the sequence between the reverse primer and the cloning site.
+seq_f is the sequence between the forward primer and the cloning site.
+file_name is the name of the file containing the complete vector sequence.
+
+</P>
+<P>
+An example file containing two entries 
+(for m13mp18, and a vector called f1) is 
+shown below. "\" symbols have been used to denote wrapped lines and so it
+can be seen that the first record is shown on two lines and the next on 1.
+
+</P>
+
+<PRE>
+
+m13mp18 attacgaattcgagctcggtaccc ggggatcctctagagtcgacctgcaggcatgcaagcttggc \
+/pubseq/tables/vectors/m13mp18.seq
+f1 CCGGGAATTCGCGGCCGCGTCGACT CTAGACTCGAGTTATGCATGCA  af_clones_vec
+</PRE>
+
+<P>
+Note that the segments of sequence can be longer (or shorter) than the
+sequences between the primer and the cloning site. The -V option of
+vector_clip allows the user to specifiy that a fixed number of bases
+closest to the cloning site be used for any particular run, and so the
+same record in the vector_primer file could be used for several primers
+as long as the cloning site was the same. If it is necessary to get the 
+sequence segments
+precisely defined refer to the figure below. This 
+contains an annotated section of the
+m13mp18 vector around the SmaI site, to see how it corresponds to the
+first record in the vector_primer file. The primers shown are the 16mer 
+reverse(-21) and the 17mer forward(-20), and the vector_primer
+record is the sequence between the primers with a space at the cloning site,
+
+</P>
+<P>
+followed by a file name.
+
+</P>
+
+<PRE>
+                                                 SmaI 
+                                                 ++++++++10++ 
+                         --20--------10---------123456789012
+               r(-21)    432109876543210987654321
+         aacagctatgaccatg
+ acacaggaaacagctatgaccatgattacgaattcgagctcggtacccggggatcctcta
+       6210      6220      6230      6240      6250      6260
+
+ ++++++20++++++++30++++++++40+
+ 34567890123456789012345678901       f(-20)
+                              tgaccggcagcaaaatg
+ gagtcgacctgcaggcatgcaagcttggcactggccgtcgttttacaacgtcgtgactgg
+       6270      6280      6290      6300      6310      6320
+
+</PRE>
+
+<!-- NODE:Vector_Clip-Vector_Primer-File-Notes -->
+
+
+<H2><A NAME="SEC10" HREF="vector_clip_toc.html#SEC10">Vector_Primer File Notes</A></H2>
+
+<P>
+There are several consequences of using vector_primer files
+to specify the sequencing vector details. Please read a description
+of the vector_primer file algorithm in the algorithms section 
+section <A HREF="vector_clip_4.html#SEC4">Algorithms</A>.
+
+</P>
+
+<P>
+Firstly, to get the vector segments of readings marked correctly
+it is not necessary to include the relevant data in their
+experiment files.
+
+</P>
+<P>
+Secondly, because vector_clip compares all the primer-vector pairs in the
+primer_vector file it would be inefficient to include very large numbers
+of records in these files. Instead it would be better to have a master 
+vector_primer file which contained all the combinations used in the lab
+and then to copy the relevant ones to project specific files.
+
+</P>
+<P>
+Thirdly, even though vector_clip can write the PR record (primer type) into
+the experiment file if it finds a match, gap4 still needs the template name
+data in order to do read pair analysis.
+
+</P>
+<P>
+Finally note that the -V option for vector_clip means that the
+segments of sequence in the vector_primer file need not be made exactly the
+right length when the files are created: it matters only that the
+cloning site is correctly specified and that there is sufficient length
+of sequence on either side. For example, vector_primer files
+could be created in which all records included 40 bases from either side
+of the cloning sites. The -V option allows the
+alignment to be limited to the segment of sequence closest to the
+cloning site. For example, -V 20 specifies that at most 20 bases around
+the cloning site are used. 
+
+</P>
+<HR>
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-add_command</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-add_command -->
+
+
+<H3><A NAME="SEC14" HREF="scripting_toc.html#SEC14">add_command</A></H3>
+<P>
+<A NAME="IDX28"></A>
+
+<PRE>
+<STRONG>add_command</STRONG> <I>name</I> <I>onval</I> <I>offval</I> <I>command</I>
+</PRE>
+
+<P>
+This adds a new command to an application. The <I>name</I> should be the menu
+pathname followed by fullstop followed by the name of the command to appear in
+the menu. So if the command is within a cascading menu the <I>name</I> will have
+several components broken down by fullstops, ending in the command name
+itself.
+
+</P>
+<P>
+The <I>onval</I> and <I>offval</I> arguments control the states for which the
+command is to be enabled in.
+
+</P>
+<P>
+The <I>command</I> argument is the command to execute when this menu item is
+selected. This is a single argument so Tcl quoting rules must be obeyed for
+multi-word commands. This command is evaluated (using the Tcl <CODE>eval</CODE>
+command) at the time of selecting the menu item. If the command is to contain
+references to variables, it is important to distinguish between variables
+expanded at the time of creating the menu item and the time of executing the
+menu item by backslashing the latter.
+
+</P>
+<P>
+For example, the Gap4 "Quality" mode of the consensus output has the following
+specification.
+
+</P>
+
+<PRE>
+add_command  {File.Calculate a consensus.quality}  8 10  {QualityDialog \$io}
+</PRE>
+
+<P>
+Here the "quality" command is within the "Calculate a consensus" cascading
+menu which is within the "File" menu. It is enabled by bit 3 (a database
+containing data has been opened) and is disabled by bits 1 and 3 (the database
+has no data or busy mode is enabled). The command to run is
+<CODE>QualityDialog $io</CODE>. If we did not backslash the <CODE>$io</CODE> in this
+command the <I>io</I> variable would be expanded up at the time of creating the
+menus, say to "0". Then when the menu item is selected we would always execute
+<CODE>QualityDialog 0</CODE> which is not the desired effect.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

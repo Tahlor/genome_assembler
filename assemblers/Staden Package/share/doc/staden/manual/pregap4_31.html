@@ -1,0 +1,80 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-RepeatMasker</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_30.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_32.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-RepeatMasker -->
+
+
+<H2><A NAME="SEC37" HREF="pregap4_toc.html#SEC37">RepeatMasker</A></H2>
+<P>
+<A NAME="IDX55"></A>
+<A NAME="IDX56"></A>
+
+</P>
+<P>
+RepeatMasker is not included as part of the Staden Package. It is available
+from Arian Smit.
+<a href="http://ftp.genome.washington.edu/RM/RepeatMasker.html">
+http://ftp.genome.washington.edu/RM/RepeatMasker.html
+
+</P>
+</a>
+
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module uses the <CODE>RepeatMasker</CODE> program. This is a program which
+searches for a comprehensive set of repeat sequences. Any matches which are
+found will be tagged with a comment indicating the type of repeat. These tags
+will then be visible from within gap4. Full documentation is available from
+the author of RepeatMasker, or from typing <CODE>RepeatMasker -h</CODE>.
+
+<P>
+
+<DT><STRONG>Option: Repeat library</STRONG>
+<DD>
+This specifies the directory containing the library of repeat sequences. Only
+one library directory may be specified. The library "&#60;default&#62;" will let
+RepeatMasker use its own default library.
+<P>
+
+<DT><STRONG>Option: RepeatMasker cutoff</STRONG>
+<DD>
+This specifies the cutoff score for RepeatMasker. The documentation with
+RepeatMasker states that a cutoff of 250 will guarantee no false positives.
+<P>
+
+<DT><STRONG>Option: Gap4 tag type</STRONG>
+<DD>
+When a repeat is found a tag will be added to the Experiment File. This
+specifies the tag type to use. It should be one of the tag types available to
+Gap4, but other tag types may be used if desired (they will be coloured as is
+<CODE>COMM</CODE>ent tags in gap4).
+<P>
+
+<DT><STRONG>Option: Types of repeat to screen against</STRONG>
+<DD>
+The default setting of RepeatMasker is to search for primate repeats, however
+it may be told to search for other repeat families or to restrict its search
+to only ALU primate repeats. The full list of options here are Alu only,
+Rodent only, Simple only, Mammalian excluding primate/rodent, and no low
+complexity. These are as defined in the RepeatMasker documentation. It is not
+known what effect enabling mutually exclusive options will have.
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_30.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_32.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

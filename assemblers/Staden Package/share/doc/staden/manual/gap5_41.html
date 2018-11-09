@@ -1,0 +1,64 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - ExportSequences</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_40.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_42.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:ExportSequences -->
+
+
+<H2><A NAME="SEC77" HREF="gap5_toc.html#SEC77">Export Sequences</A></H2>
+<P>
+<A NAME="IDX124"></A>
+
+</P>
+<P>
+This function exports sequence and annotation data from a Gap5
+database to a variety of assembly formats.
+
+</P>
+
+<p>
+<img src="gap5_export_sequences.png" alt="[picture]">
+
+<P>
+The fasta and fastq formats are basic sequence-only or sequence plus
+quality, with no support for contigs or alignments.  The BAF, CAF, ACE
+and SAM formats all hold assembly data and so are reasonably complete
+representatives of data within Gap5. Note that ACE does not directly
+support quality values and this export function does not create the
+associated phdball file that houses this data.
+
+</P>
+<P>
+There is also no direct support for BAM, however command line tools
+like samtools or picard can convert the SAM file into BAM format. The
+SAM file should already be sorted by position.
+
+</P>
+<P>
+For SAM only there are additional options: whether to fix mate-pair
+information and whether to use depadded coordinates.  This former will
+ensure that the MRNM (Mate Reference Name), MPOS and ISIZE fields are
+filled out. Note that this considerably slows down the speed of
+exporting, so it is disabled by default.
+
+</P>
+
+<P>
+ 
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_40.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_42.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

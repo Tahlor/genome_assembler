@@ -1,0 +1,227 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-GReadings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_113.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_115.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-GReadings -->
+
+
+<H3><A NAME="SEC131" HREF="scripting_toc.html#SEC131">The GReadings Structure</A></H3>
+
+<P>
+<A NAME="IDX496"></A>
+<A NAME="IDX497"></A>
+<A NAME="IDX498"></A>
+<A NAME="IDX499"></A>
+<A NAME="IDX500"></A>
+<A NAME="IDX501"></A>
+<A NAME="IDX502"></A>
+<A NAME="IDX503"></A>
+<A NAME="IDX504"></A>
+<A NAME="IDX505"></A>
+
+</P>
+
+<PRE>
+/* GReadings.sense */
+#define GAP_SENSE_ORIGINAL 0
+#define GAP_SENSE_REVERSE  1
+/* GReadings.strand */
+#define GAP_STRAND_FORWARD 0
+#define GAP_STRAND_REVERSE 1
+/* GReadings.primer */
+#define GAP_PRIMER_UNKNOWN 0
+#define GAP_PRIMER_FORWARD 1
+#define GAP_PRIMER_REVERSE 2
+#define GAP_PRIMER_CUSTFOR 3
+#define GAP_PRIMER_CUSTREV 4
+
+/* GReadings.chemistry */
+/*	Bit 0 is 1 for terminator, 0 for primer */
+#define GAP_CHEM_TERMINATOR	(1&#60;&#60;0)
+/*	Bits 1 to 4 inclusive are the type (any one of, not bit pattern) */
+#define GAP_CHEM_TYPE_MASK	(15&#60;&#60;1)
+#define GAP_CHEM_TYPE_UNKNOWN	(0&#60;&#60;1)
+#define GAP_CHEM_TYPE_ABI_RHOD	(1&#60;&#60;1)
+#define GAP_CHEM_TYPE_ABI_DRHOD	(2&#60;&#60;1)
+#define GAP_CHEM_TYPE_BIGDYE	(3&#60;&#60;1)
+#define GAP_CHEM_TYPE_ET	(4&#60;&#60;1)
+#define GAP_CHEM_TYPE_LICOR	(5&#60;&#60;1)
+
+typedef struct {
+    GCardinal name;
+    GCardinal trace_name;
+    GCardinal trace_type;
+    GCardinal left;		/* left neighbour */
+    GCardinal right;		/* right neighbour */
+    GCardinal position;		/* position in contig */
+    GCardinal length;		/* total length of reading */
+    GCardinal sense;		/* 0 = original, 1 = reverse */
+    GCardinal sequence;
+    GCardinal confidence;
+    GCardinal orig_positions;
+    GCardinal chemistry;	/* see comments above (GAP_CHEM_*) */
+    GCardinal annotations;	/* start of annotation list */
+    GCardinal sequence_length;	/* clipped length */
+    GCardinal start;		/* last base of left cutoff */
+    GCardinal end;		/* first base of right cutoff */
+    GCardinal template;		/* aka subclone */
+    GCardinal strand;		/* 0 = forward, 1 = reverse */
+    GCardinal primer;		/* 0 = unknown, 1 = forwards, */
+				/* 2 = reverse, 3 = custom forward */
+                                /* 4 = custom reverse */
+    GCardinal notes;		/* Unpositional annotations */
+} GReadings; 
+</PRE>
+
+<P>
+The reading structure contains information related to individual sequence
+fragments. It should be read and written using the <CODE>gel_read</CODE> and
+<CODE>gel_write</CODE> functions. Whilst it is perfectly possible to use
+<CODE>GT_Read</CODE> to access this data, using <CODE>gel_read</CODE> will read from an
+in-memory cache and so is much faster. Using <CODE>GT_Write</CODE> to write a
+<VAR>GReadings</VAR> structure must never be used as it will invalidate the cache.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>name</VAR>
+<DD>
+<A NAME="IDX506"></A>
+ 
+The record number of the text string containing the reading identifier.
+Care must be taken to use the correct functions to access the reading name.
+Use <CODE>io_read_reading_name</CODE> and <CODE>io_write_reading_name</CODE> instead of
+<CODE>io_read_text</CODE> or <CODE>io_write_text</CODE>. See section <A HREF="scripting_57.html#SEC63">io_read_reading_name and io_write_reading_name</A>.
+
+<A NAME="IDX507"></A>
+<DT><VAR>trace_name</VAR>
+<DD>
+The record number of the text string containing the trace filename.
+
+<A NAME="IDX508"></A>
+<DT><VAR>trace_type</VAR>
+<DD>
+The record number of the text string containing the type of the trace.
+
+<A NAME="IDX509"></A>
+<DT><VAR>left</VAR>
+<DD>
+	The left hand neighbour of this sequence, or 0 if this is the first
+	reading in the contig. Sequences are stored in a doubly linked list
+	which is sorted on positional order. The right hand neighbour of the
+	sequence referenced by this field should be the same as this sequence
+	number. NOTE: this is the reading number, not the record number.
+
+<A NAME="IDX510"></A>
+<DT><VAR>right</VAR>
+<DD>
+	The right hand neighbour of this sequence, or 0 if this is the last
+	reading in the contig. The left hand neighbour of the sequence
+	referenced by this field should be the same as this sequence number.
+	NOTE: this is the reading number, not the record number.
+
+<A NAME="IDX511"></A>
+<DT><VAR>position</VAR>
+<DD>
+	The absolute position of this reading within the contig (starting from
+	1).
+
+<A NAME="IDX512"></A>
+<DT><VAR>length</VAR>
+<DD>
+	The total length of this reading, including cutoff data.
+
+<A NAME="IDX513"></A>
+<DT><VAR>sense</VAR>
+<DD>
+	The orientation of this reading. 0=original, 1=reversed. The
+	<CODE>GAP_SENSE_*</CODE> macros should be used in preference to integer
+	values.
+
+<A NAME="IDX514"></A>
+<DT><VAR>sequence</VAR>
+<DD>
+	The record number of the text string containing the complete sequence.
+
+<A NAME="IDX515"></A>
+<DT><VAR>confidence</VAR>
+<DD>
+	The record number of the 1 byte integer array containing the confidence
+	values. This has one value per sequence base and so is the same length
+	as the sequence array.
+
+<A NAME="IDX516"></A>
+<DT><VAR>orig_positions</VAR>
+<DD>
+	The record number of the 2 byte integer array containing the original
+	positions of each base. This has one 2 byte value per sequence base.
+
+<A NAME="IDX517"></A>
+<DT><VAR>chemistry</VAR>
+<DD>
+	The chemistry type of this reading. 0=normal. <CODE>chemistry &#38;
+	GAP_CHEM_DOUBLE</CODE> contains the terminator reaction information. Non
+	zero implies a terminator reaction, which can then optionally be used
+	as double stranded sequence.
+
+<A NAME="IDX518"></A>
+<DT><VAR>annotations</VAR>
+<DD>
+	The number of the first annotation for this reading. Annotations are
+	stored in a linked list structure. This value is 0 if no annotations
+	are available. NOTE: This is not the same as the record number of the
+	first annotation.
+
+<A NAME="IDX519"></A>
+<DT><VAR>sequence_length</VAR>
+<DD>
+	The used length of sequence. This should always be the same as the
+	<VAR>end-start-1</VAR>.
+
+<A NAME="IDX520"></A>
+<DT><VAR>start</VAR>
+<DD>
+	The position of the last base in the left hand cutoff data (starting
+	from 1).
+
+<A NAME="IDX521"></A>
+<DT><VAR>end</VAR>
+<DD>
+	The position of the first base in the right hand cutoff data (starting
+	from 1).
+
+<A NAME="IDX522"></A>
+<DT><VAR>template</VAR>
+<DD>
+	The template number. Readings sharing a template (ie insert) have the
+	same template number.
+
+<A NAME="IDX523"></A>
+<DT><VAR>strand</VAR>
+<DD>
+	The strand this sequence was derived from. 0=forward, 1=reverse. The
+	<CODE>GAP_STRAND_*</CODE> macros should be used in preference to integer
+	values.
+
+<A NAME="IDX524"></A>
+<DT><VAR>primer</VAR>
+<DD>
+	The primer type for this sequence. 0=unknown, 1=forward, 2=reverse,
+	3=custom forward, 4=custom reverse. The <CODE>GAP_PRIMER_*</CODE> macros
+	should be used in preference to integer values.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_113.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_115.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

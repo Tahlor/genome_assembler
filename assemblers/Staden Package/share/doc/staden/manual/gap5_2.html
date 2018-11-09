@@ -1,0 +1,256 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Gap5_DB</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Gap5_DB -->
+
+
+<H1><A NAME="SEC2" HREF="gap5_toc.html#SEC2">Gap5 Databases</A></H1>
+<!-- NODE:tg_index -->
+
+
+<H2><A NAME="SEC3" HREF="gap5_toc.html#SEC3">Creating databases</A></H2>
+<P>
+<A NAME="IDX1"></A>
+<A NAME="IDX2"></A>
+
+</P>
+<P>
+Gap5 cannot directly work on assembly formats in their native format.
+This is a substantial difference from things like BAM file viewers, but
+the reason is simply that the other formats do not have data structured
+in a manner that is suitable for in-place editing. Gap5 is first and
+foremost an assembly editor.
+
+</P>
+<P>
+Gap5 databases are currently created external to Gap5 using a
+command-line program named <CODE>tg_index</CODE>.
+
+</P>
+<P>
+<CODE>tg_index</CODE> [options] <I>input_file ...</I>
+
+</P>
+<P>
+The most general usage is simply to specify one or more data files
+(it accepts SAM/BAM, CAF, ACE, BAF, MAQ and in a more limited fashion
+fasta/fastq), optionally specifying the output database with <CODE>-o</CODE>
+<I>database_name</I>. This will then create a database suitable for editing
+by Gap5.
+
+</P>
+<P>
+Valid options are:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>-m</CODE>
+<DD>
+Input is MAQ format
+<DT><CODE>-M</CODE>
+<DD>
+Input is MAQ-long format
+<DT><CODE>-A</CODE>
+<DD>
+Input is ACE format
+<DT><CODE>-B</CODE>
+<DD>
+Input is BAF format
+<DT><CODE>-C</CODE>
+<DD>
+Input is CAF format
+<DT><CODE>-f</CODE>
+<DD>
+Input is FASTA format
+<DT><CODE>-F</CODE>
+<DD>
+Input is FASTQ format
+<DT><CODE>-b</CODE>
+<DD>
+Input is BAM format
+<DT><CODE>-s</CODE>
+<DD>
+Input is SAM format (with @SQ headers)
+<P>
+<DT><CODE>-u</CODE>
+<DD>
+Also store unmapped reads (SAM/BAM only)
+<DT><CODE>-x</CODE>
+<DD>
+Also store auxillary records (SAM/BAM only)
+<DT><CODE>-r</CODE>
+<DD>
+Store reference-position data (on)  (SAM/BAM only)
+<DT><CODE>-R</CODE>
+<DD>
+Don't store reference-position data (SAM/BAM  only)
+<DT><CODE>-D</CODE>
+<DD>
+Do not remove duplicates (SAM/BAM only)
+<P>
+<DT><CODE>-p</CODE>
+<DD>
+Link read-pairs together (default on)
+<DT><CODE>-P</CODE>
+<DD>
+Do not link read-pairs together
+<P>
+<DT><CODE>-q <I>value</I></CODE>
+<DD>
+Number of reads to queue in memory while waiting for pairing.  Use to
+reduce memory  requirements for assemblies with lots of single reads at
+the expense of running time.  0 for all in memory, suggest 1000000 if
+used (default 0).
+<P>
+<DT><CODE>-a</CODE>
+<DD>
+Append to existing db
+<DT><CODE>-n</CODE>
+<DD>
+New contigs always (relevant if appending)
+<P>
+<DT><CODE>-g</CODE>
+<DD>
+When appending to an existing db, assume the alignment was performed
+against an ungapped copy of the existing consensus. Add gaps back in to
+reads and/or consensus as needed.
+
+<DT><CODE>-t</CODE>
+<DD>
+Index sequence names (default)
+<DT><CODE>-T</CODE>
+<DD>
+Do not index sequence names
+
+<DT><CODE>-z <I>value</I></CODE>
+<DD>
+Specify minimum bin size (default is '4k')
+
+<DT><CODE>-f</CODE>
+<DD>
+Fast mode: read-pair links are unidirectional large databases, eg n.seq
+&#62; 100 million. 
+
+<DT><CODE>-d <I>data_types</I></CODE>
+<DD>
+Only copy over certain data types. This is a comma separated list
+containing one or more words from: seq, qual, anno, name, all or none 
+
+<DT><CODE>-c <I>method</I></CODE>
+<DD>
+Specifies the compression method. This shold be one of 'none', 'zlib' or
+'lzma'. Zlib is the default.
+
+<DT><CODE>-[1-9]</CODE>
+<DD>
+Use a fixed compression level from 1 to 9
+
+<DT><CODE>-v <I>version_num</I></CODE>
+<DD>
+Request a specific database formation version
+</DL>
+
+<P>
+To merge existing gap5 databases you will need to export either one or
+both into an intermediate format (we suggest SAM) and then use tg_index
+to import data again.
+
+</P>
+<!-- NODE:OpenDatabase -->
+
+
+<H2><A NAME="SEC4" HREF="gap5_toc.html#SEC4">Opening/closing databases</A></H2>
+<P>
+<A NAME="IDX3"></A>
+
+</P>
+<P>
+The Open menu item is in the main gap5 File menu. It brings up a file
+browser allowing selection of the gap5 database name. Databases consist
+of two files - a main data block (.g5d) and a data index (.g5x).  It
+does not matter which you choose as gap5 will open both.
+
+</P>
+<P>
+Alternatively you can specify the database name on the command line when
+launching gap5. Additionally this supports read-only access if you
+specify the <CODE>-ro</CODE> flag. For example to open a database named Egu.0
+(the old Gap4 convention implying version 0) in read-only mode we would
+type:
+
+</P>
+<P>
+<CODE>gap5 -ro Egu.0 &#38;</CODE>
+
+</P>
+
+<!-- NODE:GapDB-Directories -->
+
+
+<H2><A NAME="SEC5" HREF="gap5_toc.html#SEC5">Changing directories</A></H2>
+<P>
+<A NAME="IDX4"></A>
+
+</P>
+<P>
+By default gap5 changes to the directory containing the database you
+have open. All local output files specified (for example Save Consensus
+or Export Sequences) will be relative to that location unless you use a
+full pathname. The current working directory may be changed by using the
+Change Direction dialogue, found in the main File menu.
+
+</P>
+<!-- NODE:CheckDatabase -->
+
+
+<H2><A NAME="SEC6" HREF="gap5_toc.html#SEC6">Check Database</A></H2>
+<P>
+<A NAME="IDX5"></A>
+
+</P>
+<P>
+This function (which is available from the Gap5 File menu) is used to
+perform a check on the logical consistency of the database.  No user
+intervention is required. If the checks are passed the program will
+report zero errors. Otherwise a report of each error is displayed.
+
+</P>
+
+<p>
+<img src="gap5_check_database.png" alt="[picture]">
+
+<P>
+On a large database these checks can take a considerable amount of
+time. The default is a thorough, but slow, check. However a faster mode
+is available which only performs gross contig and contig-binning level
+checks, omitting the per sequence and per annotation validation.
+
+</P>
+<P>
+The dialogue also offers the choice of attempting to fix any problems
+that are found. It is strongly recommended that you back the gap5
+database up prior to performing fixes as depending on the nature of the
+corruption the choices made may not necessarily be an improvement. Note
+that this also may not fix every problem that is found, or the fixes
+themselves may cause other errors to be found so it is best to recheck
+again.
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

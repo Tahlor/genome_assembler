@@ -1,0 +1,111 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from spin.htmlinfo on 25 April 2016 -->
+
+<TITLE>Spin - SPIN-TRNA-Search</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:SPIN-TRNA-Search -->
+
+
+<H3><A NAME="SEC43" HREF="spin_toc.html#SEC43">tRNA search</A></H3>
+
+<P>
+<A NAME="IDX81"></A>
+<A NAME="IDX82"></A>
+<A NAME="IDX83"></A>
+<A NAME="IDX84"></A>
+<A NAME="IDX85"></A>
+<A NAME="IDX86"></A>
+<A NAME="IDX87"></A>
+<A NAME="IDX88"></A>
+
+</P>
+<P>
+This method is used to find segments of a sequence that might code for tRNAs.
+It looks  for  potential cloverleaf forming structures and then for the
+presence of the expected conserved bases. It presents  results  graphically
+and draws out the cloverleafs.
+ 
+The algorithm uses a large number of parameters including some loop
+lengths, scores for each of the four stems, and scores for the conserved
+bases, but we have not yet included an interface for setting these. We
+apologise for this and plan to add the interface in a future release. 
+Using individual base pair scores of A-T = G-C = 2, G-T = 1, 
+in its present form the algorithm is set to search for segments of
+sequence satisfying the following minimum scores:
+
+</P>
+
+
+<UL>
+<LI>aminoacyl stem 12
+
+<LI>tu stem 9
+
+<LI>anticodon stem 8
+
+<LI>du stem 4
+
+<LI>minimum total stem score 36
+
+<LI>minimum number of conserved bases 16
+
+<LI>no introns
+
+</UL>
+
+<P>
+ 
+The algorithm was first described in <CITE>Staden,R. (1980)
+A computer program to search for tRNA genes. Nucl. Acid Res 8, 
+817-825</CITE>, but has been completely rewritten since then.
+The tRNAs  that  have been  sequenced  so far have two
+characteristics that can be used to locate their genes  within  long
+DNA  sequences.  Firstly they  have  a common   secondary  structure
+-  the  cloverleaf  -  and  secondly, particular bases almost always
+appear  at  certain  positions  in the cloverleaf.   The  cloverleaf
+is composed of four base-paired stems and four loops.  Three of  the
+stems are  of  fixed  length  but  the fourth,  the  dhu  stem which
+usually has four base pairs, sometimes has only three.  All  of  the
+loops  can  vary in size.   The  following relationships between the
+stems in the cloverleaf are assumed in the program:  (a)  there  are
+no  bases  between  one  end   of   the  aminoacyl  stem   and   the
+adjoining tuc stem;  (b) there are two bases between  the  aminoacyl
+stem and the dhu stem;  (c) there is one base between the  dhu  stem
+and the anticodon stem;  (d) there are at least three bases  between
+the  anticodon  stem  and the tuc stem.  The program looks first for
+cloverleaf structure and then for  conserved  bases.
+ 
+The output shows the position of the possible gene in the
+sequence by a vertical line the height of which shows the number  of
+basepairs  made in the stems. Typical graphical output:
+
+</P>
+
+<p>
+<a href="spin_trna_p,6in.png.html"><img src="spin_trna_p,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+The cloverleaf structure is also drawn
+in the text Output Window. Typical text output:
+
+</P>
+
+<p>
+<a href="spin_trna_t,5.13333in.png.html"><img src="spin_trna_t,5.13333in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<HR>
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

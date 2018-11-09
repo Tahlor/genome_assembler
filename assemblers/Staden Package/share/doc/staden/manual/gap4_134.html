@@ -1,0 +1,63 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Clip-Difference</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_133.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_135.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Clip-Difference -->
+
+
+<H3><A NAME="SEC205" HREF="gap4_toc.html#SEC205">Difference Clipping</A></H3>
+<P>
+<A NAME="IDX465"></A>
+<A NAME="IDX466"></A>
+
+</P>
+
+<p>
+<img src="difference_clip.png" alt="[picture]">
+
+<P>
+The difference clipping method 
+(which is available from the gap4 Edit menu)
+works in stages. First it calculates the 
+most likely consensus
+sequence. Then it compares each reading with that consensus sequence and
+identifies areas at the ends of the reading where there are enough
+differences to indicate the possibility of badly aligned bases. The clip
+points are adjusted accordingly.
+
+</P>
+<P>
+To identify the clip points for each reading the algorithm first finds 
+a good matching
+segment near the middle of the reading. Then steps, base by base, from this
+point to the left accumulating a score as it goes by using +1 
+for a match and -2 for a mismatch. 
+It sets the left clip point at the position of the highest score.
+The right clip point is set in an equivalent way.
+These new clip points are used only if they are more severe than the
+existing ones. The portions of readings which have
+been clipped are then tagged using a <CODE>DIFF</CODE> tag type. To see
+which segments have been clipped use the contig editor search tool.
+
+</P>
+<P>
+After clipping the algorithm then identifies any holes (breaks in the contigs)
+that may have been created and fills them up again by extending the
+sequence(s) with the fewest number(s) of expected errors.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_133.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_135.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

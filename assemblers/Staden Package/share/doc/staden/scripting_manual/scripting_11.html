@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-add_menu</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_10.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_12.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-add_menu -->
+
+
+<H3><A NAME="SEC12" HREF="scripting_toc.html#SEC12">add_menu</A></H3>
+<P>
+<A NAME="IDX26"></A>
+
+<PRE>
+<STRONG>add_menu</STRONG> <I>name</I> <I>onval</I> <I>offval</I> <I>pos</I>
+</PRE>
+
+<P>
+Before adding commands to menus we need to create the menus themselves. The
+<CODE>add_menu</CODE> command does this. The menu <I>name</I> is the text to appear for
+the menu button. If this includes spaces it must be enclosed in quotes or
+curly brackets.
+
+</P>
+<P>
+<I>Onval</I> and <I>offval</I> define the state masks for the enable and disable
+sets. Menus are always enabled whenever any of the items within them are
+enabled, even if the <I>offval</I> set defines otherwise. Menus are usually
+enabled at startup (<I>onval</I> == 1) and disabled during busy mode (<I>offval</I>
+== 2).
+
+</P>
+<P>
+The <I>pos</I> argument may be either <CODE>left</CODE> or <CODE>right</CODE>. This requests
+the position to place the menu. Each leftwards positioned menu is packed to
+the right of the currently shown left menus. Hence the order in which menus
+are defined controls the order in which they will appear. Similarly for
+rightwards positioned menus.
+
+</P>
+<P>
+So for example, the Gap4 main menus are defined as follows.
+
+</P>
+
+<PRE>
+add_menu File           1 2 left
+add_menu Edit           1 2 left
+add_menu View           1 2 left
+add_menu Options        1 2 left
+add_menu Experiments    1 2 left
+add_menu Lists          1 2 left
+add_menu Assembly       1 2 left
+add_menu Help           1 0 right
+</PRE>
+
+<P>
+If more than one add_menu command is present for the same menu name the latter
+of the two takes priority.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_10.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_12.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

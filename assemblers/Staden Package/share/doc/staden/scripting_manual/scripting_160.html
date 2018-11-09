@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - split_contig_tags</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_159.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_161.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:split_contig_tags -->
+
+
+<H2><A NAME="SEC179" HREF="scripting_toc.html#SEC179">split_contig_tags</A></H2>
+<P>
+<A NAME="IDX715"></A>
+<A NAME="IDX716"></A>
+<A NAME="IDX717"></A>
+<A NAME="IDX718"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void split_contig_tags(
+        GapIO  *io,
+        int     cont1,
+        int     cont2,
+        int     posl,
+        int     posr);
+</PRE>
+
+<P>
+This function is called by the break contig algorithm and has little, if any,
+other use. When we're splitting a contig in half we need to move the
+annotations too. Annotations that overlap the two contigs are duplicated.
+Annotations that overlap the end of a contig have their lengths and positions
+corrected.
+
+</P>
+<P>
+<VAR>posl</VAR> and <VAR>posr</VAR> hold the overlap region of contigs <VAR>cont1</VAR> and
+<VAR>cont2</VAR> before splitting. At the time of calling this routine, <VAR>cont2</VAR>
+has just been created (and has no tags). Both contigs have their lengths set
+correctly, but all of the tags are still in <VAR>cont1</VAR>. This function
+corrects these tag locations.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_159.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_161.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

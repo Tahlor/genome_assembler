@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-menu_state_on</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_18.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_20.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-menu_state_on -->
+
+
+<H3><A NAME="SEC20" HREF="scripting_toc.html#SEC20">menu_state_on</A></H3>
+<P>
+<A NAME="IDX37"></A>
+<A NAME="IDX38"></A>
+<A NAME="IDX39"></A>
+
+<PRE>
+<STRONG>menu_state_on</STRONG> <I>menu_specs</I> <I>mask</I> ?<I>pathname</I>?
+</PRE>
+
+<P>
+Enables menu items by applying menu state <I>mask</I> to the menus described in
+the <I>menu_specs</I> data. <I>Menu_specs</I> is the contents of the variable
+created by the <CODE>set_menu</CODE> command and written to by subsequent
+<CODE>add_</CODE>* commands.
+
+</P>
+<P>
+The <I>mask</I> is applied to each item in the menu specs. If the menu item
+enable set ANDed with the <I>mask</I> is non zero the menu item is enabled.
+Otherwise it is not changed (and not disabled). It is possible to combine
+multiple enable bits together in a single call. Hence the following two
+examples are identical.
+
+</P>
+
+<PRE>
+menu_state_on $gap_menu 4 .mainwin.menus
+menu_state_on $gap_menu 8 .mainwin.menus
+
+menu_state_on $gap_menu 12 .mainwin.menus
+</PRE>
+
+<P>
+<I>Pathname</I> specifies the root location of the menu widgets as given to a
+previous <CODE>create_menus</CODE> command.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_18.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_20.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Contig Navigation</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_129.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_131.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Contig Navigation -->
+
+
+<H2><A NAME="SEC201" HREF="gap4_toc.html#SEC201">Contig Navigation</A></H2>
+<P>
+<A NAME="IDX452"></A>
+<A NAME="IDX453"></A>
+<A NAME="IDX454"></A>
+
+</P>
+
+<P>
+This function, which can be found under the view menu,
+allows the user to navigate to areas of interest within 
+contigs.
+When Contig navigation is selected a dialog box is raised
+asking for a filename containing the regions. The format is
+the same as the search by file function.
+
+</P>
+<P>See section <A HREF="gap4_61.html#SEC81">Search by file</A>.
+
+</P>
+
+<p>
+<img src="contig_navigation_browse.png" alt="[picture]">
+
+<P>
+The user can either enter the name of the file or browse
+for it using the browse button. Once ok is hit, the file is 
+loaded into a table for viewing.
+
+</P>
+
+<p>
+<img src="contig_navigation_table.png" alt="[picture]">
+
+<P>
+The table has three fixed headers, contigID, Position and Problem
+Type. Clicking on any of these cause the whole table to be sorted on
+that column.  The regions can be viewed by either randomly double
+clicking on a row , by selecting a row and using the next (-&#62;&#62;) and
+previous (&#60;&#60;-) buttons at the bottom, or by pressing the Page Up and
+Page Down keys.  The corresponding contig editor will be opened and
+moved to the position indicated.  Once a row has been clicked on it's
+background will be changed to highlight that it has been visited.
+
+</P>
+<P>
+The reset button will clear the table and re-read the data from 
+file.
+Auto-close editors is set on by default. It closes any un-needed 
+editors when the user selects a region on a different contig. 
+The Show Traces mode will automatically display some traces based on
+the same mechanisms used in the editors 'Auto-display Traces' option
+(see section <A HREF="gap4_63.html#SEC104">Trace Display Settings</A>).
+Save will save the table list, including all rows previously marked
+as selected, back to the file. If this file is re-read at a later stage
+then the table will have the same sort order and tagging as when saved. 
+
+</P>
+<P>
+The format of the input file is as follows:
+
+</P>
+<P>
+<I>contig_identifier</I> <I>position</I> <I>comment</I>
+
+</P>
+<P>
+If the comment contains "<CODE>To:</CODE>" and a number then the region
+indicator at the bottom of the navigator window updates to show the
+size of the element, otherwise it just has a line showing the position
+of the start. Finally the comment may end in the 'nul' character to
+indicate that it has already been visited. (This is utilised by the
+Save command.)
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_129.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_131.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

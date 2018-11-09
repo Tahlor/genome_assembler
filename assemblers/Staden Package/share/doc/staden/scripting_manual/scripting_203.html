@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-Command-Parse</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_202.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_204.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-Command-Parse -->
+
+
+<H3><A NAME="SEC272" HREF="scripting_toc.html#SEC272">Parsing the Arguments</A></H3>
+<P>
+<A NAME="IDX911"></A>
+<A NAME="IDX912"></A>
+<A NAME="IDX913"></A>
+<A NAME="IDX914"></A>
+<A NAME="IDX915"></A>
+<A NAME="IDX916"></A>
+<A NAME="IDX917"></A>
+
+</P>
+<P>
+Our policy is to have a simple function to parse the command line arguments
+passed from Tcl. This should massage the arguments into a format usable by a
+separate (from Tcl) C or Fortran function which does the actual work. This
+clearly separates out the Tcl interface from the algorithms. The parsing will
+be done in the function registered with the Tcl interpreter. In our example
+this is <CODE>tcl_composition</CODE>.
+
+</P>
+<P>
+The latest Tcl/Tk release provides functions for easing the parsing of command
+line arguments. In the future we <I>may</I> switch to using this scheme, but at
+present we use (and document) our own methods. A quick overview of this is
+that we declare a structure to hold the argument results, a structure to
+define the available command line parameters, and then call the
+<CODE>parse_args</CODE> or <CODE>gap_parse_args</CODE> function. Note that it is entirely
+up to the author of the package code for the arguments should be processed.
+
+</P>
+<P>
+Firstly we need to include the <TT>`cli_arg.h'</TT> file. Secondly declare a
+structure containing the argument results. The structure does not need to be
+referenced outside of this file and so need not be in a public header file.
+Next we need a structure of type <CODE>cli_args[]</CODE> to specify the mapping of
+command line argument strings to argument result addresses. The
+<CODE>cli_args</CODE> structure is defined as follows.
+
+</P>
+<P>
+<A NAME="IDX918"></A>
+
+<PRE>
+    typedef struct {
+    char *command;      /* What to recognise, including the '-' symbol */
+    int type;           /* ARG_??? */
+    int value;          /* Set if this argument takes an argument */
+    char *def;          /* NULL if non optional argument */
+    int offset;         /* Offset into the 'result' structure */
+} cli_args;
+</PRE>
+
+<P>
+<A NAME="IDX919"></A>
+<VAR>Command</VAR> is a text string holding the option name, such as "-file".
+The last entry in the argument array should have a <VAR>command</VAR> of
+<CODE>NULL</CODE>.
+
+</P>
+<P>
+<A NAME="IDX920"></A>
+<VAR>Value</VAR> is either 0 or 1 to indicate whether an extra argument is
+required after the command line option. A value of 1 indicates that an extra
+argument is needed.
+
+</P>
+<P>
+<A NAME="IDX921"></A>
+<VAR>Type</VAR> specifies the type of this extra argument. It can be one of
+<CODE>ARG_INT</CODE>, <CODE>ARG_STR</CODE>, <CODE>ARG_ARR</CODE>, <CODE>ARG_FLOAT</CODE> and (for Gap4
+only) <CODE>ARG_IO</CODE> to represent types of <CODE>int</CODE>, <CODE>char *</CODE>,
+<CODE>char []</CODE>, <CODE>float</CODE> and <CODE>GapIO *</CODE>. An option with no extra
+argument must have the type of <CODE>ARG_INT</CODE> as in this case the stored value
+will be 0 or 1 to indicate whether the option was specified.
+
+</P>
+<P>
+Of the above types, <CODE>ARG_ARR</CODE> requires a better description. Options of
+this type are character arrays where the option argument is copied into the
+array. The <VAR>value</VAR> field for this type only specifies the length of the
+array. Finally the <CODE>offsetofa</CODE> macro instead of the <CODE>offsetof</CODE> macro
+(see below) must be used for the <VAR>offset</VAR> structure field. This type will
+possibly be removed in the future in favour of keeping <CODE>ARG_STR</CODE>. For
+<CODE>ARG_STR</CODE> the result is a character pointer which is set to the option
+argument. This requires no bounds checking and can use the standard
+<CODE>offsetof</CODE> macro.
+
+</P>
+<P>
+<A NAME="IDX922"></A>
+<VAR>Def</VAR> specifies the default value for this option. If the option takes no
+extra argument or if it takes an extra argument and no default is suitable,
+then <CODE>NULL</CODE> should be used. Otherwise <CODE>def</CODE> is a text string, even
+in the case of <CODE>ARG_INT</CODE> in which case it will be converted to integer if
+needed.
+
+</P>
+<P>
+<A NAME="IDX923"></A>
+<A NAME="IDX924"></A>
+<A NAME="IDX925"></A>
+<VAR>Offset</VAR> specifies the location within the results structure to store the
+result. The <CODE>offsetof</CODE> macro can be used to find this location. An
+exception to this is the <CODE>ARG_ARR</CODE> type where the <CODE>offsetofa</CODE>
+macro needs to be used instead (with the same syntax).
+
+</P>
+<P>
+For our composition package we will have the following two structures.
+
+</P>
+
+<PRE>
+typedef struct {
+    GapIO *io;
+    char *ident;
+} test_args;
+
+test_args args;
+cli_args a[] = {
+    {"-io",       ARG_IO,  1, NULL, offsetof(test_args, io)},
+    {"-contigs",  ARG_STR, 1, NULL, offsetof(test_args, ident)},
+    {NULL,        0,       0, NULL, 0}
+};
+</PRE>
+
+<P>
+So we have two command line options, -io and -contigs, both of which take
+extra arguments. These are stored in <CODE>args.io</CODE> and <CODE>args.ident</CODE>
+respectively. The last line indicates the end of the argument list.
+
+</P>
+<P>
+<A NAME="IDX926"></A>
+<A NAME="IDX927"></A>
+Once we've defined the structures we can actually process the process the
+arguments This is done using either <CODE>parse_args</CODE> or
+<CODE>gap_parse_args</CODE>. The latter of these two is for Gap4 only and is the
+only one which understands the <CODE>ARG_IO</CODE> type. The functions take four
+arguments which are the address of the <CODE>cli_args[]</CODE> array, the address
+of the result structure, and the <CODE>argc</CODE> and <CODE>argv</CODE> variables. The
+functions returns -1 for an error and 0 for success.
+
+</P>
+
+<PRE>
+    if (-1 == gap_parse_args(a, &#38;args, argc, argv)) {
+        return TCL_ERROR;
+    }
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_202.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_204.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

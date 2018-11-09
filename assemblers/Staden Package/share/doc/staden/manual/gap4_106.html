@@ -1,0 +1,80 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Disassemble</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_105.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_107.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Disassemble -->
+
+
+<H3><A NAME="SEC177" HREF="gap4_toc.html#SEC177">Disassembling Readings</A></H3>
+<P>
+<A NAME="IDX407"></A>
+<A NAME="IDX408"></A>
+
+</P>
+<P>
+This function is used to remove readings from a database or move
+readings to new contigs. 
+There are two interfaces which allow sets of readings to be
+disassembled. One is to identify the readings interactively when using
+the
+Contig Editor
+(see section <A HREF="gap4_64.html#SEC123">Remove Readings</A>),
+and the other, described below, is available as a separate option from
+the main gap4 Edit menu.
+
+</P>
+
+<p>
+<img src="disassembly.png" alt="[picture]">
+
+<P>
+If readings are removed from the database all reference to them is
+deleted. If a reading is moved to a "single-read contig" a new
+contig will be created containing this one single reading, which may
+then be re-processed by Find Internal Joins
+(see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>) 
+and the Join editor
+(see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>), which should
+reveal all the other positions at which the reading matches.
+
+</P>
+<P>
+More useful is the general "Move readings to new contigs". This will
+keep any assembly relationships intact between the set of readings to
+be disassembled. For example if three readings overlap then when
+disassembled all three will end up in a single new contig. This
+function is particularly useful for pulling apart false joins or
+repeats.
+
+</P>
+<P>
+The set of readings to be processed can be read from a "file" or a "list" and
+clicking on the "browse" button will invoke an appropriate browser. If just a
+single reading is to be assembled choose "single" and enter the
+reading name instead of the file or list of filenames.
+
+</P>
+<P>
+Removal via a "list" is a particularly powerful option when
+controlled via the list generation functions within the contig
+editor. For example break contig could be viewed as disassembling a
+list of readings selected using "Select this reading and all to
+right".
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_105.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_107.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

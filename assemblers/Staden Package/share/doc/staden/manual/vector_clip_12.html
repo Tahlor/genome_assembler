@@ -1,0 +1,69 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from vector_clip.htmlinfo on 25 April 2016 -->
+
+<TITLE>Vector clipping - Screen_Seq-Introduction</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Screen_Seq-Introduction -->
+
+
+<H2><A NAME="SEC14" HREF="vector_clip_toc.html#SEC14">Introduction</A></H2>
+
+<P>
+This section explains how to use the program screen_seq to
+filter out unwanted readings: i.e. how to
+search for and separate readings containing the sequences of extraneous
+DNA, such as vector or bacterial sequences. We have separated this task
+from that of locating and marking the extents of sequencing vector and
+other cloning vectors. There we require precise identification of the
+junction between the vectors and the target DNA. The filtering process
+described here is designed to spot strong matches between readings and a
+panel of possible contaminating sequences, and it splits readings into
+passes and fails. Readings that fail have a PS line containing the word
+"contaminant" and a "CONT" tag added to
+their experiment file.
+
+</P>
+<P>
+Normal usage would be to compare a batch of readings in experiment file
+format against a batch of possible contaminant sequences stored in (at
+present) simple text files. Each batch is presented to the program as a
+file of file names, and the program will write out two new files of file
+names: one containing the names of the files that do not match any of
+the contaminant sequences (the passes), and the other those that do
+match (the
+fails). It is also possible to compare single readings and single
+contaminant files by giving their file names (i.e. it is not necessary
+to use a file of file names for single files).
+
+</P>
+<P>
+Given the frequent need to compare against the full E. coli genome the
+algorithm is designed to be fast. Only one parameter is required: the minimum
+match length, min_match. All readings which contain a segment of sequence
+of length min_match which exactly matches a possible contaminant sequence
+are filtered out.
+
+</P>
+
+<P>
+The search is
+conducted only over the clipped portion of the readings. On our aging
+Alpha machine
+it takes about 1 second to compare both strands of a reading against the
+4.7 million bases of E. coli.
+
+</P>
+<HR>
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,72 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Database-LineTypes</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_54.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_56.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Database-LineTypes -->
+
+
+<H2><A NAME="SEC61" HREF="pregap4_toc.html#SEC61">Experiment File Line Types</A></H2>
+<P>
+<A NAME="IDX103"></A>
+<A NAME="IDX104"></A>
+<A NAME="IDX105"></A>
+
+</P>
+<P>
+A list of Experiment File line types may be viewed and edited using this
+option (see section <A HREF="formats_19.html#SEC41">Experiment file format record types</A>).
+A table of the Experiment File line types is displayed along with
+their current values. A brief description of the line type underneath the
+mouse cursor is displayed in the Information Line
+at the bottom of the window. The table consists of
+three columns. The first is a label identifying the line being edited. The
+second column is an option menu from which either <I>Value</I> or <I>Command</I> may
+be selected. The third column is the current value or command.
+
+</P>
+
+<p>
+<img src="pregap4_edit_exp.png" alt="[picture]">
+
+<P>
+Line type values will be used for every sequence. The Augment Experiment Files
+module will add this line type to each Experiment File. This is suitable for
+specifying information which is constant across an entire batch, such as
+insert size (SI) or operator (OP). The Line type commands are executed each
+time the Augment Experiment Files module adds that line to the Experiment
+File. Hence the commands are used for information which may change from
+sequence to sequence. This table should be used for editing line type values,
+but we do not recommend that you use it for editing commands (although it is
+useful to know which commands have been set).
+
+</P>
+<P>
+In the above example the PR, SP and ST commands were generated using the
+Simple Text Database interface, whilst the SC and SF values come from the
+Sequencing Vector Clip module parameters and the SI value was typed in by
+hand using this table.
+
+</P>
+<P>
+The "OK (in memory)" and "OK (and save)" buttons will accept the currently
+displayed values and commands. The "OK (in memory)" button will use these
+settings for the current pregap4 runs. The "OK (and save)" button will use
+them for the current session and all subsequent pregap4 sessions as it saves
+the information to the pregap4 configuration file.
+
+</P>
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_54.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_56.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

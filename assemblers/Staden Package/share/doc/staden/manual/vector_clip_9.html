@@ -1,0 +1,144 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from vector_clip.htmlinfo on 25 April 2016 -->
+
+<TITLE>Vector clipping - Vector_Clip-Sites</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Vector_Clip-Sites -->
+
+
+<H2><A NAME="SEC11" HREF="vector_clip_toc.html#SEC11">Defining Cloning and Primer Sites for Vector_Clip</A></H2>
+<P>
+<A NAME="IDX9"></A>
+<A NAME="IDX10"></A>
+<A NAME="IDX11"></A>
+<A NAME="IDX12"></A>
+<A NAME="IDX13"></A>
+<A NAME="IDX14"></A>
+<A NAME="IDX15"></A>
+
+</P>
+<P>
+Vector sequences should be stored in simple text files with up to 80
+characters of data per line. Sequencing vectors are those vectors such
+as m13 used to produce templates for sequencing.  All other vectors,
+such as cosmid vectors, that are used to purify and grow the DNA prior
+to it being subcloned into sequencing vectors are termed "cloning
+vectors".  It is important that the files containing cloning vector
+sequences which are used by vector_clip are arranged so that the cloning site
+follows the last base in the file.  For example (where X is the cloning
+site):
+
+</P>
+
+<PRE>
+start of file	
+acatacatacatatata
+acatagatagatacaga
+.
+.
+.
+cagatataX
+end of file
+
+     Cloning Vector File Base Ordering
+</PRE>
+
+<P>
+In order for vector_clip to search readings for segments of sequencing 
+vectors it either needs to use a vector_primer file or 
+it needs to know the positions of the cloning site and primers.
+If not using a vector_primer file, each reading's experiment file should contain SC and SP
+records, and also a primer type record (PR).
+The following section explains the numbering system used with
+an example for m13mp18, and then describes how to use spin 
+(see section <A HREF="spin_3.html#SEC3">Introduction</A>)
+to work out the values for other vector, cloning site, and primer combinations.
+
+</P>
+
+<P>
+The position of the cloning site depends on the ordering of the bases in
+the particular vector sequence file being used. That is, as the
+sequences are circular, the file may be arranged to start at any base
+and still give the same circular sequence.  Vector_Clip must be told the
+correct position of the cloning site, then, relative to that, the
+position of the first base that will be included in the reading. i.e.
+the relative position of the first base 3' of the primer.
+
+</P>
+<P>
+Below we use
+EMBL entry M13MP18 as an example.  The figure includes a double stranded
+listing of 120 characters of m13mp18 around the SmaI site at 6249, and 
+some of the restriction sites. Between the restriction sites and the sequence
+we have added lines to explain the numbering used by vector_clip. The
+numbers below the row of "+" symbols show positive positions (to the right
+of the SmaI cloning site), and the numbers below the "-" symbols show
+negative positions (to the left of the cloning site). Below these lines
+we show the sequences of the 16mer reverse primer "r(-21)" which is at
+relative position -24, and the 17mer forward primer "f(-20)" which is at
+relative position 41.
+
+</P>
+
+<PRE>
+The positions of SmaI site and forward and reverse primers for M13MP18
+
+                               EcoRI                                            
+                               .   TaqI                                         
+                               .   .     SacI                                   
+                               .   .     .     XmaI                             
+                               .   .     .     .HpaII
+                               .   .     .     ..AsuC2I                         
+                               .   .     .     ..SmaI                           
+                               .   .     .     ...  BamHI                       
+                               .   .     .     ...  MboI                        
+                               .   .     .     ...  Sau3AI                      
+                               .   .     .     ...  XhoII                       
+                               .   .     .     ...  . PspN4I          
+                               .   .     .     ...  . .   XbaI        
+                                                 ++++++++10++
+                         --20--------10---------123456789012
+               r(-21)    432109876543210987654321
+         aacagctatgaccatg
+ acacaggaaacagctatgaccatgattacgaattcgagctcggtacccggggatcctcta
+       6210      6220      6230      6240      6250      6260
+ tgtgtcctttgtcgatactggtactaatgcttaagctcgagccatgggcccctaggagat
+
+                                                                      
+  HinfI                                                               
+  . SalI                                                              
+  . .AccI                                                             
+  . ..        SdaI                                                    
+  . ..        .  BspMI                                                
+  . ..        .  .  BbuI         CfrI                                 
+  . ..        .  .  Hsp92II      . BshI                               
+  . ..        .  .  PaeI         . HaeIII                             
+  . ..        .  .  SphI         . PalI                               
+  . ..        .  .  . Cac8I      . .Bse1I        MaeII                
+  . ..        .  .  . HindIII    . .BseNI        .  TaiI              
+  . ..        .  .  . . AluI     . .BsrI         .  TscI              
+  . ..        .  .  . . . MwoI   . .TspRI        .  .Tsp45I           
+ ++++++20++++++++30++++++++40+
+ 34567890123456789012345678901       f(-20)
+                              tgaccggcagcaaaatg
+ gagtcgacctgcaggcatgcaagcttggcactggccgtcgttttacaacgtcgtgactgg
+       6270      6280      6290      6300      6310      6320
+ ctcagctggacgtccgtacgttcgaaccgtgaccggcagcaaaatgttgcagcactgacc
+
+</PRE>
+
+<HR>
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

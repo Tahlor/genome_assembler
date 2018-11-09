@@ -1,0 +1,102 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Contig-Selector-Contigs</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Contig-Selector-Contigs -->
+
+
+<H2><A NAME="SEC9" HREF="gap5_toc.html#SEC9">Selecting Contigs</A></H2>
+<P>
+<A NAME="IDX8"></A>
+<A NAME="IDX9"></A>
+<A NAME="IDX10"></A>
+<A NAME="IDX11"></A>
+<A NAME="IDX12"></A>
+<A NAME="IDX13"></A>
+
+</P>
+<P>
+Contigs can be selected by either clicking with the left mouse button
+on the line representing the required contig in the contig selector window
+or alternatively by choosing the "List contigs" option from the "View" menu. 
+This option invokes a "Contig List" list box where the contig names and 
+numbers are listed in the same order as they appear in the contig selector 
+window. 
+
+</P>
+
+<p>
+<img src="contig_list_box.png" alt="[picture]">
+
+<P>
+Within this list box the contig names can be sorted 
+alphabetically on contig name or numerically on contig number. This is done 
+by selecting the corresponding item from the sort 
+menu at the top of the list box. Clicking on a name within the list box is 
+equivalent to clicking on the corresponding contig in the contig selector.
+More than one contig can be selected by dragging out a region with the left
+mouse button. Dragging the mouse off the bottom of the list will scroll it to
+allow selection of a range larger than the displayed section of the
+list.  When the left button is pressed any existing selection is
+cleared. To select several disjoint entries in the list press control
+and the left mouse button.  The "Copy" button copies the current
+selection to the paste buffer.
+
+</P>
+<P>
+Most commands require a contig identifier, which can be the
+contig name itself or the name/number of any reading within that
+contig. Gap5 always knows reading record numbers, but depending on
+the options used in tg_index when creating the assembly database the
+reading names may not be indexed. To specify a reading by record
+number, precede it by a # character, e.g. "#10000" means
+reading record number 10000, but "10000" means the contig or reading
+with name 10000.
+
+</P>
+<P>
+Also any
+currently active dialogue boxes that require a contig to be selected can
+be updated simply by clicking on a contig in the contig selector or clicking
+on an entry in the "Contig Names" list box.  For
+example, if the Edit contig command is selected from the Edit menu it
+will bring up a dialogue requesting the identity of the contig to edit.
+If the user clicks the left mouse button on a contig in the contig
+selector window, the contig editor dialogue will automatically change to
+contain the name of the selected contig.  Some commands, such as the
+Contig Editor, can be selected from a popup menu that is activated by
+clicking the right mouse button on the contig line in the Contig
+Selector or clicking the right mouse button on the corresponding name within
+the "Contig List" list box. This simultaneously defines the contig to 
+operate on and so the command starts up without dialogue.
+
+</P>
+<P>
+Several contigs can be selected at once by either clicking on each
+contig with the left mouse button or dragging out a selection rectangle
+by holding the left mouse button down. Contigs which are entirely
+enclosed within the rectangle will be selected. Alternatively, selecting
+several contigs from the "Contig Names" list box will also result in each
+contig being selected. Selected contigs are highlighted in bold. Selecting
+the same contig again will unselect it.
+
+</P>
+<P>
+The currently selected contigs are also kept in a 'list' named contigs.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

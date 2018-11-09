@@ -1,0 +1,200 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Settings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_21.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_23.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Settings -->
+
+
+<H2><A NAME="SEC46" HREF="gap5_toc.html#SEC46">The Settings Menu</A></H2>
+<P>
+<A NAME="IDX63"></A>
+<A NAME="IDX64"></A>
+<A NAME="IDX65"></A>
+<A NAME="IDX66"></A>
+<A NAME="IDX67"></A>
+<A NAME="IDX68"></A>
+<A NAME="IDX69"></A>
+
+</P>
+<P>
+The purpose of this menu is to configure the operation of the contig
+editor. Settings can be saved using the "Save settings" button, which
+also saves preferences for the editor width and height and the location
+of the divider between the names and sequence panels. It does not save
+tag macros though; these may be saved separately using the "Save
+Macros" option. Settings for the following options can be changed.
+
+</P>
+
+
+<UL>
+<LI><A HREF="gap5_22.html#SEC47">Group Readings</A>
+<LI><A HREF="gap5_22.html#SEC48">Highlight Disagreements</A>
+<LI><A HREF="gap5_22.html#SEC49">Pack Sequences</A>
+<LI><A HREF="gap5_22.html#SEC50">Hide Annotations</A>
+</UL>
+
+<!-- NODE:Editor-Group Readings -->
+
+
+<H3><A NAME="SEC47" HREF="gap5_toc.html#SEC47">Group Readings</A></H3>
+<P>
+<A NAME="IDX70"></A>
+<A NAME="IDX71"></A>
+
+</P>
+<P>
+Sequences have an "X" location in the editor defined by the location
+within the contig that they align to. The "Y" location though is
+determined by the sequence layout algorithm, governed by the Pack
+Sequences setting and Group Readings options.
+
+</P>
+<P>
+By default sequences are grouped into distinct technologies, typically
+with longer sequences up the top (capillary) and shorter ones at the
+bottom (Illumina, SOLiD).  Within these technology groups the sequences
+are then sorted by their start location, so the top-most sequences start
+earlier and the bottom most sequences start later.
+
+</P>
+<P>
+The Group Readings menu allows user control over these primary and
+secondary collating orders. The sorting methods are defined below.
+
+</P>
+<DL COMPACT>
+
+<DT>By technology
+<DD>
+Sorted in order of unknown, sanger (capillary), Illumina, SOLiD, 454.
+
+<DT>By clipped start
+<DD>
+Sorted by the visible (non-cutoff) start position.
+
+<DT>By start
+<DD>
+Sorted by the start position, regardless of whether the base is in
+cutoff data or not.
+
+<DT>By template
+<DD>
+Sorted by template name. In Gap5 this is always defined to be a prefix
+of the sequence name, or optionally the same as the sequence name. The
+sorting method is using a simple ASCII collation order.
+
+<DT>By strand
+<DD>
+Sorts data into the top strand first followed by the bottom strand data.
+
+<DT>By base
+<DD>
+This sort order is different from all others in that it depends on the
+location of the editor cursor.
+
+Sorts sequences by the base type overlapping the last editor cursor
+location in the consensus. The collation order is A, C, G, T, N and *.
+Sequences that do not overlap that consensus location or those that only
+overlap in the cutoff portion are not sorted by this method. If this is
+used as the primary sort then these other sequences will be sorted using
+the secondary sort. If the secondary sort is By Base then an implicit
+tertiary sort order of By Start is used.
+
+Note that moving the editing cursor around sequences will not update the
+Y order. Only placement of the editing cursor on the consensus will
+update this.
+</DL>
+
+<!-- NODE:Editor-Disagree -->
+
+
+<H3><A NAME="SEC48" HREF="gap5_toc.html#SEC48">Highlight Disagreements</A></H3>
+<P>
+<A NAME="IDX72"></A>
+<A NAME="IDX73"></A>
+<A NAME="IDX74"></A>
+<A NAME="IDX75"></A>
+
+</P>
+<P>
+This toggles between the normal sequence display (showing the current base
+assignments) and one in which those assignments that differ from the consensus
+are highlighted. It makes scanning for problems by eye much easier.
+
+</P>
+<P>
+Several modes of highlighting are available: "By dots" will only display the
+bases that differ from the consensus, displaying all other bases as full
+stops if they match or colons if they mismatch but are poor
+quality. The definition of poor quality here can be adjusted using the
+"Set quality threshold" option of the Settings menu. The base
+colours are as normal (ie reflecting tags and quality).
+
+</P>
+<P>
+Highlight disagreements "By foreground colour" and "By background
+colour" displays all base characters, but colours those that differ
+from the consensus. Bases which differ by are below the
+difference quality threshold are shaded in light blue while high
+quality differences are dark blue. This allows easier
+visual scanning of the context that a difference occurs in, but it may
+be wise to disable the displaying of tags (hint: control-Q toggles
+tags on and off).
+
+</P>
+<P>
+Finally the "Case sensitive" toggle controls whether upper and lower
+case bases of the same base type should be considered as differences.
+
+</P>
+<!-- NODE:Editor-Pack Sequences -->
+
+
+<H3><A NAME="SEC49" HREF="gap5_toc.html#SEC49">Pack Sequences</A></H3>
+
+<P>
+This controls whether the editor allocates one row per sequence or
+whether it is permitted to pack multiple sequences onto a single row,
+assuming they do not overlap.
+
+</P>
+<P>
+The latter allows for a more compact plot which is desirable when
+dealing with short sequences, however it has the side effect that the
+reading names can no longer be listed in the names panel to the left.
+
+</P>
+<!-- NODE:Editor-Hide Annotations -->
+
+
+<H3><A NAME="SEC50" HREF="gap5_toc.html#SEC50">Hide Annotations</A></H3>
+
+<P>
+Sometimes we need to see the background shading underneath an
+annotation, for example to see the base quality or if we have
+Highlight Disagreements turned on using the <I>by background colour</I>
+mode. This option simply hides all annotations from display until it
+is selected again to reveal them once more.
+
+</P>
+<P>
+The Control-Q keyboard shortcut has the same effect.
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_21.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_23.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

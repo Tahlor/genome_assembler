@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Script-io_add</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Script-io_add -->
+
+
+<H3><A NAME="SEC64" HREF="scripting_toc.html#SEC64">io_add_* commands and io_allocate</A></H3>
+<P>
+<A NAME="IDX170"></A>
+<A NAME="IDX171"></A>
+<A NAME="IDX172"></A>
+<A NAME="IDX173"></A>
+<A NAME="IDX174"></A>
+<A NAME="IDX175"></A>
+<A NAME="IDX176"></A>
+<A NAME="IDX177"></A>
+
+</P>
+<P>
+A set of Tcl functions exists for allocating new gap4 database structures.
+Each function allocates the next sequentially numbered structure. In the case
+of annotations it is preferable to reuse items stored on the annotation free
+list before allocating new structures.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>io_add_reading</CODE> <I>io</I>
+<DD>
+<A NAME="IDX178"></A>
+ 
+Creates a new reading numbered <CODE>NumReadings(io)+1</CODE>. The name, trace_name
+and trace_type fields are all allocated and written as "uninitialised". No
+other items are allocated and all other fields are set to 0. The database
+num_readings and Nreadings fields are also updated.  Returns the new reading
+number.
+<P>
+<A NAME="IDX179"></A>
+<DT><CODE>io_add_contig</CODE> <I>io</I>
+<DD>
+Creates a new contig numbered <CODE>NumContigs(io)+1</CODE>. The contig structure
+fields are all set to 0. The contig_order array is updated with the new contig
+as the last (right most) one. The database num_contigs and Ncontigs fields are
+also updated. Returns the new contig number.
+<P>
+<A NAME="IDX180"></A>
+<DT><CODE>io_add_annotation</CODE> <I>io</I>
+<DD>
+Creates a new annotation. The structure fields initialised to 0. The database
+Nannotations field is also updated. Returns the new annotation number.
+<P>
+<A NAME="IDX181"></A>
+<DT><CODE>io_add_template</CODE> <I>io</I>
+<DD>
+Creates a new template. The template name is allocated and set to
+"uninitialised"; strand is set to 1; vector is set to the "unknown" vector (1)
+if present or creates a new blank vector to reference; and the clone,
+insert_size_min and insert_size_max are set to 0. The database Ntemplates
+field is also updated. Returns the new template number.
+<P>
+<A NAME="IDX182"></A>
+<DT><CODE>io_add_vector</CODE> <I>io</I>
+<DD>
+Creates a new vector. The vector name is allocated and set to "uninitialised".
+The level is set to 0. The database Nvectors field is also updated. Returns
+the new vector number.
+<P>
+<A NAME="IDX183"></A>
+<DT><CODE>io_add_clone</CODE> <I>io</I>
+<DD>
+Creates a new clone. The clone name is allocated and set to "uninitialised".
+The vector is set to the "unknown" vector(1) or creates a new blank vector to
+reference. The database Nclones field is also updated. Returns the new
+template number.
+<P>
+<A NAME="IDX184"></A>
+<DT><CODE>io_allocate</CODE> <I>io</I> <I>type</I>
+<DD>
+Allocates a new record of the specified <I>type</I>. Currently only the
+<CODE>text</CODE> type is supported. The new record number is returned.
+</DL>
+
+<!-- NODE:Gap4s-Util -->
+
+
+<H2><A NAME="SEC65" HREF="scripting_toc.html#SEC65">Utility Commands</A></H2>
+<P>
+<A NAME="IDX185"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="scripting_59.html#SEC66">db_info</A>
+<LI><A HREF="scripting_60.html#SEC67">edid_to_editor</A>
+<LI><A HREF="scripting_61.html#SEC68">add_tags</A>
+<LI><A HREF="scripting_62.html#SEC69">get_read_names</A>
+</UL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

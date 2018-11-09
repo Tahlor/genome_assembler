@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Tcl Scripting of Gap4</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_42.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_44.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Tcl-scripts -->
+
+
+<H1><A NAME="SEC46" HREF="scripting_toc.html#SEC46">Tcl Scripting of Gap4</A></H1>
+
+<UL>
+<LI><A HREF="scripting_43.html#SEC47">Introduction</A>
+<LI><A HREF="scripting_43.html#SEC48">Low-level IO Access</A>
+<LI><A HREF="scripting_58.html#SEC65">Utility Commands</A>
+<LI><A HREF="scripting_67.html#SEC75">Main Commands</A>
+<LI><A HREF="scripting_95.html#SEC104">The Editor Widget</A>
+<LI><A HREF="scripting_110.html#SEC121">The EdNames Widget</A>
+</UL>
+
+<!-- NODE:Gap4s-Introduction -->
+
+
+<H2><A NAME="SEC47" HREF="scripting_toc.html#SEC47">Introduction</A></H2>
+<P>
+<A NAME="IDX113"></A>
+
+</P>
+<P>
+This chapter describes the gap4 scripting language. The language is an
+extension of the Tcl and Tk languages. This manual does not contain
+information on using Tcl and Tk itself - only our extensions.
+
+</P>
+<P>
+For the purpose of consistency, many gap4 commands take identical arguments.
+To simplify the documentation and to remove redundancy these arguments are
+only briefly discussed with each command description. However first we need to
+describe the terminology used throughout this manual.
+
+</P>
+<DL COMPACT>
+
+<DT><I>Reading identifier</I>
+<DD>
+<A NAME="IDX114"></A>
+ <A NAME="IDX115"></A>
+ 
+        Used to specify a reading. It can consist of the reading's unique
+        name, a hash followed by its reading number, or if it is at the start
+        of a contig, an equals followed by the contig number.
+        
+        Eg <CODE>fred.s1</CODE>, <CODE>#12</CODE>, or <CODE>=2</CODE>.
+
+<A NAME="IDX116"></A>
+<DT><I>Contig identifier</I>
+<DD>
+        A contig is identified by any reading within it, so all reading
+        identifiers are contig identifiers. However when a contig
+        identifier is displayed by a command it typically chooses the left
+        most reading name. If a contig number is known, simply use
+        <CODE>=</CODE><I>number</I> as a contig identifier.
+</DL>
+
+<P>
+Common arguments:
+<DL COMPACT>
+
+<DT><CODE>-contigs</CODE> <I>contig_list</I>
+<DD>
+<A NAME="IDX117"></A>
+ 
+        <I>Contig_list</I> is a Tcl list of contig identifiers. If an item in the
+        list is itself a list, then the first element of the list is the
+        identifier and the second and third elements specify a range
+        within that contig.
+
+        Eg <CODE>-contigs {read1 {read5 1000 2000} read6}</CODE>
+
+<A NAME="IDX118"></A>
+<DT><CODE>-readings</CODE> <I>reading_list</I>
+<DD>
+        <I>Reading_list</I> is a Tcl list of reading identifiers.
+
+        Eg <CODE>-reading_list {read1 read2}</CODE>
+
+<A NAME="IDX119"></A>
+<DT><CODE>-contig</CODE> <I>contig_identifier</I>
+<DD>
+        Specifies a single contig by an indentifier.
+
+<A NAME="IDX120"></A>
+<DT><CODE>-reading</CODE> <I>reading_identifier</I>
+<DD>
+        Specifies a single reading by an identifier.
+
+<A NAME="IDX121"></A>
+<DT><CODE>-cnum</CODE> <I>contig_number</I>
+<DD>
+        Specifies a contig by its number (NB: this not the same as a reading
+        number within that contig).
+
+<A NAME="IDX122"></A>
+<DT><CODE>-rnum</CODE> <I>reading_number</I>
+<DD>
+        Specifies a reading by its number.
+
+<A NAME="IDX123"></A>
+<DT><CODE>-io</CODE> <I>io_handle</I>
+<DD>
+        Specifies an IO handle by a numerical value as returned from a
+        previous <CODE>open_db</CODE> command.
+</DL>
+
+<!-- NODE:Gap4s-IO -->
+
+
+<H2><A NAME="SEC48" HREF="scripting_toc.html#SEC48">Low-level IO Access</A></H2>
+<P>
+<A NAME="IDX124"></A>
+<A NAME="IDX125"></A>
+<A NAME="IDX126"></A>
+<A NAME="IDX127"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="scripting_43.html#SEC49">Introduction</A>
+<LI><A HREF="scripting_44.html#SEC50">IO Primitives</A>
+<LI><A HREF="scripting_48.html#SEC54">Gap-level IO Commands</A>
+</UL>
+
+<!-- NODE:Script-Intro -->
+
+
+<H2><A NAME="SEC49" HREF="scripting_toc.html#SEC49">Introduction</A></H2>
+
+<P>
+FIXME: Add intro here
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_42.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_44.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

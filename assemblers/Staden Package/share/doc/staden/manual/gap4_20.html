@@ -1,0 +1,85 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Anno-Act</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_19.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_21.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Anno-Act -->
+
+
+<H3><A NAME="SEC27" HREF="gap4_toc.html#SEC27">Active tags and masking</A></H3>
+
+<P>
+<A NAME="IDX32"></A>
+<A NAME="IDX33"></A>
+<A NAME="IDX34"></A>
+<A NAME="IDX35"></A>
+<A NAME="IDX36"></A>
+
+</P>
+<P>
+Tags are used for a variety of purposes and for each function in the
+program the user can choose which tag types are currently
+"active". Where they are being used to provide visual clues this will
+determine which tag types appear in the displays, but for other
+functions they can be used to control which parts of the sequence are
+omitted from processing. This mode of tag use is called "masking". For
+example the program contains a routine to search for repeats, and if any
+are found, the user needs to know if such sequence duplications are
+caused by incorrect assembly or are genuine repeats. Once the user has
+checked a duplication reported by the program and found it to be a
+repeat, it can be labelled with a REPT tag. If the repeat routine is run
+in masking mode and with REPT tags active, any segment covered by a REPT
+tag will not be reported as a match. So once the "problem" has been
+dealt with it can be labelled so it is not reported on subsequent
+searches. In addition the tag is available to provide annotation for the
+completed sequence when it is sent to the data libraries.
+
+</P>
+<P>
+A more complicated application of masking is available for two of the
+other search procedures in the program: (see section <A HREF="gap4_85.html#SEC154">Shotgun assembly</A>) and (see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>). The former
+is the general assembly function and the latter is used to find
+potential joins between contigs in the database. Below we describe how
+masking can be used during assembly and similar comments apply to Find
+Internal Joins. 
+
+</P>
+<P>
+In the assembly function the user can choose to employ
+masking and then select the types of tags to be used as masks. Readings
+are compared in two stages: first the program looks for exact matches of
+some minimum length and then for each possible overlap it performs an
+alignment. If the masking mode is selected the masked regions are not
+used during the search for exact matches, but they are used during
+alignment. The effect of this is that new readings that would lie
+entirely inside masked regions will not produce exact matches and so
+will not be entered. However readings that have sufficient data outside
+of masked segments can produce matches and will be correctly aligned
+even if they overlap the masked data. A common use for masking during
+assembly or Find Internal Joins is to avoid finding matches that are
+entirely contained in Alu segments.
+
+</P>
+<P>
+A further mode related to masking is "marking". Marking is available for
+the consensus calculation (see section <A HREF="gap5_57.html#SEC95">Consensus calculation</A>) and for Find Internal Joins (see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>). Instead of masking the regions covered by
+active tags these routines simply write these sections of the consensus
+sequence in lowercase letters. That is they make it easy for users to
+see where the tagged segments are. Marking has no other effect.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_19.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_21.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,289 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Check-Database</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_160.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_162.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Check-Database -->
+
+
+<H2><A NAME="SEC234" HREF="gap4_toc.html#SEC234">Database Checks</A></H2>
+<P>
+<A NAME="IDX565"></A>
+
+</P>
+
+<UL>
+<LI>Number of contigs used is &#60;= number allocated
+
+<LI>Disk and memory values for "number of contigs" are consistent
+
+<LI>Number of readings used is &#60;= number allocated
+
+<LI>Disk and memory values for "number of readings" are consistent
+
+<LI>Disk and memory values for "actual database size" are consistent
+
+<LI>Actual database size &#60;= maximum size
+
+<LI>Data_class is either DNA(0) or protein(1).
+
+<LI>Number of free annotations &#62;= 0 and &#60;= number allocated
+
+<LI>Contig order is consistent
+
+<LI>Number of free notes &#62;= 0 and &#60;= number allocated
+
+<LI>First note has prev_type as GT_Database
+
+<LI>Detect note loops
+
+</UL>
+
+<!-- NODE:Check-Contig -->
+
+
+<H2><A NAME="SEC235" HREF="gap4_toc.html#SEC235">Contig Checks</A></H2>
+<P>
+<A NAME="IDX566"></A>
+
+</P>
+
+<UL>
+<LI>Has a left reading number
+
+<LI>Has a right reading number
+
+<LI>The left reading has no left neighbour
+
+<LI>The right reading has no right neighbour
+
+<LI>Chain right to
+
+
+<UL>
+<LI>check loops
+
+<LI>check holes
+
+<LI>flag a reading as used
+
+</UL>
+
+<LI>When finished chaining
+
+
+<UL>
+<LI>check length is correct
+
+<LI>check right reading number is correct
+
+</UL>
+
+<LI>Reference only valid reading numbers
+
+<LI>Chain left to
+
+
+<UL>
+<LI>check loops
+
+<LI>flag readings as used, if not done so in right chaining;
+
+</UL>
+
+<LI>When finished chaining, check left reading number is correct
+
+<LI>Chain along annotation list to
+
+
+<UL>
+<LI>flag as used
+
+<LI>detect annotation loops
+
+<LI>annotation is within the contig
+
+<LI>annotation is rightwards of previous
+
+</UL>
+
+<LI>First note has prev_type as GT_Contigs
+
+<LI>Detect note loops
+
+</UL>
+
+<!-- NODE:Check-Reading -->
+
+
+<H2><A NAME="SEC236" HREF="gap4_toc.html#SEC236">Reading Checks</A></H2>
+<P>
+<A NAME="IDX567"></A>
+
+</P>
+
+<UL>
+<LI>Memory and disk values tally for
+
+
+<UL>
+<LI>left neighbour
+
+<LI>right neighbour
+
+<LI>relative position
+
+<LI>length + sense
+
+</UL>
+
+<LI>Left neighbour is a valid reading number
+
+<LI>Right neighbour is a valid reading number
+
+<LI>Reading is not used zero times
+
+<LI>Reading is not used more than once
+
+<LI>Hand holding: (lnbr[rnbr[reading]] == reading)
+
+<LI>Relative position of reading &#62;= position of left neighbour
+
+<LI>Length != 0
+
+<LI>Used sequence length == "right clip position" - "left clip position"
+
+<LI>Has valid strand (0 or 1)
+
+<LI>Has valid primer
+
+<LI>Has valid sense (0 or 1)
+
+<LI>Chain along annotation list to
+
+
+<UL>
+<LI>flag as used
+
+<LI>detect annotation loops;
+
+<LI>annotation is rightwards of previous
+
+</UL>
+
+<LI>First note has prev_type as GT_Readings
+
+<LI>Detect note loops
+
+</UL>
+
+<!-- NODE:Check-Anno -->
+
+
+<H2><A NAME="SEC237" HREF="gap4_toc.html#SEC237">Annotation Checks</A></H2>
+<P>
+<A NAME="IDX568"></A>
+
+</P>
+
+<UL>
+<LI>No loops in free annotation list
+
+<LI>Is neither used nor is on the free list
+
+<LI>Annotation is not used more than once
+
+<LI>Is used, yet is still on the free list
+
+<LI>Length &#62;= 0
+
+<LI>Has valid strand (0 or 1)
+
+</UL>
+
+<!-- NODE:Check-Note -->
+
+
+<H2><A NAME="SEC238" HREF="gap4_toc.html#SEC238">Note Checks</A></H2>
+<P>
+<A NAME="IDX569"></A>
+
+</P>
+
+<UL>
+<LI>No loops in free note list
+
+<LI>Is neither used nor is on the free list
+
+<LI>Hand holding: (note-&#62;next-&#62;prev == note)
+
+<LI>Note is not used more than once
+
+<LI>Is used, yet is still on the free list
+
+</UL>
+
+<!-- NODE:Check-Template -->
+
+
+<H2><A NAME="SEC239" HREF="gap4_toc.html#SEC239">Template Checks</A></H2>
+<P>
+<A NAME="IDX570"></A>
+
+</P>
+
+<UL>
+<LI>Minimum insert length &#60;= maximum insert length
+
+<LI>Has valid vector
+
+<LI>Has valid clone
+
+<LI>Has valid strand
+
+</UL>
+
+<!-- NODE:Check-Vector -->
+
+
+<H2><A NAME="SEC240" HREF="gap4_toc.html#SEC240">Vector Checks</A></H2>
+<P>
+<A NAME="IDX571"></A>
+
+</P>
+
+<UL>
+<LI>Level &#62; 0
+
+<LI>Level &#60;= MAX_LEVEL (MAX_LEVEL currently is 10; a "feasibility" check)
+
+</UL>
+
+<!-- NODE:Check-Clone -->
+
+
+<H2><A NAME="SEC241" HREF="gap4_toc.html#SEC241">Clone Checks</A></H2>
+<P>
+<A NAME="IDX572"></A>
+
+</P>
+
+<UL>
+<LI>Has valid vector
+
+</UL>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_160.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_162.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

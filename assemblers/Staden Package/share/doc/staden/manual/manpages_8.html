@@ -1,0 +1,85 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Find_renz</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-find_renz -->
+
+
+<H1><A NAME="SEC41" HREF="manpages_toc.html#SEC41">Find_renz</A></H1>
+<P>
+<A NAME="IDX7"></A>
+
+
+<H2><A NAME="SEC42" HREF="manpages_toc.html#SEC42">NAME</A></H2>
+
+<P>
+find_renz -- Identifies the position of a cut site within a sequence
+
+</P>
+
+
+<H2><A NAME="SEC43" HREF="manpages_toc.html#SEC43">SYNOPSIS</A></H2>
+
+<P>
+<CODE>find_renz</CODE> [<CODE>-vp</CODE>] <I>enzyme</I> <I>filename</I> ...
+
+</P>
+
+
+<H2><A NAME="SEC44" HREF="manpages_toc.html#SEC44">DESCRIPTION</A></H2>
+
+<P>
+<CODE>find_renz</CODE> may be used to determine the position that an enzyme cuts a
+sequence. It's use as a command line utility is primarily designed for
+internal use within <CODE>pregap4</CODE> and as a user utility for producing
+<I>vector-primer</I> files for use with <CODE>vector_clip</CODE>. As such it is
+dedicated to finding one and only one such cut site and considers no cuts
+sites or multiple cut sites to be an error.
+
+</P>
+<P>
+Only one enzyme may be specified, which is given by the enzyme name (upper or
+lower case is not important). One or more filenames may be specified. If an
+enzyme does not cut a sequence the message "Enzyme not found in sequence" will 
+be sent to stderr. If an enzyme cuts a sequence more than once the message
+"Found more than one match" will be sent to stderr. Otherwise output is
+produced to stdout. This means that wildcards may be used (<CODE>find_renz -vp 
+smai *.seq &#62;&#62; vpfile</CODE>) with the output redirected without needing to consider
+whether the enzyme is suitable for all files matching the wildcard pattern.
+
+</P>
+
+
+<H2><A NAME="SEC45" HREF="manpages_toc.html#SEC45">OPTIONS</A></H2>
+<DL COMPACT>
+
+<DT><CODE>-vp</CODE>
+<DD>
+    Specifies that the output should be in a format suitable for saving to a
+    vector-primer file (to use with vector_clip). Without this only the cut
+    site position is listed.
+</DL>
+
+
+
+<H2><A NAME="SEC46" HREF="manpages_toc.html#SEC46">SEE ALSO</A></H2>
+
+<P>See section <A HREF="manpages_24.html#SEC143">vector_clip(1)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-get_read_info</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_124.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_126.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-get_read_info -->
+
+
+<H3><A NAME="SEC144" HREF="scripting_toc.html#SEC144">get_read_info, get_vector_info, get_clone_info and get_subclone_info</A></H3>
+<P>
+<A NAME="IDX626"></A>
+<A NAME="IDX627"></A>
+<A NAME="IDX628"></A>
+<A NAME="IDX629"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int get_read_info(
+        GapIO  *io,
+        int     N,
+        char   *clone,
+        int     l_clone,
+        char   *cvector,
+        int     l_cvector,
+        char   *subclone,
+        int     l_subclone,
+        char   *scvector,
+        int     l_scvector,
+        int    *length,
+        int    *insert_min,
+        int    *insert_max,
+        int    *direction,
+        int    *strands,
+        int    *primer,
+        int    *clone_id,
+        int    *subclone_id,
+        int    *cvector_id,
+        int    *scvector_id);
+
+int get_vector_info(
+        GapIO  *io,
+        int     vector_id,
+        char   *vector,
+        int l_vector);
+
+int get_clone_info(
+        GapIO  *io,
+        int     clone_id,
+        char   *clone,
+        int     l_clone,
+        char   *cvector,
+        int     l_cvector,
+        int    *cvector_id);
+
+int get_subclone_info(
+        GapIO  *io,
+        int     subclone_id,
+        char   *clone,
+        int     l_clone,
+        char   *cvector,
+        int     l_cvector,
+        char   *subclone,
+        int     l_subclone,
+        char   *scvector,
+        int     l_scvector,
+        int    *insert_min,
+        int    *insert_max,
+        int    *strands,
+        int    *clone_id,
+        int    *cvector_id,
+        int    *scvector_id);
+</PRE>
+
+<P>
+These functions return clone, template and vector information.
+
+</P>
+<P>
+<CODE>get_vector_info</CODE> returns the name of a vector. This is stored in the
+buffer at <VAR>vector</VAR>.
+
+</P>
+<P>
+<CODE>get_clone_info</CODE> function returns the name of the clone and the vector
+number (stored at <VAR>clone</VAR> and <VAR>cvector_id</VAR> and results of
+<CODE>get_vector_info</CODE> for this vector.
+
+</P>
+<P>
+<CODE>get_subclone_info</CODE> returns the template information (insert size, number
+of strands, vector and clone numbers stored at <VAR>insert_min</VAR>,
+<VAR>insert_max</VAR>, <VAR>strands</VAR>, <VAR>scvector_id</VAR> and <VAR>clone_id</VAR>) along
+with the results from <CODE>get_vector_info</CODE> and <CODE>get_clone_info</CODE> on the
+appropriate vector and clone numbers.
+
+</P>
+<P>
+<CODE>get_read_info</CODE> returns the reading information including direction,
+primer, template (subclone) number (stored at <VAR>direction</VAR>, <VAR>strands</VAR>,
+<VAR>primer</VAR>, and <VAR>clone_id</VAR>), and the results of the
+<CODE>get_subclone_info</CODE> on this template number.
+
+</P>
+<P>
+For all four functions, the arguments used to store text fields, such as the
+clone name (<VAR>clone</VAR>), all have corresponding buffer lengths sent as the
+same argument name preceeded by <VAR>l_</VAR> (eg <VAR>l_clone</VAR>). These buffers
+need to be allocated by the caller of the function.
+
+</P>
+<P>
+Any buffer or integer pointer arguments may be passed as <CODE>NULL</CODE> to avoid
+filling in this field. For buffers the same is also true when specifying the
+buffer length as zero.
+
+</P>
+<P>
+The <VAR>clone</VAR>, <VAR>vector</VAR> and <VAR>subclone</VAR> buffers are used to store the
+names of the clone, vector or template. If appropriate, the clone or
+template number will also be stored at the <VAR>clone_id</VAR> and
+<VAR>subclone_id</VAR> addresses.
+
+</P>
+<P>
+For functions returning information more than one vector, these are split into
+two levels. The sequencing vector is the vector used to sequence this
+template. It has arguments named <VAR>scvector</VAR> (name), <VAR>l_scvector</VAR> (name
+length) and <VAR>scvector_id</VAR> (vector number). The clone vector is the vector
+used in the sequecing of the fragment which is later broken down and
+resequenced as templates. This may not be appropriate in many projects. It has
+arguments named <VAR>cvector</VAR> (name), <VAR>l_cvector</VAR> (name length) and
+<VAR>cvector_id</VAR> (vector number).
+
+</P>
+<P>
+All functions return 0 for success and an error code for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_124.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_126.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

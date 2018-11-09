@@ -1,0 +1,157 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from spin.htmlinfo on 25 April 2016 -->
+
+<TITLE>Spin - SPIN-Find matching words</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_35.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_37.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:SPIN-Find matching words -->
+
+
+<H2><A NAME="SEC46" HREF="spin_toc.html#SEC46">Finding Matching Words</A></H2>
+<P>
+<A NAME="IDX90"></A>
+
+</P>
+<P>
+The find matching words routine finds runs of identical characters in the
+sequence. Its main value is speed, being hundreds of times faster than the
+find similar spans function. It is of course not very sensitive but is
+useful for long DNA sequences.
+
+</P>
+
+<p>
+<img src="spin_match_words.png" alt="[picture]">
+
+<P>
+The dialogue allows the horizontal and vertical sequences and their ranges
+to be selected (
+see section <A HREF="spin_49.html#SEC97">Selecting a sequence</A>).
+The word length is the minimum number of consecutive matching characters. All 
+runs of identical characters that are at least as long as the word length will
+produce a line on the SPIN Sequence Comparison Plot of length proportional to the actual word
+length 
+(
+see section <A HREF="spin_45.html#SEC66">SPIN Sequence Comparison Plot</A>).
+
+</P>
+<P>
+Further operations available for find matching words are:
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>Information</VAR>
+<DD>
+This command gives a brief description of the sequences used in the comparison, the input parameters used and the number of hits found.
+
+
+<PRE>
+
+horizontal EMBL: hsproperd
+vertical EMBL: mmproper
+word length 8 
+Number of matches 140
+
+</PRE>
+
+<DT><VAR>Results</VAR>
+<DD>
+A detailed listing of all the matching words is obtained in the Output
+Window. The horizontal (h) and vertical (v) positions of the beginning of 
+the match are listed along with the length of the match and the match itself.
+
+
+<PRE>
+
+Positions        162 h          4 v and length         14
+ttcacccagtatga
+Positions        225 h         67 v and length         18
+gaagactgctgtctcaac
+Positions        509 h        118 v and length          8
+ctctgtca
+Positions        276 h        118 v and length          9
+ctctgtcag
+Positions        288 h        130 v and length          8
+tgcaggtc
+Positions        626 h        131 v and length          8
+gcaggtct
+Positions       1208 h        144 v and length          8
+atggtcag
+
+</PRE>
+
+<DT><VAR>Tabulate scores</VAR>
+<DD>
+This option lists scores, probabilities, and their expected and observed 
+numbers of matches.
+
+<PRE>
+
+score    8 probability 2.06e-05 expected           43 observed 140
+score    9 probability 5.35e-06 expected           11 observed 67
+score   10 probability 1.39e-06 expected            3 observed 45
+score   11 probability 3.60e-07 expected            1 observed 35
+score   12 probability 9.35e-08 expected            0 observed 22
+score   13 probability 2.43e-08 expected            0 observed 18
+score   14 probability 6.30e-09 expected            0 observed 17
+score   15 probability 1.63e-09 expected            0 observed 11
+score   16 probability 4.24e-10 expected            0 observed 9
+score   17 probability 1.10e-10 expected            0 observed 9
+score   18 probability 2.86e-11 expected            0 observed 8
+score   19 probability 7.42e-12 expected            0 observed 6
+score   20 probability 1.93e-12 expected            0 observed 5
+score   21 probability 5.00e-13 expected            0 observed 3
+score   22 probability 1.30e-13 expected            0 observed 2
+score   23 probability 3.37e-14 expected            0 observed 2
+score   24 probability 8.74e-15 expected            0 observed 2
+
+</PRE>
+
+<DT><VAR>Configure</VAR>
+<DD>
+This option allows the line width and colour of the matches to be altered.
+See section <A HREF="interface_11.html#SEC13">Colour Selector</A>.
+A colour browser is displayed from which the desired line width or colour can 
+be configured. Pressing OK will update the SPIN Sequence Comparison Plot.
+
+<DT><VAR>Display sequences</VAR>
+<DD>
+Selecting this command invokes the sequence display 
+(
+see section <A HREF="spin_47.html#SEC71">Sequence Comparison Display</A>). 
+Moving the cursor in the sequence display will move the cursors of the
+same sequence in any SPIN Sequence Comparison Plot (
+see section <A HREF="spin_46.html#SEC67">Cursors</A>).
+To force the sequence display to show the nearest match,
+use the "nearest match" button in the sequence display plot.
+
+<DT><VAR>Hide</VAR>
+<DD>
+This option removes the points from the SPIN Sequence Comparison Plot but retains the information
+in memory.
+
+<DT><VAR>Reveal</VAR>
+<DD>
+This option will redisplay previously hidden points in the SPIN Sequence Comparison Plot.
+
+<DT><VAR>Remove</VAR>
+<DD>
+This command removes all the information regarding this particular
+invocation of Find matching words, and access to this data is lost.
+
+</DL>
+
+<HR>
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_35.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_37.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

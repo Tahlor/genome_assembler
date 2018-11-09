@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-GTemplates</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_117.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_119.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-GTemplates -->
+
+
+<H3><A NAME="SEC135" HREF="scripting_toc.html#SEC135">The GTemplates Structure</A></H3>
+
+
+<PRE>
+typedef struct {
+    GCardinal name;
+    GCardinal strands;
+    GCardinal vector;
+    GCardinal clone;
+    GCardinal insert_length_min;
+    GCardinal insert_length_max;
+} GTemplates;
+</PRE>
+
+<P>
+The template structure holds information about the physcial insert of a clone.
+A reading is within any single template, but several readings may share the
+same template.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>name</VAR>
+<DD>
+<A NAME="IDX537"></A>
+ 
+	The record number of the text string containing the template name
+
+<A NAME="IDX538"></A>
+<DT><VAR>strands</VAR>
+<DD>
+	The number of strands available. Either 1 or 2.
+
+<A NAME="IDX539"></A>
+<DT><VAR>vector</VAR>
+<DD>
+	The vector number of the vector ("sequencing vector") used.
+
+<A NAME="IDX540"></A>
+<DT><VAR>clone</VAR>
+<DD>
+	The clone number of the clone that this template came from.
+
+<A NAME="IDX541"></A>
+<DT><VAR>insert_len_min</VAR>
+<DD>
+	The minimum expected size of insert.
+
+<A NAME="IDX542"></A>
+<DT><VAR>insert_len_max</VAR>
+<DD>
+	The maximum expected size of insert.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_117.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_119.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

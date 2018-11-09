@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from mini.htmlinfo on 25 April 2016 -->
+
+<TITLE>The Staden Package Mini-Manual - Viewing Traces Using Trev</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="mini_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mini_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mini_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mini_10.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mini_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Mini-Trev -->
+
+
+<H1><A NAME="SEC37" HREF="mini_toc.html#SEC37">Viewing Traces Using Trev</A></H1>
+
+<P>
+For some types of sequencing project it is convenient to view and edit the
+chromatogram data prior to assembly into a gap4 database,
+and this is the function of the program trev.
+
+</P>
+<P>
+Trev displays the original trace data, its base calls and confidence
+values, and it allows the sequence of the
+trace to be edited and the left and right cutoffs to be defined. 
+Several file formats can be read in addition to our own Experiment Files,  and 'SCF' files. 
+Any edits made are normally saved to Experiment files, not to the 
+chromatogram files which we regard as archival data. 
+
+</P>
+<P>
+A typical display from trev is shown below. It includes the trace data, the
+original sequence, the edited sequence, the
+menu bar, and the name of the sequence being edited. The left cutoff region 
+is shown shaded. 
+
+</P>
+<P>
+@image{trev_pic,6in}
+
+</P>
+
+<P>
+The trace can be scrolled using the scrollbar directly beneath the
+menubar. The trace can be magnified in the vertical and horizontal
+directions using the scale bars to the left of the trace.
+
+</P>
+<P>
+The base numbers, original sequence, edited sequence, confidence values
+and the trace can each be switched on or off, and the font for the
+original and edited sequence is selectable.
+
+</P>
+<P>
+The figure below shows the bases, edited bases, a histogram of the confidence
+values, the traces, and the Information Window which can be switched on
+from the View Menu.
+
+</P>
+<P>
+@image{trev_conf_trace,6in}
+
+</P>
+
+<P>
+Trev uses "io_lib" for handling the various sequencing instrument
+file formats. This means it has support for ABI, MegaBace (when saved
+in ABI format), SCF (used by LiCor and some other manufacturers), ZTR
+and SFF (454).
+
+</P>
+<P>
+The above pictures all come from instruments using the Sanger
+sequencing method, however more recently support has been added for
+pyrosequencing methods (as used by 454 Life Sciences amongst
+others). An example of this is below.
+
+</P>
+<P>
+@image{trev_pyro_trace,6in}
+
+</P>
+
+<P>
+Trev can be used to produce postscript
+files of the traces so that they can be printed. The colours, line
+widths, etc are configurable. An example is shown in the figure below.
+ 
+@image{trace_print_trace1,6in}
+
+</P>
+
+<P>
+Note that we strongly 
+recommend that readings are not edited prior to assembly as it is far better
+to edit them when their alignment with other readings can be seen.
+
+</P>
+
+<HR>
+<A HREF="mini_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mini_7.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mini_9.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mini_10.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mini_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

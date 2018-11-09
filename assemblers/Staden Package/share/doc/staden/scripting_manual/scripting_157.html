@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - shift_contig_tags</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_156.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_158.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:shift_contig_tags -->
+
+
+<H2><A NAME="SEC176" HREF="scripting_toc.html#SEC176">shift_contig_tags</A></H2>
+<P>
+<A NAME="IDX704"></A>
+<A NAME="IDX705"></A>
+<A NAME="IDX706"></A>
+<A NAME="IDX707"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void shift_contig_tags(
+        GapIO  *io,
+        int     contig,
+        int     posn,
+        int     dist);
+</PRE>
+
+<P>
+This function moves tags within a contig with number <VAR>contig</VAR>. All tags
+starting at position <VAR>posn</VAR>, or to the right of <VAR>posn</VAR> are moved to
+the right by <VAR>dist</VAR> bases. <VAR>dist</VAR> should not be a negative value.
+
+</P>
+<P>
+The function is used internally by (for example) algorithms to add pads to the
+consensus or for joing contigs.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_156.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_158.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

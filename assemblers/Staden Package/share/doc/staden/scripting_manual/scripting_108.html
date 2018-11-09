@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Trace</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_107.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_109.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Trace -->
+
+
+<H4><A NAME="SEC118" HREF="scripting_toc.html#SEC118">The Trace Display</A></H4>
+<P>
+<A NAME="IDX425"></A>
+<A NAME="IDX426"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>autodisplay_traces ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+<A NAME="IDX427"></A>
+ 
+
+        This command sets the automatic trace display mode. A <I>value</I> of 1
+        will make the editor display relevant traces to solve a problem when
+        the <CODE>problem</CODE> search type is used. A <I>value</I> of 0 disables
+        this.
+
+<A NAME="IDX428"></A>
+<DT><VAR><CODE>set_trace_lock ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        This command sets the locking mode between the editor cursor and the
+        trace cursor. With a <I>value</I> of 1 any movement in the editor cursor
+        also moves the connected trace displays. A <I>value</I> of 0 disables
+        this.
+
+<A NAME="IDX429"></A>
+<DT><VAR><CODE>trace_comparator ?</CODE>identifier<CODE>?</CODE></VAR>
+<DD>
+        This command specifies another reading identifier (within the same
+        contig) to compare all new traces against. The comparator
+        <VAR>identifier</VAR> can either be a reading identifier to compare against
+        that specific reading or <CODE>0</CODE> to compare against a consensus
+        trace.  When <CODE>invoke_trace</CODE> is called the comparator trace, the
+        requested trace, and their differences are displayed. With no
+        <VAR>identifier</VAR> argument the automatic trace comparison is disabled.
+
+<A NAME="IDX430"></A>
+<DT><VAR><CODE>trace_config ?</CODE>match select<CODE>?</CODE></VAR>
+<DD>
+        This command controls of generation of the consensus trace when
+        <CODE>trace_comparator 0</CODE> is used. The consensus trace is calculated
+        as the average trace of readings on the same strand as the trace we
+        wish to compare it against. If <VAR>match</VAR> is non zero, each single
+        base segment of the consensus trace is averaged from only readings in
+        agreement with the consensus sequence. If <VAR>select</VAR> is non zero the
+        trace to compare against is not used in the consensus trace
+        calculation. With no <VAR>match</VAR> or <VAR>select</VAR> arguments the current
+        settings are returned.
+
+<A NAME="IDX431"></A>
+<DT><VAR><CODE>delete_trace</CODE> path</VAR>
+<DD>
+        Removes a trace with the Tk <I>path</I> from the trace display. Useful
+        for when quitting the editor.
+
+<A NAME="IDX432"></A>
+<DT><VAR><CODE>invoke_trace</CODE></VAR>
+<DD>
+        Adds a trace to the trace display.
+
+<A NAME="IDX433"></A>
+<DT><VAR><CODE>diff_trace</CODE> path1 path2</VAR>
+<DD>
+        This brings up a difference trace between two currently displayed
+        traces with the Tk pathnames of <VAR>path1</VAR> and <VAR>path2</VAR>. These
+        pathnames are returned from the initial <CODE>trace_add</CODE> and
+        <CODE>trace_create</CODE> Tcl utility routines and are typically only known
+        internally to the editor.
+
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_107.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_109.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

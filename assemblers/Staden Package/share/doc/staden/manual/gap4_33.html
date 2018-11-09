@@ -1,0 +1,180 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Template-Quality</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Template-Quality -->
+
+
+<H3><A NAME="SEC41" HREF="gap4_toc.html#SEC41">Quality Plot</A></H3>
+<P>
+<A NAME="IDX84"></A>
+<A NAME="IDX85"></A>
+
+</P>
+<P>
+This option can be invoked from the main gap4 View menu, in which case
+it appears as a single plot, or from the View menu of the Template
+Display, in which case it will appear as part of the Template Display.
+
+</P>
+<P>
+This display provides an overview of the quality of the consensus. The
+Contig Editor can be used to examine the problems revealed. A typical
+plot is displayed below.
+
+</P>
+
+<p>
+<a href="template.quality,6in.png.html"><img src="template.quality,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+For each base in the consensus a quality is
+computed based on the accuracy of the data on each strand. As can be seen in
+the Figure above, this information
+is then plotted using colour and height to distinguish between the
+different quality assignments.
+The colour and height codes are explained below.
+
+</P>
+
+<PRE>
+Colour  Height          Meaning
+
+grey    0 to 0          OK on both strands, both agree
+blue    0 to 1          OK on plus strand only
+green  -1 to 0          OK on minus strand only
+red    -1 to 1          Bad on both strands
+black  -2 to 2          OK on both strands but they disagree
+</PRE>
+
+<P>
+For example, in the figure we see that the first four hundred or so
+bases are mostly only well determined on the forward strand.
+
+</P>
+<P>
+Note that when a large number of bases are being displayed the limited screen 
+resolution causes the
+quality codes for adjacent bases to be drawn as single pixels. However
+the use of varying heights ensures that all problematic bases will be
+visible. Hence when
+the quality plot consists of a single grey line all known quality problems
+have been resolved, at the current consensus and quality cutoffs.
+
+</P>
+<P>
+To check problems the contig editor can be invoked by double clicking on the
+middle mouse button, or Alt left mouse button. 
+It will appear centred on the base corresponding to the
+position on which the mouse was clicked.
+
+</P>
+<P>
+The quality plot appears as "Calculate quality" in the Results Manager window
+(see section <A HREF="gap5_68.html#SEC106">Results Manager</A>).
+
+</P>
+<P>
+Within the Results Manager commands available, using the right mouse
+button, include "Information",
+which lists a summary of
+the distribution of quality types to the output window, and "List" which lists
+the actual quality values for each base to the output window. These quality
+values are written in a textual form of single letters per base and are listed
+below.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR></VAR>
+<DD>
++Strand -Strand
+<DT><VAR>a</VAR>
+<DD>
+Good    Good (in agreement)
+<DT><VAR>b</VAR>
+<DD>
+Good    Bad
+<DT><VAR>c</VAR>
+<DD>
+Bad     Good
+<DT><VAR>d</VAR>
+<DD>
+Good    None
+<DT><VAR>e</VAR>
+<DD>
+None    Good
+<DT><VAR>f</VAR>
+<DD>
+Bad     Bad
+<DT><VAR>g</VAR>
+<DD>
+Bad     None
+<DT><VAR>h</VAR>
+<DD>
+None    Bad
+<DT><VAR>i</VAR>
+<DD>
+Good    Good (disagree)
+<DT><VAR>j</VAR>
+<DD>
+None    None
+</DL>
+
+<P>
+An example of the output using "Information" and "List" follows.
+
+</P>
+
+<PRE>
+============================================================
+Wed 02 Apr 12:14:06 1997: quality summary
+------------------------------------------------------------
+Contig xb56b6.s1 (#11)
+ 81.00 OK on both strands and they agree(a)
+  3.94 OK on plus strand only(b,d)
+ 11.98 OK on minus strand only(c,e)
+  1.85 Bad on both strands(f,g,h,j)
+  1.22 OK on both strands but they disagree(i)
+============================================================
+Wed 02 Apr 12:14:09 1997: quality listing
+------------------------------------------------------------
+Contig xb56b6.s1 (#11)
+
+          10         20         30         40         50         60
+  eeeeeeeeee eeeeeeeeee eeeeeeeeee eeeeeeehee eeeeeeeeee eeeeeeeeee
+
+          70         80         90        100        110        120
+  eeeeeeeeee eeeeeeeeee eeeeeeeeee eeeeeeeeee eeeeeeeeee eeeeeeeeee
+
+         130        140        150        160        170        180
+  eeeeeeeeee eeeeeeeeee eeeeeeeeee eeeeeeeeee eeeeeeeeee eeeeeeeeee
+
+         190        200        210        220        230        240
+  eeeeeeeeee eeeeeeeeee heeeeeeeee eeeeeeeici iiaiaciiia aaaaaaaaac
+
+         250        260        270        280        290        300
+  aaaacaaaaa aaaaaaaiia aaaaaaaaaa aaaaaaaaaa aaaabaaaaa aaaaaaaaaa
+
+         310        320        330        340        350        360
+  aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa faaaaaaaaa
+
+[ output removed for brevity ]
+</PRE>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

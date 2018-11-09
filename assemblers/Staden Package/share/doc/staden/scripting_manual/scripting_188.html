@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-result_to_regs</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_187.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_189.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-result_to_regs -->
+
+
+<H3><A NAME="SEC243" HREF="scripting_toc.html#SEC243">result_to_regs</A></H3>
+<P>
+<A NAME="IDX875"></A>
+
+<PRE>
+contig_reg_t **result_to_regs(GapIO *io, int id);
+
+Returns:  An allocated list of contig_reg_t pointers upon success.
+          NULL for failure.
+</PRE>
+
+<P>
+Converts an id number to an array of <VAR>contig_reg_t</VAR> pointers. The
+<VAR>contig_reg_t</VAR> structures pointed to are considered the property of the
+registration scheme and should not be modified. The caller is expect
+to deallocate the returned list by calling the <CODE>xfree</CODE> function.
+
+</P>
+<!-- NODE:Reg-result_names -->
+
+
+<H3><A NAME="SEC244" HREF="scripting_toc.html#SEC244">result_names</A></H3>
+<P>
+<A NAME="IDX876"></A>
+
+<PRE>
+char *result_names(GapIO *io, int *contig, int *reg, int *id, int first);
+
+Returns: The next name upon success.
+         NULL for failure.
+</PRE>
+
+<P>
+Generates description of functions registered with a particular contig.
+If contig 0 is specified then all are listed.
+'contig' is modified to return the contig number this result was from
+(useful when sending contig 0), as is 'reg' to return the index into
+the registration array for this contig. This (contig,reg) pair
+specifies a particular result without the need for remembering
+pointers. 'id' contains a unique id number for this result.
+
+</P>
+<!-- NODE:Reg-result_time -->
+
+
+<H3><A NAME="SEC245" HREF="scripting_toc.html#SEC245">result_time</A></H3>
+<P>
+<A NAME="IDX877"></A>
+
+<PRE>
+char *result_time(GapIO *io, int contig, int id);
+
+Returns: The time for success.
+         "unknown" for failure.
+</PRE>
+
+<P>
+Given a specific contig and id number, returns a string describing the
+time a specific id was registered. This assumes that all registered
+items with this id was registered at the same time. The string is
+statically allocated and should be be freed.
+
+</P>
+<!-- NODE:Reg-result_notify -->
+
+
+<H3><A NAME="SEC246" HREF="scripting_toc.html#SEC246">result_notify</A></H3>
+<P>
+<A NAME="IDX878"></A>
+
+<PRE>
+void result_notify(GapIO *io, int id, reg_data *jdata, int all);
+</PRE>
+
+<P>
+Sends a notification request to registered data with the specified id.
+If 'all' is non zero then all registered data with this id will be
+notified, otherwise only the first instance of this id found will be
+notified.
+
+</P>
+<!-- NODE:Reg-result_data -->
+
+
+<H3><A NAME="SEC247" HREF="scripting_toc.html#SEC247">result_data</A></H3>
+<P>
+<A NAME="IDX879"></A>
+
+<PRE>
+void *result_data(GapIO *io, int id, int contig);
+
+Returns:  contig_reg_t-&#62;data for id upon success
+          NULL upon failure.
+</PRE>
+
+<P>
+Returns the data component of a <VAR>contig_reg_t</VAR> structure for a specific
+id. If id represents more than one piece of data, the first found
+(the search order is undefined) is returned. If the contig is
+specified then id will be search for only within this contig
+registration list, otherwise (when contig is zero) all contigs are
+scanned.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_187.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_189.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

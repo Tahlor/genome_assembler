@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Settings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_103.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_105.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Settings -->
+
+
+<H4><A NAME="SEC114" HREF="scripting_toc.html#SEC114">Editing Toggles and Settings</A></H4>
+<P>
+<A NAME="IDX386"></A>
+<A NAME="IDX387"></A>
+<A NAME="IDX388"></A>
+<A NAME="IDX389"></A>
+
+</P>
+<P>
+The editor has a variety of boolean values for determining editing and display
+modes. Most take an optional <VAR>value</VAR> parameter to explicitly set the value
+of the boolean. With no <VAR>value</VAR> parameter specified the boolean is toggled
+instead.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>set_reveal ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+<A NAME="IDX390"></A>
+ 
+
+        This sets the editor 'cutoffs' mode. A setting of 1
+        indicates that cutoff data is to be displayed in the
+        <CODE>lightColour</CODE> colour. A setting of 0 indicates that no cutoff
+        data is to be displayed.
+
+<A NAME="IDX391"></A>
+<DT><VAR><CODE>set_insert ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        This command sets the editor insert/replace mode. A <I>value</I> of 1
+        sets the editor to insert mode. A <I>value</I> of 0 sets the editor to
+        replace mode.
+
+<A NAME="IDX392"></A>
+<A NAME="IDX393"></A>
+<A NAME="IDX394"></A>
+<DT><VAR><CODE>superedit</CODE> modes</VAR>
+<DD>
+        This command sets which editing actions should be allowed. The
+        <I>modes</I> argument should be a Tcl list of 10 values, each 0
+        (disabled) or 1 (enabled). The values in order repesent insert any to
+        read, delete any from read, insert to consensus, delete dash from
+        consensus, delete any from consensus, replace base in consensus, shift
+        readings, transpose any bases, can use uppercase edits, and
+        replacement mode. The replacement mode is 0 for editing by base type
+        and 1 for edit by confidence value.
+
+<A NAME="IDX395"></A>
+<DT><VAR><CODE>auto_save ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        This command sets the auto-save mode. A <I>value</I> of 1 enables
+        auto-saving. A <I>value</I> of 0 disables it.
+
+<A NAME="IDX396"></A>
+<DT><VAR><CODE>show_differences ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        This command set the show differences mode. A <I>value</I> of 1 will
+        display only those bases that disagree with the consensus. All
+        other bases are displayed as a fullstop. A <I>value</I> of 0 shows all
+        bases.
+
+<A NAME="IDX397"></A>
+<DT><VAR><CODE>compare_strands ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        This command sets the compare strands mode. A <I>value</I> of 1 will make
+        the editor compute the consensus separately for the positive and
+        negative strands. Strands that disagree are given a final consensus
+        character of '-'. A <I>value</I> of 0 will use the normal single
+        consensus mode.
+
+<A NAME="IDX398"></A>
+<DT><VAR><CODE>join_lock ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        This command sets the scroll locking between two editors forming a
+        join editor. A <I>value</I> of 1 will mean that scrolling (not cursor
+        movement) in one contig will also scroll the other contig.
+
+<A NAME="IDX399"></A>
+<DT><VAR><CODE>show_quality</CODE> value</VAR>
+<DD>
+        This commands sets the quality display mode. With a <I>value</I> of 1 and
+        a positive quality cutoff value all qualities values are displayed as
+        grey scales using the 10 <CODE>qualColour</CODE><I>n</I> configuration options.
+
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_103.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_105.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

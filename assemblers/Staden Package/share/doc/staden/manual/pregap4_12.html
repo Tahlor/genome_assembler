@@ -1,0 +1,158 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Running</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Running -->
+
+
+<H1><A NAME="SEC16" HREF="pregap4_toc.html#SEC16">Running Pregap4</A></H1>
+<P>
+<A NAME="IDX10"></A>
+
+</P>
+<P>
+When the Run button or Run command (File menu) is used, pregap4 starts
+processing the files using the selected modules and their configurations. If
+the configuration is invalid an error message will be produced. For example
+the following may be written to the error window, and the configure modules
+panel will be selected with the problematic module automatically highlighted.
+
+</P>
+
+<PRE>
+Fri 10 Jul 10:04:25 1998 Run: Module sequence_vector_clip needs configuring
+</PRE>
+
+<P>
+Assuming that the configuration is correct, the processing will start and
+output will be sent to the output window as progress is made. The progress
+within each module is shown by a series of fullstops (<CODE>.</CODE>) for each
+correctly processed sequence, and an exclamation mark (<CODE>!</CODE>) for each
+failed sequence.
+
+</P>
+
+<p>
+<img src="pregap4_textwin.png" alt="[picture]">
+
+<P>
+The text output window above shows the early processing stages of 20
+sequences. When finished pregap4 will produce a report containing information
+from each module and the final list of passed and failed sequences. For
+example:
+
+</P>
+
+<PRE>
+- Report Production -
+Passed files:
+    xb54a3.s1.exp (xb54a3.s1SCF.gz) : type EXP
+    xb54b12.r1L.exp (xb54b12.r1LSCF.gz) : type EXP
+    xb54b12.r1.exp (xb54b12.r1SCF.gz) : type EXP
+    xb54b12.s1.exp (xb54b12.s1SCF.gz) : type EXP
+    xb54c3.s1.exp (xb54c3.s1SCF.gz) : type EXP
+
+Failed files:
+    xb54g5.s1.exp (xb54g5.s1SCF.gz) 'screen_vector_clip:  sequence too short'
+
+- Report from 'Augment Experiment Files' -
+xb54a3.s1.exp : added fields SF CF SC SP TN ST PR SI CH.
+xb54b12.r1L.exp : added fields SF CF SC SP TN ST PR SI CH.
+xb54b12.r1.exp : added fields SF CF SC SP TN ST PR SI CH.
+xb54b12.s1.exp : added fields SF CF SC SP TN ST PR SI CH.
+xb54g5.s1.exp : added fields SF CF SC SP TN ST PR SI CH.
+xb54c3.s1.exp : added fields SF CF SC SP TN ST PR SI CH.
+
+- Report from 'Tag Repeats' -
+xb54a3.s1.exp : no repeat found.
+xb54b12.r1L.exp : no repeat found.
+xb54b12.r1.exp : no repeat found.
+xb54b12.s1.exp : no repeat found.
+xb54c3.s1.exp : no repeat found.
+
+                       ***   Processing finished   ***
+</PRE>
+
+<P>
+<A NAME="IDX11"></A>
+<A NAME="IDX12"></A>
+<A NAME="IDX13"></A>
+<A NAME="IDX14"></A>
+
+</P>
+<P>
+The list of passed and failed files are written to <I>prefix</I>.passed and
+<I>prefix</I>.failed, where <I>prefix</I> is the output filename prefix specified in
+the "Files to Process" panel. The reports are written to <I>prefix</I>.report.
+The passed and failed files contain the most recent filenames associated with
+each sequence. So if a sequence fails early on it could be listed as something
+like <CODE>xb54a3.s1SCF.gz</CODE> and if it fails later it will be listed like
+<CODE>xb54a3.s1.exp</CODE>. This is because it is the final filename
+which is important for later processing, such as for assembly into gap4.
+
+</P>
+<P>
+A <I>prefix</I>.log file is also created containing a list of passed files,
+failed files, and the filename history for each file (the intermediates will
+still exist). The format of the passed section is "<I>filename</I>
+<CODE>(</CODE><I>file_type</I><CODE>) PASSED</CODE>". The format of the failed section is
+"<I>filename</I> <CODE>(</CODE><I>file_type</I><CODE>) ERROR: </CODE><I>error message</I>". The
+format of the file history lines is a series of "<I>filename</I>
+<CODE>(</CODE><I>file_type</I><CODE>)</CODE>" segments separated by "<CODE>&#60;-</CODE>", with the
+original filename listed to the right. Filenames containing Tcl
+meta-characters may be `escaped' using curly braces or back slashes. (The Tcl
+<CODE>subst</CODE> command may be used to generate the original name.) An example of
+a log file follows. This was produced with the command line
+"<CODE>pregap4  "Sample 671"  WT5.exp  zf89a2.s1.scf  xb56e5.s1.scf</CODE>".
+
+</P>
+
+<PRE>
+[passed files]
+ha59a6.s1.exp (EXP) PASSED
+WT5.exp (EXP) PASSED
+xb56e5.s1.exp (EXP) PASSED
+
+[failed files]
+zf89a2.s1.exp (UNK) ERROR: screen_vector_clip:  sequence too short
+
+[passed file history]
+ha59a6.s1.exp (EXP) &#60;- ha59a6.s1.scf (SCF) &#60;- {Sample 671} (ABI)
+WT5.exp (EXP)
+xb56e5.s1.exp (EXP) &#60;- xb56e5.s1.scf
+
+[failed file history]
+zf89a2.s1.exp (UNK) &#60;- zf89a2.s1.scf
+</PRE>
+
+<P>
+Some modules may also keep their own separate records, such as an assembly
+log. Where this is the case, it will be explained in the help specific to that
+module.
+
+</P>
+<P>
+After running pregap4 it is time to either assemble the data (if this was not
+done using pregap4) or to edit it. If the data has already been assembled with
+Pregap4 then you will need to start up gap4 and use `Open Database'. Otherwise
+one of the gap4 assembly functions should be used, with the
+<I>filename_prefix</I><CODE>.passed</CODE> file. For more information on this see the
+Gap4 manual.
+
+</P>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_11.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_13.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

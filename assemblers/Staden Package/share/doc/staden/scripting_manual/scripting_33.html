@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Output-verror</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Output-verror -->
+
+
+<H3><A NAME="SEC34" HREF="scripting_toc.html#SEC34">verror</A></H3>
+<P>
+<A NAME="IDX77"></A>
+
+</P>
+<P>
+<A NAME="IDX78"></A>
+
+<PRE>
+<CODE>#include &#60;text_output.h&#62;</CODE>
+<CODE>void verror(int priority, char *name, char *fmt, ...);</CODE>
+</PRE>
+
+<P>
+This C function displays text in the error output window or prints to stderr
+when in a non graphical environment. The <VAR>priority</VAR> argument may be one
+of <CODE>ERR_WARN</CODE> or <CODE>ERR_FATAL</CODE>. The <VAR>name</VAR> argument is used as
+part of the error message, along with the time stamp and the error itself.
+<VAR>name</VAR> should not be any more than 50 characters long, and ideally much
+shorter. The <VAR>fmt</VAR> arguments onwards form the standard <CODE>printf</CODE> style
+arguments of a format specifier and string components.
+
+</P>
+<P>
+An error with priority of <CODE>ERR_WARN</CODE> will be sent only to the error
+window. Priority <CODE>ERR_FATAL</CODE> will print to stderr as well.
+<CODE>ERR_FATAL</CODE> should be used in conditions where there is a chance that the
+program may subsequently crash, thus removing the error window from the screen
+and preventing users from reporting error messages.
+
+</P>
+<P>
+<A NAME="IDX79"></A>
+
+<PRE>
+<CODE>vmessage</CODE> <VAR>priority</VAR> <VAR>text</VAR> ?...?
+</PRE>
+
+<P>
+This is the Tcl interface to the verror C function. The <VAR>priority</VAR>
+argument should be one of <CODE>ERR_WARN</CODE> or <CODE>ERR_FATAL</CODE> as described
+above. The <VAR>text</VAR> and subsequent arguments make up the contents of the
+error message itself with each argument concatenated with a single space
+between arguments.  The Tcl (not C) implementation of <CODE>verror</CODE> currently
+has a limit of 8192 bytes of error message per call.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_32.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_34.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

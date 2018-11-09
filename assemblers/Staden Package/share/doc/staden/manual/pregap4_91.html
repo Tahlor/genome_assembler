@@ -1,0 +1,366 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-WritingMods</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_90.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_92.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-WritingMods -->
+
+
+<H1><A NAME="SEC97" HREF="pregap4_toc.html#SEC97">Writing New Modules</A></H1>
+<P>
+<A NAME="IDX334"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="pregap4_91.html#SEC98">An Overview of a Module</A>
+<LI><A HREF="pregap4_91.html#SEC99">Functions</A>
+<LI><A HREF="pregap4_91.html#SEC100">Module Variables</A>
+<LI><A HREF="pregap4_91.html#SEC101">Global Variables</A>
+<LI><A HREF="pregap4_91.html#SEC102">Builtin Functions</A>
+<LI><A HREF="pregap4_91.html#SEC103">An Example Module</A>
+</UL>
+
+<!-- NODE:Pregap4-WritingMods-Overview -->
+
+
+<H2><A NAME="SEC98" HREF="pregap4_toc.html#SEC98">An Overview of a Module</A></H2>
+<P>
+<A NAME="IDX335"></A>
+
+</P>
+<P>
+A pregap4 module is a single file containing a series of functions with
+predefined interfaces. Pregap4 uses these functions to communicate with module.
+
+</P>
+<P>
+This section is for system managers and programmers only.
+
+</P>
+
+<P>
+The module itself is written using the Tcl/Tk language. A definition of this
+language is outside the scope of this manual, however several books exist on
+the subject. Each modules executes inside a Tcl "namespace". This means that
+modules may make use of global variables and global function names without
+fear of clashing with other modules. Indeed the use of specific function names
+and global variables is of considerable importance for designing a new module.
+
+</P>
+<!-- NODE:Pregap4-WritingMods-Functions -->
+
+
+<H2><A NAME="SEC99" HREF="pregap4_toc.html#SEC99">Functions</A></H2>
+<P>
+<A NAME="IDX336"></A>
+<A NAME="IDX337"></A>
+
+</P>
+<P>
+The basic structure of a module is that it has a series of known functions
+which pregap4 expects to use. Some of these functions are mandatory, whilst
+others will only be called by pregap4 if they have been defined.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>name</VAR>
+<DD>
+<A NAME="IDX338"></A>
+    Mandatory.
+
+    Arguments: none
+
+    Returns:   The textual name of the module.
+
+    This function is used to query a human readable name for the module
+    (eg "ALF/ABI to SCF Conversion"). This name is used in the module list
+    at the left side of the pregap4 window.
+<P>
+
+<DT><VAR>init</VAR>
+<DD>
+<A NAME="IDX339"></A>
+    Optional.
+
+    Arguments: None
+
+    Returns:   None
+
+    This sets up any data structures needed for this module. It can be
+    used for providing defaults for global variables when they are not
+    known (eg they have no settings in the system or user pregap4rc files)
+    and for setting up any other data structures required.
+<P>
+
+<DT><VAR>run</VAR>
+<DD>
+<A NAME="IDX340"></A>
+    Optional.
+
+    Arguments: A Tcl list of files to process
+
+    Returns:   A new Tcl list of files for subsequent processing.
+
+    This is the main work horse. It is optional, however in all but the
+        most esoteric cases, it will be needed.
+
+    The single argument is a Tcl list of sequence names. These are either
+    filenames on disk or identifiers used for fetching data from a
+    database. The module should loop through the sequences which it can
+    process (which may not be all of them, depending on the known
+    information and file types).
+
+    When finished, it needs to return a new list of files. If a file has
+    been rejected by this module (eg it is completely sequencing vector)
+    then this sequence name should be omitted from the returned list.
+    However do make sure that all failed files have an error string
+    attached to them by setting the file_error(seq name) array element.
+<P>
+
+<DT><VAR>shutdown</VAR>
+<DD>
+<A NAME="IDX341"></A>
+    Optional.
+
+    Arguments: A Tcl list of files to process
+
+    Returns:   A new Tcl list of files for subsequent processing.
+
+    Deallocates any data structures that have been setup during the init
+    or run stages. Most modules will not need this function. As with the
+    run module, the returned value should be the list of passed files,
+    which is generally the same as the list passed into this function.
+
+    A special module, which is always included by pregap4, is the
+    shutdown.p4m module. This is always the last module to have shutdown
+    called. It produces the reports for pregap4 and does some general house
+    keeping.
+<P>
+
+<DT><VAR>create_dialogue</VAR>
+<DD>
+<A NAME="IDX342"></A>
+    Optional.
+
+    Arguments: A tk pathname
+
+    Returns:   None
+
+    This create a dialogue controlling the parameters for this module. The
+    tk pathname passed into this function should be the root for all
+    components of this dialogue. (Note though that this is not a toplevel
+    window, but a subwindow of the main pregap4 dialogue.)
+<P>
+
+<DT><VAR>check_params</VAR>
+<DD>
+<A NAME="IDX343"></A>
+        Optional.
+
+        Arguments: None
+
+        Returns:   A variable name or a blank string.
+
+        This checks that this module has valid answers to all of its
+        mandatory questions. If this is the case a blank string is returned,
+        otherwise the first variable name which needs a value is returned.
+<P>
+
+<DT><VAR>process_dialogue</VAR>
+<DD>
+<A NAME="IDX344"></A>
+    Optional.
+
+    Arguments: A tk pathname
+
+    Returns:   0 for failure, 1 for success
+
+    This is executed in all modules before the run functions are executed.
+    It's purpose is to extract any information from user editable entries
+    or checkboxes ready for the run function to utilise. It may also be
+    used to check that the data entered is valid.
+
+    The return code is used to indicate whether this module has sufficient
+    data to execute. If 0 is returned pregap4 will beep and make sure that
+    the dialogue 'tab' for this module is displayed. Further processing
+    then stops until the 'Run' button is pressed again.
+
+    For instance if a module needs to know the sequencing vector to screen
+    against, then this should check if the value has been entered or can
+    be obtained via a command. If so it returns 1.
+<P>
+
+<DT><VAR>configure_dialogue path mode</VAR>
+<DD>
+<A NAME="IDX345"></A>
+    Optional.
+
+    Arguments: A tk pathname, the configure mode
+
+    Returns:   None
+
+    If this function is present pregap4 will add a button to the top of the
+    module dialogue inviting the user to save the parameters for this
+        module to the configuration file.
+
+        In early releases of pregap4 (2000.0 and before) a "Select parameters
+        to save" button was also available. To maintain compatibility with
+        older modules the "mode" parameter is still used. If you wish the
+        module to be backwards compatible with old pregap4 releases then this
+        needs to be checked to make sure that it contains "save_all". If it
+        does not then no action should be taken. In the 2001 release and newer
+        the "mode" parameter will always contain "save_all" so no check is
+        required.
+
+        To save the dialogue information this function should use the pregap4
+        mod_save and glob_save functions.
+</DL>
+
+<!-- NODE:Pregap4-WritingMods-Module Variables -->
+
+
+<H2><A NAME="SEC100" HREF="pregap4_toc.html#SEC100">Module Variables</A></H2>
+<P>
+<A NAME="IDX346"></A>
+<A NAME="IDX347"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>mandatory</VAR>
+<DD>
+<A NAME="IDX348"></A>
+    The existence of this variable (set to anything) states that this
+    module cannot be disabled.
+<P>
+
+<DT><VAR>hidden</VAR>
+<DD>
+<A NAME="IDX349"></A>
+
+The existence of this variable states that its name shall not appear
+    in the module list (although it will still be used).
+<P>
+
+<DT><VAR>report</VAR>
+<DD>
+<A NAME="IDX350"></A>
+    The contents of this variable are displayed at the end of the pregap
+    run by the shutdown.p4m module.
+</DL>
+
+<!-- NODE:Pregap4-WritingMods-Global Variables -->
+
+
+<H2><A NAME="SEC101" HREF="pregap4_toc.html#SEC101">Global Variables</A></H2>
+<P>
+<A NAME="IDX351"></A>
+<A NAME="IDX352"></A>
+
+</P>
+<P>
+Several global variables exist which may need to be updated within the
+modules. For successful operation it is required to update these when
+applicable.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>file_type</VAR>
+<DD>
+<A NAME="IDX353"></A>
+This is a Tcl array indexed by file name. It is initialised by the General
+Configuration module to be one of <CODE>ABI</CODE>, <CODE>ALF</CODE>, <CODE>EXP</CODE>,
+<CODE>PLN</CODE>, <CODE>SCF</CODE> or <CODE>UNK</CODE>.
+<P>
+
+<DT><VAR>file_error</VAR>
+<DD>
+<A NAME="IDX354"></A>
+This is a global array indexed by the current file name. If a file has been
+rejected by a module (ie not returned from the <CODE>run</CODE> function) then
+the appropriate array element must be filled with a reason. Typically the
+format for this reason will start with the module name followed by a colon.
+For example "makeSCF: unknown file type".
+<P>
+
+<DT><VAR>file_id</VAR>
+<DD>
+<A NAME="IDX355"></A>
+This is a global array, indexed by filenames, containing the sequence
+identifiers (which are often different to the sequence filenames). It is
+initialised by the General Configuration module.
+<P>
+
+<DT><VAR>file_orig_name</VAR>
+<DD>
+This is a global array holding any original filename for each currently
+processed file. It is initialised by the General Configuration module such
+that each file points to its own filename.
+</DL>
+
+<P>
+When creating and returning a new file (such as when switching from SCF files
+to Experiment Files in the Initialise Experiment Files module) it is required
+that the arrays are all updated correctly. This involves creating new array
+elements for each of the above four arrays. The <VAR>file_type</VAR> array element,
+indexed by a new name should contain the new file type (eg <CODE>set
+file_type(seq10.exp) EXP</CODE>). The <VAR>file_error</VAR> array element should be set
+to a blank string. The <VAR>file_id</VAR> should inherit the sequence identifier
+from the original file (eg <CODE>set file_id(seq10.exp) $file_id(seq10.scf)</CODE>).
+The <VAR>file_orig_name</VAR> array element should point to the old filename (not
+the original filename pointed to by the old filename). In this way
+<VAR>file_orig_name</VAR> could be considered as a list of the intermediate files
+generated for each final sequence file.
+
+</P>
+<!-- NODE:Pregap4-WritingMods-Builtin -->
+
+
+<H2><A NAME="SEC102" HREF="pregap4_toc.html#SEC102">Builtin Functions</A></H2>
+<P>
+<A NAME="IDX356"></A>
+
+</P>
+<P>
+Apologies, but this section of documentation is still unfinished.
+
+</P>
+<P>
+The full definition of these functions may be found in the Tcl code for
+Pregap4 itself. It is recommended that you use the Unix <CODE>grep</CODE> utility to
+find the definitions and example uses.
+
+</P>
+<!-- NODE:Pregap4-WritingMods-Example -->
+
+
+<H2><A NAME="SEC103" HREF="pregap4_toc.html#SEC103">An Example Module</A></H2>
+<P>
+<A NAME="IDX357"></A>
+<A NAME="IDX358"></A>
+
+</P>
+<P>
+The best examples are the existing modules. Try looking at the Compress Trace
+Files module as an example. This may be found in
+<TT>`$STADENROOT/lib/pregap4/modules/compress_trace.p4m'</TT>.
+
+</P>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_90.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_92.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Copy_db</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-copy_db -->
+
+
+<H1><A NAME="SEC10" HREF="manpages_toc.html#SEC10">Copy_db</A></H1>
+<P>
+<A NAME="IDX2"></A>
+
+
+<H2><A NAME="SEC11" HREF="manpages_toc.html#SEC11">NAME</A></H2>
+
+<P>
+copy_db -- a garbage collecting gap4 database copier and merger
+
+</P>
+
+
+<H2><A NAME="SEC12" HREF="manpages_toc.html#SEC12">SYNOPSIS</A></H2>
+
+<P>
+<CODE>copy_db</CODE> [<CODE>-v</CODE>] [<CODE>-f</CODE>] [@code {-b} <I>32/64</I>] [@code
+{-T}] <I>from.vers</I> ... <I>to.vers</I>
+
+</P>
+
+
+<H2><A NAME="SEC13" HREF="manpages_toc.html#SEC13">DESCRIPTION</A></H2>
+
+<P>
+<CODE>Copy_db</CODE> copies one or more gap4 databases to a new name by
+physically extracting the information from the first databases and
+writing it to the last database listed on the command line. This
+operation can be considered analogous to copying files into a directory.
+This is slower than a direct <CODE>cp</CODE> command, but has the advantage
+of merging several databases together and the resulting database will
+have been  garbage collected. That is, any fragmentation in the original
+databases is removed (as much as is possible).
+
+</P>
+<P>
+NOTE: Care should be taken when merging database. <STRONG>No checks</STRONG> are
+performed to make sure that the databases do not already contain the
+same readings. Thus attempting to copy the same database several times will
+cause problems later on. No merging of vector, clone or template
+information is performed either.
+
+</P>
+
+
+<H2><A NAME="SEC14" HREF="manpages_toc.html#SEC14">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-v</CODE>
+<DD>
+     Enable verbose output. This gives a running summary of the current piece
+     of information being copied.
+
+<DT><CODE>-f</CODE>
+<DD>
+     Attempts to spot and fix various database corruptions. A
+     corrupted gap4 database may not be corruption free after this,
+     but there's more chance of being able to recover data.
+
+<DT>-T
+<DD>
+     Removes annotation tags while copying. (Of limited use.)
+
+<DT>-b <I>bitsize</I>
+<DD>
+     Generates the new database using a given bitsize, where
+     <I>bitsize</I> is either <CODE>32</CODE> or <CODE>64</CODE>.
+</DL>
+
+
+
+<H2><A NAME="SEC15" HREF="manpages_toc.html#SEC15">EXAMPLES</A></H2>
+
+<P>
+To merge database X with database Y to give a new database Z use:
+
+</P>
+
+<PRE>
+copy_db X.0 Y.0 Z.0
+</PRE>
+
+
+
+<H2><A NAME="SEC16" HREF="manpages_toc.html#SEC16">NOTES</A></H2>
+
+<P>
+To copy a database quickly without garbage collecting the UNIX <CODE>cp</CODE>
+command can be used as follows. This copies version F of database DB to
+version T of database XYZZY.
+
+</P>
+
+<PRE>
+cp DB.F XYZZY.T; cp DB.F.aux XYZZY.T.aux
+</PRE>
+
+<P>
+Care must be taken to check for the busy file (<TT>`DB.F.BUSY'</TT>) before making
+the copy. If the database is written to during the operation of the copy
+command then the new database may be corrupted.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,55 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Con-Calculation-1</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_118.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_120.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-Calculation-1 -->
+
+
+<H3><A NAME="SEC190" HREF="gap4_toc.html#SEC190">Consensus Calculation Using Base Frequencies</A></H3>
+
+<P>
+This algorithm can be used for any data, with or without confidence values.
+Each standard base type is given the same weight. The consensus
+will be the most frequent base type in a given column provided that the
+consensus cutoff parameter is low enough. All unrecognised base types,
+including IUB codes, are treated as dashes.
+Dashes are given a
+weight of 1/10th that of recognised base types. Pads are given a weight
+which is the average of their neighbouring bases.
+
+</P>
+<P>
+The confidence of a consensus base for this method is expressed as a
+percentage. 
+So for example a column of bases of A, A, A and T will give a consensus base
+of A and a confidence of 75. Therefore a consensus cutoff of 76 or higher will
+give a consensus base of "-".
+
+</P>
+<P>
+In the event that more than one base type is calculated to have the same
+confidence, and this
+exceeds the consensus cutoff, the bases are assigned in descending order of
+precedence: A, C, G and T.
+
+</P>
+<P>
+The quality cutoff parameter (Q in the Contig Editor) 
+has no effect on this algorithm.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_118.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_120.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

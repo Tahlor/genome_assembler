@@ -1,0 +1,173 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Names</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Names -->
+
+
+<H2><A NAME="SEC22" HREF="gap5_toc.html#SEC22">Names</A></H2>
+<P>
+<A NAME="IDX34"></A>
+<A NAME="IDX35"></A>
+<A NAME="IDX36"></A>
+<A NAME="IDX37"></A>
+<A NAME="IDX38"></A>
+
+</P>
+<P>
+At the left side of the editor window is the "names panel". This
+either displays an ASCII pictorial summary of the sequence layout or
+the actual sequence names themselves depending on the settings in use.
+Between the names panel and the sequences panel is a vertical line,
+visible at the right edge of the above image. This can be dragged left
+and right to adjust the proportion of display dedicated to the names
+and sequence panels.
+
+</P>
+<P>
+The default name display looks like this:
+
+</P>
+
+<p>
+<img src="gap5_contig_editor.names1.png" alt="[picture]">
+
+<P>
+This plot is a mini diagram of the way the sequences overlap. Here the
+&#62; and &#60; symbols represent the start of sequences, assembled on either
+the forward or reverse strand, with the ... sections reflecting their
+relative lengths. The background shading indicates the mapping quality
+of the sequence (which may not be available in many cases, depending
+on how the assembly was derived). This should indicate the likelihood
+that the sequence has been assembled to the correct point. Sequence
+that appears to map elsewhere, e.g. due to a repeat, will be dark grey
+while unique sequence will be light grey or white. Moving the mouse
+cursor over a sequence will tell you the precise mapping quality along
+with additional information such as the sequence name, the technology
+used (Sanger, Illumina, 454, etc), and whether it is part of a pair of
+sequences.
+
+</P>
+<P>
+In the editor Settings menu is a checkbox labelled "Pack
+Sequences". When checked we permit multiple sequences to be drawn in
+the same row. Unchecking this reverts to the Gap4 style of display
+where each sequence has its own dedicated row. This also has an affect
+on the names panel, which switches to showing the sequence names, as
+below.
+
+</P>
+
+<p>
+<img src="gap5_contig_editor.names2.png" alt="[picture]">
+
+<P>
+This still uses the &#62; and &#60; symbols to reflect strand and grey scales
+for representing the mapping quality. The &#62; and &#60; are now also
+coloured independently.
+
+</P>
+
+<UL>
+<LI>light blue
+
+The read is not paired
+<LI>white
+
+Forms a consistent pair
+<LI>grey
+
+Paired, but the insert size is too large or too small
+<LI>red
+
+Paired, but in an invalid orientation
+<LI>orange
+
+Paired, but the other end is in another contig
+</UL>
+
+<P>
+At the bottom of the names panel is an editable text field containing
+the current display position. Adjacent to this is a small "P"
+indicating these coordinates are "padded". Clicking this will
+alternate with "R" to indicate reference coordinates, although these
+may not be available in all situations.  Note that currently, for speed
+reasons, it cannot directly display unpadded coordinates. 
+
+</P>
+<P>
+Typing into this position entry-box allows us to direct the editor to a
+specific location. If we end the number with "u" it performs an
+unpadded to padded conversion before jumping to this location.
+
+</P>
+<P>
+Left clicking on a name will toggle the background between the current
+grey to a shade of blue (with luminosity once again reflecting mapping
+quality). This indicates that the sequence name has been added to the
+"readings" list. Multiple names may be selected and deselecting by
+pressing and holding the left mouse button while moving the mouse
+cursor.
+
+</P>
+<P>
+In both display modes, pressing the right mouse button brings up a
+context sensitive menu containing operations relevant to that specific
+sequence. This may contain the following commands.
+
+</P>
+
+<DL COMPACT>
+
+<DT><STRONG>Copy name to clipboard</STRONG>
+<DD>
+<DT><STRONG>Copy #number to clipboard</STRONG>
+<DD>
+These copy the sequence name or the record number to the clipboard for
+use in a subsequent paste operation. Note that there is no visual cue
+that this has happened. The same function may also be achieved by
+left-clicking and dragging the mouse horiztonally, as if attempting to
+highlight a region of text.
+
+These two items are also available when right clicking on the Consensus
+label, but in this case it copies the contig name or number to the
+clipboard instead.
+
+<DT><STRONG>Goto...</STRONG>
+<DD>
+This lists other sequences sharing the same template, such as the
+other end of a read-pair. Selecting this command will jump the editor
+to the left-most base in that sequence. If the sequence is in another
+contig then a new editor will be created, unless one already exists
+for that contig in which case that other editor will be moved
+accordingly.
+
+<DT><STRONG>Join to...</STRONG>
+<DD>
+In the case of read-pairs that span contigs, the join to function will
+bring up the join editor for both contigs involved, automatically
+complementing the other contig if appropriate based on the library pair
+orientation statistics.
+</DL>
+
+<P>
+Right clicking on the contig name also pops up a menu. In here are
+otions to change the contig name or the starting coordinate. These
+options are also available in the editor Commands menu.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_12.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_14.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

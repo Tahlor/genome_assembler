@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_insert_base</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_143.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_145.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_insert_base -->
+
+
+<H3><A NAME="SEC163" HREF="scripting_toc.html#SEC163">io_insert_base, io_modify_base and io_delete_base</A></H3>
+<P>
+<A NAME="IDX681"></A>
+<A NAME="IDX682"></A>
+<A NAME="IDX683"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_insert_base(
+	GapIO  *io,
+	int	gel,
+	int	pos,
+	char	base);
+
+int io_modify_base(
+	GapIO  *io,
+	int	gel,
+	int	pos,
+	char	base);
+
+int io_delete_base(
+	GapIO  *io,
+	int	gel,
+	int	pos);
+</PRE>
+
+<P>
+These functions modify readings by inserting, changing, or deleting individual
+bases. Where needed, they update any annotations on the reading to ensure that
+all annotations are still covering the same sequence fragments. The confidence
+values and original positions arrays are also updated. Inserted and edited
+bases are given confidence of 100 and original positions of 0.
+
+</P>
+<P>
+<CODE>io_insert_base</CODE> uses the <CODE>io_insert_seq</CODE> function to inserts a
+single base with chacter <VAR>base</VAR> to at base position <VAR>pos</VAR>. Positions
+are measured counted such that inserting at base 1 inserts a base at the start
+of sequence.
+
+</P>
+<P>
+<CODE>io_modify_base</CODE> uses the <CODE>io_replace_seq</CODE> function to replace a
+single base at position <VAR>pos</VAR> with <VAR>base</VAR>.
+
+</P>
+<P>
+<CODE>io_delete_base</CODE> uses the <CODE>io_delete_seq</CODE> function to delete a
+single base at position <VAR>pos</VAR>.
+
+</P>
+<P>
+FIXME:<P>
+NOTE that <CODE>io_insert_base</CODE> and <CODE>io_delete_base</CODE> modify the sequence,
+but DO NOT update the the <VAR>GReadings.sequence_length</VAR> or
+<CODE>io_length()</CODE> data.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_143.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_145.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_mod_extension</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_142.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_144.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_mod_extension -->
+
+
+<H3><A NAME="SEC162" HREF="scripting_toc.html#SEC162">io_mod_extension</A></H3>
+<P>
+<A NAME="IDX678"></A>
+<A NAME="IDX679"></A>
+<A NAME="IDX680"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_mod_extension(
+	GapIO  *io,
+	int	N,
+	int	shorten_by);
+</PRE>
+
+<P>
+<CODE>io_mod_extension</CODE> modifies the position of the 3' cutoff data for
+reading number <VAR>N</VAR>. The 3' cutoff position is defined to be the base
+number, counting from 1, of the first base within the cutoff data.
+
+</P>
+<P>
+<VAR>shorten_by</VAR> is subtracted from either the <VAR>end</VAR> or <VAR>start</VAR> field
+in the <VAR>GReadings</VAR> structure, depending on whether the reading is
+complemented. It is legal to specify a negative amount to increase the
+used portion of the reading.
+
+</P>
+<P>
+[FIXME]<P>
+NOTE that this implementation does not set the <VAR>sequence_length</VAR> field or
+the <CODE>io_length(io,N)</CODE> data for this reading.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_142.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_144.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

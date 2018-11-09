@@ -1,0 +1,132 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Calculate Consensus</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_56.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_58.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Calculate Consensus -->
+
+
+<H1><A NAME="SEC95" HREF="gap5_toc.html#SEC95">Calculating Consensus Sequences</A></H1>
+
+
+<UL>
+<LI><A HREF="gap5_58.html#SEC96">Normal Consensus Output</A>
+<LI><A HREF="gap5_59.html#SEC97">Consensus Algorithms</A>
+<LI><A HREF="gap5_63.html#SEC101">The Quality Calculation</A>
+<LI><A HREF="gap5_64.html#SEC102">List Consensus Confidence</A>
+<LI><A HREF="gap5_65.html#SEC103">List Base Confidence</A>
+</UL>
+
+<P>
+<A NAME="IDX163"></A>
+<A NAME="IDX164"></A>
+<A NAME="IDX165"></A>
+<A NAME="IDX166"></A>
+
+</P>
+<P>
+In this section we describe the types of consensus which gap4 can
+produce, the formats they can be written in, and the algorithms that can
+be used. The algorithms are not only used to produce consensus sequence
+files, but in many other places throughout gap4 where an analysis of the
+current quality of the data is required. One important place is inside
+the Contig Editor
+(see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>)
+where they are used to produce an "on-the-fly" consensus, responding to
+every edit made by the user.
+
+</P>
+<P>
+The currently active consensus algorithm is selected from the
+"Consensus algorithm" dialogue in the main gap4 Options menu
+(see section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>).
+
+</P>
+<P>
+There are four main types of consensus sequence file that can be
+produced by the program: Normal, Extended, Unfinished, and Quality. They
+are all invoked from the File menu.
+
+</P>
+<P>
+"Normal" is the type of consensus file that would be expected: a
+consensus from the non-hidden parts of a contig. "Extended" is the same
+as "Normal" but the consensus is extended by inclusion of
+the hidden, non-vector sequence, from the ends of the
+contig. 
+
+</P>
+<P>
+"Unfinished" is the same as "Normal" except that any position where
+the consensus does not have good data for both strands 
+is written using A,C,G,T characters,
+and the rest (which has good data for both strands) is written
+using a different set of symbols. This sequence can be used
+for screening against new readings: 
+only the regions needing more readings will produce
+matches. By screening readings in this way, prior to assembly, users can
+avoid entering readings which will not help finish the project, and
+which may require further editing work to be performed.
+
+</P>
+<P>
+"Quality" produces a sequence of characters of the same length
+as the consensus, but they instead encode the reliability of the
+consensus at each point.
+
+</P>
+<P>
+Consensus sequence files can also encode the positions of the currently
+active tag types by changing the case of the tagged characters (marking) 
+or writing them in a different character set (masking)
+(see section <A HREF="gap4_20.html#SEC27">Active tags and masking</A>).
+
+</P>
+<P>
+The consensus algorithms are usually configured to produce only the
+characters A,C,G,T and "-", but it is possible to set them to produce
+the complete set of IUB codes. This mode is useful for some types of
+work and allows the range of observed base types at any position to be
+coded in the consensus. How the IUB codes are chosen
+is described in the introduction to the consensus algorithms
+(see section <A HREF="gap5_59.html#SEC97">The Consensus Algorithms</A>).
+
+</P>
+<P>
+Depending on the type of consensus produced, the consensus sequence
+files can be written in three different formats:
+Experiment files
+(see section <A HREF="formats_18.html#SEC40">Experiment File</A>), 
+FASTA (<CITE>Pearson,W.R. Using the FASTA program to search protein
+and DNA sequence databases. Methods in Molecular Biology. 25, 365-389 (1994)</CITE>)
+or staden formats.  If experiment file format is selected a further menu
+appears that allows users to select for the inclusion of tag data in the
+output file.
+For FASTA format the sequence headers include the contig identfier as the
+sequence name and the project database name, version number and the number of
+the leftmost reading in the contig as comments. e.g. 
+"&#62;xyzzy.s1 B0334.0.274" is database B0334, copy 0, and the left most reading
+for the contig is number 274, which has a name of xyzzy.s1.
+For staden format the headers include the project database name
+and the number of the leftmost reading in the contig. e.g. 
+"&#60;B0334.00274-------&#62;" is database B0334 and the left most reading for
+the contig is number 274. Staden format is maintained only for
+historical reasons - i.e. there may still be a few unfortunate people using it.
+Obviously Experiment file format can contain much more information, and
+can serve as the basis of a submission to the sequence library.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_56.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_58.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

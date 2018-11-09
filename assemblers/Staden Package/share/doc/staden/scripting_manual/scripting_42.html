@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-w</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_41.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_43.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-w -->
+
+
+<H3><A NAME="SEC45" HREF="scripting_toc.html#SEC45">w and vw</A></H3>
+<P>
+<A NAME="IDX107"></A>
+<A NAME="IDX108"></A>
+<A NAME="IDX109"></A>
+<A NAME="IDX110"></A>
+<A NAME="IDX111"></A>
+<A NAME="IDX112"></A>
+
+</P>
+
+<PRE>
+<CODE>#include &#60;tcl_utils.h&#62;</CODE>
+<CODE>char *w(char *str);</CODE>
+<CODE>char *vw(char *fmt, ...);</CODE>
+</PRE>
+
+<P>
+These functions return strings held in writable memory. Writable strings are
+required in the arguments of many Tcl functions, including <CODE>Tcl_SetVar</CODE>
+and <CODE>Tcl_GetKeyedListField</CODE>. The arguments specify the string the return
+as writable. For <CODE>w()</CODE> this is simply an exact copy of the argument. For
+<CODE>vw()</CODE> the returned string is a formatted copy of the input, which is
+specified in the standard <CODE>printf</CODE> style.
+
+</P>
+<P>
+The return value from the <CODE>w</CODE> function isvalid only until the next call
+of <CODE>w()</CODE>. Similarly for the <CODE>vw</CODE> function.
+
+</P>
+<P>
+Examples of usage are:
+
+</P>
+
+<PRE>
+Tcl_GetKeyedListField(interp, vw("MODE%d", mode_num), gap_defs, &#38;buf);
+
+Tcl_SetVar(interp, w("arr(element)"), "10", TCL_GLOBAL_ONLY);
+</PRE>
+
+<P>
+NOTE: In the current implementations both functions have a limit of handling
+8192 bytes per call.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_41.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_43.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

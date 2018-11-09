@@ -1,0 +1,257 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Searching</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_20.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_22.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Searching -->
+
+
+<H2><A NAME="SEC33" HREF="gap5_toc.html#SEC33">Searching</A></H2>
+<P>
+<A NAME="IDX61"></A>
+<A NAME="IDX62"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="gap5_21.html#SEC34">Searching by annotation comments</A>
+<LI><A HREF="gap5_21.html#SEC35">Searching by tag type</A>
+<LI><A HREF="gap5_21.html#SEC37">Searching by padded position</A>
+<LI><A HREF="gap5_21.html#SEC36">Searching by unpadded position</A>
+<LI><A HREF="gap5_21.html#SEC38">Searching by sequence</A>
+<LI><A HREF="gap5_21.html#SEC39">Searching by reading name</A>
+<LI><A HREF="gap5_21.html#SEC40">Searching by reference indel</A>
+<LI><A HREF="gap5_21.html#SEC41">Searching by consensus quality</A>
+<LI><A HREF="gap5_21.html#SEC42">Searching by consensus discrepancy</A>
+<LI><A HREF="gap5_21.html#SEC43">Searching by consensus heterozygosity</A>
+<LI><A HREF="gap5_21.html#SEC44">Searching by low coverage</A>
+<LI><A HREF="gap5_21.html#SEC45">Searching by high coverage</A>
+</UL>
+
+<P>
+The contig editor's searching ability and its links to the consensus
+calculation algorithm are crucial in determining the efficiency with which
+contigs can be checked and corrected. The consensus is calculated "on the
+fly" and changes in response to edits. For editing, the most important
+search functions are those which reveal problems in the consensus
+whilst ignoring all bases that are adequately well determined.
+The standard search type is therefore by consensus quality. By default this
+is done in the forward direction and for a quality value of 30, although
+this is configurable by changing the collowing lines in the gap5rc file.
+
+</P>
+
+<PRE>
+set_def CONTIG_EDITOR.SEARCH.DEFAULT_TYPE       consquality
+set_def CONTIG_EDITOR.SEARCH.DEFAULT_DIRECTION  forward
+set_def CONTIG_EDITOR.SEARCH.CONSQUALITY_DEF    30
+</PRE>
+
+<P>
+Pressing the "Search" button brings up a separate search
+window. This allows the user to select the direction of search, the
+type of search, and a value to search on. The value is entered into a
+value text box, then pressing the "search" button performs the
+search. If successful, the cursor is positioned accordingly.
+
+</P>
+
+<p>
+<img src="gap5_contig_editor.search.png" alt="[picture]">
+
+<P>
+The Control-s and Control-r key bindings in the editor are equivalent
+to searching for the next or previous match. Both key bindings will
+bring up the search window if it is not currently displayed (and not
+search), otherwise they perform the search currently selected in that
+window. Additionally with the mouse focus in the search dialogue window
+the Page Up and Page Down keys will perform previous and next search
+too.
+
+</P>
+<P>
+As is described below, there are several search modes.
+
+</P>
+<!-- NODE:Editor-Search-Anno -->
+
+
+<H3><A NAME="SEC34" HREF="gap5_toc.html#SEC34">Search by Annotation Comments</A></H3>
+
+<P>
+This positions the cursor at the start of the next tag which
+has a comment containing the string specified in the value box.
+The search performed is a regular expression search, and
+certain characters have special meaning. Be careful when your
+string contains ".", "*", "[", "]", "\", "^" or "$". The search can be
+performed either forwards or backwards from the current cursor
+position. Searching with an empty value will find all tags.
+
+</P>
+<!-- NODE:Editor-Search-Type -->
+
+
+<H3><A NAME="SEC35" HREF="gap5_toc.html#SEC35">Search by Tag Type</A></H3>
+
+<P>
+This positions the cursor at the start of the next tag of the specified
+type. To change the type, click on the currently listed tag type,
+which displays a tag type selection dialogue. The search can be
+performed either forwards or backwards of the current cursor
+position. To find all  tags, use "Search by Annotation Comments",
+with an empty text box.
+
+</P>
+<!-- NODE:Editor-Search-UPosition -->
+
+
+<H3><A NAME="SEC36" HREF="gap5_toc.html#SEC36">Search by Padded Position</A></H3>
+
+<P>
+This jumps to a padded location in the editor and is directly equivalent
+to typing a number into the position entry box in the bottom left corner
+of the editor followed by "p".
+
+</P>
+<P>
+It is also possible to do relative searches by prefixing the location
+with + or -. So +100 will skip ahead 100 bases.
+
+</P>
+<!-- NODE:Editor-Search-PPosition -->
+
+
+<H3><A NAME="SEC37" HREF="gap5_toc.html#SEC37">Search by Unpadded Position</A></H3>
+
+<P>
+As per the padded search, but this jumps to an unpadded coordinate -
+essentially the number of non-* bases since the start of the contig,
+regardless of whether the first consensus base is labelled as base 1.
+
+</P>
+<!-- NODE:Editor-Search-Seq -->
+
+
+<H3><A NAME="SEC38" HREF="gap5_toc.html#SEC38">Search by Sequence</A></H3>
+
+<P>
+This positions the cursor at the start of the next segment of
+sequence that matches the value specified in the text box.
+The search is case insensitive, ignores pads, and can allow a specified
+number of mismatches. Unlike Gap4, Gap5's sequence search only looks
+in the consensus sequence. It also operates either forwards or
+backwards from the current editing cursor position.
+
+</P>
+<!-- NODE:Editor-Search-Name -->
+
+
+<H3><A NAME="SEC39" HREF="gap5_toc.html#SEC39">Search by Reading Name</A></H3>
+
+<P>
+This positions the cursor at the left end of the reading specified
+in the value text box. Note that not all reading names may be indexed
+by Gap5 and that the search will not find unindexed names. See
+<CODE>tg_index -t</CODE> for information on creating Gap5 databases with
+reading name indices.
+
+</P>
+<P>
+The reading name has to be an exact match and so currently does not
+find prefix strings. If multiple sequences exist with the same name
+(which should be strongly discouraged) then it is undefined which will
+be found first.
+
+</P>
+<!-- NODE:Editor-Search-RefIndel -->
+
+
+<H3><A NAME="SEC40" HREF="gap5_toc.html#SEC40">Search by Reference InDel</A></H3>
+
+<P>
+Note: this information may not be available in all scenarios. If you
+imported the gap5 database from a SAM or BAM file there is an implicit
+set of reference coordinates used within SAM/BAM. Gap5 can keep track of
+the relationship between gap5's padded coordinate system and the
+reference coordinates. This function uses this data to search for the
+next or previous reference insertion or deletion.
+
+</P>
+<!-- NODE:Editor-Search-ConsQual -->
+
+
+<H3><A NAME="SEC41" HREF="gap5_toc.html#SEC41">Search by Consensus Quality</A></H3>
+
+<P>
+This positions the cursor on the consensus at the next
+position where the quality of the consensus is below a given
+threshold. The quality threshold should be entered into the
+value box and should be within the range of 0 to 100 inclusive.
+
+</P>
+<!-- NODE:Editor-Search-ConsDiscrep -->
+
+
+<H3><A NAME="SEC42" HREF="gap5_toc.html#SEC42">Search by Consensus Discrepancy</A></H3>
+
+<P>
+The consensus algorithm can keep track of the expected number of
+differences to the consensus given sequence depth and sequence quality
+values. This search looks for locations where the actual number of
+differences exceeds the expected amount by more than a specified factor.
+
+</P>
+<!-- NODE:Editor-Search-ConsHet -->
+
+
+<H3><A NAME="SEC43" HREF="gap5_toc.html#SEC43">Search by Consensus Heterozygosity</A></H3>
+
+<P>
+The consensus algorithm has a simple heterozygous calling method. Rather
+than simply weighing up the evidence for the base being A, C, G, T or a
+pad it also considers that it may be a combination of any two of these
+values. The consensus scores for the individual bases as well as the
+highest scoring consensus base can be seen in the editor information
+line when the mouse cursor is moved over a consensus base.
+
+</P>
+<P>
+This search is looking for consensus bases where the best heterozygous
+score is greater than or equal to the specified value.
+
+</P>
+<!-- NODE:Editor-Search-depth-lt -->
+
+
+<H3><A NAME="SEC44" HREF="gap5_toc.html#SEC44">Search by Low Coverage</A></H3>
+
+<P>
+This jumps to the next or previous location where the sequence coverage
+drops below a specified value.
+
+</P>
+<!-- NODE:Editor-Search-depth-ht -->
+
+
+<H3><A NAME="SEC45" HREF="gap5_toc.html#SEC45">Search by High Coverage</A></H3>
+
+<P>
+This jumps to the next or previous location where the sequence coverage
+is higher than a specified value. Regions of extreme depth are often
+indication of misassemblies.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_20.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_22.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

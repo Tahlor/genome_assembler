@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Deleting a contig</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_191.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_193.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Deleting a contig -->
+
+
+<H3><A NAME="SEC253" HREF="scripting_toc.html#SEC253">Deleting a contig</A></H3>
+<P>
+<A NAME="IDX884"></A>
+
+</P>
+<P>
+As contig numbers must always be from 1 to N, where N is the number of
+contigs, if we remove a particular contig, we need to ensure we still have
+contigs 1 to N-1. In thise case, deleting contig x, where x != N, will mean
+that we have a hole (at x) which can be filled by moving N down to x.
+
+</P>
+<P>
+To illustrate in an algorithm we have the following; Given N contigs and a
+request to delete contig x.
+
+</P>
+
+<OL>
+<LI>
+
+Delete contig x. This is a NULL operation as far as the
+<CODE>io_delete_contig</CODE> operation goes as we're already assuming the data on
+this contig has gone elsewhere.
+<LI>
+
+Move contig N to contig x (if x != N). This includes updating the disk
+images as well as the fortran arrays and the contig order, but not the
+registration lists -- yet.
+<LI>
+
+Decrement the number of contigs. (N--)
+<LI>
+
+Notify contig x of the delete using REG_DELETE.
+<LI>
+
+Notify contig N of the renumber to contig x using REG_NUMBER_CHANGE.
+(if appropriate)
+<LI>
+
+Update registration list information.
+</OL>
+
+<P>
+Hence it is important to remember that after an <CODE>io_delete_contig</CODE> the
+contig numbers may not be the same as before the call.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_191.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_193.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Registrating Data</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_175.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_177.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Registrating Data -->
+
+
+<H2><A NAME="SEC195" HREF="scripting_toc.html#SEC195">Registering a Piece of Data</A></H2>
+<P>
+<A NAME="IDX783"></A>
+
+</P>
+<P>
+To register data several things need to be known; the contig number, the
+callback function, the client_data (typically the address of the data to
+register), the list of notifications to respond to, an indentifier, and the
+"type" of this data (one of the <CODE>REG_TYPE_</CODE> macros).
+
+</P>
+<P>
+If the data needs updating when more than one specific contig changes, then
+the data should be registered with more than one contig.
+
+</P>
+<P>
+Use the <CODE>contig_register</CODE> function to register an item. The prototype
+is:
+
+</P>
+
+<PRE>
+#include &#60;io-reg.h&#62;
+
+int contig_register(
+        GapIO  *io,
+        int     contig,
+        void  (*func)(
+                      GapIO     *io,
+                      int        contig,
+                      void      *fdata,
+                      reg_data  *jdata),
+        void   *fdata,
+        int     id,
+        int     flags,
+        int     type);
+</PRE>
+
+<P>
+<VAR>contig</VAR> is a contig number in the C sense (<CODE>1</CODE> to
+<CODE>NumContigs(io)</CODE>), not a gel reading number.
+
+</P>
+<P>
+The <VAR>fdata</VAR> (the client_data mentioned before) can be anything you wish.
+It will be passed back to the callback function <VAR>func</VAR> when a notification
+is made.  Typically it's best to simply pass the address of your data that you
+wish to keep up to date. If your data is not a single pointer then turn it
+into one by creating a structure containing all the relevant pointers.
+
+</P>
+<P>
+The id number is usually unique for each time an option it ran, but common to
+all registrations of this particular piece of data. This is not a hard and
+fast rule -- it depends on how you wish to interact with this data. For
+instance, the contig selector window registers with all contigs so that it can
+be notified when any contig changes. The same <VAR>id</VAR> is used for each of
+these registrations as it is the collection of registrations as a whole which
+is required for the display.
+
+</P>
+<P>
+"Flags" is used to request which notifications should be sent to this callback
+function. Each notification has a name which is actually a #define for a
+number. This names can be ORed together to generate a bit field of
+acknowledged requests. There are some predefined bitfields (for shortening the
+function call) that can themselves be ORed together. See section <A HREF="scripting_178.html#SEC197">The Notifications Available</A>.  Finally, one special flag can be ORed on to
+request that this function does not appear in the results manager window. This
+flag is <CODE>REG_FLAG_INVIS</CODE>: see the contig selector code for an example.
+
+</P>
+<P>
+An example of using <CODE>contig_register</CODE> can be seen in the stop codon plot.
+Our stop codon results are all held within a structure of type
+<VAR>mobj_stop</VAR>. The general outline of our stop codon code is as follows:
+
+</P>
+
+<PRE>
+mobj_stop *s;
+int id;
+
+if (NULL == (s = (mobj_stop *)xmalloc(sizeof(mobj_stop)))) {
+    return 0;
+}
+
+[ Fill in our 's' structure with our results ]
+
+DrawStopCodons(s);
+id = register_id();
+contig_register(io, contig_number, stop_codon_callback, (void *)s, id,
+                REG_REQUIRED | REG_DATA_CHANGE | REG_OPS | REG_GENERIC
+                | REG_NUMBER_CHANGE | REG_REGISTERS | REG_CURSOR_NOTIFY,
+                REG_TYPE_STOPCODON);
+</PRE>
+
+<P>
+Here we've requested that the result <VAR>s</VAR>, of type
+<CODE>REG_TYPE_STOPCODON</CODE>, should be passed to the <CODE>stop_codon_callback</CODE>
+function whenever a notification of type <CODE>REG_REQUIRED</CODE>,
+<CODE>REG_DATA_CHANGE</CODE>, <CODE>REG_OPS</CODE>, <CODE>REG_GENERIC</CODE>,
+<CODE>REG_NUMBER_CHANGE</CODE>, <CODE>REG_REGISTERS</CODE> or <CODE>REG_CURSOR_NOTIFY</CODE>
+occurs. These notification types are actually combinations of types, but more
+on this later.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_175.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_177.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

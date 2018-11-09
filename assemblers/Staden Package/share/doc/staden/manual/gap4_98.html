@@ -1,0 +1,207 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - ReadPair-Output</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_97.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_99.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:ReadPair-Output -->
+
+
+<H3><A NAME="SEC167" HREF="gap4_toc.html#SEC167">Find Read Pairs Text Output</A></H3>
+<P>
+<A NAME="IDX379"></A>
+<A NAME="IDX380"></A>
+
+</P>
+<P>
+Two types of results are written to the Output Window: those containing
+apparently consistent data about the relative orientations and positions
+of contigs, and those that show inconsistencies in the data. The
+inconsistencies will be due to misassembly or to misnaming of readings and
+templates.
+
+</P>
+<P>
+In the Output Window the program writes a line of information for each
+template and a line of information for each reading from that template.
+In order to restrict this information to fit on a standard 80 column
+display a few abbreviations are used.  An example for two consistent and
+one 
+problematic template is shown below. Templates with possible problems are
+separated from those without. The templates shown are sorted by problem;
+consistent templates at the top followed by increasingly inconsistent
+templates at the bottom.
+
+</P>
+
+<PRE>
+Template       zf18c8( 117), length 1400-2000(expected 1700)
+     Reading        zf18a2.s1(   +1F), pos   5620  +91, contig   46
+     Reading        zf18c8.s1( -117F), pos   1084 +288, contig  127
+
+Template       zf98f4( 659), length 1400-2000(computed 7263)
+     Reading        zf98f4.s1( -659F), pos     27 +238, contig  548
+     Reading        zf98f4.r1( +800R), pos   5392 +211, contig   46
+
+*** Possibly problematic templates listed below ***
+Template       zf24g6( 262), length 1400-2000(observed 1365)
+ D   Reading        zf24g6.r1( +808R), pos    463 +206, contig   46
+ D   Reading        zf24g6.s1( -262F), pos   1559 +268, contig   46
+</PRE>
+
+
+
+<H4><A NAME="SEC168" HREF="gap4_toc.html#SEC168">The Template Lines</A></H4>
+<P>
+<A NAME="IDX381"></A>
+<A NAME="IDX382"></A>
+
+</P>
+<P>
+To describe the format of the template line we provide a detailed explanation
+of the lines above for the last Template block.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>"Template       zf24g6( 262)"</CODE>
+<DD>
+This is template with name "zf24g6" and number 262.
+
+<DT><CODE>length 1400-2000</CODE>
+<DD>
+These are the minimum and maximum lengths specified for this template.
+
+<DT><CODE>observed(1365)</CODE>
+<DD>
+This section has the general format of "comment(distance)", where "comment" is
+one of the following.
+
+<DL COMPACT>
+
+<DT><VAR>observed</VAR>
+<DD>
+The template has both forward and reverse readings within this contig. From
+this information the actual size of the template can be seen. In the example
+this is "1365".
+
+<DT><VAR>expected</VAR>
+<DD>
+The template length is estimated as the average of the specified minimum and
+maximum size. This will be seen when the template does not span contigs and
+does not have both forward and reverse primers visible.
+
+<DT><VAR>computed</VAR>
+<DD>
+The template has forward and reverse readings in different contigs. The length
+is computed by butting the two contigs together, end to end, and finding the
+resultant separation of the template ends. It is not possible to tell whether
+the two contigs overlap, and if so by how much. Hence the "computed" lengths
+should not be considered as absolute.
+</DL>
+</DL>
+
+
+
+<H4><A NAME="SEC169" HREF="gap4_toc.html#SEC169">The Reading Lines</A></H4>
+<P>
+<A NAME="IDX383"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>"?DPS"</CODE>
+<DD>
+The first four characters may be either space or one of "?", "D", "P" or "S".
+The meaning of each of these is as follows.
+
+<DL COMPACT>
+
+<DT><VAR>?</VAR>
+<DD>
+No primer information is available for these readings.
+<DT><VAR>D</VAR>
+<DD>
+The distance between forward and reverse primers (ie the template length) is
+not as expected.
+<DT><VAR>P</VAR>
+<DD>
+The primer information for readings on this template is inconsistent. An
+example of this is where two forward readings exist, both using the universal
+primer, and the readings are not in close proximity to each other.
+<DT><VAR>S</VAR>
+<DD>
+The template strand information is inconsistent. This problem can be seen when
+the forward and reverse readings are from the same strand, or two forward
+readings are pointing in opposite directions.
+</DL>
+
+Absence of all of these characters means that the template is consistent.
+
+<DT><CODE>"Reading        zf24g6.r1"</CODE>
+<DD>
+The reading name
+
+<DT><CODE>"( +808R)"</CODE>
+<DD>
+The reading number. The "+" or "-" character preceding the number represents
+whether the reading has been complemented ("+" for original, "-" for
+complemented). The letter following the number indicates the primer
+information found for this reading. It may be one of:
+
+<DL COMPACT>
+
+<DT><VAR>?</VAR>
+<DD>
+Unknown
+<DT><VAR>F</VAR>
+<DD>
+Forward, universal primer
+<DT><VAR>f</VAR>
+<DD>
+Forward, custom primer (eg a walk)
+<DT><VAR>R</VAR>
+<DD>
+Reverse, universal primer
+<DT><VAR>r</VAR>
+<DD>
+Reverse, custom primer
+</DL>
+
+<DT><CODE>"pos    463 +206"</CODE>
+<DD>
+The position and the length of the reading within the contig. In this case the
+reading starts at position 463 and extends for 206 bases. For a complemented
+reading the position marks the 3' end of the reading. For both cases the
+position can be considered as the 'left end' of the reading as displayed
+within the contig.
+
+<DT><CODE>"contig   46"</CODE>
+<DD>
+The reading number of the left most reading within this contig.
+</DL>
+
+<P>
+In the above example the template has two readings. It can be seen that the
+template starts at contig position 463 and finishes at position 1827.  The
+observed length is 1365, which is just below the expected minimum length of
+1400. Hence the template is flagged as having an invalid distance. There are
+no other inconsistencies for this template and so it is likely that the
+only "problem" is that the experimental size selection process was not
+as precise as was thought.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_97.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_99.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

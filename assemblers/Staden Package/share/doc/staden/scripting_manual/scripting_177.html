@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Callbacks</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_176.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_178.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Callbacks -->
+
+
+<H2><A NAME="SEC196" HREF="scripting_toc.html#SEC196">The Callback Function</A></H2>
+<P>
+<A NAME="IDX784"></A>
+<A NAME="IDX785"></A>
+
+</P>
+<P>
+The callback function must be of the following prototype:
+
+</P>
+
+<PRE>
+void function(
+        GapIO     *io,
+        int        contig,
+        void      *fdata,
+        reg_data  *jdata);
+</PRE>
+
+<P>
+Here <VAR>fdata</VAR> will be the client_data specified when registering. The first
+task within our callback function will be to cast this to a useful type. As
+the type of this <VAR>fdata</VAR> will change depending on what piece of data is
+registered this is a required, but tedious, action.
+
+</P>
+<P>
+The next task at hand is to see exactly why the callback function was called.
+This is listed in the <VAR>reg_data</VAR> parameter. Specifically
+<CODE>jdata-&#62;job</CODE> will be one of the many notification types. The suggested
+coding method is to perform a switch on this field as follows:
+
+</P>
+
+<PRE>
+static void some_callback(GapIO *io, int contig, void *fdata, reg_data *jdata)
+{
+    some_type_t *s = (some_type_t *)fdata;
+
+    switch(jdata-&#62;job) {
+    case REG_QUERY_NAME:
+        sprintf(jdata-&#62;name.line, "Some name");
+        break;
+
+    case REG_QUIT:
+    case REG_DELETE:
+        ShutDownSomeDisplay(fdata);
+        xfree(fdata);
+        break;
+    }
+}
+</PRE>
+
+<P>
+<CODE>REG_QUERY_NAME</CODE>, <CODE>REG_QUIT</CODE>, <CODE>REG_DELETE</CODE> and
+<CODE>REG_PARAMS</CODE> are required to be accepted by all registered items.
+
+</P>
+<P>
+In general the callback function will also be interested in changes to the
+contig that the data is registered with. These involve the <CODE>REG_JOIN_TO</CODE>,
+<CODE>REG_COMPLEMENT</CODE>, <CODE>REG_LENGTH</CODE>, <CODE>REG_NUMBER_CHANGE</CODE> and
+<CODE>REG_ANNO</CODE> requests.
+
+</P>
+<P>
+For precise details on handling the various notifications, please see
+the following section.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_176.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_178.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

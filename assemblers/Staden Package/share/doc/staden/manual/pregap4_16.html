@@ -1,0 +1,47 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-EBA</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-EBA -->
+
+
+<H2><A NAME="SEC22" HREF="pregap4_toc.html#SEC22">Estimate Base Accuracies</A></H2>
+<P>
+<A NAME="IDX24"></A>
+<A NAME="IDX25"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module analyses the traces at each base call to estimate a confidence
+value for the called base. It does this by simply looking at the area
+underneath the trace for the called base and dividing this by the highest area
+under the trace for the three uncalled bases. This is a very simplistic
+statistic which should ideally only be used for measuring the average
+reliability of the entire sequence rather than any individual base. If another
+program (eg Phred, or ATQA) is available then this should be used in
+preference. From the 2002 release the eba values are
+normalised to the phred scale (this was achieved by comaring the
+original eba values and phred values for 4.6 million base calls of
+Sanger Centre data).
+
+There are no adjustable parameters for this module.
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

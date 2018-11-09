@@ -1,0 +1,98 @@
+{Contents} spin_toc.html
+{SPIN_ORG} spin_2.html
+{SPIN-Introduction} spin_3.html
+{SPIN-Intro-Functions} spin_3.html#SEC4
+{SPIN-Intro-Comparison-Functions} spin_4.html
+{SPIN-Intro-Interface} spin_5.html
+{SPIN-Intro-Interface-plot} spin_6.html
+{SPIN-Intro-Interface-seq} spin_7.html
+{SPIN-Intro-Interface-comparison-plot} spin_8.html
+{SPIN-Intro-Interface-sequence-comparison-display} spin_9.html
+{SPIN-Intro-Menus} spin_10.html
+{SPIN-Intro-Menu-File} spin_10.html#SEC12
+{SPIN-Intro-Menu-View} spin_10.html#SEC13
+{SPIN-Intro-Menu-Options} spin_10.html#SEC14
+{SPIN-Intro-Menu-Sequences} spin_10.html#SEC15
+{SPIN-Intro-Menu-Statistics} spin_10.html#SEC16
+{SPIN-Intro-Menu-Translation} spin_10.html#SEC17
+{SPIN-Intro-Menu-Search} spin_10.html#SEC18
+{SPIN-Intro-Menu-Comparison} spin_10.html#SEC19
+{SPIN-Functions} spin_11.html
+{SPIN-Base-Composition} spin_12.html
+{SPIN-Dinucleotide-Freq} spin_12.html#SEC22
+{SPIN-Plot-Base-Composition} spin_13.html
+{SPIN-Codon-Usage-Tables} spin_14.html
+{SPIN-Set-Genetic-Code} spin_15.html
+{SPIN-Translation-General} spin_16.html
+{SPIN-Open-Reading-Frames} spin_17.html
+{SPIN-Restrict-Introduction} spin_18.html
+{SPIN-Restrict-Selecting} spin_19.html
+{SPIN-Restrict-Examining} spin_20.html
+{SPIN-Restrict-Reconfig} spin_21.html
+{SPIN-Restrict-Printing} spin_22.html
+{SPIN-String-Search} spin_23.html
+{SPIN-Weight-Matrix-Search} spin_24.html
+{SPIN-Gene-Finding} spin_25.html
+{SPIN-Start-Codon-Search} spin_26.html
+{SPIN-Stop-Codon-Search} spin_27.html
+{SPIN-Codon-Usage-Method} spin_28.html
+{SPIN-Positional-Base-Prefs} spin_29.html
+{SPIN-Author-Test} spin_30.html
+{SPIN-Uneven-Positional-Base-Freqs} spin_31.html
+{SPIN-Splice-Site-Search} spin_32.html
+{SPIN-TRNA-Search} spin_33.html
+{SPIN-Comparisons} spin_34.html
+{SPIN-Find similar spans} spin_35.html
+{SPIN-Find matching words} spin_36.html
+{SPIN-Find Best Diagonals} spin_37.html
+{SPIN-Align Sequences} spin_38.html
+{SPIN-Local alignment} spin_39.html
+{SPIN-Managing-Results} spin_40.html
+{SPIN-Probability Calculations} spin_40.html#SEC51
+{SPIN-Changing Max Match Number} spin_40.html#SEC52
+{SPIN-Changing Default Match Number} spin_40.html#SEC53
+{SPIN-Hide duplicate matches} spin_40.html#SEC54
+{SPIN-Changing the score matrix} spin_40.html#SEC55
+{SPIN-Set protein alignment symbols} spin_40.html#SEC56
+{SPIN-USER-Interface} spin_41.html
+{SPIN-Spin-Plot} spin_42.html
+{SPIN-CURSORS} spin_42.html#SEC59
+{SPIN-CROSSHAIRS} spin_42.html#SEC60
+{SPIN-ZOOM} spin_42.html#SEC61
+{SPIN-DRAG} spin_42.html#SEC62
+{SPIN-Sequence-Display} spin_43.html
+{SPIN-Sequence-Display-Search} spin_44.html
+{SPIN-Sequence-Display-Save} spin_44.html#SEC65
+{SPIN-SPIN Sequence Comparison Plot} spin_45.html
+{SPIN-Cursors} spin_46.html
+{SPIN-Crosshairs} spin_46.html#SEC68
+{SPIN-Zoom} spin_46.html#SEC69
+{SPIN-Drag} spin_46.html#SEC70
+{SPIN-Sequence-Comparison Display} spin_47.html
+{SPIN-Results} spin_48.html
+{SPIN-Result-Manager} spin_48.html#SEC73
+{SPIN-RM-Information} spin_48.html#SEC74
+{SPIN-RM-List} spin_48.html#SEC75
+{SPIN-RM-Configure} spin_48.html#SEC76
+{SPIN-RM-Hide} spin_48.html#SEC77
+{SPIN-RM-Reveal} spin_48.html#SEC78
+{SPIN-RM-Remove} spin_48.html#SEC79
+{Reading and Managing Sequences} spin_49.html
+{SPIN-Feature Tables} spin_49.html#SEC81
+{SPIN-Read Sequences} spin_49.html#SEC82
+{SPIN-Simple search} spin_49.html#SEC83
+{SPIN-Personal search} spin_49.html#SEC84
+{SPIN-Sequence Manager} spin_49.html#SEC85
+{SPIN-Change Active Sequence} spin_49.html#SEC86
+{SPIN-Set Range} spin_49.html#SEC87
+{SPIN-Copy} spin_49.html#SEC88
+{SPIN-Sequence Type} spin_49.html#SEC89
+{SPIN-Complement Sequence} spin_49.html#SEC90
+{SPIN-Interconvert t and u} spin_49.html#SEC91
+{SPIN-Translate Sequence} spin_49.html#SEC92
+{SPIN-Scramble Sequence} spin_49.html#SEC93
+{SPIN-Rotate Sequence} spin_49.html#SEC94
+{SPIN-Save Sequence} spin_49.html#SEC95
+{SPIN-Delete Sequence} spin_49.html#SEC96
+{SPIN-Selecting a sequence} spin_49.html#SEC97
+{Index} spin_50.html

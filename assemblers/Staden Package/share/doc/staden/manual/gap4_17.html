@@ -1,0 +1,58 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Intro-Hidden</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_16.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_18.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Intro-Hidden -->
+
+
+<H2><A NAME="SEC24" HREF="gap4_toc.html#SEC24">Use of the "hidden" poor quality data</A></H2>
+<P>
+<A NAME="IDX25"></A>
+<A NAME="IDX26"></A>
+
+</P>
+<P>
+In general sequences obtained from machines contain segments such as
+vector sequence and poor quality data that need either to be removed or
+ignored during assembly and editing. In our package we do not remove
+such segments but instead we mark them so that the programs can deal
+with them appropriately. In gap4 such data is referred to as "hidden".
+The positions to hide are determined initially by preprocessing programs
+such as vector_clip (see section <A HREF="vector_clip_2.html#SEC2">Screening Against Vector Sequences</A>) and qclip
+(see section <A HREF="manpages_20.html#SEC118">qclip</A>).
+
+</P>
+
+<P>
+The hidden data can be revealed in the Contig Editor by toggling the
+Cutoffs button (see section <A HREF="gap5_16.html#SEC27">Adjusting the Cutoff data</A>); can be used to search for possible joins between
+contigs (see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>), and can be included in
+the consensus sequence (see section <A HREF="gap4_115.html#SEC186">Extended consensus</A>) to be used by external screening programs.  For these
+cases the program can distinguish data that is hidden because it is
+vector and data that is hidden because it is of poor quality: only poor quality
+data is included.
+
+</P>
+<P>
+The position of hidden data can be changed interactively in the Contig
+Editor. In addition the Double Strand function (see section <A HREF="gap4_108.html#SEC179">Double stranding</A>) will reduce the amount of hidden data
+for readings that cover single stranded regions of contigs, if the data
+aligns well with that on the other strand.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_16.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_18.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,248 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-GDatabase</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_112.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_114.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-GDatabase -->
+
+
+<H3><A NAME="SEC130" HREF="scripting_toc.html#SEC130">The GDatabase Structure</A></H3>
+
+<P>
+<A NAME="IDX469"></A>
+
+<PRE>
+#define GAP_DB_VERSION 2
+#define GAP_DNA		   0
+#define GAP_PROTEIN	   1
+
+typedef struct { 
+    GCardinal version;		/* Database version - GAP_DB_VERSION */
+    GCardinal maximum_db_size;	/* MAXDB */
+    GCardinal actual_db_size;	/* */
+    GCardinal max_gel_len;	/* 4096 */
+    GCardinal data_class;	/* GAP_DNA or GAP_PROTEIN */
+
+    /* Used counts */
+    GCardinal num_contigs;	/* number of contigs used */
+    GCardinal num_readings;	/* number of readings used */
+
+    /* Bitmaps */
+    GCardinal Nfreerecs;	/* number of bits */
+    GCardinal freerecs;		/* record no. of freerecs bitmap */
+
+    /* Arrays */
+    GCardinal Ncontigs;		/* elements in array */
+    GCardinal contigs;		/* record no. of array of type GContigs */
+
+    GCardinal Nreadings;	/* elements in array */
+    GCardinal readings;		/* record no. of array of type GReading */
+
+    GCardinal Nannotations;	/* elements in array */
+    GCardinal annotations;	/* record no. of array of type GAnnotation */
+    GCardinal free_annotations; /* head of list of free annotations */
+
+    GCardinal Ntemplates;	/* elements in array */
+    GCardinal templates;	/* record no. of array of type GTemplates */
+
+    GCardinal Nclones;		/* elements in array */
+    GCardinal clones;		/* record no. of array of type GClones */
+
+    GCardinal Nvectors;		/* elements in array */
+    GCardinal vectors;		/* record no. of array of type GVectors */
+
+    GCardinal contig_order;	/* record no. of array of type GCardinal */
+
+    GCardinal Nnotes;		/* elements in array */
+    GCardinal notes_a;		/* records that are GT_Notes */
+    GCardinal notes;		/* Unpositional annotations */
+    GCardinal free_notes;	/* SINGLY linked list of free notes */
+} GDatabase; 
+
+</PRE>
+
+<P>
+This is always the first record in the database. In contains information about
+the Gap4 database as a whole and can be viewed as the root from which all
+other records are eventually referenced from. Care must be taken when dealing
+with counts of contigs and readings as there are two copies; one for the used
+number and one for the allocated number.
+
+</P>
+<P>
+The structure contains several database record numbers of arrays. These arrays
+in turn contain record numbers of structures. Most other structures, and
+indeed functions within Gap4, then reference structure numbers (eg a reading
+number) and not their record numbers. The conversion from one to the other is
+done by accessing the arrays listed in the GDatabase structure.
+
+</P>
+<P>
+For instance, to read the structure for contig number 5 we could do the
+following.
+
+</P>
+
+<PRE>
+GContigs c;
+GT_Read(io, arr(GCardinal, io-&#62;contigs, 5-1), &#38;c, sizeof(c), GT_Contigs);
+</PRE>
+
+<P>
+In the above code, <CODE>io-&#62;contigs</CODE> is the array of GCardinals whose record
+number is contained within the <VAR>contigs</VAR> element of the GDatabase
+structure. In practise, this is hidden away by simply calling
+"<CODE>contig_read(io, 5, c)</CODE>" instead.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>version</VAR>
+<DD>
+<A NAME="IDX470"></A>
+ <A NAME="IDX471"></A>
+ 
+	Database record format version control. The current version is held
+	within the <CODE>GAP_DB_VERSION</CODE> macro.
+
+<A NAME="IDX472"></A>
+<A NAME="IDX473"></A>
+<DT><VAR>maximum_db_size</VAR>
+<DD>
+<DT><VAR>actual_db_size</VAR>
+<DD>
+	These are essentially redundant as Gap4 can support any number of
+	readings up to <VAR>maximum_db_size</VAR>, and <VAR>maximum_db_size</VAR> can be
+	anything the user desires. It is specifable using the <CODE>-maxdb</CODE>
+	command line argument to gap4.
+
+<A NAME="IDX474"></A>
+<DT><VAR>max_gel_len</VAR>
+<DD>
+	This is currently hard coded as 4096 (but is relatively easy to
+	change).
+
+<A NAME="IDX475"></A>
+<A NAME="IDX476"></A>
+<A NAME="IDX477"></A>
+<DT><VAR>data_class</VAR>
+<DD>
+	This specifies whether the database contains DNA or protein sequences.
+	In the current implementation only DNA is supported.
+
+<A NAME="IDX478"></A>
+<A NAME="IDX479"></A>
+<DT><VAR>num_contigs</VAR>
+<DD>
+<DT><VAR>num_readings</VAR>
+<DD>
+	These specify the number of <STRONG>used</STRONG> contigs and readings. They
+	may be different from the number of records allocated.
+
+<A NAME="IDX480"></A>
+<A NAME="IDX481"></A>
+<DT><VAR>Nfreerecs</VAR>
+<DD>
+<DT><VAR>freerecs</VAR>
+<DD>
+	<VAR>freerecs</VAR> is the record number of a bitmap with a single element
+	per record in the database. Each free bit in the bitmap corresponds to
+	a free record.	The <VAR>Nfreerecs</VAR> variable holds the number of bits
+	allocated in the freerecs bitmap.
+
+<A NAME="IDX482"></A>
+<A NAME="IDX483"></A>
+<DT><VAR>Ncontigs</VAR>
+<DD>
+<DT><VAR>contigs</VAR>
+<DD>
+	<VAR>contigs</VAR> is the record number of an array of GCardinals. Each
+	element of the array is the record number of a GContigs structures.
+	<VAR>Ncontigs</VAR> is the number of elements allocated in the
+	<VAR>contigs</VAR> array. Note that this is different from
+	<VAR>num_contigs</VAR>, which is the number of elements used.
+
+<A NAME="IDX484"></A>
+<A NAME="IDX485"></A>
+<DT><VAR>Nreadings</VAR>
+<DD>
+<DT><VAR>readings</VAR>
+<DD>
+	<VAR>readings</VAR> is the record number of an array of GCardinals. Each
+	element of the array is the record number of a GReadings structures.
+	<VAR>Nreadings</VAR> is the number of elements allocated in the
+	<VAR>readings</VAR> array. Note that this is different from
+	<VAR>num_readings</VAR>, which is the number of elements used.
+
+<A NAME="IDX486"></A>
+<A NAME="IDX487"></A>
+<A NAME="IDX488"></A>
+<DT><VAR>Nannotations</VAR>
+<DD>
+<DT><VAR>annotations</VAR>
+<DD>
+<DT><VAR>free_annotations</VAR>
+<DD>
+	<VAR>annotations</VAR> is the record number of an array of GCardinals. Each
+	element of the array is the record number of a GAnnotations
+	structures.  <VAR>Nannotations</VAR> is the number of elements allocated in
+	the <VAR>annotations</VAR> array. <VAR>free_annotations</VAR> is the record
+	number of the first free annotation, which forms the head of a linked
+	list of free annotations.
+
+<A NAME="IDX489"></A>
+<A NAME="IDX490"></A>
+<DT><VAR>Ntemplates</VAR>
+<DD>
+<DT><VAR>templates</VAR>
+<DD>
+	<VAR>templates</VAR> is the record number of an array of GCardinals. Each
+	element of the array is the record number of a GTemplates structures.
+	<VAR>Ntemplates</VAR> is the number of elements allocated in the
+	<VAR>templates</VAR> array.
+
+<A NAME="IDX491"></A>
+<A NAME="IDX492"></A>
+<DT><VAR>Nclones</VAR>
+<DD>
+<DT><VAR>clones</VAR>
+<DD>
+	<VAR>clones</VAR> is the record number of an array of GCardinals. Each
+	element of the array is the record number of a GClones structures.
+	<VAR>Nclones</VAR> is the number of elements allocated in the <VAR>clones</VAR>
+	array.
+
+<A NAME="IDX493"></A>
+<A NAME="IDX494"></A>
+<DT><VAR>Nvectors</VAR>
+<DD>
+<DT><VAR>vectors</VAR>
+<DD>
+	<VAR>vectors</VAR> is the record number of an array of GCardinals. Each
+	element of the array is the record number of a GVectors structures.
+	<VAR>Nvectors</VAR> is the number of elements allocated in the
+	<VAR>vectors</VAR> array.
+
+<A NAME="IDX495"></A>
+<DT><VAR>contig_order</VAR>
+<DD>
+	This is the record number of an array of GCardinals of size
+	<VAR>NContigs</VAR>. Each element of the array is a contig number. The
+	index of the array element indicates the position of this contig.
+	Thus the contigs are displayed in the order that they appear in this
+	array.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_112.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_114.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

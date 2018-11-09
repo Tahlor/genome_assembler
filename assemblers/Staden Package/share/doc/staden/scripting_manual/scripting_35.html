@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Output-vfuncgroup</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_34.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_36.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Output-vfuncgroup -->
+
+
+<H3><A NAME="SEC36" HREF="scripting_toc.html#SEC36">vfuncgroup</A></H3>
+<P>
+<A NAME="IDX84"></A>
+<A NAME="IDX85"></A>
+
+</P>
+<P>
+<A NAME="IDX86"></A>
+
+<PRE>
+<CODE>#include &#60;text_output.h&#62;</CODE>
+<CODE>void vfuncgroup(int group, char *fmt, ...);</CODE>
+</PRE>
+
+<P>
+This C function is identical to the <CODE>vfuncheader</CODE> function except that it
+will not output a new header if the last call to <CODE>vfuncgroup</CODE> was with
+the same <VAR>group</VAR> number and there have been no intevening
+<CODE>vfuncheader</CODE> calls.
+
+</P>
+<P>
+The <VAR>group</VAR> argument is an integer value specifying a group number. Each
+option within a program using this function should have its own unique group
+number. However currently there is no allocation system for ensuring that this
+is so. The <VAR>fmt</VAR> and subsequent arguments specify the header in the
+standard <CODE>printf</CODE> style. The header, after formatting, must be less than
+8192 bytes long.
+
+</P>
+<P>
+<A NAME="IDX87"></A>
+
+<PRE>
+<CODE>vfuncgroup</CODE> <VAR>group_number</VAR> <VAR>title</VAR>
+</PRE>
+
+<P>
+This is the Tcl interface to the vfuncheader C function. The <VAR>title</VAR>
+must be less 8192 bytes long.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_34.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_36.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,242 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Doctor-Structures</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_162.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_164.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Doctor-Structures -->
+
+
+<H2><A NAME="SEC243" HREF="gap4_toc.html#SEC243">Structures Menu</A></H2>
+
+
+<UL>
+<LI><A HREF="gap4_163.html#SEC244">Database structure</A>
+<LI><A HREF="gap4_163.html#SEC245">Reading structure</A>
+<LI><A HREF="gap4_163.html#SEC246">Contig structure</A>
+<LI><A HREF="gap4_163.html#SEC247">Annotation structure</A>
+<LI><A HREF="gap4_163.html#SEC248">Template structure</A>
+<LI><A HREF="gap4_163.html#SEC249">Original clone structure</A>
+<LI><A HREF="gap4_163.html#SEC250">Note structure</A>
+</UL>
+
+<P>
+The gap4 database consists of records of several
+predefined types. The types correspond to the commands available within the
+Structures menu. All of these, except for the "Database" command, insert a
+dialogue between the menubar and whatever is underneath it. In the picture
+below we have selected "Annotations" from the menu which has prompted for
+"Which annotation (1-380)" (the 1-380 is the valid range of inputs available).
+
+</P>
+
+<p>
+<img src="doctor_db.structures.png" alt="[picture]">
+
+<P>
+In the panel beneath the "Which annotation" question is a panel detailing
+another annotation structure. In general the structure type and number are
+shown at the top of the panel (in this case annotation number 100). Beneath
+this are the structure fields on the left followed by the values for these
+fields on the right. Sometimes gap4 may store a value as numeric, but
+display the structure as both a numeric and a string describing this value.
+For instance here the annotation strand is "1" which is gap4's way of storing
+"reverse".
+
+</P>
+<P>
+Some values have an arrow next to them, such as with the "next" field in the
+illustration. Clicking on this arrow will display the structure referenced by
+this value. Here it is another annotation (annotation 357). It is
+stated 
+that the annotation is part of Contig number 6. Clicking on the arrow next to
+this will reveal that contig structure.
+
+</P>
+<P>
+Selected notes on editing the structures follows.
+
+</P>
+<!-- NODE:Doctor-Database -->
+
+
+<H3><A NAME="SEC244" HREF="gap4_toc.html#SEC244">Database Structure</A></H3>
+<P>
+<A NAME="IDX574"></A>
+<A NAME="IDX575"></A>
+
+</P>
+<P>
+There is only a single Database structure. A description of its 
+more important fields follows.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>num_contigs</STRONG>
+<DD>
+The number of currently <I>used</I> contigs
+<P>
+<DT><STRONG>num_readings</STRONG>
+<DD>
+The number of currently <I>used</I> readings
+<P>
+<DT><STRONG>Ncontigs</STRONG>
+<DD>
+The number of currently <I>allocated</I> contigs
+<P>
+<DT><STRONG>Nreadings</STRONG>
+<DD>
+The number of currently <I>allocated</I> readings
+<P>
+<DT><STRONG>contigs</STRONG>
+<DD>
+<DT><STRONG>readings</STRONG>
+<DD>
+<DT><STRONG>annotations</STRONG>
+<DD>
+<DT><STRONG>templates</STRONG>
+<DD>
+<DT><STRONG>clones</STRONG>
+<DD>
+<DT><STRONG>vectors</STRONG>
+<DD>
+<DT><STRONG>notes</STRONG>
+<DD>
+Record numbers of arrays holding the record numbers of each item
+<P>
+<DT><STRONG>free_annotations</STRONG>
+<DD>
+A linked list of unused annotations
+<DT><STRONG>free_notes</STRONG>
+<DD>
+A linked list of unused notes
+</DL>
+
+<!-- NODE:Doctor-Reading -->
+
+
+<H3><A NAME="SEC245" HREF="gap4_toc.html#SEC245">Reading Structure</A></H3>
+<P>
+<A NAME="IDX576"></A>
+<A NAME="IDX577"></A>
+
+</P>
+<P>
+Some Reading Structure fields reference the record number in the gap4
+database of a string. Where this string is short, such as the reading name,
+both the record number and the contents of the string can be edited. To edit a
+single name the string should be changed. To swap two reading names around
+either edit both strings or swap the two name record numbers.
+
+</P>
+<P>
+The <STRONG>annotations</STRONG> value references an annotation number. If this is
+zero then this reading has no annotations.
+
+</P>
+<P>
+The <STRONG>length</STRONG> is the complete length of sequence, including hidden data.
+The <STRONG>sequence_length</STRONG> is the length of only the used sequence. The
+location of the hidden data is specified by the <STRONG>start</STRONG> and
+<STRONG>end</STRONG> values. Note that <STRONG>sequence_length=end-start-1</STRONG>.
+
+</P>
+<P>
+A <STRONG>left</STRONG> or <STRONG>right</STRONG> value of zero means that this reading has no
+left or right neighbour.
+
+</P>
+<!-- NODE:Doctor-Contig -->
+
+
+<H3><A NAME="SEC246" HREF="gap4_toc.html#SEC246">Contig Structure</A></H3>
+<P>
+<A NAME="IDX578"></A>
+<A NAME="IDX579"></A>
+
+</P>
+<P>
+A Contig Structure is defined as a list of readings. 
+The <STRONG>left</STRONG> and <STRONG>right</STRONG> values
+specify the first and last reading numbers in the doubly linked list
+representing the contig.
+
+</P>
+<!-- NODE:Doctor-Annotation -->
+
+
+<H3><A NAME="SEC247" HREF="gap4_toc.html#SEC247">Annotation Structure</A></H3>
+<P>
+<A NAME="IDX580"></A>
+<A NAME="IDX581"></A>
+
+</P>
+<P>
+Annotations are stored as linked lists. Each reading and each contig has a
+(possibly blank) list. All other unused annotations are held on the free list.
+The <STRONG>next</STRONG> value is used to reference the next annotation number. A
+value of zero represents the end of the list.
+
+</P>
+<!-- NODE:Doctor-Template -->
+
+
+<H3><A NAME="SEC248" HREF="gap4_toc.html#SEC248">Template Structure</A></H3>
+<P>
+<A NAME="IDX582"></A>
+<A NAME="IDX583"></A>
+
+</P>
+<P>
+The Template name field can be edited as both a string and the record number
+pointing to that string. The Template Structure display has links to a vector
+number and a clone.
+
+</P>
+<!-- NODE:Doctor-Clone -->
+
+
+<H3><A NAME="SEC249" HREF="gap4_toc.html#SEC249">Original Clone Structure</A></H3>
+<P>
+<A NAME="IDX584"></A>
+<A NAME="IDX585"></A>
+<A NAME="IDX586"></A>
+
+</P>
+<P>
+The original clone name is often the name of the database. The use of original
+clones is primarily for large scale sequencing. When breaking down a sequence
+into cosmids and then into sequencing templates, we say that each cosmid is a
+clone.
+
+</P>
+<!-- NODE:Doctor-Note -->
+
+
+<H3><A NAME="SEC250" HREF="gap4_toc.html#SEC250">Note Structure</A></H3>
+<P>
+<A NAME="IDX587"></A>
+<A NAME="IDX588"></A>
+
+</P>
+<P>
+A Note may be considered as a positonless annotation (without the position,
+length or strand fields). Notes store both their creation and
+last-modification dates. Notes may be attached, in a linked-list fashion, to
+readings, contigs, or the database structure.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_162.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_164.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

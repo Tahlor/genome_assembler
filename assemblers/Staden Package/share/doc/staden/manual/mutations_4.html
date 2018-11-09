@@ -1,0 +1,145 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from mutations.htmlinfo on 25 April 2016 -->
+
+<TITLE>Mutation Detection - Mutation-Detection-Reference-Data</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Mutation-Detection-Reference-Data -->
+
+
+<H3><A NAME="SEC4" HREF="mutations_toc.html#SEC4">Mutation Detection Reference Data</A></H3>
+
+<P>
+The mutation detection methods require reference traces and optionally 
+reference sequences. Reference traces are used for automatic mutation
+detection and for visual inspection of trace differences. Reference sequences
+are used in gap4 to provide a base numbering standard, and if required to
+provide feature table entries to control translation and mutation reporting.
+
+</P>
+
+<UL>
+<LI><A HREF="mutations_4.html#SEC5">Reference Sequences</A>
+<LI><A HREF="mutations_4.html#SEC6">Reference Traces</A>
+</UL>
+
+<!-- NODE:Mutation-Detection-Reference-Sequences -->
+
+
+<H3><A NAME="SEC5" HREF="mutations_toc.html#SEC5">Reference Sequences</A></H3>
+<P>
+<A NAME="IDX4"></A>
+<A NAME="IDX5"></A>
+
+</P>
+<P>
+Reference sequences are used in gap4 
+(see section <A HREF="gap4_3.html#SEC3">Gap4 introduction</A>).
+Here they can be used to define a
+numbering system independent of gaps introduced to produce alignments.
+The numbering can start at any point in the reference sequence. If the
+reference sequence is entered with a feature table the features are
+converted to tags and can be used to control translation of the sequence
+in the contig editor. For mutation detection work the reference sequence
+and feature table
+enable mutations to be
+reported using positions defined by the reference sequence, and also
+allows the effect of the mutations to be noted. 
+Gap4 is able to store entries from the EMBL sequence library complete with
+their feature tables. These feature tables are converted to gap4
+database annotations (tags), which means that they can be selectively
+displayed in the template display and editor, and used to translate only
+the exons (in the correct reading frame). Obviously it may be useful to
+augment the feature tables with the sites of known polymorphisms or deleterious
+mutations so that they can be displayed in gap4 as landmarks.
+When it comes to producing a
+report of the observed mutations the feature table is used to work out
+if a mutation is expressed and if so what the amino acid change is.
+Additional tags can be created to specify the positions of the primers
+or restriction sites used to obtain data covering segments of the sequence.
+For any project the reference sequence need only be set up once. Either
+project databases can be started with the reference sequence already 
+configured or the reference can be assembled along with the reading data.
+The reference sequence can be designated (or reassigned) as follows.
+In pregap4 (see section <A HREF="pregap4_3.html#SEC3">Pregap4 introduction</A>)
+it can be named in the module "Reference Traces". In the
+gap4 editor it can be set by right clicking on its name. Once set it should
+appear labelled "S" at the left edge of the editor.
+
+</P>
+<!-- NODE:Mutation-Detection-Reference-Traces -->
+
+
+<H3><A NAME="SEC6" HREF="mutations_toc.html#SEC6">Reference Traces</A></H3>
+<P>
+<A NAME="IDX6"></A>
+<A NAME="IDX7"></A>
+
+</P>
+<P>
+References traces are used by the automatic mutation detection program
+mutscan (see section <A HREF="pregap4_36.html#SEC42">Mutation Scanner</A>, and by the trace difference display in the gap4
+editor(see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>).  
+Ideally forward and reverse reference traces should be
+available and should be obtained using the same primers and sequencing
+chemistry as the patient data.  From the "settings" menu of the editor
+the trace display can be set to "Auto-Diff traces". Once this is
+activated, whenever the user double clicks on a base in the editor
+sequence display, not only is the reading's trace displayed, but also
+its designated reference trace plus the difference between them. If its
+complementary reading is available, its trace and reference trace and
+their differences are also displayed.  These
+trace displays and the editing cursor scroll in synch.
+
+</P>
+
+<p>
+<a href="mut_traces_het,6in.png.html"><img src="mut_traces_het,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Top and bottom strand differences for a heterozygous base.
+
+</P>
+
+<P>
+The preferred way of assigning reference traces to readings is by use of
+"naming conventions"; that is to have a simple set of rules which
+control the names given to the trace files. It can be seen in the
+figures showing the editor that forward and reverse readings from the
+same patient have names with a common root but which end either F or
+R. This both ties the two together (so the software knows which is the
+corresponding 
+complementary trace when the user double clicks on a reading) and also
+enables the association of readings and their reference traces. Once a
+convention has been adopted the rules can be defined for pregap4 by
+loading them via the "Load Naming Scheme" option in its File menu
+(see section <A HREF="pregap4_47.html#SEC53">Pregap4 Naming Schemes</A>). For
+any batch of readings the reference traces are defined within pregap4's
+"Reference Traces" module.  Note that this mode of operation, by
+allowing the specification of only one forward and one reverse trace,
+limits each batch of traces processed to those which correspond to a
+given pair of reference traces. The size of the batch is unlimited. 
+
+</P>
+
+<P>
+The alternative way of specifying the reference traces is to right click
+on their names in the editor. This also allows positive trace controls to be 
+specified (which is not possible in pregap4).
+
+</P>
+
+<HR>
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

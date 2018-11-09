@@ -1,0 +1,113 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-ManualConfig-Modules</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_59.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_61.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-ManualConfig-Modules -->
+
+
+<H2><A NAME="SEC66" HREF="pregap4_toc.html#SEC66">Low Level Module Configuration</A></H2>
+<P>
+<A NAME="IDX118"></A>
+<A NAME="IDX119"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="pregap4_61.html#SEC67">General Configuration</A>
+<LI><A HREF="pregap4_62.html#SEC68">ALF/ABI to SCF Conversion</A>
+<LI><A HREF="pregap4_63.html#SEC69">Estimate Base Accuracies</A>
+<LI><A HREF="pregap4_64.html#SEC70">Phred</A>
+<LI><A HREF="pregap4_65.html#SEC71">ATQA</A>
+
+<LI><A HREF="pregap4_66.html#SEC72">Trace Format Conversion</A>
+<LI><A HREF="pregap4_67.html#SEC73">Initialise Experiment Files</A>
+<LI><A HREF="pregap4_68.html#SEC74">Augment Experiment Files</A>
+<LI><A HREF="pregap4_69.html#SEC75">Uncalled Base Clip</A>
+<LI><A HREF="pregap4_70.html#SEC76">Quality Clip</A>
+<LI><A HREF="pregap4_71.html#SEC77">Sequencing Vector Clip</A>
+<LI><A HREF="pregap4_72.html#SEC78">Cross_match</A>
+<LI><A HREF="pregap4_73.html#SEC79">Cloning Vector Clip</A>
+<LI><A HREF="pregap4_74.html#SEC80">Old Cloning Vector Clip</A>
+<LI><A HREF="pregap4_75.html#SEC81">Screen for Unclipped Vector</A>
+<LI><A HREF="pregap4_76.html#SEC82">Screen Sequences</A>
+<LI><A HREF="pregap4_77.html#SEC83">Blast Screen</A>
+<LI><A HREF="pregap4_78.html#SEC84">Interactive Clipping</A>
+<LI><A HREF="pregap4_79.html#SEC85">Extract Sequence</A>
+<LI><A HREF="pregap4_80.html#SEC86">Tag Repeats</A>
+<LI><A HREF="pregap4_81.html#SEC87">Repeat Masker</A>
+<LI><A HREF="pregap4_82.html#SEC88">Mutation Detection</A>
+<LI><A HREF="pregap4_83.html#SEC89">Gap4 Shotgun Assembly</A>
+<LI><A HREF="pregap4_84.html#SEC90">Cap2 Assembly</A>
+<LI><A HREF="pregap4_85.html#SEC91">Cap3 Assembly</A>
+<LI><A HREF="pregap4_86.html#SEC92">FakII Assembly</A>
+<LI><A HREF="pregap4_87.html#SEC93">Phrap Assembly</A>
+<LI><A HREF="pregap4_88.html#SEC94">Enter Assembly into Gap4</A>
+<LI><A HREF="pregap4_89.html#SEC95">Email</A>
+<LI><A HREF="pregap4_90.html#SEC96">Shutdown</A>
+</UL>
+
+<P>
+Each module has its own configuration section named after the module name. The
+configuration section will be "<CODE>[::</CODE><I>module_filename_prefix</I><CODE>]</CODE>"
+where <I>module_filename_prefix</I> is the filename of the module with the
+<CODE>.p4m</CODE> extension removed. For example, the <CODE>init_exp.p4m</CODE> module has a
+configuration section of <CODE>[::init_exp]</CODE>.
+
+</P>
+<P>
+Each module is loaded into its own namespace, also named after the module in
+the same manner. Thus in the above example the Initialise Experiment Files
+module uses the namespace <CODE>::init_exp</CODE>. This means that all local
+variables within that module will be within that name space and will not clash
+with identical named variables in other modules. When pregap4 reads the
+configuration file any configuration section starting in double colon is taken
+to be a name space and the following configuration is executed in that
+namespace. So the following example enables the Initialise Experiment Files
+module, but disables the Estimate Base Accuracies module.
+
+</P>
+<P>
+<A NAME="IDX120"></A>
+
+</P>
+
+<PRE>
+[::init_exp]
+set enabled 1
+
+[::eba]
+set enabled 0
+</PRE>
+
+<P>
+In the following sections the variables, inputs and outputs of each module are
+listed. Every module has an <CODE>enabled</CODE> local variable. This may be either
+<CODE>0</CODE> for disabled or <CODE>1</CODE> for enabled. Disabled modules are still
+listed in the configuration panel, although they will not be executed.
+
+</P>
+<P>
+The tables in each section below list the module filename, the local variables
+and a very brief description of their valid values, the files used or produced
+by this module, the possible sequence specific errors that can be produced
+(which will be written to the failure file as the reason for failure), and the
+format of any <CODE>SEQ</CODE> lines in the module report. Other information may
+also be reported, but the <CODE>SEQ</CODE> lines are easily recognisable to
+facilitate easy parsing of results.
+
+</P>
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_59.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_61.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

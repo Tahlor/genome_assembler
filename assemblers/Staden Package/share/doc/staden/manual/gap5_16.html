@@ -1,0 +1,138 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Quality Values</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Quality Values -->
+
+
+<H3><A NAME="SEC25" HREF="gap5_toc.html#SEC25">Adjusting the Quality Values</A></H3>
+<P>
+<A NAME="IDX43"></A>
+<A NAME="IDX44"></A>
+<A NAME="IDX45"></A>
+<A NAME="IDX46"></A>
+
+</P>
+<P>
+Each base has its own quality value. Assembly will allow only
+values between 1 and 99 inclusive. A quality value of 0 means that this base
+should be ignored. A quality value of 100 means that this base is definitely
+correct and the consensus will be forced to be the same base type and will be
+given a consensus confidence of 100. If two conflicting bases both have a
+quality of 100 the consensus will be a dash with a confidence of 0.
+
+</P>
+<P>
+Newly added bases or replaced bases are assigned a quality of 100.
+
+</P>
+<P>
+Several keyboard commands are available to edit the quality value of an
+individual base.
+
+</P>
+
+<PRE>
+ [                        Set quality to 0 and move cursor right
+ ]                        Set quality to 100 and move cursor right
+ Shift   Up-Arrow         Increment quality by 1
+ Control Up-Arrow         Increment quality by 10
+ Shift   Down-Arrow       Decrement quality by 1
+ Control Down-Arrow       Decrement quality by 10
+</PRE>
+
+<P>
+Finally note that quality values can also be made visible by clicking
+on the "Quality" checkbutton at the top of the editor. This shows
+the quality by use of a  grey scale.
+
+</P>
+<!-- NODE:Editor-Positions -->
+
+
+<H3><A NAME="SEC26" HREF="gap5_toc.html#SEC26">Adjusting the alignment coordinates</A></H3>
+<P>
+<A NAME="IDX47"></A>
+
+</P>
+<P>
+On rare occasions we may need to move an entire sequence a small
+amount to achieve an optimal alignment, rather than simply inserting
+or deleting pads.
+
+</P>
+<P>
+This is achieved by using Control plus the left and right arrow keys
+while the editing cursor is anywhere on the sequence.
+
+</P>
+
+<PRE>
+ Control Left-Arrow       Shift sequence left
+ Control Right-Arrow      Shift sequence right
+</PRE>
+
+<!-- NODE:Editor-Cutoffs -->
+
+
+<H3><A NAME="SEC27" HREF="gap5_toc.html#SEC27">Adjusting the Cutoff Data</A></H3>
+<P>
+<A NAME="IDX48"></A>
+<A NAME="IDX49"></A>
+<A NAME="IDX50"></A>
+
+</P>
+<P>
+Sequences typically consist of a good quality "used" portion and
+poor quality "clipped" or "cutoff" portions at the 5' and 3' ends
+of the sequence. Although for short sequencing technologies it's quite
+likely we have no cutoff data at all. The reason for this is that the
+low quality ends of sequences may have a sufficient number of errors
+that the sequence alignment algorithms are no longer confident they
+have the correct bases aligned, or event that the sequence simply
+disagrees too much.
+
+</P>
+<P>
+By default these are not shown, although you may see blank lines in
+the display as room is left for this sequence even when it is not
+visible. The cutoff data may be displayed by pressing the "Cutoffs"
+check-button at the top of the editor. The cutoff sequence will then
+be displayed in grey. We call the boundary between the cutoff data and
+the used data the cutoff position. These positions can be adjusted by
+pressing the "&#60;" (left cutoff) or "&#62;" (right cutoff) keys. In both
+cases the cutoff point is between the base with the editing cursor and
+the base to the left of the editing cursor.
+
+</P>
+<P>
+Using the "&#60;" and "&#62;" keys with the editing cursor in the consensus
+performs bulk versions of these edits by clipping every single sequence
+to that poinit. One small difference here though is that the bulk
+versions only ever shrink cutoff data and do not grow it. 
+
+</P>
+
+<PRE>
+ &#60;                        In sequence: set left cutoff position
+ &#62;                        In sequence: set right cutoff position
+
+ &#60;                        In consensus: bulk clip left cutoff
+ &#62;                        In consensus: bulk clip right cutoff
+</PRE>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

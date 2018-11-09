@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-GVectors</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_116.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_118.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-GVectors -->
+
+
+<H3><A NAME="SEC134" HREF="scripting_toc.html#SEC134">The GVectors Structure</A></H3>
+
+
+<PRE>
+/* GVectors.level */
+#define GAP_LEVEL_UNKNOWN  0
+#define GAP_LEVEL_CLONE	   1
+#define GAP_LEVEL_SUBCLONE 2
+
+typedef struct {
+    GCardinal name;		/* vector name */
+    GCardinal level;		/* 1=clone, 2=subclone, etc */
+} GVectors; 
+</PRE>
+
+<P>
+The vector structure contains simply information on any vectors used in
+cloning and subcloning. The <VAR>GTemplates</VAR> and <VAR>GClones</VAR> structures
+reference this structure.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>name</VAR>
+<DD>
+<A NAME="IDX535"></A>
+ 
+	The record number of the text string containing the name for this
+	vector.
+
+<A NAME="IDX536"></A>
+<DT><VAR>level</VAR>
+<DD>
+	A numeric value for the level of the vector. Use the
+	<CODE>GAP_LEVEL_*</CODE> macros for this field.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_116.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_118.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

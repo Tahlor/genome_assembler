@@ -1,0 +1,117 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Extract_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_5.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_7.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-extract_seq -->
+
+
+<H1><A NAME="SEC29" HREF="manpages_toc.html#SEC29">Extract_seq</A></H1>
+<P>
+<A NAME="IDX5"></A>
+
+
+<H2><A NAME="SEC30" HREF="manpages_toc.html#SEC30">NAME</A></H2>
+
+<P>
+extract_seq -- extracts sequence from a trace or experiment file.
+
+</P>
+
+
+<H2><A NAME="SEC31" HREF="manpages_toc.html#SEC31">SYNOPSIS</A></H2>
+
+<P>
+<CODE>extract_seq</CODE> [<CODE>-r</CODE>]
+[<CODE>-</CODE>(<CODE>abi</CODE>|<CODE>alf</CODE>|<CODE>scf</CODE>|<CODE>ztr</CODE>|<CODE>exp</CODE>|<CODE>pln</CODE>)]
+[<CODE>-good_only</CODE>] [<CODE>-clip_cosmid</CODE>] [<CODE>-fasta_out</CODE>]
+[<CODE>-output</CODE> <I>output_name</I>] [<I>input_name</I>] <CODE>...</CODE>
+
+</P>
+
+
+<H2><A NAME="SEC32" HREF="manpages_toc.html#SEC32">DESCRIPTION</A></H2>
+
+<P>
+<CODE>extract_seq</CODE> extracts the sequence information from binary trace
+files, Experiment files, or from the old Staden format plain files. The input
+can be read either from files or from standard input, and the output can be
+written to either a file or standard output. Multiple input files can be
+specified. The output contains the sequences split onto lines of at most 60
+characters each.
+
+</P>
+
+
+<H2><A NAME="SEC33" HREF="manpages_toc.html#SEC33">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-r</CODE>
+<DD>
+    Directs reading of experiment file to attempt extraction of sequence from
+    the referenced (<CODE>LN</CODE> and <CODE>LT</CODE> line types) trace file. Without
+    this option, or when the trace file cannot be found, the sequence
+    output is that listed in the Experiment File. This option has no effect
+    for other input format types.
+
+<DT><CODE>-abi</CODE>, <CODE>-alf</CODE>, <CODE>-scf</CODE>, <CODE>-ztr</CODE>, <CODE>-exp</CODE>, <CODE>-pln</CODE>
+<DD>
+    Specify an input file format. This is not usually required as
+    <CODE>extract_seq</CODE> will automatically determine the correct input file
+    type. This option is supplied incase the automatic determination is
+    incorrect (which is possible, but has never been observed).
+
+<DT><CODE>-good_only</CODE>
+<DD>
+    When reading an experiment file or SCF file containing clip marks, output
+    only the <I>good</I> sequence which is contained within the boundaries marked
+    by the <CODE>QL</CODE>, <CODE>QR</CODE>, <CODE>SL</CODE>, <CODE>SR</CODE>, <CODE>CL</CODE>, <CODE>CR</CODE>
+    and <CODE>CS</CODE> line types.
+
+<DT><CODE>-clip_cosmid</CODE>
+<DD>
+    When the <CODE>-good_only</CODE> argument is specified this controls whether the
+    cosmid sequence should be considered good data. Without this argument
+    cosmid sequence is considered good.
+
+<DT><CODE>-fasta_out</CODE>
+<DD>
+    Specifies that the output should be in fasta format
+
+<DT><CODE>-output</CODE> <I>file</I>
+<DD>
+    The sequence will be written to <I>file</I> instead of standard
+    output.
+</DL>
+
+
+
+<H2><A NAME="SEC34" HREF="manpages_toc.html#SEC34">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_18.html#SEC40">ExperimentFile(4)</A>.
+
+</P>
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+<P>
+@xref{Man-extract_fastq extract_fastq(1),Man-extract_fastq extract_fastq(1),extract_fastq.1,,}.
+<CODE>Read</CODE>(4)
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_5.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_7.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

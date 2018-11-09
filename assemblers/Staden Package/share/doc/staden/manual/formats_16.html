@@ -1,0 +1,156 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - ZTR-Text Identifiers</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:ZTR-Text Identifiers -->
+
+
+<H3><A NAME="SEC38" HREF="formats_toc.html#SEC38">Text Identifiers</A></H3>
+<P>
+<A NAME="IDX37"></A>
+
+</P>
+<P>
+These are for use in the TEXT segments. None are required, but if any of these
+identifiers are present they must confirm to the description below. Much
+(currently all) of this list has been taken from the NCBI Trace Archive [2]
+documentation. It is duplicated here as the ZTR spec is not tied to the same
+revision schedules as the NCBI trace archive (although it is intended that any
+suitable updates to the trace archive should be mirrored in this ZTR spec).
+
+</P>
+<P>
+The Trace Archive specifies a maximum length of values. The ZTR spec does not
+have length limitations, but for compatibility these sizes should still be
+observed.
+
+</P>
+<P>
+The Trace Archive also states some identifiers are mandatory; these are marked
+by asterisks below. These identifiers are not mandatory in the ZTR spec (but
+clearly they need to exist if the data is to be submitted to the NCBI).
+
+</P>
+<P>
+Finally, some fields are not appropriate for use in the ZTR spec, such as
+BASE_FILE (the name of a file containing the base calls). Such fields are
+included only for compatibility with the Trace Arhive. It is not expected that 
+use of ZTR would allow for the base calls to be read from an external file
+instead of the ZTR BASE chunk.
+
+</P>
+<P>
+[ Quoted from TraceArchiveRFC v1.17 ]
+
+</P>
+
+<PRE>
+Identifier      Size       Meaning			 Example value(s)
+----------      -----      ----------------------------  -----------------
+TRACE_NAME *      250      name of the trace             HBBBA1U2211
+                           as used at the center
+                           unique within the center
+                           but not among centers.
+                           
+SUBMISSION_TYPE *   -      type of submission
+                           
+CENTER_NAME *     100      name of center                BCM
+CENTER_PROJECT    200      internal project name         HBBB
+                           used within the center
+                           
+TRACE_FILE *      200      file name of the trace	 ./traces/TRACE001.scf
+                           relative to the top of
+                           the volume.
+                           
+TRACE_FORMAT *     20      format of the tracefile
+                           
+SOURCE_TYPE *       -      source of the read
+                           
+INFO_FILE         200      file name of the info file
+INFO_FILE_FORMAT   20        
+                           
+BASE_FILE         200      file name of the base calls
+QUAL_FILE         200      file name of the base calls
+                           
+                           
+TRACE_DIRECTION     -      direction of the read
+TRACE_END           -      end of the template
+PRIMER            200      primer sequence
+PRIMER_CODE                which primer was used
+                           
+STRATEGY            -      sequencing strategy
+TRACE_TYPE_CODE     -      purpose of trace
+                           
+PROGRAM_ID         100     creator of trace file         phred-0.990722.h
+                           program-version
+                           
+TEMPLATE_ID         20     used for read pairing         HBBBA2211
+                           
+CHEMISTRY_CODE       -     code of the chemistry         (see below)
+ITERATION            -     attempt/redo                  1
+                           (int 1 to 255)
+                           
+CLIP_QUALITY_LEFT          left clip of the read in bp due to quality
+CLIP_QUALITY_RIGHT         right " " " " "
+CLIP_VECTOR_LEFT           left clip of the read in bp due to vector
+CLIP_VECTOR_RIGHT          right " " " " "
+
+                           
+SVECTOR_CODE        40     sequencing vector used        (in table)
+SVECTOR_ACCESSION   40     sequencing vector used        (in table)
+CVECTOR_CODE        40     clone vector used             (in table)
+CVECTOR_ACCESSION   40     clone vector used             (in table)
+                           
+INSERT_SIZE          -     expected size of insert       2000,10000
+                           in base pairs (bp)
+                           (int 1 to 2^32)
+                           
+PLATE_ID            32     plate id at the center          
+WELL_ID                    well                          1-384
+
+SPECIES_CODE *       -     code for species
+SUBSPECIES_ID       40     name of the subspecies
+                           Is this the same as strain
+
+CHROMOSOME           8     name of the chromosome        ChrX, Chr01, Chr09
+                           
+                           
+LIBRARY_ID          30     the source library of the clone
+CLONE_ID            30     clone id                      RPCI11-1234 
+ 
+ACCESSION           30     NCBI accession number         AC00001
+                           
+PICK_GROUP_ID       30     an id to group traces picked
+                           at the same time.
+PREP_GROUP_ID       30     an id to group traces prepared
+                           at the same time
+                           
+                           
+RUN_MACHINE_ID      30     id of sequencing machine
+RUN_MACHINE_TYPE    30     type/model of machine
+RUN_LANE            30     lane or capillary of the trace
+RUN_DATE             -     date of run
+RUN_GROUP_ID        30     an identifier to group traces
+                           run on the same machine
+
+[ End of quote from TraceArchiveRFC ]
+
+More detailed information on the format of these values should be obtained
+from the Trace Archive RFC [2].
+</PRE>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

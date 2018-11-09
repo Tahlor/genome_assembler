@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Output</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_24.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_26.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Output -->
+
+
+<H2><A NAME="SEC26" HREF="scripting_toc.html#SEC26">Text Output and Errors</A></H2>
+<P>
+<A NAME="IDX61"></A>
+<A NAME="IDX62"></A>
+
+</P>
+<P>
+A selection of C and Tcl functions exist for outputting text to either the
+stdout or stderr streams. For entirely text based applications these messages
+simply appear on their usual streams. For graphical applications the messages
+can appear in the main window of the application. The programmer is free to
+use the usual C output routines, such as <CODE>printf</CODE>, but doing so will no
+output to the main window.
+
+</P>
+<P>
+To utilise the text based version of the routines no initialisation is
+required. For the windowing version the following startup code should be used
+from within <CODE>stash</CODE>.
+
+</P>
+
+<PRE>
+tkinit
+pack [frame .output -relief raised -bd 2] -fill both -expand 1
+load_package tk_utils
+tout_create_wins .output
+</PRE>
+
+<P>
+In the above example <CODE>.output</CODE> can be replaced by any window name you
+choose. The <CODE>load_package tk_utils</CODE> command is required to load the
+<VAR>tk_utils_defs</VAR> variable. The <CODE>tout_create_wins</CODE> command does the
+actual work of creating the necessary output and error windows. From then on,
+the text output routines will send data to the windows instead of stdout and
+stderr.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_24.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_26.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

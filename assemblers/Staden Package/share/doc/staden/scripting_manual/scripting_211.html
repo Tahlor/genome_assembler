@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-Help</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_210.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_212.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-Help -->
+
+
+<H2><A NAME="SEC280" HREF="scripting_toc.html#SEC280">Writing the Online Help</A></H2>
+<P>
+<A NAME="IDX956"></A>
+<A NAME="IDX957"></A>
+<A NAME="IDX958"></A>
+<A NAME="IDX959"></A>
+<A NAME="IDX960"></A>
+<A NAME="IDX961"></A>
+<A NAME="IDX962"></A>
+<A NAME="IDX963"></A>
+<A NAME="IDX964"></A>
+<A NAME="IDX965"></A>
+
+</P>
+<P>
+The online help (including this) and printed manual for our programs are
+written using Texinfo.  However due to the usage of pictures (which aren't
+supported by Texinfo) we've made several modifications to the documentation
+system. We have modified makeinfo and texi2html scripts too. Consequently the
+system we use for documentation is not ready for public usage.
+
+</P>
+<P>
+However the final files needed for online usage by the applications can be
+produce by any system capable of creating HTML files and our own <TT>`.index'</TT>
+and <TT>`.topic'</TT> files.
+
+</P>
+<P>
+The principle method of bringing up help from a package is to use the
+<CODE>show_help</CODE> command. For the composition widget we used the following.
+
+</P>
+
+<PRE>
+show_help %composition Composition
+</PRE>
+
+<P>
+The <CODE>%composition</CODE> indicates that the <CODE>show_help</CODE> command should
+read the <TT>`composition.topic'</TT> and <TT>`composition.index'</TT> files. These
+are normally read from the <TT>`$STADENROOT/manual/'</TT> directory, but by
+preceeding the name with a percent sign we can direct the <CODE>show_help</CODE>
+command to search for these files in the composition package directory.
+
+</P>
+<P>
+The last argument of <CODE>show_help</CODE> is the topic to display. In this case it
+is <CODE>Composition</CODE>. If the topic includes spaces then remember to use the
+Tcl quoting mechanism. The topic file is then scanned to find and line with
+this topic as the first 'word'. The second 'word' contains the index name. The
+index name is then looked up in the index file (as the first word) to find the
+URL (the second word). This two stage lookup is designed to protect against
+renaming section headings in the documentation. The index file can be easily
+created by parsing the html files to generate a mapping of heading names to
+URLs. However if the documentation changes we do not wish to need to change
+the Tcl calls to <CODE>show_help</CODE>.
+
+</P>
+
+<PRE>
+<I>composition.topic file:</I>
+
+    {Composition} {Composition}
+
+<I>composition.index file:</I>
+
+    {Composition} composition.html
+</PRE>
+
+<P>
+For the composition package we have very simple topic and index files. The
+index and topic names are identical, so the topic file is trivial. The index
+file contains a single line mapping the <CODE>Composition</CODE> index entry to the
+<CODE>composition.html</CODE> file. If a named tag within the html file is needed
+then the URL would be <CODE>composition.html#tagname</CODE>. The html file itself is
+held within the same directory as the topic and index files.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_210.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_212.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

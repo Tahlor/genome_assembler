@@ -1,0 +1,109 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Assembly-Tips</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_91.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_93.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Assembly-Tips -->
+
+
+<H2><A NAME="SEC161" HREF="gap4_toc.html#SEC161">General Comments and Tips on Assembly</A></H2>
+<P>
+<A NAME="IDX365"></A>
+<A NAME="IDX366"></A>
+
+</P>
+<P>
+The program has several methods for assembly and it may not be obvious
+which is most appropriate for a given problem. The following notes may
+help. They also contain information on methods for checking the
+correctness of an assembly.
+
+</P>
+<P>
+If you have access to an
+external program that can generate the order and approximate positions
+of readings then Directed Assembly can be used. The same is true if the
+experimental method used generates an ordered set of readings
+(see section <A HREF="gap4_90.html#SEC159">Directed Assembly</A>).
+
+</P>
+<P>
+If you have access to a external global assembly program that can
+produce an assembly and write out correct experiment files then Directed
+Assembly can still be used by specifying a "tolerance" of -1 (in the
+experiment file AP lines).
+
+</P>
+<P>
+For routine shotgun assembly of whole data-sets or incremental data-sets
+Normal Shotgun Assembly can be used. Through the idea of "Masked
+assembly" this option also can also restrict the assembly to particular
+regions of the consensus
+(see section <A HREF="gap4_85.html#SEC154">Normal shotgun assembly</A>).
+
+</P>
+<P>
+Note that 
+Normal shotgun assembly (see section <A HREF="gap4_85.html#SEC154">Normal Shotgun Assembly</A>),
+Assemble independently (see section <A HREF="gap4_85.html#SEC154">Assembly Independently</A>),
+Assembly into single stranded regions (see section <A HREF="gap4_87.html#SEC156">Assembly Single</A>),
+Screen only (see section <A HREF="gap4_91.html#SEC160">Screen Only</A>),
+Put all readings in separate contigs (see section <A HREF="gap4_89.html#SEC158">Assembly new</A>),
+may require the parameter maxseq to be set beforehand
+(see section <A HREF="gap4_172.html#SEC260">Set Maxseq</A>). This parameter defines the maximum
+length of consensus that can be created. If you find that the assembly process
+is only entering the first few hundred of a batch of readings, try increasing maxseq.
+
+</P>
+<P>
+If you have a batch of readings that are known to overlap one another,
+but which, due to repeats, may also match other places in the consensus,
+then it can be helpful to use Assemble Independently. This will ensure
+that the batch of readings are compared only to one another, and hence
+will not be assembled into the wrong places
+(see section <A HREF="gap4_86.html#SEC155">Assemble independently</A>).
+
+</P>
+<P>
+Almost all readings are assembled automatically in their first pass
+through the assembly routine. Those that are not can be dealt with in
+two ways. Either they can be put through assembly again with less
+stringent parameters, or entered using the "Put all readings in new
+contigs" routine and then joined to the contig they overlap using Find
+Internal Joins See section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>..
+If it is found that readings are not being
+assembled in their first pass through the assembler, then it is likely
+that the contigs require some editing to improve the consensus. Also it
+may be that poor quality data is being used, possibly by users
+over-interpreting films or traces. In the long term it can be more
+efficient to stop reading early and save time on editing. For those
+using fluorescent sequencing machines the unused data can be
+incorporated after assembly using the Contig Editor and Double Strand.
+
+</P>
+<P>
+An independent and important check on assembly is obtained by
+sequencing both ends of templates. Providing the correct information is
+given in the experiment files gap can check the positions and
+orientations of readings from the same
+template (see section <A HREF="gap5_45.html#SEC82">Find read pairs</A>).
+Any inconsistencies are
+shown both textually and graphically. In addition this information can
+be used to find possible joins between contigs.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_91.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_93.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

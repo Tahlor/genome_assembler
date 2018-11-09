@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Cutoff</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_100.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_102.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Cutoff -->
+
+
+<H4><A NAME="SEC111" HREF="scripting_toc.html#SEC111">Cutoff Adjustments</A></H4>
+<P>
+<A NAME="IDX365"></A>
+<A NAME="IDX366"></A>
+
+</P>
+<P>
+The consensus calculation can be tuned by changing the threshhold at which a
+particular base type is considered to have the 'majority'; a dash (-) is
+displayed when the majority is not sufficiently high. See the staden package
+manual for precise details on this.
+
+</P>
+<P>
+An additiona quality cutoff can be applied to each base. This determines the
+contribution that each base makes to the consensus calculation and also the
+colour used when displaying bases on the screen.  Bases with a quality lower
+than the cutoff are displayed in <CODE>qualColour</CODE> and <CODE>qualForeground</CODE>
+colours, as defined in the configuration Options listed above.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>set_ccutoff ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+<A NAME="IDX367"></A>
+ 
+
+        If <VAR>value</VAR> is specified the consensus cutoff is set to
+        <VAR>value</VAR>.  Otherwise the existing consensus cutoff value is
+        returned without making any changes.
+
+<A NAME="IDX368"></A>
+<DT><VAR><CODE>set_qcutoff ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        If <VAR>value</VAR> is specified the quality cutoff is set to <VAR>value</VAR>.
+        Otherwise the existing quality cutoff value is returned without making
+        any changes.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_100.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_102.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

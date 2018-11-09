@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-check_assembly</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_71.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_73.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-check_assembly -->
+
+
+<H2><A NAME="SEC80" HREF="scripting_toc.html#SEC80">check_assembly</A></H2>
+<P>
+<A NAME="IDX249"></A>
+<A NAME="IDX250"></A>
+<A NAME="IDX251"></A>
+
+</P>
+
+<PRE>
+<CODE>check_assembly</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-cutoff        <I>use_cutoffs:integer(1)</I>?
+?-min_len       <I>length:integer(10)</I>?
+?-win_size      <I>length:integer(29)</I>?
+?-max_dashes    <I>count:integer(3)</I>?
+?-max_pmismatch <I>percentage:float(15.0)</I>?
+</PRE>
+
+<P>
+The command performs the Gap4 Check Assembly command. It compares either the
+used data or the cutoff data against the consensus sequence to find readings
+with poor match. The function is not currently ideally suitable for use in a
+script as it plots directly to the Contig Selector display. The function
+returns no value but will generate a Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to check. Only the contig identifier is
+currently used, although the syntax specifying start and end ranges is valid.
+
+<P>
+<DT><VAR><CODE>-cutoff</CODE> use_cutoffs</VAR>
+<DD>
+Controls whether the cutoff data is to be analysed. If <I>use_cutoffs</I> is a
+non zero value the cutoff data will be aligned and compared against the
+consensus. Otherwise the already aligned used data will be compared against
+the consensus. The default is 1.
+
+<P>
+<DT><VAR><CODE>-min_len</CODE> min_length</VAR>
+<DD>
+<DT><VAR><CODE>-win_size</CODE> window_length</VAR>
+<DD>
+<DT><VAR><CODE>-max_dashes</CODE> count</VAR>
+<DD>
+These parameters are only used when <I>-cutoff</I> is enabled. The criteria for
+determining how much cutoff sequence to align is selected as only the portion
+where no more than <I>count</I> unknown ("-") bases within a region of
+<I>window_length</I> bases. This sequence is then only used if the amount
+selected is at least <I>min_length</I> bases long. The defaults are 10 for
+<CODE>-min_len</CODE>, 29 for <CODE>-win_size</CODE> and 3 for <CODE>-max_dashes</CODE>.
+
+<P>
+<DT><VAR><CODE>-max_pmismatch</CODE> percentage</VAR>
+<DD>
+Only matches with greater than the specified percentage mismatch are displayed
+as problems. The default is 15.0.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_71.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_73.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

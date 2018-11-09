@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-menu_state_set</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_20.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_22.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-menu_state_set -->
+
+
+<H3><A NAME="SEC22" HREF="scripting_toc.html#SEC22">menu_state_set</A></H3>
+<P>
+<A NAME="IDX43"></A>
+
+<PRE>
+<STRONG>menu_state_set</STRONG> <I>menu_spec_variable</I> <I>mask</I> ?<I>pathname</I>?
+</PRE>
+
+<P>
+This command provides a combined interface to the <CODE>menu_state_on</CODE> and
+<CODE>menu_state_off</CODE> functions. The name of the global variable containing
+the menu specifications is passed over in the <I>menu_spec_variable</I> argument.
+This must have been set by using the <CODE>set_menu</CODE> command.
+
+</P>
+<P>
+If the <I>mask</I> value is positive the <CODE>menu_state_on</CODE> command is called
+with this mask, otherwise the <CODE>menu_state_off</CODE> command is called with the
+absolute value of the <I>mask</I>.
+
+</P>
+<P>
+<I>Pathname</I> specifies the root location of the menu widgets as given to a
+previous <CODE>create_menus</CODE> command.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_20.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_22.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

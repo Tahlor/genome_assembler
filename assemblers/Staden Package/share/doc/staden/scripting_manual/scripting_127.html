@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_read_annotation</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_126.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_128.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_read_annotation -->
+
+
+<H3><A NAME="SEC146" HREF="scripting_toc.html#SEC146">io_read_annotation and io_write_annotation</A></H3>
+<P>
+<A NAME="IDX633"></A>
+<A NAME="IDX634"></A>
+<A NAME="IDX635"></A>
+<A NAME="IDX636"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_read_annotation(
+        GapIO  *io,
+        int     N,
+        int    *anno);
+
+int io_write_annotation(
+        GapIO  *io,
+        int     N,
+        int    *anno);
+</PRE>
+
+<P>
+These functions read and write the first annotation number in the linked lists
+referenced by the reading and contig structures.
+For both functions, <VAR>N</VAR> is a reading number if it is above zero or a
+contig number when below zero (in which case it is negated).
+
+</P>
+<P>
+<CODE>io_read_annotation</CODE> reads the <VAR>annotations</VAR> field of reading <VAR>N</VAR>
+or contig <VAR>-N</VAR> and stores this in <VAR>anno</VAR>. It sets <VAR>anno</VAR> to 0
+returns 1 for failure. Otherwise it returns 0.
+
+</P>
+<P>
+<CODE>io_write_annotation</CODE> sets the <VAR>annotations</VAR> field of reading <VAR>N</VAR>
+or contig <VAR>-N</VAR> to be <VAR>*anno</VAR>. Despite the fact that it is a pointer,
+the contents of <VAR>anno</VAR> is not modified. It returns 1 for failure and 0 for
+success (but currently always returns 0).
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_126.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_128.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

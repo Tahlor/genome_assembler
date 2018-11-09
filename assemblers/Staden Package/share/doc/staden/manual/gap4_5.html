@@ -1,0 +1,128 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Gap-Intro-Funtions</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Gap-Intro-Funtions -->
+
+
+<H2><A NAME="SEC5" HREF="gap4_toc.html#SEC5">Summary of Gap4's Functions</A></H2>
+
+<P>
+The tasks which gap4 can perform can be roughly divided into 
+assembly
+(see section <A HREF="gap4_84.html#SEC153">Assembly Introduction</A>), 
+finishing
+(see section <A HREF="gap4_107.html#SEC178">Finishing Experiments</A>),
+and editing
+(see section <A HREF="gap5_11.html#SEC20">Editor introduction</A>).
+But gap4 contains many other functions which can help to complete a
+sequencing project with the minimum amount of effort, and some of these
+are listed below.
+
+</P>
+<P>
+Readings are entered into the gap4 database using the 
+assembly algorithms (see section <A HREF="gap4_84.html#SEC153">Assembly Introduction</A>). 
+In general these algorithms will build the largest 
+contigs they can by finding overlaps between the readings, however some,
+perhaps more doubtful, 
+joins between contigs may be missed, and these can be discovered, checked 
+and made using 
+Find Internal Joins (see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>),
+Find repeats (see section <A HREF="gap5_44.html#SEC81">Find repeats</A>) and
+Join Contigs (see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>).
+Find Internal Joins compares the ends of contigs to see if there are
+possible overlaps and then presents the overlap in the Contig Joining
+Editor, from where the user can view the traces, make edits and join the
+contigs. Find Repeats can be used in a similar way, but unlike Find
+Internal Joins it does not require the matches it finds to continue to
+the ends of contigs.
+
+</P>
+<P>
+Read-pair data can be used to automatically put contigs into the
+correct order
+(see section <A HREF="gap4_95.html#SEC164">Ordering Contigs</A>),
+and information about contigs which share templates can be plotted out
+(see section <A HREF="gap5_45.html#SEC82">Find Read Pairs</A>).
+The relationships of readings and templates, within and between contigs
+can also be shown by the Template Display
+(see section <A HREF="gap4_29.html#SEC36">Template Display</A>)
+which has a wide selection of display modes and uses.
+
+</P>
+<P>
+Problems with the assembly can be revealed by use of 
+Check Assembly (see section <A HREF="gap5_49.html#SEC86">Checking Assemblies</A>),
+Find repeats (see section <A HREF="gap5_44.html#SEC81">Find repeats</A>), and 
+Restriction Enzyme mapping
+(see section <A HREF="gap5_30.html#SEC64">Plotting Restriction Enzymes</A>).
+Check Assembly compares every reading with the segment of the consensus
+it overlaps to see how well it aligns. Those that align poorly are
+plotted out in the Contig Comparator. Find Repeats also presents its
+results in the Contig Comparator, so if used in conjunction with Check
+Assembly, it can show cases where readings have been assembled into
+the wrong copy of a repeated element. At the end of a project 
+the Restriction Enzyme map function can be used 
+to compare the consensus sequence with a restriction digest of
+the target sequence.
+Problems can also be found by use of the various Coverage Plots available in
+the Consistency Display
+(see section <A HREF="gap4_35.html#SEC43">Consistency Display</A>). These
+plots will show regions of low or high reading coverage
+(see section <A HREF="gap4_37.html#SEC45">Reading Coverage Histogram</A>),
+places with data for only one strand
+(see section <A HREF="gap4_39.html#SEC47">Strand Coverage</A>),
+or where there is no read-pair coverage
+(see section <A HREF="gap4_38.html#SEC46">Read-Pair Coverage Histogram</A>).
+Errors can be corrected by 
+Disassemble Readings (see section <A HREF="gap5_52.html#SEC89">Disassembling Readings</A>)
+and Break Contig (see section <A HREF="gap5_51.html#SEC88">Breaking Contigs</A>) which
+can remove readings from contigs or databases or can break contigs.
+
+</P>
+<P>
+The general level of completeness of the consensus sequence
+can be seen diagrammatically using the 
+Quality Plot (see section <A HREF="gap4_33.html#SEC41">Quality Plot</A>), and
+the confidence values for each base in the consensus sequence can be
+plotted (see section <A HREF="gap4_36.html#SEC44">Confidence Values Graph</A>).
+
+</P>
+<P>
+The most powerful component of gap4 is its Contig Editor 
+(see section <A HREF="gap5_11.html#SEC20">Editor introduction</A>).
+which has many
+display modes and search facilities to enable very rapid discovery and
+fixing of base call errors.
+
+</P>
+<P>
+If working on a protein coding sequence, the
+consensus can be analysed using the
+Stop Codon Map (see section <A HREF="gap4_44.html#SEC53">Stop Codon Map</A>), and
+its translation viewed using the Contig Editor
+(see section <A HREF="gap4_63.html#SEC103">Status Line</A>).
+
+</P>
+<P>
+The final result from a sequencing project is a consensus sequence 
+(see section <A HREF="gap5_59.html#SEC97">The Consensus Calculation</A>).
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

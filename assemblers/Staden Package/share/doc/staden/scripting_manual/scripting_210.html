@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-Config</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_209.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_211.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-Config -->
+
+
+<H2><A NAME="SEC279" HREF="scripting_toc.html#SEC279">Creating the Config File</A></H2>
+<P>
+<A NAME="IDX954"></A>
+<A NAME="IDX955"></A>
+
+</P>
+<P>
+The package needs to have a config file - an <TT>`rc'</TT> file. For the
+composition package this will be named <TT>`compositionrc'</TT>. The file contains 
+package dependencies, menu commands, and any user adjustable defaults.
+
+</P>
+<P>
+For the composition package we do not need any dependencies. The package
+depends on gap4 and tk_utils, but both of these are already loaded. If we did
+need to use an additional package, or simply an additional dynamic library,
+then we could add further <CODE>load_package</CODE> commands to the start of the
+file.
+
+</P>
+<P>
+Next we define the menu items. We could add an entirely new menu if the
+package defines many additional commands. In this example we'll simply add an
+extra command onto the standard Gap4 View menu.
+
+</P>
+
+<PRE>
+# We want to add to the View menu a new command named "Test Command".
+# This will call our TestCommand procedure with the contents of the global
+# $io variable (used for accessing the gap database).
+#
+# The command itself should be greyed out when the database is not open or
+# is empty.
+
+add_command     {View.List Composition}       8 10 {Composition \$io}
+</PRE>
+
+<P>
+This specifies that the <CODE>Composition $io</CODE> command is to be added to the
+View menu as 'List Composition'. It will be enabled only when the database is
+open and has data (8) and is disabled during busy modes and when the database
+has no data or is not open (10).
+
+</P>
+<P>
+Next we add any defaults. For the composition package this is simply the
+dialogue values for the composition command.
+
+</P>
+
+<PRE>
+# Now for the default values required by the composition command. Some of
+# these are the sort of things that will be configured by users (eg the
+# default cutoff score in a search routine) by creating their own .rc file
+# (.compositionrc in this case). Others are values used entirely by the
+# package itself. In our case  that's all we've got.
+
+set_defx defs_c_in      WHICH.NAME      "Input contigs from"
+set_defx defs_c_in      WHICH.BUTTONS   {list file {{all contigs}} single}
+set_defx defs_c_in      WHICH.VALUE     3
+set_defx defs_c_in      NAME.NAME       "List or file name"
+set_defx defs_c_in      NAME.BROWSE     "browse"
+set_defx defs_c_in      NAME.VALUE      ""
+
+set_def COMPOSITION.WIN .composition
+set_def COMPOSITION.INFILE $defs_c_in
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_209.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_211.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - GEditor-Search</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_104.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_106.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GEditor-Search -->
+
+
+<H4><A NAME="SEC115" HREF="scripting_toc.html#SEC115">Searching</A></H4>
+<P>
+<A NAME="IDX400"></A>
+<A NAME="IDX401"></A>
+
+</P>
+<P>
+The editor search procedures search for a particular item and move the editing
+cursor and xview position if a search item is found. Each search command takes
+a direction and a search string. <I>Direction</I> can be either '<CODE>forward</CODE>'
+or '<CODE>reverse</CODE>'.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>search</CODE> direction <CODE>name</CODE> value</VAR>
+<DD>
+<A NAME="IDX402"></A>
+ 
+
+        Searches for the reading name starting with <I>value</I>.
+
+<A NAME="IDX403"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>anno ?</CODE>value<CODE>?</CODE></VAR>
+<DD>
+        Searches for the annotation containing a comment matching the
+        <I>value</I> regular expression. Not specifying <I>value</I> will match all
+        annotations.
+
+<A NAME="IDX404"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>sequence</CODE> value</VAR>
+<DD>
+        Searches for the sequence <I>value</I> using a case-insensitive exact
+        match.
+        
+<A NAME="IDX405"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>tag</CODE> value</VAR>
+<DD>
+        Searches for a tag with type <I>value</I>.
+
+<A NAME="IDX406"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>position</CODE> value</VAR>
+<DD>
+        Moves to a specific position. If <I>value</I> is an absolute number (eg
+        '<CODE>30717</CODE>' then the editing cursor is moved to that consensus
+        base.  If <I>value</I> is '<CODE>@</CODE>' followed by a number (eg
+        '<CODE>@100</CODE>') then the editing cursor is moved to that base within
+        the current reading.  If <I>value</I> starts with a plus or minus the
+        editing cursor is moved forwards or backwards by that amount. The
+        <I>direction</I> parameter here has no effect and is included purely for
+        consistency.
+
+<A NAME="IDX407"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>problem</CODE></VAR>
+<DD>
+        Searches for undefined bases or pads.
+
+<A NAME="IDX408"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>quality</CODE></VAR>
+<DD>
+        Searches for bases of poor quality (undefined bases, pads, or single
+        stranded data).
+
+<A NAME="IDX409"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>edit</CODE></VAR>
+<DD>
+        Searches for sequence edits, including confidence value changes.
+
+<A NAME="IDX410"></A>
+<A NAME="IDX411"></A>
+<DT><VAR><CODE>search</CODE> direction <CODE>verifyand</CODE></VAR>
+<DD>
+<DT><VAR><CODE>search</CODE> direction <CODE>verifyor</CODE></VAR>
+<DD>
+        Searches for consensus bases that have a lack of evidence in the
+        original sequences. <CODE>verifyand</CODE> looks for evidence on both
+        strands together. <CODE>verifyor</CODE> looks for evidence on each strand
+        independently and defines a match to be places where either strand has
+        a lack of evidence. In the current implementation of these two
+        searches only the forward direction is supported.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_104.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_106.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

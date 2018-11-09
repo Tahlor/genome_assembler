@@ -1,0 +1,49 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Consistency-2ndHighest</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_39.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_41.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Consistency-2ndHighest -->
+
+
+<H3><A NAME="SEC48" HREF="gap4_toc.html#SEC48">2nd-Highest Confidence</A></H3>
+<P>
+<A NAME="IDX93"></A>
+<A NAME="IDX94"></A>
+
+</P>
+<P>
+The traditional way to compute the consensus confidence values is to
+take into account both the matching and mismatching bases within each
+individual column. If instead we work on the hypothesis that a contig
+may have more than one sequence present then we can instead compute
+five consensus confidence values at every point (four bases plus pad)
+by only totally up the bases that agree and ignoring those that
+mismatch.
+
+</P>
+
+<p>
+<img src="2nd_highest_confidence.png" alt="[picture]">
+
+<P>
+In the case of zero conflicts the highest confidence value will be the
+same as the standard consensus confidence. When a conflict occurs, the
+second highest confidence value can be used as a measure of how strong
+the conflict could be. It is this value is plotted.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_39.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_41.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

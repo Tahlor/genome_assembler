@@ -1,0 +1,120 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from filebrowser.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Browser - FB-DirFiles</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="filebrowser_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="filebrowser_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="filebrowser_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="filebrowser_4.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="filebrowser_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:FB-DirFiles -->
+
+
+<H3><A NAME="SEC3" HREF="filebrowser_toc.html#SEC3">Directories and Files</A></H3>
+<P>
+<A NAME="IDX3"></A>
+<A NAME="IDX4"></A>
+<A NAME="IDX5"></A>
+<A NAME="IDX6"></A>
+
+</P>
+<P>
+The main component of the file browser dialogue consists of two scroll
+lists placed side by side. The left list is labelled "Directory" and
+shows a list of other directories to choose from. The right list is the
+list of files in the currently displayed directory.
+
+</P>
+<P>
+Double clicking with the left mouse button on a directory updates the
+file list. If a filter file browser component is visible then the
+current directory will be displayed as the start of the filter. The
+directory named ".." is the parent directory of the current directory.
+
+</P>
+<P>
+Single clicking on a file name updates the Selection component. Double
+clicking on a file name chooses this file and removes the dialogue. That
+is, it is equivalent to single clicking on the file to update the
+selection followed by pressing the <SAMP>`OK'</SAMP> button. 
+
+</P>
+<P>
+When the dialogue
+allows multiple files to be selected (then titled "Open multiple files")
+holding down the Ctrl key will retain items already chosen.
+
+</P>
+<!-- NODE:FB-Filter -->
+
+
+<H3><A NAME="SEC4" HREF="filebrowser_toc.html#SEC4">Filters</A></H3>
+<P>
+<A NAME="IDX7"></A>
+<A NAME="IDX8"></A>
+
+</P>
+<P>
+The top component of the file browser shown in the introduction
+contained a Filter component. This consists of a text entry window
+containing a string of the form <I>directory_name</I>/<I>file_pattern</I>.
+
+</P>
+<P>
+Some dialogues may not have a Filter component. In these cases the
+<I>file_pattern</I> is taken to be "<CODE>*</CODE>". Hence all files will be listed.
+The <I>directory_name</I> is the directory that the current list of files
+are contained within. The <I>file_pattern</I> is used to specify which of
+the files within this directory should be listed in the file list. The
+pattern uses the same form as UNIX shell wild card matching. To
+summarise this see the following table of simple examples.
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>*</CODE>
+<DD>
+Every filename
+<DT><CODE>xb*</CODE>
+<DD>
+Every filename starting in "xb"
+<DT><CODE>a*b</CODE>
+<DD>
+Every filename starting with "a" and ending with "b"
+<DT><CODE>a?b</CODE>
+<DD>
+Every three letter filename with "a" as the first letter and "b" as the
+last letter.
+<DT><CODE>*scf</CODE>
+<DD>
+Every filename ending in "scf"
+<DT><CODE>*[sS]cf</CODE>
+<DD>
+Every filename ending with "scf" or "Scf".
+<DT><CODE>*{scf,SCF}</CODE>
+<DD>
+Every filename ending with "scf" or "SCF".
+</DL>
+
+<P>
+<A NAME="IDX9"></A>
+<A NAME="IDX10"></A>
+
+</P>
+<P>
+Some file browsers also include a Formats component. This is used to
+select the input or output format of the selected file. Updating the
+format will typically also update the filter.
+
+</P>
+
+<HR>
+<A HREF="filebrowser_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="filebrowser_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="filebrowser_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="filebrowser_4.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="filebrowser_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

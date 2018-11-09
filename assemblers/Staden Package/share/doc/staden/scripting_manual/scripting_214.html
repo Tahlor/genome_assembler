@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Appendix-Composition-Makefile</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_213.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_215.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Appendix-Composition-Makefile -->
+
+
+<H2><A NAME="SEC283" HREF="scripting_toc.html#SEC283">Makefile</A></H2>
+<P>
+<A NAME="IDX967"></A>
+<A NAME="IDX968"></A>
+
+</P>
+
+<PRE>
+
+<PRE>
+# Makefile for the composition 'package' to add to gap4.
+
+LIBS = composition
+PROGS= $(LIBS)
+
+SRCROOT=$(STADENROOT)/src
+include $(SRCROOT)/mk/global.mk
+include $(SRCROOT)/mk/$(MACHINE).mk
+
+INSTALLDIR  = ./install
+
+INCLUDES_E += $(TCL_INC) $(TKUTILS_INC) $(GAP4_INC) $(G_INC)
+CFLAGS     += $(SHLIB_CFLAGS)
+
+TESTBIN     = $(O)
+L           = $(INSTALLDIR)/$(O)
+
+# Objects
+OBJS = \
+        $(TESTBIN)/composition.o
+
+DEPS = \
+        $(G_DEP) \
+        $(TKUTILS_DEP) \
+        $(TCL_DEP)
+
+#
+# Main dependency
+#
+$(LIBS) : $(L)/$(SHLIB_PREFIX)$(LIBS)$(SHLIB_SUFFIX)
+        @
+
+$(L)/$(SHLIB_PREFIX)$(LIBS)$(SHLIB_SUFFIX): $(OBJS)
+        -mkdir $(INSTALLDIR)
+        -mkdir $(INSTALLDIR)/$(O)
+        $(SHLIB_LD) $(SHLIB_LDFLAGS) $@ $(OBJS) $(DEPS)
+
+DEPEND_OBJ = $(OBJS)
+
+install: $(LIBS)
+        cp tclIndex composition.tcl compositionrc composition.topic \
+        composition.index composition.html $(INSTALLDIR)
+
+include dependencies
+</PRE>
+
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_213.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_215.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

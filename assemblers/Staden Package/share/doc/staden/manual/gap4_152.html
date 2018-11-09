@@ -1,0 +1,125 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - GapDB</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_151.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_153.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GapDB -->
+
+
+<H1><A NAME="SEC224" HREF="gap4_toc.html#SEC224">Gap4 Database Files</A></H1>
+
+<UL>
+<LI><A HREF="gap4_153.html#SEC225">Directories</A>
+<LI><A HREF="gap4_154.html#SEC226">Creating a new database</A>
+<LI><A HREF="gap4_155.html#SEC227">Opening an existing database</A>
+<LI><A HREF="gap4_156.html#SEC228">Making backups of databases</A>
+<LI><A HREF="gap4_157.html#SEC229">Reading and Contig Names and Numbers</A>
+</UL>
+
+<P>
+<A NAME="IDX526"></A>
+<A NAME="IDX527"></A>
+<A NAME="IDX528"></A>
+
+</P>
+<P>
+Gap4 stores the data for each sequencing project (e.g. the data 
+for a single cosmid or BAC) in a gap4 assembly database, so at 
+the start of a sequencing project
+the user should employ gap4 to create the database for the project 
+(see section <A HREF="gap4_154.html#SEC226">Opening a New Database</A>).
+New database are created with sufficient index space for around
+8000 readings, but this can be extended if required.
+
+</P>
+<P>
+Gel reading data
+in experiment file format 
+(see section <A HREF="formats_18.html#SEC40">Experiment File Format</A>)
+is entered into the database using the methods
+available from the assembly menu 
+(see section <A HREF="gap4_84.html#SEC153">Entering Readings into the Database (Assembly)</A>).
+
+</P>
+<P>
+To assemble more data for the project or
+to edit or analyse readings already entered the user should open the
+same project database 
+(see section <A HREF="gap4_155.html#SEC227">Opening an Existing Database</A>).
+
+</P>
+<P>
+Although the database files are designed to be free of corruption it is
+advisable to make regular backups 
+(see section <A HREF="gap4_156.html#SEC228">Making Backups of Databases</A>).
+
+</P>
+
+<P>
+Database names can have from one to 240 letters and must not include a
+full stop or spaces. The database itself consists of two files; a file
+of records and an index file. If the database is called <TT>`FRED'</TT> then
+version 0 of the database comprises the pair of files named
+<TT>`FRED.0'</TT> and <TT>`FRED.0.aux'</TT>, the latter of these being the index
+file. The "version" is the character after the full stop in these
+filenames. Versions are not limited to numbers alone, but must be single characters.
+
+</P>
+<P>
+<A NAME="IDX529"></A>
+<A NAME="IDX530"></A>
+<A NAME="IDX531"></A>
+<A NAME="IDX532"></A>
+<A NAME="IDX533"></A>
+<A NAME="IDX534"></A>
+<A NAME="IDX535"></A>
+
+</P>
+<P>
+When a database is opened for writing a <TT>`BUSY'</TT> file is created. For the
+<TT>`FRED'</TT> database this will be named <TT>`FRED.0.BUSY'</TT>. When the
+database is closed the file is deleted. The file is
+used by gap4 to signify that the database is opened for writing and is
+part of its mechanism to prevent more than one person editing a
+database at any time. Before opening a database for writing, 
+gap4 checks to see if the BUSY file for that database exists. If it does
+the database is opened only for reading, if not it creates the file, so
+that any additional attempts to open the database for writing will be
+blocked. A side effect of this mechanism, is that 
+in the event of a program or system crash the BUSY file
+will be left on the disk, even though the database is not being used. In
+this case users must remove the BUSY file 
+(after checking that it really isn't in
+use!) using, on UNIX the <CODE>rm</CODE> command before opening the database. Eg
+"<CODE>rm FRED.0.BUSY</CODE>". On Windows use the Recycle Bin.
+
+</P>
+<P>
+The gap4 database is robustly designed.  Killing the program whilst
+updating the database should never yield an inconsistent state. A
+"roll-back" mechanism is utilised to undo any partially written updates
+and revert to the last consistent database. Hence quitting abnormally
+may result in the loss of some data. Always quit using the Exit command
+within the File menu.
+
+</P>
+<P>
+However it is advised that copies of the database are made
+regularly to safeguard against any software bugs or disk
+corruptions.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_151.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_153.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

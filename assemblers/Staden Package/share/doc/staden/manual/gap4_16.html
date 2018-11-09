@@ -1,0 +1,174 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Intro-Base-Acc</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Intro-Base-Acc -->
+
+
+<H2><A NAME="SEC23" HREF="gap4_toc.html#SEC23">The use of numerical estimates of base calling accuracy</A></H2>
+
+<P>
+<A NAME="IDX21"></A>
+<A NAME="IDX22"></A>
+<A NAME="IDX23"></A>
+<A NAME="IDX24"></A>
+
+</P>
+
+<P>
+In this section we give an overview of our use, when available, of
+base call accuracy estimates or confidence values. We also explain
+the importance of the consensus calculations used by gap4, and their
+role in minimising the work needed to complete sequencing projects.
+
+</P>
+<P>
+We first put forward the idea of using numerical estimates of base
+calling accuracy in our paper describing SCF format 
+<CITE>Dear, S. and Staden, R, 1992. A standard file format for data from DNA
+sequencing instruments. DNA Sequence 3, 107-110</CITE> and then expanded on
+their use for editing and assembly in 
+<CITE>Bonfield,J.K. and Staden,R. The application of numerical estimates
+of base calling accuracy to DNA sequencing projects. Nucleic Acids
+Res. 23, 1406-1410 (1995)</CITE>.
+
+</P>
+<P>
+In Bonfield and Staden (1995), we stated 
+"...the most useful outcome of having a sequence reading determined by a
+computer-controlled instrument would be that each base was assigned a
+numerical estimate of its probability of having been called
+correctly... having numerical estimates of base accuracy is the key to
+further automation of data handling for sequencing projects. ... The
+simple procedure we propose in this paper is a method of using the
+numerical estimates of base calling accuracy to obviate much of the
+tedious and time consuming trace checking currently performed during a
+sequencing project. In summary we propose that the numerical estimates
+of base accuracy should be used by software to decide if conflicts
+between readings require human expertise to help adjudicate. We argue
+that if the accuracy estimates are reasonably reliable then the
+majority of conflicts can be ignored... and so the time taken to check
+and edit a contig will be greatly reduced." 
+
+</P>
+<P>
+This has been achieved by making the consensus calculations 
+(see section <A HREF="gap5_59.html#SEC97">The Consensus Calculation</A>)
+central to gap4, and by providing calculations which 
+make use of base call accuracy estimates to give each
+consensus base a quality measure. 
+The consensus is not stored in
+the gap4 database but is calculated when required by each function
+that needs it, and hence always takes into account the current data. 
+In the Contig Editor the consensus is updated instantly to reflect any
+change made by the user.
+
+</P>
+<P>
+In 1998 the first useable probability values became available through
+the program Phred
+(<I>Ewing, B. and Green, P.
+Base-Calling of Automated Sequencer Traces Using Phred. II. Error
+Probabilities. Genome Research. Vol 8 no 3. 186-194 (1998)</I>).
+Phred produces a confidence value that defines the probability that the
+base call is correct. This was an important step forward and
+these values are widely used and have defined a decibel type
+scale for base call confidence values. Gap4 is currently set to use 
+confidence values defined on this scale.
+
+</P>
+<P>
+The confidence value is given by the formula
+
+<PRE>
+     C_value = -10*log10(probability of error)
+</PRE>
+
+<P>
+A confidence value of 10 corresponds to an error rate of 1/10; 20 to
+1/100; 30 to 1/1000; and so on. Using the main
+gap4 consensus algorithm they enable the production of a consensus
+sequence for which the expected error rate for each base is known.
+
+</P>
+<P>
+As is described elsewhere
+(see section <A HREF="gap5_64.html#SEC102">List Consensus Confidence</A>)
+being able to calculate the confidence for each base in the consensus
+sequence makes it possible to estimate the number of errors it contains,
+and hence the number of errors that will be removed if particular bases
+are checked and, if necessary, edited. 
+For example, if 1000 bases in the consensus had confidence
+20, we would expect those 1000 bases (with an error rate of 1/100) to
+contain 10 errors.
+
+</P>
+<P>
+Another program which produces decibel scale confidence values for ABI
+377 data is ATQA 
+<CITE>Daniel H. Wagner, Associates, at http://www.wagner.com/</CITE>.
+
+</P>
+<P>
+For gap4 the confidence values
+are expected to lie in the range 1 to 99, with 0 and 100
+having special meanings to the program.
+
+</P>
+<P>
+The confidence values are stored
+in SCF or Experiment files and copied into gap4 databases during assembly
+or data entry. 
+
+</P>
+<P>
+The searches provided by the Contig Editor
+(see section <A HREF="gap5_21.html#SEC33">Searching</A>)
+are one of gap4's most important time saving features. The user
+selects a search type, for example to find places where the confidence
+for the consensus falls below a given threshold, and the search
+automatically moves the cursor to the next such position in the
+consensus. The Contig Editor locates the next
+problem by applying the consensus calculation 
+to the contig.
+To edit a contig the user selects
+"Search" repeatedly, knowing that it will 
+only move to places where there is a conflict
+between good data or where the data is poor.
+Note that the program is usually configured to automatically
+display the relevant traces for each position located by the search option.
+
+</P>
+<P>
+The main result is that far fewer disagreements
+between data are brought to the attention of the user and fewer traces
+have to be inspected by eye, and so the whole process is faster.
+Another consequence of the
+strategy is that, as fewer bases need changing to produce the correct
+consensus, most of what appears on the screen will be the original
+base calls. Indeed we have taken this a step further and suggest
+that if a base needs changing because it has a high accuracy estimate,
+and is conflicting with other good data, then rather than change the
+character shown on the screen, the user should lower its accuracy
+value. By so doing more of the original base calls are left unchanged
+and hence are visible to the user. There is a function within the
+contig editor to reset the accuracy value for the current base to
+0. Alternatively the accuracy value for the base that is thought to be
+correct can be set within the contig editor to 100. 
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_15.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_17.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

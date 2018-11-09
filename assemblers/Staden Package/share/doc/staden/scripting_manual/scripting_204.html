@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-Command-Return</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_203.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_205.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-Command-Return -->
+
+
+<H3><A NAME="SEC273" HREF="scripting_toc.html#SEC273">Returning a Result</A></H3>
+<P>
+<A NAME="IDX928"></A>
+<A NAME="IDX929"></A>
+<A NAME="IDX930"></A>
+<A NAME="IDX931"></A>
+<A NAME="IDX932"></A>
+<A NAME="IDX933"></A>
+<A NAME="IDX934"></A>
+<A NAME="IDX935"></A>
+<A NAME="IDX936"></A>
+<A NAME="IDX937"></A>
+<A NAME="IDX938"></A>
+
+</P>
+<P>
+To return a result to Tcl the <VAR>interp-&#62;result</VAR> variable needs to be set.
+This can be done in a variety of ways including setting the result manually or
+using a function such as <CODE>Tcl_SetResult</CODE>, <CODE>Tcl_AppendResult</CODE>,
+<CODE>Tcl_ResetResult</CODE> or <CODE>Tcl_DStringResult</CODE>.
+
+</P>
+<P>
+However the choice of which to use is not as obvious as may first appear. A
+cautionary tale will illustrate some of the easy pitfalls. The following
+points are not made sufficiently clear in John Ousterhouts Tcl and Tk book.
+Additionally the problems are real and have been observed in the development
+of Gap4.
+
+</P>
+<P>
+Consider the case where we have many commands registered with the interpreter.
+One such example could be:
+
+</P>
+
+<PRE>
+int example(ClientData clientData, Tcl_Interp *interp, int argc, char **argv)
+{
+    /* ... */
+
+    sprintf(interp-&#62;result, "%d", some_c_func());
+    return TCL_OK;
+}
+</PRE>
+
+<P>
+Now deep within <CODE>some_c_func</CODE> we have a <CODE>Tcl_Eval</CODE> call which
+happens to end with something like the following:
+
+</P>
+
+<PRE>
+proc some_tcl_func {} {
+    # ...
+
+    set fred jim
+}
+</PRE>
+
+<P>
+Due to the call of <CODE>Tcl_Eval</CODE> in <CODE>some_c_func</CODE> the
+<VAR>interp-&#62;result</VAR> is now set to the last returned result, which is from the
+<CODE>set</CODE> command. In the above example <VAR>interp-&#62;result</VAR> points to 'jim'.
+The <CODE>sprintf</CODE> command in the <CODE>example</CODE> function will overwrite this
+string and hence change the value of the <VAR>fred</VAR> Tcl variable. This causes
+confusion and in some cases may also cause memory corruption where data is
+incorrectly freed.
+
+</P>
+<P>
+The moral of this tale is to be extremely wary. As there is no knowledge of
+what <CODE>some_c_func</CODE> does (and remember it may get updated later) we seem
+to trapped. One possible solution is to rewrite the <CODE>example</CODE> function as
+follows.
+
+</P>
+
+<PRE>
+int example(ClientData clientData, Tcl_Interp *interp, int argc, char **argv)
+{
+    int ret;
+    /* ... */
+
+    ret = some_c_func();
+    Tcl_ResetResult(interp);
+    sprintf(interp-&#62;result, "%d", ret);
+    return TCL_OK;
+}
+</PRE>
+
+<P>
+This leads to another pitfall. If we have '<CODE>sprintf(interp-&#62;result, "%d",
+some_c_func(interp));</CODE>' and <CODE>some_c_func</CODE> calls (possibly indirectly) the
+<CODE>Tcl_ResetResult</CODE> function then we'll be modifying the
+<VAR>interp-&#62;result</VAR> address. This leads to undefined execution of code. (Is
+<CODE>sprintf</CODE> passed the original or final <VAR>interp-&#62;result</VAR> pointer?)
+
+</P>
+<P>
+Therefore I'm inclined to think that we should never use
+<CODE>Tcl_ResetResult</CODE> except immediately before a modification of
+<VAR>interp-&#62;result</VAR> in a separate C statement. My personal recommendation is
+to never write directly to <VAR>interp-&#62;result</VAR>. Additionally never reset
+<VAR>interp-&#62;result</VAR> to a new string unless <VAR>interp-&#62;freeProc</VAR> is also
+updated correctly. In preference, use <CODE>Tcl_SetResult</CODE>.
+
+</P>
+<P>
+The <CODE>Tcl_SetResult</CODE> function should always work fine, however it does not
+take <CODE>printf</CODE> style arguments. We have implemented a
+<CODE>vTcl_SetResult</CODE> which takes an <VAR>interp</VAR> argument and the standard
+<CODE>printf</CODE> format and additional arguments. For instance we would rewrite
+the example function as the following
+
+</P>
+
+<PRE>
+int example(ClientData clientData, Tcl_Interp *interp, int argc, char **argv)
+{
+    int ret;
+    /* ... */
+
+    vTcl_SetResult(interp, "%d", some_c_func());
+    return TCL_OK;
+}
+</PRE>
+
+<P>
+As a final note on <CODE>vTcl_SetResult</CODE>; the current implementation only
+allows strings up to 8192 bytes. This should be easy to remedy if it causes
+problems for other developers.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_203.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_205.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

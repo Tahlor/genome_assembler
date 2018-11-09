@@ -1,0 +1,193 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Assembly-tg_index</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_35.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_37.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Assembly-tg_index -->
+
+
+<H2><A NAME="SEC71" HREF="gap5_toc.html#SEC71">Importing with tg_index</A></H2>
+<P>
+<A NAME="IDX112"></A>
+<A NAME="IDX113"></A>
+
+</P>
+<P>
+To enable efficient editing of data, Gap5 needs its own database
+format for storing sequence assemblies. Formats such as BAM are good
+at random access for read-only viewing, but are not at all amenable to
+actions such as reverse complementing a contig and joining it to
+another.
+
+</P>
+<P>
+Hence we need a tool that can take existing assembly formats and
+convert them to a form suitable for Gap5. The <CODE>tg_index</CODE> program
+performs this task. It is strictly a command line tool, although in
+some specific cases Gap5 has basic GUI dialogues to wrap it up.
+
+</P>
+<P>
+One or more input files may be specified. The general form is:
+
+</P>
+<P>
+<CODE>tg_index</CODE> <I>[options]</I> <CODE>-o</CODE> <I>gap5_db_name</I>
+<I>input_file_name</I> ...
+
+</P>
+<P>
+An example usage is:
+
+</P>
+
+<PRE>
+    tg_index -z 16384 -o test_data.g5 test_data.bam
+    gap5 test_data.g5 &#38;
+</PRE>
+
+<P>
+File formats supported are SAM, BAM, ACE, MAQ (both short and long
+variants), CAF, BAF, Fasta and Fastq. The latter two have no assembly
+and/or alignment information so they are simply loaded as single-read
+contigs instead.  Tg_index typically automatically detects the type of
+file, but in rare cases you may need to explicitly state the input
+file type.
+
+</P>
+<P>
+Tg_index options:
+
+</P>
+<DL COMPACT>
+
+<DT><B>-o <I>filename</I></B>
+<DD>
+Creates a gap5 database named <I>filename</I> and <I>filename</I><CODE>.aux</CODE>
+If not specified the default is "g_db".
+
+<DT><B>-a</B>
+<DD>
+Append to an existing database, instead of creating a new one (which
+is the default action).
+
+<DT><B>-n</B>
+<DD>
+When appending, the default behaviour is to add reads to existing
+contigs if contigs with the appropriate names already exist. This
+option always forces creation of new contigs instead.
+
+<DT><B>-g</B>
+<DD>
+When appending to an existing database, assume that the alignment has
+been performed against an ungapped copy of the consensus exported from
+this database. (This is internally used when performing mapped
+assemblies as they consist of exporting the consensus, running the
+external mapped alignment tool, and then importing the newly generated
+alignments.)
+
+<DT><B>-m</B>
+<DD>
+<DT><B>-M</B>
+<DD>
+Forces the input to be treated as MAQ, both short (-m) and long (-M)
+formats are supported. By default the file format is automatically
+detected.
+
+<DT><B>-A</B>
+<DD>
+Forces the input to be treads as ACE format.
+
+<DT><B>-B</B>
+<DD>
+Forces the input to be treads as BAF format.
+
+<DT><B>-C</B>
+<DD>
+Forces the input to be treads as CAF format.
+
+<DT><B>-b</B>
+<DD>
+<DT><B>-s</B>
+<DD>
+Forces the input to be treads as BAM (-b) or SAM (-s) format. SAM must
+have @SQ headers present. Both need to be sorted by position.
+
+<DT><B>-z <I>bin_size</I></B>
+<DD>
+Modifies the size of the smallest allowable contig bin. Large contigs
+will contain child bins, each of which will contain smaller bins,
+recursing down to a minimum bin size. Sequences are then placed in the
+smallest bin they entirely fit within. The default minimum bin size is
+4096 bytes. For very shallow assemblies increasing this will improve
+performance and the decrease disk space used. Ideally 5,000 to 10,000
+sequences per bin is an approximate figure to aim for.
+
+<DT><B>-u</B>
+<DD>
+Store unmapped reads only (from SAM/BAM only)
+
+<DT><B>-x</B>
+<DD>
+Store SAM/BAM auxillary key:value records too. 
+
+<DT><B>-p</B>
+<DD>
+<DT><B>-P</B>
+<DD>
+Enable (-p) or disable (-P) read-pairing. By default this is
+enabled. The purpose of this is to link sequences from the same
+template to each other such that gap5 knows the insert size and
+read-pairings. Generally this is desirable, but it adds extra time and
+memory to identify the pairs. Hence for single-ended runs the option
+exists to disable attempts at read-pairing.
+
+<DT><B>-f</B>
+<DD>
+Attempt a faster form of read-pairing. In this mode we link the second
+occurrence of a template to the first occurrence, but not vice
+versa. This is sufficient for the template display graphical views to
+work, but will cause other parts of the program to behave
+inconsistently. For example the contig editor "goto..." popup menu
+will sometimes be missing.
+
+<DT><B>-t</B>
+<DD>
+<DT><B>-T</B>
+<DD>
+Controls whether to index (-t) or not (-T) the sequence names. By
+default this is disabled. Adding a sequence name index permits us to
+search by sequence name or to use a sequence name in any dialogue that
+requires a contig identifier. However it consumes more disc space to
+store this index and it can be time consuming to construct it.
+
+<DT><B>-r <I>nseq</I></B>
+<DD>
+Reserves space for at least <I>nseq</I> sequences. This generally isn't
+necessary, but if the total number of records extends above 2 million
+(equivalent to 2 billion sequences, or less if we have lots of
+contigs, bins and annotation records to write) then we run out of
+suitable sequence record numbers. This option preallocates the lower
+record numbers and reserves them solely for sequence records.
+
+<DT><B>-c <I>compression_method</I></B>
+<DD>
+Specifies an alternate compression method. This defaults to <I>zlib</I>,
+but can be set to either <I>none</I> for fastest speed or <I>lzma</I> for
+best compression.
+</DL>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_35.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_37.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

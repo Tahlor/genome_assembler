@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-tcl_reg_get_ops</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_197.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_199.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-tcl_reg_get_ops -->
+
+
+<H3><A NAME="SEC263" HREF="scripting_toc.html#SEC263">reg_get_ops</A></H3>
+<P>
+<A NAME="IDX893"></A>
+
+<PRE>
+reg_get_ops -io handle -id id_number
+
+Returns: a Tcl list of available operations.
+</PRE>
+
+<P>
+A Tcl interface to the REG_GET_OPS notification.
+
+</P>
+<!-- NODE:Reg-tcl_reg_invoke_op -->
+
+
+<H3><A NAME="SEC264" HREF="scripting_toc.html#SEC264">reg_invoke_op</A></H3>
+<P>
+<A NAME="IDX894"></A>
+
+<PRE>
+reg_invoke_op -io handle -id id_number -option option_number
+
+Returns: nothing
+</PRE>
+
+<P>
+A Tcl interface to the REG_INVOKE_OP notification.
+
+</P>
+<!-- NODE:Reg-tcl_reg_notify_update -->
+
+
+<H3><A NAME="SEC265" HREF="scripting_toc.html#SEC265">reg_notify_update</A></H3>
+<P>
+<A NAME="IDX895"></A>
+
+<PRE>
+reg_notify_update -io handle -contig contig_number
+
+Returns: nothing
+</PRE>
+
+<P>
+Sends a REG_LENGTH request to a specific contig, or to all contigs if
+contig_number is specified as 0.
+        
+<!-- NODE:Reg-tcl_reg_notify_highlight -->
+
+
+<H3><A NAME="SEC266" HREF="scripting_toc.html#SEC266">reg_notify_highlight</A></H3>
+<P>
+<A NAME="IDX896"></A>
+
+<PRE>
+reg_notify_highlight -io handle -reading identifier -highlight value
+
+Returns: nothing
+</PRE>
+
+<P>
+Sends a REG_HIGHLIGHT request to a specific contig, indicating that the
+highlight value of the specified <VAR>reading_number</VAR> is <VAR>value</VAR>. The
+reading is specified as an <VAR>identifier</VAR> consisting of the name,
+#reading_number or =contig_number.
+        
+<!-- NODE:Reg-tcl_quit_displays -->
+
+
+<H3><A NAME="SEC267" HREF="scripting_toc.html#SEC267">quit_displays</A></H3>
+<P>
+<A NAME="IDX897"></A>
+
+<PRE>
+quit_displays io_handle function_name
+
+Returns:  0 for success
+         -1 for failure
+</PRE>
+
+<P>
+Sends a REG_QUIT request to all registered data. If an error occurs,
+a database busy message is sent to the error window with the
+"function_name" listed.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_197.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_199.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,323 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Info</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_70.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_72.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Info -->
+
+
+<H2><A NAME="SEC132" HREF="gap4_toc.html#SEC132">The Editor Information Line</A></H2>
+<P>
+<A NAME="IDX310"></A>
+<A NAME="IDX311"></A>
+<A NAME="IDX312"></A>
+<A NAME="IDX313"></A>
+
+</P>
+<P>
+The very bottom line of the editor display is text line used by the editor to
+display pieces of useful information. Currently this gives information on
+individual bases, readings, the contig, and tags, as the mouse is moved over
+the appropriate object. For bases (in both readings and the consensus) this
+information is only displayed when a mouse button is pressed. The left mouse
+button displays with format <CODE>BASE_BRIEF_FORMAT1</CODE> and format
+<CODE>BASE_BRIEF_FORMAT2</CODE> is displayed when pressing 'Enter'. By default the
+only difference between the two is that 'Enter' will display the
+"unpadded position" of a base in the consensus - ie its position in the
+consensus after pads have been removed.  The contents and format of the
+information displayed is completely configurable by adding the relevant
+definitions to your <TT>`.gaprc'</TT> file.  The defaults are as follows.
+
+</P>
+
+<PRE>
+set_def READ_BRIEF_FORMAT  \
+	{%n(#%Rn) Clone:%Cn Vector:%Tv Type:%P;%a Tmpl:%Tc %c}
+
+set_def CONTIG_BRIEF_FORMAT  \
+        {Contig:%n(#%Rn)   Length:%l   %c}
+
+set_def TAG_BRIEF_FORMAT  \
+        {Tag type:%t   Direction:%d   Comment:"%.100c"}
+
+set_def BASE_BRIEF_FORMAT1  \
+	{Base confidence:%c  (Probability %p)   Position %P}
+
+set_def BASE_BRIEF_FORMAT2  \
+	{Base confidence:%c  (Probability %p)   Position %P   \
+          Unpadded position %U}
+
+</PRE>
+
+<P>
+Tag information is shown when the mouse is moved over an annotation. Read
+information is shown when the mouse is moved over the reading name in the
+names section of the display. Contig information is displayed when the mouse
+is moved over the "Consensus" line in the names display. If you wish to leave
+the contig editor window without changing the information line contents as the
+mouse moves over other information press and hold the Shift key whilst moving
+the mouse. This disables the automatic highlighting. The same mechanism also
+works for other windows (such as the template display).
+
+</P>
+<P>
+The general style of the formats is the string to display with particular
+strings substituting % characters. For instance in the reading format %n is
+substituted by the reading name. The general format of a % expansion is:
+
+</P>
+
+<UL>
+<LI>
+
+        A percent sign.
+<LI>
+
+        An optional minus sign to request left alignment of the information.
+        When displaying information in a specific field with where that data
+        does not fill the entire space allowed the information will, by
+        default, be right justified. Adding a minus character here requests
+        left justification.
+<LI>
+
+        An optional minimum field width. This is a decimal number indicating
+        how much space to leave for this information.
+<LI>
+
+        An optional precision for numbers or maximum field width for strings.
+        This is given as a fullstop followed by a decimal number.
+<LI>
+
+        An optional 'R' to specify Raw mode. This changes the meaning of many
+        (but not all) of the expansion requests to give a numercial
+        representation of the data. For example %n is a reading name
+        and %Rn is a reading number.
+<LI>
+
+        Th expansion type itself. This is either one or two letters. See below
+        for full details of their meanings.
+</UL>
+
+<P>
+To programmers this syntax may seem very similar to <CODE>printf</CODE>. This is
+intentional, but do not assume it is the same. Specifically the print syntax
+of <CODE>%#</CODE>, <CODE>%+</CODE> and <CODE>%0</CODE> will not work.
+
+</P>
+
+
+<H3><A NAME="SEC133" HREF="gap4_toc.html#SEC133">Reading Information</A></H3>
+<P>
+<A NAME="IDX314"></A>
+<A NAME="IDX315"></A>
+
+</P>
+<P>
+Example output is <B>Reading:xc04a1.s1(#74)   Length:295(474)   Vector:m13mp18
+Clone:test   Chemistry:primer   Primer:forward universal</B>.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>%%</STRONG>
+<DD>
+        A single % sign
+<DT><STRONG>%n</STRONG>
+<DD>
+        Reading name. Raw mode: number
+<DT><STRONG>%#</STRONG>
+<DD>
+        Reading number
+<DT><STRONG>%t</STRONG>
+<DD>
+        Trace name
+<DT><STRONG>%p</STRONG>
+<DD>
+        Position
+<DT><STRONG>%l</STRONG>
+<DD>
+        Clipped length
+<DT><STRONG>%L</STRONG>
+<DD>
+        Total length
+<DT><STRONG>%s</STRONG>
+<DD>
+        Start of clip
+<DT><STRONG>%e</STRONG>
+<DD>
+        End of clip
+<DT><STRONG>%S</STRONG>
+<DD>
+        Sense (whether complemented) - "+" or "-". Raw mode: 0/1
+<DT><STRONG>%a</STRONG>
+<DD>
+        Chemistry (eg "BigDyeV3"). Raw mode: integer version
+<DT><STRONG>%d</STRONG>
+<DD>
+        Strand - "+" or "-". Raw mode: 0/1
+<DT><STRONG>%P</STRONG>
+<DD>
+        Primer - "unknown", "forward universal", "reverse universal",
+        "forward custom" or "reverse custom".  Raw mode: 0/1/2/3/4
+<DT><STRONG>%Tn</STRONG>
+<DD>
+        Template name. Raw mode: template number
+<DT><STRONG>%T#</STRONG>
+<DD>
+        Template number
+<DT><STRONG>%Tv</STRONG>
+<DD>
+        Template vector. Raw mode: template vector number
+<DT><STRONG>%Ti</STRONG>
+<DD>
+        Template insert size
+<DT><STRONG>%Tc</STRONG>
+<DD>
+        Template consistency (a mix of "DdPSEO?" or "ok"). Raw
+        mode: as a number
+<DT><STRONG>%Cn</STRONG>
+<DD>
+        Clone name. Raw mode: clone number
+<DT><STRONG>%C#</STRONG>
+<DD>
+        Clone number
+<DT><STRONG>%Cv</STRONG>
+<DD>
+        Clone vector. Raw mode: clone vector number
+<DT><STRONG>%t</STRONG>
+<DD>
+        Trace filename.
+<DT><STRONG>%c</STRONG>
+<DD>
+	User defined text, taken from the the first note of type INFO.
+</DL>
+
+
+
+<H3><A NAME="SEC134" HREF="gap4_toc.html#SEC134">Contig Information</A></H3>
+<P>
+<A NAME="IDX316"></A>
+<A NAME="IDX317"></A>
+
+</P>
+<P>
+Example output is <B>Contig:xc04a1.s1(#74)   Length:1316</B>.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>%%</STRONG>
+<DD>
+        Single % sign
+<DT><STRONG>%n</STRONG>
+<DD>
+        Left most reading name. Raw mode: reading number
+<DT><STRONG>%s</STRONG>
+<DD>
+        (As %n)
+<DT><STRONG>%e</STRONG>
+<DD>
+        Right most reading name. Raw mode: reading number
+<DT><STRONG>%#</STRONG>
+<DD>
+        Contig number
+<DT><STRONG>%l</STRONG>
+<DD>
+        Contig length
+<DT><STRONG>%E</STRONG>
+<DD>
+        Expected number of errors (can be slow on large contigs)
+<DT><STRONG>%c</STRONG>
+<DD>
+	User defined text, taken from the the first note of type INFO.
+</DL>
+
+
+
+<H3><A NAME="SEC135" HREF="gap4_toc.html#SEC135">Tag Information</A></H3>
+<P>
+<A NAME="IDX318"></A>
+<A NAME="IDX319"></A>
+
+</P>
+<P>
+Example output is <B>Tag type:OLIG   Direction:-   Comment:"template=xc04a1
+sequence=
+<P> CGATTGCAGAATAAGACG"</B>.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>%%</STRONG>
+<DD>
+        Single % sign
+<DT><STRONG>%p</STRONG>
+<DD>
+        Tag position
+<DT><STRONG>%d</STRONG>
+<DD>
+        Tag direction - "+", "-" or "=". Raw mode: 0/1/2
+<DT><STRONG>%D</STRONG>
+<DD>
+        Tag direction - "-----&#62;", "&#60;-----" or "&#60;----&#62;". Raw mode: 0/1/2
+<DT><STRONG>%t</STRONG>
+<DD>
+        Tag type (always 4 characters)
+<DT><STRONG>%l</STRONG>
+<DD>
+        Tag length
+<DT><STRONG>%#</STRONG>
+<DD>
+        Tag number (0 if unknown)
+<DT><STRONG>%c</STRONG>
+<DD>
+        Tag comment
+</DL>
+
+
+
+<H3><A NAME="SEC136" HREF="gap4_toc.html#SEC136">Base Information</A></H3>
+<P>
+<A NAME="IDX320"></A>
+<A NAME="IDX321"></A>
+<A NAME="IDX322"></A>
+
+</P>
+<P>
+Example output is <B>Base confidence:13  (Probability 0.954020)   Position 3805
+  Unpadded position 3678</B>.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>%%</STRONG>
+<DD>
+        Single % sign
+<DT><STRONG>%c</STRONG>
+<DD>
+        Confidence value (phred style)
+<DT><STRONG>%p</STRONG>
+<DD>
+        Confidence value (as probability)
+<DT><STRONG>%P</STRONG>
+<DD>
+        Padded consensus base position
+<DT><STRONG>%U</STRONG>
+<DD>
+        Unpadded consensus base position
+</DL>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_70.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_72.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

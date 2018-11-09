@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-Command-Reg</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_201.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_203.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-Command-Reg -->
+
+
+<H3><A NAME="SEC271" HREF="scripting_toc.html#SEC271">Registering the Command</A></H3>
+<P>
+<A NAME="IDX904"></A>
+<A NAME="IDX905"></A>
+<A NAME="IDX906"></A>
+<A NAME="IDX907"></A>
+<A NAME="IDX908"></A>
+<A NAME="IDX909"></A>
+<A NAME="IDX910"></A>
+
+</P>
+<P>
+Firstly we need to tell the Tcl interpreter which Tcl command should call
+which C function. We do this using the <CODE>Tcl_CreateCommand</CODE> function. This
+is typically called within the package initialisation routine. For a package
+named <CODE>composition</CODE> this is the <CODE>Composition_Init</CODE> routine.
+
+</P>
+
+<PRE>
+/*
+ * This is called when the library is dynamically linked in with the calling
+ * program. Use it to initialise any tables and to register the necessary
+ * commands.
+ */
+int Composition_Init(Tcl_Interp *interp) {
+    if (NULL == Tcl_CreateCommand(interp,
+                                  "composition",
+                                  tcl_composition,
+                                  (ClientData) NULL,
+                                  (Tcl_CmdDeleteProc *) NULL)) {
+        return TCL_ERROR;
+    }
+
+    return TCL_OK;
+}
+</PRE>
+
+<P>
+In the above example we are saying that the Tcl command '<CODE>composition</CODE>'
+should call the C function '<CODE>tcl_composition</CODE>'. If we wished to call the
+C function with a specific argument that is known at the time of this
+initialisation then we would specify it in the <CODE>ClientData</CODE> argument
+(<CODE>NULL</CODE> in this example). The full information on using
+<CODE>Tcl_CreateCommand</CODE> is available in the Tcl manual pages.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_201.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_203.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

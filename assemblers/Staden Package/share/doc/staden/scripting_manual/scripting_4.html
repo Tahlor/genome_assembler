@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Dynamic</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Dynamic -->
+
+
+<H2><A NAME="SEC5" HREF="scripting_toc.html#SEC5">Runtime Loading of Libraries</A></H2>
+<P>
+<A NAME="IDX12"></A>
+<A NAME="IDX13"></A>
+<A NAME="IDX14"></A>
+
+</P>
+<P>
+The main command for loading dynamic libraries is the <CODE>load_package</CODE>
+command. This adds on a new directory to the Tcl search path and dynamically
+loads up a new C library. For programmers, the procedure of creating these
+libraries is initially fairly complex. Once done, all the user requires is a
+single <CODE>load_package</CODE> command adding to the application <TT>`rc'</TT> file to
+extend the applications functionality.
+
+</P>
+<P>
+The existing Tcl package system allows for the dynamic loading to be delayed
+until a command is needed. However this system does not satisfactorily deal
+with the case where libraries contain only C commands. Hence the package
+system utilised by the Staden Package dynamically links in libraries to the
+running executable at the time of the load_package call. This is typically
+done in the startup phase of programs.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

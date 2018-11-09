@@ -1,0 +1,221 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Exp-Records</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_18.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_20.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Exp-Records -->
+
+
+<H3><A NAME="SEC41" HREF="formats_toc.html#SEC41">Records</A></H3>
+<P>
+<A NAME="IDX40"></A>
+<A NAME="IDX41"></A>
+
+</P>
+<P>
+It is important to note that the assembly program gap4
+(see section <A HREF="gap4_3.html#SEC3">Gap4 introduction</A>)
+ will not operate to
+its full effect if it is not given all the necessary data. For example
+gap4 contains many functions that can analyse the positions and relative
+orientations of readings from the same template in order to check the
+correctness of the assembly and determine the contig order. However if
+the records that name templates and their estimated lengths, and define
+the primers used to obtain readings from them are missing, none of these
+valuable analyses can be performed reliably. One way to ensure that all
+the necessary fields are present is to use the program pregap4
+(see section <A HREF="pregap4_3.html#SEC3">Pregap4 introduction</A>).
+
+</P>
+
+<P>
+In the descriptions below records containing * are those read into the
+database during normal assembly; those with ** are extra items required when
+entering pre-assembled data; those with *** are read from SCF files
+(after the experiment file has been read to obtain the SCF file name);
+(see section <A HREF="formats_3.html#SEC3">SCF introduction</A>)
+the record marked **** is an extra item required for Directed Assembly.
+
+</P>
+<P>
+The order of records in the file is not important. They are listed
+here in alphabetical order with, where possible, reasons for the 
+origin of their names. Several are redundant and no group is likely
+to make use of them all. Obviously others can be added in the future.
+Initially they might be of local use but if their use becomes wider they
+can be added to the standard set. Standard EMBL records such as FT are
+assumed to be included.
+
+</P>
+
+<DL COMPACT>
+
+<DT><VAR>AC</VAR>
+<DD>
+ACcession number
+<DT><VAR>AP</VAR>
+<DD>
+Assembly Position ****
+<DT><VAR>AQ</VAR>
+<DD>
+AVerage Quality for bases 100..200
+<DT><VAR>AV</VAR>
+<DD>
+Accuracy values for externally assembled data **, ***
+<DT><VAR>BC</VAR>
+<DD>
+Base Calling software
+<DT><VAR>CC</VAR>
+<DD>
+Comment line
+<DT><VAR>CF</VAR>
+<DD>
+Cloning vector sequence File
+<DT><VAR>CH</VAR>
+<DD>
+Special CHemistry
+<DT><VAR>CL</VAR>
+<DD>
+Cloning vector Left end
+<DT><VAR>CN</VAR>
+<DD>
+Clone Name
+<DT><VAR>CR</VAR>
+<DD>
+Cloning vector Right end
+<DT><VAR>CS</VAR>
+<DD>
+Cloning vector Sequence present in sequence *
+<DT><VAR>CV</VAR>
+<DD>
+Cloning Vector type
+<DT><VAR>DR</VAR>
+<DD>
+Direction of Read
+<DT><VAR>DT</VAR>
+<DD>
+DaTe of experiment
+<DT><VAR>EN</VAR>
+<DD>
+Entry Name
+<DT><VAR>EX</VAR>
+<DD>
+EXperimental notes
+<DT><VAR>FM</VAR>
+<DD>
+sequencing vector Fragmentation Method
+<DT><VAR>ID</VAR>
+<DD>
+IDentifier *
+<DT><VAR>LE</VAR>
+<DD>
+was Library Entry, but now identifies a well in a micro titre dish
+<DT><VAR>LI</VAR>
+<DD>
+was subclone LIbrary but now identifies a micro titre dish
+<DT><VAR>LN</VAR>
+<DD>
+Local format trace file Name *
+<DT><VAR>LT</VAR>
+<DD>
+Local format trace file Type *
+<DT><VAR>MC</VAR>
+<DD>
+MaChine on which experiment ran
+<DT><VAR>MN</VAR>
+<DD>
+Machine generated trace file Name
+<DT><VAR>MT</VAR>
+<DD>
+Machine generated trace file Type
+<DT><VAR>ON</VAR>
+<DD>
+Original base Numbers (positions) **
+<DT><VAR>OP</VAR>
+<DD>
+OPerator
+<DT><VAR>PC</VAR>
+<DD>
+Position in Contig **
+<DT><VAR>PD</VAR>
+<DD>
+Primer data (the sequence of a primer)
+<DT><VAR>PN</VAR>
+<DD>
+Primer Name
+<DT><VAR>PR</VAR>
+<DD>
+PRimer type *
+<DT><VAR>PS</VAR>
+<DD>
+Processing Status
+<DT><VAR>QL</VAR>
+<DD>
+poor Quality sequence present at Left (5') end *
+<DT><VAR>QR</VAR>
+<DD>
+poor Quality sequence present at Right (3') end *
+<DT><VAR>RS</VAR>
+<DD>
+Reference Sequence for numbering and mutation detection
+<DT><VAR>SC</VAR>
+<DD>
+Sequencing vector Cloning site
+<DT><VAR>SE</VAR>
+<DD>
+SEnse (ie whether complemented) **
+<DT><VAR>SF</VAR>
+<DD>
+Sequencing vector sequence File
+<DT><VAR>SI</VAR>
+<DD>
+Sequencing vector Insertion length *
+<DT><VAR>SL</VAR>
+<DD>
+Sequencing vector sequence present at Left (5') end *
+<DT><VAR>SP</VAR>
+<DD>
+Sequencing vector Primer site (relative to cloning site)
+<DT><VAR>SQ</VAR>
+<DD>
+SeQuence *
+<DT><VAR>SR</VAR>
+<DD>
+Sequencing vector sequence present at Right (3') end *
+<DT><VAR>SS</VAR>
+<DD>
+Screening Sequence
+<DT><VAR>ST</VAR>
+<DD>
+STrands *
+<DT><VAR>SV</VAR>
+<DD>
+Sequencing Vector type *
+<DT><VAR>TG</VAR>
+<DD>
+Gel reading Tag *
+<DT><VAR>TC</VAR>
+<DD>
+Contig Tag *
+<DT><VAR>TN</VAR>
+<DD>
+Template Name *
+<DT><VAR>WT</VAR>
+<DD>
+Wild type trace
+</DL>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_18.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_20.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

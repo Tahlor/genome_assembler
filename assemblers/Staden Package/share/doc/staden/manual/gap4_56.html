@@ -1,0 +1,253 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Modes</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_55.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_57.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Modes -->
+
+
+<H3><A NAME="SEC67" HREF="gap4_toc.html#SEC67">Editing Modes</A></H3>
+<P>
+<A NAME="IDX128"></A>
+<A NAME="IDX129"></A>
+<A NAME="IDX130"></A>
+
+</P>
+<P>
+The editor operates in two main edit modes - Replace and Insert.  Replace
+allows a character to be replaced by another and Insert allows characters
+to be inserted.  Replace is the default mode. The mode can be changed by
+pressing the button marked "Insert". The checkbox next to the button will
+be set (filled by a dark colour) when the mode is "Insert". By default
+these modes are restricted until the Edit Modes menu
+is used to change them.
+
+</P>
+<P>
+The Edit Modes menu consists of a series of checkboxes and radiobuttons which
+control which editing options are enabled.
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Allow insert in read</STRONG>
+<DD>
+<A NAME="IDX131"></A>
+ <A NAME="IDX132"></A>
+ <A NAME="IDX133"></A>
+ <A NAME="IDX134"></A>
+ 
+<DT><STRONG>Allow del in read</STRONG>
+<DD>
+        Insertion or deletion within a reading will shift the sequence 
+characters and so will alter their alignment.
+This is acceptable provided action is
+        taken to correct it, by either shifting the reading or by
+        inserting or deleting a base elsewhere. This functionality is
+        disabled by default and is enabled by checking the appropriate
+        checkbox.  Note though that insertion and deletion of bases within
+        the cutoff data will shuffle the cutoff data rather than the
+        reading itself and hence will not break alignment. However this
+        operation still requires the edit mode to be enabled.
+
+<P>
+<A NAME="IDX135"></A>
+<A NAME="IDX136"></A>
+<A NAME="IDX137"></A>
+<A NAME="IDX138"></A>
+<A NAME="IDX139"></A>
+<A NAME="IDX140"></A>
+<DT><STRONG>Allow insert any in cons</STRONG>
+<DD>
+<DT><STRONG>Allow del dash in cons</STRONG>
+<DD>
+<DT><STRONG>Allow del any in cons</STRONG>
+<DD>
+        These operations control the editing actions allowed for the
+        consensus. By default the only operations allowed are insertion
+        and deletion of pads. This is because consensus editing is
+        typically used for removing columns of pads where a single reading
+        has been overcalled.
+
+        When editing at 100% disagreement, such cases will be dashes in the
+        consensus, so "Allow del dash in cons" enables deletion of both
+        dash and pads.
+
+        "Allow insert any in cons" and "Allow del any in cons" allow any
+        column to be completely inserted or deleted.  These are potentially
+        dangerous actions, however the "Evidence for edits" options can
+        detect such edits.
+
+<P>
+<A NAME="IDX141"></A>
+<A NAME="IDX142"></A>
+<DT><STRONG>Allow replace in cons</STRONG>
+<DD>
+        Replacing a base in the consensus changes all of the bases in
+        readings at this point that disagree with the typed base. The
+        actual edit performed depends upon the "Edit by base type" and
+        "Edit by confidence" radiobuttons.
+        
+<P>
+<A NAME="IDX143"></A>
+<A NAME="IDX144"></A>
+<DT><STRONG>Allow reading shift</STRONG>
+<DD>
+        To shift a reading place the cursor at the far left end of the
+        reading. If cutoffs is set this should be the far left end of
+        the cutoff data. Then typing space or delete will move the reading
+        right or left respectively by one position. This operation is
+        disabled by default.
+
+<P>
+<A NAME="IDX145"></A>
+<A NAME="IDX146"></A>
+<DT><STRONG>Allow transpose any</STRONG>
+<DD>
+        Moving pads within a reading is often a useful procedure, and the
+        'movement' of a pad alone will not break the alignment.
+        For this reason it is possible to move pads around without using
+        insert/delete. Placing the cursor over a pad in a reading and
+        pressing "Control l" or "Control r" will move that pad left or
+        right one base. This operation will not work with the cursor on the
+        consensus. Pad movement is allowed at all times. The selection of
+        "Allow transpose any" allows any pair of adjacent characters to be
+swapped.
+<P>
+<A NAME="IDX147"></A>
+<A NAME="IDX148"></A>
+<DT><STRONG>Allow uppercase</STRONG>
+<DD>
+        A rule often followed by users is to type all modifications in
+        lower case which makes edited characters easier to see.
+        The "Allow uppercase" checkbox controls whether this rule is
+        enforced or not. By default "Allow uppercase" is checked which
+        means that the rule is not enforced.
+
+<P>
+<A NAME="IDX149"></A>
+<A NAME="IDX150"></A>
+<A NAME="IDX151"></A>
+<A NAME="IDX152"></A>
+<DT><STRONG>Edit by base type</STRONG>
+<DD>
+<DT><STRONG>Edit by confidence</STRONG>
+<DD>
+These two selections are radiobuttons, and are mutually exclusive.
+They control the outcome when replacing bases
+in the consensus. When editing the consensus 
+"Edit by base type" changes bases that disagree
+with the consensus to the base typed. "Edit by confidence"
+changes the confidence of disagreeing bases to 0. If the consensus
+quality cutoff value is greater than or equal to zero, characters with an
+accuracy value of 0 are ignored in the consensus calculation. That is, although
+the characters still appear in the reading, they are not used to calculate the
+consensus. In this way it is possible to maintain the original base calls
+for visual inspection, but get the correct consensus.
+
+Note that "Edit by confidence" will not work if the
+"frequency" consensus algorithm is in use (see section <A HREF="gap5_59.html#SEC97">The Consensus Calculation</A>). If you wish to use "Edit by
+confidence", make sure that the quality cutoff is zero or higher, otherwise
+the frequency consensus algorithm will be used instead.
+
+<P>
+<A NAME="IDX153"></A>
+<A NAME="IDX154"></A>
+<DT><STRONG>Allow F12 for fast tag deletion</STRONG>
+<DD>
+        F12 and Shift-F12 may be use to delete the tag underneath the
+        contig editor cursor (F12) or the mouse pointer
+        (Shift-F12). Initially these are disabled to prevent accidental
+        deletions.
+
+<P>
+<A NAME="IDX155"></A>
+<A NAME="IDX156"></A>
+<A NAME="IDX157"></A>
+<A NAME="IDX158"></A>
+<DT><STRONG>Mode set 1</STRONG>
+<DD>
+<DT><STRONG>Mode set 2</STRONG>
+<DD>
+To make it easier to set the editing modes two user definable
+sets are available. By default these are as follows.
+
+Mode set 1:
+
+<UL>
+<LI>Disallow insert in read
+
+<LI>Disallow del in read
+
+<LI>Disallow insert any in cons
+
+<LI>Allow del dash in cons
+
+<LI>Disallow del any in cons
+
+<LI>Disallow replace in cons
+
+<LI>Disallow reading shift
+
+<LI>Disallow transpose any
+
+<LI>Allow uppercase
+
+<LI>Edit by confidence
+
+</UL>
+
+Mode set 2:
+
+<UL>
+<LI>Allow insert in read
+
+<LI>Allow del in read
+
+<LI>Allow insert any in cons
+
+<LI>Allow del dash in cons
+
+<LI>Disallow del any in cons
+
+<LI>Allow replace in cons
+
+<LI>Allow reading shift
+
+<LI>Disallow transpose any
+
+<LI>Allow uppercase
+
+<LI>Edit by confidence
+
+</UL>
+
+Currently the only way of redefining these sets is to add lines to
+your <TT>`.gaprc'</TT> file.
+See section <A HREF="gap4_170.html#SEC258">Options Menu</A>.
+The method is to define a list of 1s and 0s to specify the states
+in the order listed above. The two default sets are defined as
+follows.
+
+
+<PRE>
+set_def CONTIG_EDITOR.SE_SET.1    {0 0 0 1 0 0 0 0 1 1}
+set_def CONTIG_EDITOR.SE_SET.2    {1 1 1 1 0 1 1 0 1 1}
+</PRE>
+
+</DL>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_55.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_57.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

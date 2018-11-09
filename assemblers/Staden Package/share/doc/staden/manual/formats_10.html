@@ -1,0 +1,81 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Scf-Notes</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_9.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_11.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Scf-Notes -->
+
+
+<H3><A NAME="SEC10" HREF="formats_toc.html#SEC10">Notes</A></H3>
+
+<!-- NODE:Scf-Notes-Ordering -->
+
+
+<H4><A NAME="SEC11" HREF="formats_toc.html#SEC11">Byte ordering and integer representation.</A></H4>
+<P>
+<A NAME="IDX30"></A>
+<A NAME="IDX31"></A>
+
+</P>
+<P>
+"Forward byte and reverse bit" ordering will be used for all integer
+values. This is the same as used in the MC680x0 and SPARC processors,
+but the reverse of the byte ordering used on the Intel 80x86 processors.
+
+</P>
+
+<PRE>
+         Off+0   Off+1  
+       +-------+-------+  
+uint_2 |  MSB  |  LSB  |  
+       +-------+-------+  
+
+         Off+0   Off+1   Off+2   Off+3
+       +-------+-------+-------+-------+
+uint_4 |  MSB  |  ...  |  ...  |  LSB  | 
+       +-------+-------+-------+-------+
+</PRE>
+
+<P>
+To read integers on systems with any byte order use something like this:
+
+</P>
+
+<PRE>
+uint_2 read_uint_2(FILE *fp)
+{
+    unsigned char buf[sizeof(uint_2)];
+
+    fread(buf, sizeof(buf), 1, fp);
+    return (uint_2)
+        (((uint_2)buf[1]) +
+         ((uint_2)buf[0]&#60;&#60;8));
+}
+
+uint_4 read_uint_4(FILE *fp)
+{
+    unsigned char buf[sizeof(uint_4)];
+
+    fread(buf, sizeof(buf), 1, fp);
+    return (uint_4)
+        (((unsigned uint_4)buf[3]) +
+         ((unsigned uint_4)buf[2]&#60;&#60;8) +
+         ((unsigned uint_4)buf[1]&#60;&#60;16) +
+         ((unsigned uint_4)buf[0]&#60;&#60;24));
+}
+</PRE>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_9.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_11.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,243 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-assemble_misc</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_68.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_70.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-assemble_misc -->
+
+
+<H2><A NAME="SEC77" HREF="scripting_toc.html#SEC77">assemble... commands</A></H2>
+<P>
+<A NAME="IDX217"></A>
+<A NAME="IDX218"></A>
+<A NAME="IDX219"></A>
+
+</P>
+
+<PRE>
+<CODE>assemble_independent</CODE>
+ -io             <I>io_handle:integer</I>
+ -files          <I>filenames:strings</I>
+?-output_mode    <I>mode:integer(1)</I>?
+?-min_match      <I>length:integer(20)</I>?
+?-min_overlap    <I>length:integer(0)</I>?
+?-max_pads       <I>count:integer(25)</I>?
+?-max_pmismatch  <I>percentage:float(5.0)</I>?
+?-joins          <I>to_join:integer(1)</I>?
+?-enter_failures <I>to_enter:integer(0)</I>?
+?-tag_types      <I>types:strings()</I>?
+</PRE>
+
+<P>
+<A NAME="IDX220"></A>
+<A NAME="IDX221"></A>
+<A NAME="IDX222"></A>
+
+<PRE>
+<CODE>assemble_new_contigs</CODE>
+ -io             <I>io_handle:integer</I>
+ -files          <I>filenames:strings</I>
+</PRE>
+
+<P>
+<A NAME="IDX223"></A>
+<A NAME="IDX224"></A>
+<A NAME="IDX225"></A>
+
+<PRE>
+<CODE>assemble_one_contig</CODE>
+ -io             <I>io_handle:integer</I>
+ -files          <I>filenames:strings</I>
+</PRE>
+
+<P>
+<A NAME="IDX226"></A>
+<A NAME="IDX227"></A>
+<A NAME="IDX228"></A>
+
+<PRE>
+<CODE>assemble_screen</CODE>
+ -io             <I>io_handle:integer</I>
+ -files          <I>filenames:strings</I>
+?-output_mode    <I>mode:integer(1)</I>?
+?-min_match      <I>length:integer(20)</I>?
+?-min_overlap    <I>length:integer(0)</I>?
+?-max_pads       <I>count:integer(25)</I>?
+?-max_pmismatch  <I>percentage:float(5.0)</I>?
+?-save_align     <I>to_save:integer(0)</I>?
+?-win_size       <I>length:integer(0)</I>?
+?-max_dashes     <I>count:integer(0)</I>?
+?-tag_types      <I>types:strings()</I>?
+</PRE>
+
+<P>
+<A NAME="IDX229"></A>
+<A NAME="IDX230"></A>
+<A NAME="IDX231"></A>
+
+<PRE>
+<CODE>assemble_shotgun</CODE>
+ -io             <I>io_handle:integer</I>
+ -files          <I>filenames:strings</I>
+?-output_mode    <I>mode:integer(1)</I>?
+?-min_match      <I>length:integer(20)</I>?
+?-min_overlap    <I>length:integer(0)</I>?
+?-max_pads       <I>count:integer(25)</I>?
+?-max_pmismatch  <I>percentage:float(5.0)</I>?
+?-joins          <I>to_join:integer(1)</I>?
+?-enter_failures <I>to_enter:integer(0)</I>?
+?-tag_types      <I>types:strings()</I>?
+</PRE>
+
+<P>
+<A NAME="IDX232"></A>
+<A NAME="IDX233"></A>
+<A NAME="IDX234"></A>
+
+<PRE>
+<CODE>assemble_single_strand</CODE>
+ -io             <I>io_handle:integer</I>
+ -files          <I>filenames:strings</I>
+?-output_mode    <I>mode:integer(1)</I>?
+?-min_match      <I>length:integer(20)</I>?
+?-min_overlap    <I>length:integer(0)</I>?
+?-max_pads       <I>count:integer(25)</I>?
+?-max_pmismatch  <I>percentage:float(5.0)</I>?
+?-joins          <I>to_join:integer(1)</I>?
+?-enter_failures <I>to_enter:integer(0)</I>?
+</PRE>
+
+<P>
+The assembly functions listed above all take similar arguments, but perform
+varying modes of assembly. The complete list of available arguments is listed
+below, but note that not all arguments apply to each function. Most functions
+return the failed readings and error codes with newlines between each
+reading and error code pair. <CODE>Screen_only</CODE> may return (when
+<I>save_align</I> is enabled) the reading alignment scores in a similar fashion.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-files</CODE> filenames</VAR>
+<DD>
+<I>Filenames</I> must contain a Tcl list of files to assemble.
+
+<P>
+<A NAME="IDX235"></A>
+<DT><VAR><CODE>-output_mode</CODE> mode</VAR>
+<DD>
+Specifies the level of verbosity of the output. The default is 0. <I>Mode</I>
+must be one of the following.
+
+<DL COMPACT>
+
+<DT>1
+<DD>
+Display no alignments
+<DT>2
+<DD>
+Display only passed alignments
+<DT>3
+<DD>
+Display all alignments
+<DT>4
+<DD>
+Display only failed alignments
+</DL>
+
+<P>
+<A NAME="IDX236"></A>
+<DT><VAR><CODE>-min_match</CODE> length</VAR>
+<DD>
+Specifies the minimum length of exact match used during the hashing stage of
+assembly. The minium allowed value for this is 8. The default is 20.
+
+<P>
+<A NAME="IDX237"></A>
+<DT><VAR><CODE>-min_overlap</CODE> length</VAR>
+<DD>
+This specifies the minimum length of an overlap between a reading and
+a consensus sequence. The default is 0 which implies no overlap is too short.
+Note that <CODE>-min_match</CODE> is still used so all overlaps have to be larger
+than that parameter in order to be found.
+
+<P>
+<A NAME="IDX238"></A>
+<DT><VAR><CODE>-max_pads</CODE> count</VAR>
+<DD>
+After alignments the number of pads required in each of the two sequences
+(consensus and reading, or two consensuses) must be less than or equal to
+<I>count</I>. The default is 25.
+
+<P>
+<A NAME="IDX239"></A>
+<DT><VAR><CODE>-max_pmismatch</CODE> percentage</VAR>
+<DD>
+After alignments the percentage of bases that do not match must be less than
+or equal to <I>percentage</I>. This is a floating point value. The default is
+5.0.
+
+<P>
+<DT><VAR><CODE>-save_align</CODE> to_save</VAR>
+<DD>
+This controls whether alignments scores are to be returned as the function
+result. A non zero value returns the scores. The default is 0.
+
+<P>
+<A NAME="IDX240"></A>
+<A NAME="IDX241"></A>
+<DT><VAR><CODE>-win_size</CODE> length</VAR>
+<DD>
+<DT><VAR><CODE>-max_dashes</CODE> count</VAR>
+<DD>
+During a screen-only assembly the cutoff data may be searched for matches. The
+criteria for determining how much cutoff sequence to align is selected as
+the portion where no more than <I>count</I> unknown ("-") bases within a region
+of <I>length</I> bases. Setting both these parameters to 0 means that cutoff data
+will be not searched. These are the defaults.
+
+<P>
+<DT><VAR><CODE>-joins</CODE> to_join</VAR>
+<DD>
+This controls whether joins between contigs should be allowed. A non zero
+value allows joins. The default is 1.
+
+<P>
+<DT><VAR><CODE>-enter_failures</CODE> to_enter</VAR>
+<DD>
+This controls whether failed readings should still be entered into the
+databases as single reading contigs. A non zero value will enable this. The
+default is 0.
+
+<P>
+<A NAME="IDX242"></A>
+<DT><VAR><CODE>-tag_types</CODE> types</VAR>
+<DD>
+The assembly algorithm can mask segments of sequence covered by tags so
+that they are not used during hashing step and hence do not initiate
+overlaps.  If <I>types</I> is a non blank list of tag types then masking will
+be applied to hide sequence covered by tags of these types from the initial
+hashing stage of assembly. The default is a blank list, which means no
+masking will be performed.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_68.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_70.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

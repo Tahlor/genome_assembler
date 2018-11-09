@@ -1,0 +1,85 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Exp-Unsupported</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_21.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_23.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Exp-Unsupported -->
+
+
+<H3><A NAME="SEC44" HREF="formats_toc.html#SEC44">Unsupported Additions (From LaDeana Hillier)</A></H3>
+<P>
+<A NAME="IDX96"></A>
+
+</P>
+<P>
+Note the clash on AP which the io-lib uses for "Assembly Position"
+and PC which is used for "Position in Contig"
+
+</P>
+
+<PRE>
+People to track:
+TP Template Prep person
+QP Sequencer Person, person who does sequencing reactions
+LP Loader Person
+AL Agar Loader person (when they run a gel to determine SI)
+AP Agar reaction Person   (person who does the reactions to prepare
+                        the template to be run on a gel)
+
+Gel specific information
+GN Gel Name
+GL Gel Lane
+GP Gel Pourer person
+AG Agar Gel name (sizing gel)
+AF Agar Fate, no insert, no bands, what else?
+
+Name of library
+LB  Library name, probably not critical to assembly even though
+        one CN may have more than one library.  But it is important
+        to the cDNA project although I could put it in CN, since
+        the cDNA project wouldn't have a CN otherwise.
+
+Processing information
+PC processing comment (a comment about PS)
+        I think PS should just hold pass or fail and PC should hold
+        additional information about why things passed.
+
+Trace information gotten from the ABI machine (from info field in SCF file):
+TS   Trace Spacing
+DP   Dye Primer
+HA   signal strengtH A
+HG   signal strengtH G
+HC   signal strengtH C
+HT   signal strengtH T
+
+(NOTE rs suggested these should go in a single record
+
+PP   Primer Position  (position at which primer peak was detected in trace)
+
+Stuff most likely specific to the cDNA project:
+MP Map Position 
+TT Tissue Type of the library
+EI dbEst Id  
+ER dbEst Remark
+OE Other Est's which are similar
+NI NCBI ID
+GB GenBank accession number
+SD Submission Date (when est was submitted)
+UD Update date (when it was last updated)
+CI citation associated with this cDNA
+</PRE>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_21.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_23.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,133 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-Reference Traces</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_33.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_35.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-Reference Traces -->
+
+
+<H2><A NAME="SEC40" HREF="pregap4_toc.html#SEC40">Reference Traces and Reference Sequences</A></H2>
+<P>
+<A NAME="IDX61"></A>
+<A NAME="IDX62"></A>
+<A NAME="IDX63"></A>
+<A NAME="IDX64"></A>
+<A NAME="IDX65"></A>
+<A NAME="IDX66"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module specifies the reference traces and reference sequences used by the
+two mutation detection modules (
+see section <A HREF="pregap4_35.html#SEC41">Trace Difference</A> and 
+see section <A HREF="pregap4_36.html#SEC42">Mutation Scanner</A>). The left and right clip points for each trace can also be specified.
+
+A reference trace should be as similar as possible to the ones being
+compared against. It should be prepared by sequencing the wild type from
+the same primer and using the same chemistry as the readings being
+screened. One good way to produce a reference trace is to run the wild type
+sequence on the gel along with the other samples.
+
+If the input files have been sequenced from both strands, reference traces from
+each strand may be specified here.
+
+NOTE:
+In order for pregap4 to choose the appropriate wild type trace it needs to know
+the strand for each input sequence. This is specified by the PR record in the
+experiment file which is typically generated using a naming convention
+(see section <A HREF="pregap4_47.html#SEC53">Pregap4 Naming Schemes</A>) If pregap4 cannot
+determine the strand, or if only one reference trace is specified, then each
+input sequence will be compared against the +ve strand reference trace.
+
+The reference data supplied in this module, when entered with gap4 shotgun assembly,
+will add REFS and REFT notes (see section <A HREF="gap4_148.html#SEC220">Notes</A>) to the gap4 database.
+A reference sequence is used to number bases in the Contig Editor
+(see section <A HREF="gap4_67.html#SEC128">Reference sequences and traces</A>) and in reporting
+the positions of mutations (see section <A HREF="gap4_62.html#SEC97">Report Mutations</A>.)
+
+<P>
+
+<DT><STRONG>Option: Reference Trace (+ve strand)</STRONG>
+<DD>
+<DT><STRONG>Option: Reference Trace (-ve strand)</STRONG>
+<DD>
+These are the filenames of the chromatogram for the reference trace on each
+strand. These may be in any allowable trace format (ZTR, SCF, ABI, CTF or ALF).
+The filenames are entered into the experiment file as <CODE>WT</CODE> records by the
+"Augment Database" phase of pregap4, so this module must also be enabled.
+
+<DT><STRONG>Option: Clip left</STRONG>
+<DD>
+<DT><STRONG>Option: Clip right</STRONG>
+<DD>
+These values determine which region of the reference trace (in bases) is used
+for mutation detection. This can be used to exclude poor quality regions, or
+restrict the range over which mutation detection occurs. Restricting the range
+will also speed up the algorithms. If you specify -1 for any value, mutscan will
+use the clip point QL/QR records within the reference trace experiment file
+(provided they exist). If they don't exist, then the entire reference trace is used.
+i.e. No clipping occurs. If the range specified is too small, the mutation detection
+algorithms may report an error, since there must be a useful overlap between
+the sequences in order to process them.
+
+<DT><STRONG>Option: Reference Sequence</STRONG>
+<DD>
+This specifies the reference sequence, which is typically an annotated EMBL
+entry. This field is optional.
+
+<DT><STRONG>Option: Start base number</STRONG>
+<DD>
+If a reference sequence was specified this indicates which base number it will
+start counting from within Gap4's contig editor. It also defines the positions
+of mutations, as output by the Report mutations function of gap4
+See section <A HREF="gap4_62.html#SEC97">Report Mutations</A>..
+
+<DT><STRONG>Option: Circular</STRONG>
+<DD>
+<DT><STRONG>Option: Sequence length</STRONG>
+<DD>
+If the reference sequence is defined to be circular then the length needs to
+be known too. When the base number reaches the sequence length the next base
+in the sequence will be renumbered to base 1. This may be useful if the
+circular reference sequence needs to be chopped to form a linear sequence at a
+different position than the standard numbering. (For example this is typical
+when sequencing the mitochondrial variable loop, which by standard conventions
+contains base number 1.)
+
+<P>
+</DL>
+
+<P>
+Note that it is possible (though no longer recommended)
+to use gap4 to produce a consensus trace. This requires
+using pregap4 twice. Firstly process the sequences through pregap4 with all
+the appropriate options except with the mutation detection modules
+disabled. Assemble these sequences into gap4. Within gap4, for each contig
+start up the Contig Editor and select Save Consensus Trace from the command
+menu (available only in expert mode). This will produce a trace which is the
+average of the traces in that contig. Then delete the gap4 database and
+reprocess the sequences using Pregap4, this time using mutation detection to
+compare against the consensus trace. Best results are usually obtained by
+first deleting pads in the consensus sequence. You should inspect the
+resulting consensus trace carefully to ensure there are no discontinuities
+introduced as a result of the pad deletions.
+
+</P>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_33.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_35.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

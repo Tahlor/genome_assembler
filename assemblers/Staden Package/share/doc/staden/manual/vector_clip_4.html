@@ -1,0 +1,140 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from vector_clip.htmlinfo on 25 April 2016 -->
+
+<TITLE>Vector clipping - Vector_Clip-Algorithms</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Vector_Clip-Algorithms -->
+
+
+<H2><A NAME="SEC4" HREF="vector_clip_toc.html#SEC4">Algorithms</A></H2>
+
+<P>
+For locating sequencing vector the program uses a dynamic programming
+algorithm and two percentage matches as cutoffs - one for the 5' end
+and another for the 3' end. Both searches include the poor quality data
+at the ends of the readings. 
+This mode writes the SL and SR records in experiment files.
+
+</P>
+<P>
+If the users selects the vector_primer file mode of vector_clip the
+program searches the 5' end of each reading for
+all of the forward and reverse sequence segments in the primer_vector
+file and notes
+the one which matches best. If this one is above the user defined
+threshold the 5' clip point will be set and the
+experiment file will be modified accordingly.
+The program then compares the rest of the reading with all of the
+segments in the vector_primer file to find the one which matches best.
+Again if the user defined threshold is reached the experiment file will
+be modified accordingly. If the best 5' and 3' matches come from different
+records in the vector_primer file a warning message is printed.
+If a 5' match is found it will be used to determine the file name of the
+vector sequence and the primer type. If only a 3' match is found it will
+be used to determine these items. If no match is found no PR record is
+written.
+This mode writes the SL, SR SF and PR records in experiment files. If the
+vector file name is missing from the vector_primer file record, the SF
+record is not written.
+
+</P>
+<P>
+For locating cloning vector two algorithms are available, both of which
+use hashing. 
+The original method needs a "Word
+length" (word_length), the "Number of diagonals to combine" (num_diags) and
+a "Cutoff score" (diagonal_score).  The word length is the minimum number
+of consecutive bases that will count as a match. The algorithm treats the
+problem like a dot matrix comparison. First it finds all matches of length
+word_length; then it locates the diagonal with the highest normalised
+score.  Then it adds the scores for the adjacent diagonals (num_diags).  If
+the combined score is at least "diagonal_score" the experiment file is
+updated to indicate the location of the vector sequence.  The score
+represents the proportion of a diagonal that contains matching words, and
+the maximum score for any diagonal is 1.0.
+This mode writes the CS records in experiment files.
+If the whole reading is cloning vector
+this mode writes a PS record containing "all cloning vector",
+
+</P>
+
+<P>
+A newer method also hashes using "word_length" consecutive bases and 
+accumulates the hits for each diagonal, but instead of using a score cutoff,
+it decides if there is
+a match using a probability threshold "P" supplied by the user. 
+For each length of diagonal vector_clip calculates "E" the score that would be
+expected for probability "P", and then compares it with the observed score "O".
+If for any diagonal O&#62;E a match is declared and expressed as 100(O-E)/E. This
+new method is an attempt to overcome the problem that even though the
+scores on diagonals are normalised to lie in the range 0.0 to 1.0 the scores
+are still a function of the diagonal length. The probability P hence allows
+vector_clip to use a different cutoff score for each length of diagonal.
+Tests have shown that the probability based algorithm is very much more 
+reliable than the older one. 
+By default the program still
+uses the old algorithm, the probability based one being switched on by
+the user specifying a probability cutoff (option -P). It is strongly
+recommended that the probability based method is used and for our data we have
+found that a probability of 0.0000000000001 or 1.0e-13 gives good results.
+This mode writes the CS records in experiment files.
+If the whole reading is cloning vector
+this mode writes a PS record containing "all cloning vector".
+
+</P>
+<P>
+The search for "vector rearrangements" uses a simple algorithm which
+looks only for a match of length "minimum match".  All readings that
+contain a string of characters of at least this length that match a segment
+of the vector sequence exactly will be classed as "vector rearrangements"
+and their names will not be written to the file of passed file names.
+This mode writes a PS record containing "vector rearrangement" in experiment 
+files if a match is found. Note that if a reading's Experiment file does not
+contain an SF (i.e. name of sequencing vector file) the vector rearrangements
+search does not fail the reading: its name goes into the pass file.
+
+</P>
+<P>
+The search for transposon generated data is somewhat complicated, as is 
+explained below.
+
+</P>
+<P>
+The transposon ends must be stored in a vector_primer file.
+The vector sequence file should be named in the SF record.
+Numerous scores are required.
+       
+First get the transposon end sequences from the vector_primer file.
+Then get the vector sequence and rotate it around the cloning site.
+Next use dynamic programming to search with both of the transposon end 
+sequences and note the highest score. If above score L reset SL.
+Now use hashing to 
+search the 20 bases after SL for a match to any part of the 
+vector, on both strands.
+If the best match is above score l, use dynamic programming to 
+try to align from the match point to the cloning site. If the 
+alignment score is &#62;= score R reset SL.
+If the previous two steps fail to find a match to vector we assume that
+the transposon inserted into the target DNA and not the vector.
+The reading could hence run into vector at its 3' end so we
+use dynamic programming to
+search from SL onwards, for the sequences either side of the
+cloning site (we do not know the orientation of the transposon
+(and hence the read) relative to the vector).
+If we find a match &#62;= score R reset SR.
+
+</P>
+<HR>
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

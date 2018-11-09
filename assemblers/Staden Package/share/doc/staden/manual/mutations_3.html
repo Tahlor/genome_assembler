@@ -1,0 +1,72 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from mutations.htmlinfo on 25 April 2016 -->
+
+<TITLE>Mutation Detection - Mutation-Detection-Methods</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Mutation-Detection-Methods -->
+
+
+<H3><A NAME="SEC3" HREF="mutations_toc.html#SEC3">Mutation Detection Programs</A></H3>
+
+<P>
+The software handles batches of trace data from sequencing instruments. It 
+performs
+all processing except base calling (although it can employ third party
+programs such as phred for this step). This includes file format
+conversions, quality clipping, scanning for mutations and heterozygotes,
+multiple sequence alignment, easy visual inspection of traces, production of
+reports, and the accumulation and storage of readings and traces. The
+software also handles the initialisation/configuration of standard
+reference files and databases for any project. The two main programs are
+pregap4 and gap4. Pregap4 (see section <A HREF="pregap4_3.html#SEC3">Pregap4 introduction</A>)
+prepares data for gap4 by automatically using
+a variety of smaller programs, including those used to search for mutations:
+mutscan (see section <A HREF="pregap4_36.html#SEC42">Mutation Scanner</A>.
+Gap4 (see section <A HREF="gap4_3.html#SEC3">Gap4 introduction</A>)
+is used to store the aligned readings, to view the sequences and
+traces, and to produce a report listing the observed mutations.
+
+</P>
+<P>
+Any number of sequences can be processed in a  single run, and for each
+individual  patient sample the  operation  is generally
+performed in two steps. First, via pregap4, the traces are aligned and
+compared to the reference traces and any possible mutations or heterozygous
+bases marked.  Secondly,  the data  is transfered into a gap4 database
+from  where  users can   visually check   the differences between  the
+reference and patient traces.
+
+</P>
+<P>
+The program mutscan (see section <A HREF="pregap4_36.html#SEC42">Mutation Scanner</A>) can automatically compare patient and reference traces to
+find point mutations and heterozygous bases.  Users can set parameters
+which control the sensistivity of the algorithms (and hence which
+determine the ratio of false negative and positive results). Mutscan
+adds tags of type "mutation" or "heterozygous" to the patient
+files. The tags contain the numerical scores achieved at the site of
+the reported base changes, and they can be viewed via the gap4
+editor(see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>).  Mutscan is
+normally run via pregap4 (see section <A HREF="pregap4_3.html#SEC3">Pregap4 introduction</A>).
+
+</P>
+<P>
+The description of the programs given below is presented in reverse order of
+use i.e. gap4 then pregap4, but first we give further details about the use
+of reference data.
+
+</P>
+
+<HR>
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_2.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_4.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

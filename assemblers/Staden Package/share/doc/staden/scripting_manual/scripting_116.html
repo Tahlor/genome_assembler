@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-GAnnotations</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_115.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_117.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-GAnnotations -->
+
+
+<H3><A NAME="SEC133" HREF="scripting_toc.html#SEC133">The GAnnotations Structure</A></H3>
+
+
+<PRE>
+typedef struct { 
+    GCardinal type;
+    GCardinal position; 
+    GCardinal length; 
+    GCardinal strand; 
+    GCardinal annotation; 
+    GCardinal next;
+} GAnnotations; 
+</PRE>
+
+<P>
+The annotations (aka tags) are comments attached to segments of readings or
+contig consensus sequences. The location is stored as position and length in
+the original orientation, so complementing a reading does not require edits to
+the annotations. Consensus sequences are always considered uncomplemented and
+so complementing a contig does require complementing of annotations that are
+stored on the consensus.
+
+</P>
+<P>
+The annotations can be linked together to form linked lists, sorted on
+ascending position. The <VAR>GReadings</VAR> and <VAR>GContigs</VAR> structures contain
+an annotations field which holds the annotation number of the left most
+(original orientation) annotation.
+
+</P>
+<P>
+Unused annotations are kept in an unsorted linked list referenced by the
+<VAR>free_annotatons</VAR> field of the <VAR>GDatabase</VAR> structure.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>type</VAR>
+<DD>
+<A NAME="IDX529"></A>
+ 
+	The type of the annotation; a 4 byte integer which the user sees as a
+	4 character string.
+
+<A NAME="IDX530"></A>
+<DT><VAR>position</VAR>
+<DD>
+	The position of the left end of the annotation.
+
+<A NAME="IDX531"></A>
+<DT><VAR>length</VAR>
+<DD>
+	The length of the annotation.
+
+<A NAME="IDX532"></A>
+<DT><VAR>strand</VAR>
+<DD>
+	The annotation strand. 0 for positive, 1 for negative, and 2 for both.
+
+<A NAME="IDX533"></A>
+<DT><VAR>annotation</VAR>
+<DD>
+	The record number of the text string containing a comment for the
+	annotation. Zero means no comment.
+
+<A NAME="IDX534"></A>
+<DT><VAR>next</VAR>
+<DD>
+	The annotation number of the next annotation in the linked list, or
+	zero if this is the last in this linked list.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_115.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_117.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

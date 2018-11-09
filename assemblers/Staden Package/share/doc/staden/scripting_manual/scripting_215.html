@@ -1,0 +1,186 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Appendix-Composition-composition.c</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_214.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_216.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Appendix-Composition-composition.c -->
+
+
+<H2><A NAME="SEC284" HREF="scripting_toc.html#SEC284">composition.c</A></H2>
+<P>
+<A NAME="IDX969"></A>
+
+</P>
+
+<PRE>
+
+<PRE>
+#include &#60;tcl.h&#62;
+
+#include "IO.h"                 /* GapIO */
+#include "gap_globals.h"        /* consensus/quality cutoffs */
+#include "qual.h"               /* calc_consensus() */
+#include "cli_arg.h"            /* cli_arg, parse_args() */
+
+static int tcl_composition(ClientData clientData, Tcl_Interp *interp,
+                           int argc, char **argv);
+static char *doit(GapIO *io, int contig, int lreg, int rreg);
+
+/*
+ * This is called when the library is dynamically linked in with the calling
+ * program. Use it to initialise any tables and to register the necessary
+ * commands.
+ */
+int Composition_Init(Tcl_Interp *interp) {
+    if (NULL == Tcl_CreateCommand(interp,
+                                  "composition",
+                                  tcl_composition,
+                                  (ClientData) NULL,
+                                  (Tcl_CmdDeleteProc *) NULL))
+        return TCL_ERROR;
+
+    return TCL_OK;
+}
+
+/*
+ * The composition itself.
+ * This is called with an argc and argv in much the same way that main()
+ * is. We can either parse them ourselves, our use the gap parse_args
+ * utility routine.
+ */
+static int tcl_composition(ClientData clientData, Tcl_Interp *interp,
+                           int argc, char **argv) {
+    int num_contigs;
+    contig_list_t *contigs = NULL;
+    char *result;
+    int i;
+    Tcl_DString dstr;
+
+    /* A structure definition to store the arguments in */
+    typedef struct {
+        GapIO *io;
+        char *ident;
+    } test_args;
+
+    /* The mapping of the argument strings to our structure above */
+    test_args args;
+    cli_args a[] = {
+        {"-io",       ARG_IO,  1, NULL, offsetof(test_args, io)},
+        {"-contigs",  ARG_STR, 1, NULL, offsetof(test_args, ident)},
+        {NULL,      0,       0, NULL, 0}
+    };
+
+    /*
+     * First things first, add a header to the output window. This shows the
+     * date and function name.
+     */
+    vfuncheader("test command");
+
+    /* Parse the arguments */
+    if (-1 == gap_parse_args(a, &#38;args, argc, argv)) {
+        return TCL_ERROR;
+    }
+
+    active_list_contigs(args.io, args.ident, &#38;num_contigs, &#38;contigs);
+    if (num_contigs == 0) {
+        xfree(contigs);
+        return TCL_OK;
+    }
+
+    /* Do the actual work */
+    Tcl_DStringInit(&#38;dstr);
+    for (i = 0; i &#60; num_contigs; i++) {
+        result = doit(args.io, contigs[i].contig, contigs[i].start,
+                      contigs[i].end);
+        if (NULL == result) {
+            xfree(contigs);
+            return TCL_ERROR;
+        }
+
+        Tcl_DStringAppendElement(&#38;dstr, result);
+    }
+
+    Tcl_DStringResult(interp, &#38;dstr);
+
+    xfree(contigs);
+    return TCL_OK;
+}
+
+/*
+ * Our main work horse. For something to do as an example we'll output
+ * the sequence composition of the contig in the given range.
+ */
+static char *doit(GapIO *io, int contig, int lreg, int rreg) {
+    static char result[1024];
+    char *consensus;
+    int i, n[5];
+
+    if (0 == lreg &#38;&#38; 0 == rreg) {
+        rreg = io_clength(io, contig);
+        lreg = 1;
+    }
+
+    if (NULL == (consensus = (char *)xmalloc(rreg-lreg+1)))
+        return NULL;
+
+    if (-1 == calc_consensus(contig, lreg, rreg, CON_SUM,
+                             consensus, NULL, NULL, NULL,
+                             consensus_cutoff, quality_cutoff,
+                             database_info, (void *)io)) {
+        xfree(consensus);
+        return NULL;
+    }
+
+    n[0] = n[1] = n[2] = n[3] = n[4] = 0;
+    for (i = 0; i &#60;= rreg - lreg; i++) {
+        switch(consensus[i]) {
+        case 'a':
+        case 'A':
+            n[0]++;
+            break;
+
+        case 'c':
+        case 'C':
+            n[1]++;
+            break;
+
+        case 'g':
+        case 'G':
+            n[2]++;
+            break;
+
+        case 't':
+        case 'T':
+            n[3]++;
+            break;
+
+        default:
+            n[4]++;
+        }
+    }
+
+    /* Return the information */
+    sprintf(result, "%d %d %d %d %d %d",
+            rreg - lreg + 1, n[0], n[1], n[2], n[3], n[4]);
+
+    xfree(consensus);
+
+    return result;
+}
+</PRE>
+
+</PRE>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_214.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_216.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

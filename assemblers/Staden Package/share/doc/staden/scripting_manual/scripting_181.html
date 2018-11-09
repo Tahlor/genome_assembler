@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-REG_COMPLEMENT</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_180.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_182.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-REG_COMPLEMENT -->
+
+
+<H3><A NAME="SEC206" HREF="scripting_toc.html#SEC206">REG_COMPLEMENT</A></H3>
+<P>
+<A NAME="IDX805"></A>
+<A NAME="IDX806"></A>
+
+<PRE>
+reg_complement      complement;
+
+typedef struct {
+    int    job;        /* REG_COMPLEMENT */
+} reg_complement;
+</PRE>
+
+<P>
+Notifies that the contig has just been complemented. It may prove easy to
+simply handle this and other data change notifications all the same.  However
+in slow functions, it may be quicker to handle complement functions
+separately, as it can be quicker to complement result data than to recalculate
+it.
+
+</P>
+<!-- NODE:Reg-REG_PARAMS -->
+
+
+<H3><A NAME="SEC207" HREF="scripting_toc.html#SEC207">REG_PARAMS</A></H3>
+<P>
+<A NAME="IDX807"></A>
+<A NAME="IDX808"></A>
+
+<PRE>
+reg_params          params;
+
+typedef struct {
+    int    job;        /* REG_PARAMS */
+    char  *string;     /* Pointer to params string */
+} reg_params;
+</PRE>
+
+<P>
+Sent as a request for obtaining the parameters used for generating this
+data. Note that in contrast to <CODE>REG_NAME</CODE> the <VAR>string</VAR>  field here is
+not already allocated. The function acknowledging this request should point
+<VAR>string</VAR> to a static buffer of it's own. Currently, although implemented,
+this request is not used.
+
+</P>
+<!-- NODE:Reg-REG_QUIT -->
+
+
+<H3><A NAME="SEC208" HREF="scripting_toc.html#SEC208">REG_QUIT</A></H3>
+<P>
+<A NAME="IDX809"></A>
+<A NAME="IDX810"></A>
+
+<PRE>
+reg_quit            quit;
+
+typedef struct {
+    int    job;        /* REG_GET_LOCK */
+    int    lock;       /* Sends lock requirements, returns locks allowed */
+} reg_quit;
+</PRE>
+
+<P>
+Sent to request a shutdown for this display. This is not like
+<CODE>REG_DELETE</CODE>n, whereby the data is told that it must shutdown as the
+contig has already been deleted. If a display cannot shutdown (for example it
+is a contig editor that has unsaved data) the lock should be cleared and the
+calling function should check this to determine whether the shutdown
+succeeded. This is handled internally by the <CODE>tcl_quit_displays</CODE>
+function.
+
+</P>
+<!-- NODE:Reg-REG_CURSOR_NOTIFY -->
+
+
+<H3><A NAME="SEC209" HREF="scripting_toc.html#SEC209">REG_CURSOR_NOTIFY</A></H3>
+<P>
+<A NAME="IDX811"></A>
+<A NAME="IDX812"></A>
+
+<PRE>
+reg_cursor_notify   cursor_notify;
+
+typedef struct {
+    int    job;           /* REG_CURSOR_NOTIFY */
+    int    editor_id;     /* Which contig editor */
+    int    seq;           /* Gel reading number (0 == consensus) */
+    int    pos;           /* Position in gel reading */
+} reg_cursor_notify;
+</PRE>
+
+<P>
+Sent by the contig editor at startup and whenever the editing cursor moves.
+The <VAR>editor_id</VAR> is a number unique to each contig editor, so it is
+possible to distinguish different editors. <VAR>seq</VAR> is either 0 for the
+consensus, or a gel reading number. <VAR>pos</VAR> is the offset within that gel
+reading, rather than the total offset into the consensus (unless <VAR>seq</VAR> is
+0).
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_180.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_182.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

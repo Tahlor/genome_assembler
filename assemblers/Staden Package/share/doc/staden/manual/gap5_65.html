@@ -1,0 +1,113 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Con-ListBaseConf</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_64.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_66.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-ListBaseConf -->
+
+
+<H2><A NAME="SEC103" HREF="gap5_toc.html#SEC103">List Base Confidence</A></H2>
+<P>
+<A NAME="IDX180"></A>
+<A NAME="IDX181"></A>
+
+</P>
+<P>
+The various base-callers may produce a confidence value for each base
+call. Previous sections describe how this may be used to produce a
+consensus sequence along with a consensus confidence.
+
+</P>
+<P>
+This function tabulates the frequency of each base confidence value
+along with a count of how many times is matches or mismatches the
+consensus. Given that the standard scale for confidence values follows
+the <I>-10log10(probability of error)</I> formula we can determine what
+the expected frequency of mismatches should be for any particular
+confidence value. By comparing this with our observed frequencies we
+then have a powerful summary of the amount of misassembled data.
+
+</P>
+
+<PRE>
+Total bases considered : 45270
+Problem score          : 1.337130
+
+Conf.        Match        Mismatch           Expected      Over-
+value         freq            freq               freq  representation
+---------------------------------------------------------------------
+  0              0               0               0.00      0.00
+  1              0               0               0.00      0.00
+  2              0               0               0.00      0.00
+  3              0               0               0.00      0.00
+  4             37              22              23.49      0.94
+  5              0               0               0.00      0.00
+  6             89              46              33.91      1.36
+  7            119              26              28.93      0.90
+  8            256              37              46.44      0.80
+  9            368              30              50.11      0.60
+ 10            669              31              70.00      0.44
+...
+</PRE>
+
+<P>
+In the above example we see that there are 59 sequence bases with
+confidence 4, of which 37 match the consensus and 22 do not. If we
+work on the assumption that the consensus is correct then we would
+expect approximately 40% of these to be incorrect, but we have
+measured 37% to be incorrect (22/59) giving 0.94 fraction of the
+expected amount.
+
+</P>
+<P>
+For a more problematic assembly, we may see a section of output like
+this:
+
+</P>
+
+<PRE>
+Total bases considered : 1617511
+Problem score          : 311.591358
+
+Conf.        Match        Mismatch           Expected      Over-
+value         freq            freq               freq  representation
+---------------------------------------------------------------------
+...
+ 20          13432             384             138.16      2.78
+ 21          23384             851             192.51      4.42
+ 22          18763             487             121.46      4.01
+ 23          13712             300              70.23      4.27
+ 24          21182             363              85.77      4.23
+ 25          20466             218              65.41      3.33
+ 26           9752             123              24.80      4.96
+ 27          23071             282              46.60      6.05
+ 28          13816             158              22.15      7.13
+ 29          27514             166              34.85      4.76
+ 30          15664             140              15.80      8.86
+...
+</PRE>
+
+<P>
+We can see here that the observed mismatch frequency is greatly more
+than the expected number. This indicates the number of misassemblies
+(or SNPs in the case of mixed samples) within this project and is
+reflected by the combined "Problem score". This score is simply the
+sum of the final column (or 1 over that column for values less than
+1.0).
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_64.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_66.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

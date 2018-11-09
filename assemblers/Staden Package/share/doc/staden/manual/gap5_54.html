@@ -1,0 +1,83 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Tidying up alignments</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_53.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_55.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Tidying up alignments -->
+
+
+<H1><A NAME="SEC91" HREF="gap5_toc.html#SEC91">Tidying up alignments</A></H1>
+
+<UL>
+<LI><A HREF="gap5_54.html#SEC92">Shuffle Pads</A>
+<LI><A HREF="gap5_55.html#SEC93">Remove Pad Columns</A>
+<LI><A HREF="gap5_56.html#SEC94">Remove Contig Holes</A>
+</UL>
+
+<P>
+The Shuffle Pads, Remove pad Columns and Remove Contig Holes all share a
+common goal of tidying up sequence alignments, possibly also breaking
+the contig up.
+
+</P>
+<!-- NODE:Shuffle Pads -->
+
+
+<H2><A NAME="SEC92" HREF="gap5_toc.html#SEC92">Shuffle Pads</A></H2>
+<P>
+<A NAME="IDX160"></A>
+
+</P>
+<P>
+This function is an implementation of the Anson and Myers "ReAligner"
+algorithm. It analyses multiple sequence alignments to detect locations
+where the number of disagreements to the consensus could be reduced by
+realignment of sequences, possibly also correcting the consensus in the
+process. For example:
+
+</P>
+
+<PRE>
+Sequence1:    GATTCAAAGAC
+Sequence2:      TTCAA*GACGG
+Sequence3:       TC*AAGAC
+Consensus:    GATTCAAAGACGGATC
+</PRE>
+
+<P>
+The consensus contains <CODE>AAA</CODE>, but the corrected alignment only has
+two As:
+
+</P>
+
+<PRE>
+Sequence1:    GATTCAAAGAC
+Sequence2:      TTC*AAGACGG
+Sequence3:       TC*AAGAC
+Consensus:    GATTC*AAGACGGATC
+</PRE>
+
+<p>
+<img src="gap5_shuffle_pads.png" alt="[picture]">
+
+<P>
+For speed we acknowledge that the new alignment will only deviate
+slightly from the old one and so a narrow "band size" is used. This
+paramater may be adjusted if required, but at the expense of speed.
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_53.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_55.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

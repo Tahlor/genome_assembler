@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - open_db</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_131.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_133.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:open_db -->
+
+
+<H3><A NAME="SEC151" HREF="scripting_toc.html#SEC151">open_db</A></H3>
+<P>
+<A NAME="IDX649"></A>
+<A NAME="IDX650"></A>
+<A NAME="IDX651"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+GapIO *open_db(
+        char   *project,
+        char   *version,
+        int    *status,
+        int     create,
+        int     read_only);
+</PRE>
+
+<P>
+<CODE>open_db</CODE> opens existing databases or creates new databases.
+The database to be opened or created has unix filenames of
+"<VAR>project</VAR>.<VAR>version</VAR>" and "<VAR>project</VAR>.<VAR>version</VAR>.aux".
+
+</P>
+<P>
+The <VAR>create</VAR> variable should be 0 or 1. A value of 1 indicates that this
+database is to be created. This will not be done if there is a file named
+"<VAR>project</VAR>.<VAR>version</VAR>.BUSY", in which case the <VAR>status</VAR> variable is
+set to contain <CODE>IO_READ_ONLY</CODE>.
+
+</P>
+<P>
+The <VAR>read_only</VAR> variable should be 0 or 1. A value of 1 indicates that the
+database should be opened in read only mode, otherwise read/write access is
+desired. If the database is busy then the database may still be opened in read
+only mode instead. In this case the <VAR>status</VAR> variable is set to contain
+<CODE>IO_READ_ONLY</CODE>.
+
+</P>
+<P>
+The <VAR>GapIO</VAR> structure is then initialised and returned. A successful
+return will leave <VAR>status</VAR> containing 0. For failure, the function returns
+NULL.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_131.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_133.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

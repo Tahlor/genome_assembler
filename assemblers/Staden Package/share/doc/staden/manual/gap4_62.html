@@ -1,0 +1,314 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Commands</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_61.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_63.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Commands -->
+
+
+<H2><A NAME="SEC88" HREF="gap4_toc.html#SEC88">The Commands Menu</A></H2>
+<P>
+<A NAME="IDX197"></A>
+<A NAME="IDX198"></A>
+
+</P>
+<P>
+The Commands menu is available by either pressing the Commands button
+at the top of the contig editor window, or by pressing the Control key
+and the left mouse button, or by pressing right mouse button with the
+mouse cursor anywhere within the sequence display section of the
+contig editor. A menu will be revealed containing the following
+options (which are described in greater detail below).
+
+</P>
+
+<UL>
+<LI><A HREF="gap4_61.html#SEC73">Searching</A>
+<LI><A HREF="gap4_60.html#SEC72">Create Tag</A>
+<LI><A HREF="gap4_60.html#SEC72">Edit Tag</A>
+<LI><A HREF="gap4_60.html#SEC72">Delete Tag</A>
+<LI><A HREF="gap4_62.html#SEC93">Save Contig</A>
+<LI><A HREF="gap4_62.html#SEC94">Dump Contig to File</A>
+<LI><A HREF="gap4_62.html#SEC95">Save Consensus Trace</A>
+<LI><A HREF="gap4_62.html#SEC96">List Confidence</A>
+<LI><A HREF="gap4_62.html#SEC97">Report Mutations</A>
+<LI><A HREF="gap4_62.html#SEC98">Select Primer</A>
+<LI><A HREF="gap4_62.html#SEC99">Align</A>
+<LI><A HREF="gap4_62.html#SEC100">Reading reading</A>
+<LI><A HREF="gap4_62.html#SEC101">Break Contig</A>
+</UL>
+
+
+
+<H3><A NAME="SEC89" HREF="gap4_toc.html#SEC89">Search</A></H3>
+
+<P>
+This Contig Editor Commands menu function
+Performs a search. See section <A HREF="gap4_61.html#SEC73">Searching</A>.
+
+</P>
+
+
+<H3><A NAME="SEC90" HREF="gap4_toc.html#SEC90">Create Tag</A></H3>
+
+<P>
+This Contig Editor Commands menu function
+Creates an annotation. See section <A HREF="gap4_60.html#SEC72">Annotations</A>.
+
+</P>
+
+
+<H3><A NAME="SEC91" HREF="gap4_toc.html#SEC91">Edit Tag</A></H3>
+
+<P>
+This Contig Editor Commands menu function
+Edits an annotation. See section <A HREF="gap4_60.html#SEC72">Annotations</A>.
+
+</P>
+
+
+<H3><A NAME="SEC92" HREF="gap4_toc.html#SEC92">Delete Tag</A></H3>
+
+<P>
+This Contig Editor Commands menu function
+Removes an annotation. See section <A HREF="gap4_60.html#SEC72">Annotations</A>.
+
+</P>
+<!-- NODE:Editor-Comm-Save -->
+
+
+<H3><A NAME="SEC93" HREF="gap4_toc.html#SEC93">Save Contig</A></H3>
+<P>
+<A NAME="IDX199"></A>
+<A NAME="IDX200"></A>
+
+</P>
+<P>
+This Contig Editor Commands menu function
+writes any edited data to disk. The undo history is
+cleared and it is no longer possible to quit and abandon these saved
+changes. The Control-x followed by Control-s will also save the contig editor
+in the same manner as the Save command.
+
+</P>
+<!-- NODE:Editor-Comm-Dump -->
+
+
+<H3><A NAME="SEC94" HREF="gap4_toc.html#SEC94">Dump Contig to File</A></H3>
+<P>
+<A NAME="IDX201"></A>
+<A NAME="IDX202"></A>
+<A NAME="IDX203"></A>
+<A NAME="IDX204"></A>
+<A NAME="IDX205"></A>
+<A NAME="IDX206"></A>
+<A NAME="IDX207"></A>
+<A NAME="IDX208"></A>
+<A NAME="IDX209"></A>
+<A NAME="IDX210"></A>
+
+</P>
+<P>
+This Contig Editor Commands menu function
+outputs the current contig, as currently shown (e.g. with status
+lines) to a file. The user can select the region to dump, the length of each
+line, and the file name to use. The sequence names can be up to 40 characters, 
+but often projects do not use the full length. To avoid wasted space in the
+output the number of columns to use for sequence names can be adjusted.
+
+</P>
+<!-- NODE:Editor-Comm-Consensus Trace -->
+
+
+<H3><A NAME="SEC95" HREF="gap4_toc.html#SEC95">Save Consensus Trace</A></H3>
+<P>
+<A NAME="IDX211"></A>
+<A NAME="IDX212"></A>
+<A NAME="IDX213"></A>
+<A NAME="IDX214"></A>
+
+</P>
+<P>
+This Contig Editor Commands menu function
+produces a trace file for the consensus sequence by averaging the
+traces of the readings. The command brings up a
+dialogue containing controls to specify the filename, the consensus start and
+end positions, the strand, and whether to use matching reads.
+
+</P>
+<P>
+As the trace of a reading is dependent on the direction it was read, the
+consensus trace can be computed from all the reads in either the forward or
+reverse directions, but not both at once. When the "Use only matching reads"
+toggle is set to "Yes" only the readings of the correct strand that have the
+same base call as the consensus sequence are used. The option is useful for
+producing wild-type trace files for a mutation analysis project.
+
+</P>
+<!-- NODE:Editor-Comm-List Confidence -->
+
+
+<H3><A NAME="SEC96" HREF="gap4_toc.html#SEC96">List Confidence</A></H3>
+<P>
+<A NAME="IDX215"></A>
+<A NAME="IDX216"></A>
+
+</P>
+<P>
+This Contig Editor Commands menu function
+operates in a very similar manner to the main Gap4 List Confidence
+command (see section <A HREF="gap5_64.html#SEC102">List Confidence</A>), except that
+it only operates on the current contig, and it
+uses the current editor consensus confidences rather than the ones saved to
+disk. It displays a dialogue requesting a range within the contig and a
+question asking if only summary of the results is required.
+
+</P>
+<P>
+Pressing OK or Apply will add to the editor information line a count of the
+expected number of errors and the error rate. If the "Only update information
+line" question was answered "No" then the full frequency table will also be
+output. It will appear in the main text output window in the same format
+as the "List Confidence"
+command in the main Gap4 View menu. The Apply button can be used to calculate
+the number of errors without removing the dialogue.
+
+</P>
+<P>
+It is often the very ends of contigs (which are
+generally low coverage and bad quality) that have most of the errors,
+and so
+it is sometimes useful to set a range which
+includes all of the contig except for around 1000 bases from each end.
+
+</P>
+
+<!-- NODE:Editor-Comm-Report-Mutations -->
+
+
+<H3><A NAME="SEC97" HREF="gap4_toc.html#SEC97">Report Mutations</A></H3>
+<P>
+<A NAME="IDX217"></A>
+<A NAME="IDX218"></A>
+<A NAME="IDX219"></A>
+This Contig Editor Commands menu function is used to produce a list of all
+the bases annotated with mutation tags (or those bases which differ from
+the consensus/reference sequence). If the tags or differences are within
+segments of sequence which are also annotated with EMBL feature table CDS
+records, the report will include data describing its effect.
+The report, which can be sorted by sequence or position, 
+includes the reading names, mutation positions relative to the 
+reference
+sequence, the actual change, its effect, and the evidence. An example is shown
+below.
+
+</P>
+
+<PRE>
+
+001321_11aF 33885T&#62;Y (silent F) (strand - only)
+001321_11aF 34407G&#62;K (expressed E&#62;[ED]) (strand - only)
+001321_11cF 35512T&#62;Y (silent L) (double stranded)
+001321_11cF 35813C&#62;Y (expressed P&#62;[PL]) (double stranded)
+001321_11dF 36314A&#62;R (expressed E&#62;[EG]) (double stranded)
+001321_11eF 36749A&#62;R (expressed K&#62;[KR]) (double stranded)
+001321_11eF 37313T&#62;K (noncoding) (strand - only)
+000256_11eF 36749A&#62;G (expressed K&#62;R) (double stranded)
+
+</PRE>
+
+<P>
+Here the first record is for reading 001321_11aF, position 33885, T changed
+to T and C (i.e. is heterozygous) to produce no amino acid change, with evidence coming only from
+the complementary strand. The last record is for reading 000256_11eF, position
+36749, A changed to G, producing an amino acid change K to R, with evidence
+from both strands of the sequence. The penultimate record denotes a 
+heterozygote in a noncoding region.
+
+</P>
+
+<!-- NODE:Editor-Comm-Primer Selection -->
+
+
+<H3><A NAME="SEC98" HREF="gap4_toc.html#SEC98">Select Primer</A></H3>
+<P>
+<A NAME="IDX220"></A>
+<A NAME="IDX221"></A>
+<A NAME="IDX222"></A>
+<A NAME="IDX223"></A>
+
+</P>
+<P>
+This Contig Editor Commands menu function
+allows the user to employ the primer selection algorithm OSP to
+find primers for sequencing experiments. See section <A HREF="gap4_65.html#SEC124">Primer Selection</A>.
+
+</P>
+<!-- NODE:Editor-Comm-Align -->
+
+
+<H3><A NAME="SEC99" HREF="gap4_toc.html#SEC99">Align</A></H3>
+<P>
+<A NAME="IDX224"></A>
+<A NAME="IDX225"></A>
+
+</P>
+<P>
+This Contig Editor Commands menu function
+performs a sequence alignment between the currently selected segment of a
+reading and the consensus sequence. It provides a simple way of extending the
+visible part of a reading to use its hidden data, which is often useful to
+double strand a short section of consensus without the need to perform further
+experiments.  On a sequence, highlight the cutoff data to align along with a
+small section of the good quality non-cutoff data. Then select the align
+command and adjust the cutoff point as desired.  Pads are inserted in the
+consensus and readings as necessary, although pads will not be inserted in the
+cutoff data of other sequences.
+
+</P>
+<!-- NODE:Editor-Comm-Remove Reading -->
+
+
+<H3><A NAME="SEC100" HREF="gap4_toc.html#SEC100">Remove Reading</A></H3>
+
+<P>
+This Contig Editor Commands menu function
+marks a reading for subsequent removal. See section <A HREF="gap4_64.html#SEC123">Removing Readings</A>
+
+</P>
+<!-- NODE:Editor-Comm-Break Contig -->
+
+
+<H3><A NAME="SEC101" HREF="gap4_toc.html#SEC101">Break Contig</A></H3>
+<P>
+<A NAME="IDX226"></A>
+<A NAME="IDX227"></A>
+<A NAME="IDX228"></A>
+
+</P>
+<P>
+This Contig Editor Commands menu function
+breaks the contig so that the reading underneath the editing cursor is
+the left end of a new contig. In order to perform this operation all edits
+are saved automatically first. Once saved these edits cannot be undone. This
+operation is identical to the Break Contig command in the main menu.
+
+</P>
+<P>See section <A HREF="gap5_51.html#SEC88">Break Contig</A>.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_61.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_63.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

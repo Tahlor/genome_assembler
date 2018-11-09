@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - insert_NEW_tag</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_166.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_168.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:insert_NEW_tag -->
+
+
+<H2><A NAME="SEC186" HREF="scripting_toc.html#SEC186">insert_NEW_tag</A></H2>
+<P>
+<A NAME="IDX741"></A>
+<A NAME="IDX742"></A>
+<A NAME="IDX743"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void insert_NEW_tag(
+        GapIO  *io,
+        int     N,
+        int     pos,
+        int     length,
+        char   *type,
+        char   *comment,
+        int     sense);
+</PRE>
+
+<P>
+This function adds a new tag to the database. If <VAR>N</VAR> is positive, the tag
+is added to reading number <VAR>N</VAR>, otherwise it is added to contig number
+<VAR>-N</VAR>. The reading and contig annotation lists are updated accordingly.
+
+</P>
+<P>
+The <VAR>pos</VAR>, <VAR>length</VAR>, <VAR>type</VAR>, <VAR>comment</VAR> and <VAR>sense</VAR>
+arguments specify the position, length, type (a 4 character string), comment
+and orientation of the tag to create. <VAR>comment</VAR> may be <CODE>NULL</CODE>.
+<VAR>sense</VAR> should be one of 0 for forward, 1 for reverse and 2 for both.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_166.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_168.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

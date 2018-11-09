@@ -1,0 +1,90 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Get_scf_field</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_10.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_12.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-get_scf_field -->
+
+
+<H1><A NAME="SEC60" HREF="manpages_toc.html#SEC60">Get_scf_field</A></H1>
+<P>
+<A NAME="IDX10"></A>
+
+
+<H2><A NAME="SEC61" HREF="manpages_toc.html#SEC61">NAME</A></H2>
+
+<P>
+get_scf_field -- extract comments from an SCF file
+
+</P>
+
+
+<H2><A NAME="SEC62" HREF="manpages_toc.html#SEC62">SYNOPSIS</A></H2>
+
+<P>
+<CODE>get_scf_field</CODE> [ <CODE>-cqs</CODE> ] <I>filename</I> [ <CODE>Field-ID</CODE> ... ]
+
+</P>
+
+
+<H2><A NAME="SEC63" HREF="manpages_toc.html#SEC63">DESCRIPTION</A></H2>
+
+<P>
+The <CODE>get_scf_field</CODE> command extracts comments from an SCF file. Each
+comment is of the form <I>Field-ID</I>=<I>comment</I>. Where <I>Field-ID</I> is
+a 4 character identifier.
+
+</P>
+<P>
+With no <I>Field-ID</I> arguments specified all comments are listed. Otherwise
+only those specified on the command line are listed.
+
+</P>
+
+
+<H2><A NAME="SEC64" HREF="manpages_toc.html#SEC64">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-c</CODE>
+<DD>
+    Suppresses the output of the <I>Field-ID</I>. Only the right hand side of the
+    comment is displayed. The default action is the display the full comment in
+    the form listed above.
+
+<DT><CODE>-q</CODE>
+<DD>
+    Query mode. Here no output is displayed, but it simply returns true
+    or false depending on whether any of requested comments were found.
+
+<DT><CODE>-s</CODE>
+<DD>
+    Silent mode. No error messages are produced, except for usage messages. It
+    returns true or false for success or failure.
+</DL>
+
+
+
+<H2><A NAME="SEC65" HREF="manpages_toc.html#SEC65">SEE ALSO</A></H2>
+
+<P>See section <A HREF="manpages_10.html#SEC54">get_comment(1)</A>.
+
+</P>
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_10.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_12.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

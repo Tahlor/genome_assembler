@@ -1,0 +1,70 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from formats.htmlinfo on 25 April 2016 -->
+
+<TITLE>File Formats - Scf-File-structure</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Scf-File-structure -->
+
+
+<H3><A NAME="SEC9" HREF="formats_toc.html#SEC9">File structure.</A></H3>
+<P>
+<A NAME="IDX28"></A>
+<A NAME="IDX29"></A>
+
+</P>
+<P>
+From SCF version 3.0 onwards the in memory structures and the data on the disk
+are not in the same format. The overview of the data on disk for the different
+versions is summarised below.
+
+</P>
+
+<PRE>
+
+Versions 1 and 2
+
+(Note Samples1 can be replaced by Samples2 as appropriate.)
+
+Length in bytes                        Data
+---------------------------------------------------------------------
+128                                    header
+Number of samples * 4 * sample size    Samples1 or Samples2 structure
+Number of bases * 12                   Base structure
+Comments size                          Comments
+Private data size                      private data
+
+Version 3
+
+Length in bytes                        Data
+---------------------------------------------------------------------------
+128                                    header
+Number of samples * sample size        Samples for A trace
+Number of samples * sample size        Samples for C trace
+Number of samples * sample size        Samples for G trace
+Number of samples * sample size        Samples for T trace
+Number of bases * 4                    Offset into peak index for each base
+Number of bases                        Accuracy estimate bases being 'A'
+Number of bases                        Accuracy estimate bases being 'C'
+Number of bases                        Accuracy estimate bases being 'G'
+Number of bases                        Accuracy estimate bases being 'T'
+Number of bases                        The called bases
+Number of bases * 3                    Reserved for future use
+Comments size                          Comments
+Private data size                      Private data
+---------------------------------------------------------------------------
+</PRE>
+
+<HR>
+<A HREF="formats_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="formats_8.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="formats_10.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="formats_26.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="formats_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

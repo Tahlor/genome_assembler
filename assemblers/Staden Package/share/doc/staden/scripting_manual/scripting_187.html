@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-contig_register_init</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_186.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_188.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-contig_register_init -->
+
+
+<H3><A NAME="SEC237" HREF="scripting_toc.html#SEC237">contig_register_init</A></H3>
+<P>
+<A NAME="IDX869"></A>
+
+<PRE>
+#include &#60;io-reg.h&#62;
+
+int contig_register_init(GapIO  *io);
+</PRE>
+
+<P>
+Initialises the contig register lists. This is only performed once,
+upon opening of a new database. The registration lists are
+automatically extended when new contigs are created.
+
+</P>
+<P>
+The function returns 0 for succes, -1 for error.
+
+</P>
+<!-- NODE:Reg-register_id -->
+
+
+<H3><A NAME="SEC238" HREF="scripting_toc.html#SEC238">register_id</A></H3>
+<P>
+<A NAME="IDX870"></A>
+
+<PRE>
+int register_id();
+
+Returns: the id (always a non zero value).
+</PRE>
+
+<P>
+Returns a new id number for use as the id field to be sent to a
+<CODE>contig_register</CODE> call. Each time this function is called a new number
+is returned.
+
+</P>
+<!-- NODE:Reg-contig_register -->
+
+
+<H3><A NAME="SEC239" HREF="scripting_toc.html#SEC239">contig_register</A></H3>
+<P>
+<A NAME="IDX871"></A>
+
+<PRE>
+int contig_register(GapIO *io, int contig,
+                    void (*func)(GapIO *io, int contig, void *fdata,
+                                 reg_data *jdata),
+                    void *fdata,
+                    int id, int flags, int type);
+Returns:  0 for success
+         -1 for error.
+</PRE>
+
+<P>
+Registers "func(io, contig, fdata, jdata)" with the specified contig.
+This doesn't check whether the (func,fdata) pair already exist for
+this contig.
+
+</P>
+<!-- NODE:Reg-contig_deregister -->
+
+
+<H3><A NAME="SEC240" HREF="scripting_toc.html#SEC240">contig_deregister</A></H3>
+<P>
+<A NAME="IDX872"></A>
+
+<PRE>
+int contig_deregister(GapIO *io, int contig,
+                      void (*func)(GapIO *io, int contig, void *fdata,
+                                   reg_data *jdata),
+                      void *fdata);
+
+Returns:  0 for success
+         -1 for error.
+</PRE>
+
+<P>
+Deregisters "func(io, contig, fdata, jdata)" from the specified
+contig. The (func,fdata) pair must match exactly to deregister.
+
+</P>
+<!-- NODE:Reg-contig_notify -->
+
+
+<H3><A NAME="SEC241" HREF="scripting_toc.html#SEC241">contig_notify</A></H3>
+<P>
+<A NAME="IDX873"></A>
+
+<PRE>
+void contig_notify(GapIO *io, int contig, reg_data *jdata);
+</PRE>
+
+<P>
+Sends a notification request to all items registered with the
+specified contig.
+
+</P>
+<!-- NODE:Reg-contig_register_join -->
+
+
+<H3><A NAME="SEC242" HREF="scripting_toc.html#SEC242">contig_register_join</A></H3>
+<P>
+<A NAME="IDX874"></A>
+
+<PRE>
+int contig_register_join(GapIO *io, int cfrom, int cto);
+
+Returns:  0 for success
+         -1 for error.
+</PRE>
+
+<P>
+Joins two registration lists. This adds all items listed on the
+registration list for contig 'cfrom' to the registration list for
+contig 'cto'. Entries that are registered on both lists are not
+duplicated. The 'cfrom' registration list is left intact.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_186.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_188.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,140 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from trev.htmlinfo on 25 April 2016 -->
+
+<TITLE>Trev - Trev-Opening</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="trev_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="trev_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="trev_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="trev_11.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="trev_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Trev-Opening -->
+
+
+<H2><A NAME="SEC3" HREF="trev_toc.html#SEC3">Opening trace files</A></H2>
+<P>
+<A NAME="IDX3"></A>
+<A NAME="IDX4"></A>
+
+</P>
+<P>
+Trace files can be opened either on the command line or from within Trev.  
+In both cases it is possible to open several traces at once. In this case trev
+will add Next File, Previous File and Goto File buttons to allow quick
+navigation between traces.
+
+</P>
+<P>
+On the command line, this is simply done by specifying several files. With the
+"Open" dialogue from within trev multiple files may be selected by dragging
+with the left mouse button or using shift+left button and control+left button
+to extend regions or to toggle loading of individual files.
+
+</P>
+<!-- NODE:Trev-Opening-Command -->
+
+
+<H3><A NAME="SEC4" HREF="trev_toc.html#SEC4">Opening a trace file from the command line</A></H3>
+<P>
+<A NAME="IDX5"></A>
+
+</P>
+<DL COMPACT>
+
+usage: trev [-{ABI,ALF,EXP,SCF,PLN,Any}] [-edits <VAR>value</VAR>]
+[-editscf] [-xmag <VAR>value</VAR>] [-ymag <VAR>value</VAR>] [-restrict]
+[<VAR>tracefilename</VAR> ...]
+
+<P>
+<DT><CODE>-ABI, -ALF, -EXP, -SCF, -PLN, -Any</CODE>
+<DD>
+Optional. Defaults to Any. These define the possible input trace formats
+available. Currently these are 'ABI', 'ALF', experiment
+(see section <A HREF="formats_18.html#SEC40">Experiment File</A>), 'SCF'
+(see section <A HREF="formats_3.html#SEC3">scf</A>), plain ASCII text or 'any' in which case
+the program attempts to establish the file format from information
+contained within the trace file. 
+
+<P>
+<DT><CODE>-edits <VAR>value</VAR></CODE>
+<DD>
+Optional. Defaults to 1. If <VAR>value</VAR> is 1, the trace sequence can be
+edited. If <VAR>value</VAR> is 0, no edit line is displayed in Trev and the
+sequence may not be edited.
+
+<P>
+<DT><CODE>-editscf</CODE>
+<DD>
+Optional. By default writing to SCF is disabled for safety and reasons of
+preference (we feel that all edits should be contained within an associated
+Experiment File thus leaving the original trace file intact). Specifying
+<CODE>-editscf</CODE> allows writing to SCF files.
+
+<P>
+<DT><CODE>-pregap_mode</CODE>
+<DD>
+Optional. Only used by Pregap4. This adds a Reject button to Trev
+and disables certain file operations. This argument should only be used by
+programs that run Trev as subprocesses for processing batches of files.
+
+<P>
+<DT><CODE>-restrict</CODE>
+<DD>
+Optional. Restricts the use of the trace editor to a single file by
+disabling the ability to open another file from within Trev. The main
+use of this option is for calling Trev from within scripts.
+
+<P>
+<DT><CODE>-xmag <VAR>value</VAR></CODE>
+<DD>
+Optional. Defaults to 150. Specifies the magnification along the X axis
+of the trace. Larger values represent higher magnifications.
+
+<P>
+<DT><CODE>-ymag <VAR>value</VAR></CODE>
+<DD>
+Optional. Defaults to 10. Specifies the magnification along the Y axis
+of the trace. The value should be between 10 and 100 with 10 showing all
+the trace and 100 being the largest magnification.
+</DL>
+
+<!-- NODE:Trev-Opening-Internal -->
+
+
+<H3><A NAME="SEC5" HREF="trev_toc.html#SEC5">Opening a trace file from within Trev</A></H3>
+<P>
+<A NAME="IDX6"></A>
+
+</P>
+<P>
+To open a trace file select the "Open..." command from the File menu.
+This brings up a file browser from where the trace name can be selected.
+
+</P>
+<P>See section <A HREF="interface_12.html#SEC14">File Browser</A>. The format of the trace
+file should be selected from the row of Format buttons. Currently these
+are 'ABI', 'ALF', Experiment File (see section <A HREF="formats_18.html#SEC40">Experiment File</A>), 'SCF' (see section <A HREF="formats_3.html#SEC3">SCF File</A>), plain ASCII
+text or 'any' in which case the program attempts to establish the file format
+from information contained within the trace file. Opening an experiment
+file opens the trace file named within the experiment file. Double
+clicking on the trace name will open this trace file.
+
+</P>
+<P>
+If a trace file is already open, it is closed before the new one is
+opened. If the previous trace has been edited, but not saved, a dialogue
+box is displayed, asking if you wish to save the file before loading a
+new file. Selecting "Yes" will automatically save the file to its
+current filename. Selecting "No" will discard any changes that have been
+made.
+
+</P>
+<HR>
+<A HREF="trev_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="trev_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="trev_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="trev_11.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="trev_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

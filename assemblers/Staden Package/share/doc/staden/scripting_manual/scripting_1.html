@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Preface</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_2.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+
+<P>
+Copyright (C) 1995, 1996, Medical Research Council, Laboratory of Molecular Biology.
+
+</P>
+<!-- NODE:Top -->
+
+
+<UL>
+<LI><A HREF="scripting_1.html#SEC1">Preface</A>
+<LI><A HREF="scripting_2.html#SEC3">Tk_utils Library</A>
+<LI><A HREF="scripting_43.html#SEC46">Tcl Scripting of Gap4</A>
+<LI><A HREF="scripting_111.html#SEC122">Database I/O in C</A>
+<LI><A HREF="scripting_156.html#SEC175">Annotation Functions in C</A>
+<LI><A HREF="scripting_173.html#SEC192">Contig Registration Scheme</A>
+<LI><A HREF="scripting_200.html#SEC269">Writing Packages</A>
+
+</UL>
+
+<!-- NODE:Preface -->
+
+
+<H1><A NAME="SEC1" HREF="scripting_toc.html#SEC1">Preface</A></H1>
+<P>
+This manual is a guide to programming with the newer Tcl/Tk based Staden
+Package programs. It covers both using the programs in a scripting environment
+and writing modules to extend the functionality of them. The main content
+current covers the Tcl interfaces, with very little of the C functions
+currently documented. The reader should also be familier with the Tcl
+language.
+
+</P>
+
+
+
+<H2><A NAME="SEC2" HREF="scripting_toc.html#SEC2">Conventions Used in This Manual</A></H2>
+
+<P>
+<I>Italic</I> is used for:
+
+<UL>
+<LI>variable names
+
+<LI>command line values
+
+<LI>structure fields
+
+</UL>
+
+<P>
+<CODE>Fixed width bold</CODE> is used for:
+
+<UL>
+<LI>Code examples
+
+<LI>Command line arguments
+
+<LI>Typed in commands
+
+<LI>Program output
+
+</UL>
+
+<P>
+The general format of the syntax for the more complex Tcl commands is to list
+the command name in bold followed by one or more command line arguments in
+bold with command line values in italic. The command line values have a
+brief description of the use of the value followed by the type and a default
+value. The Tcl convention of surrounding optional values in question marks is
+used. For instance the <CODE>edit_contig</CODE> command has the following syntax.
+
+</P>
+
+<PRE>
+<CODE>edit_contig</CODE>
+ -io            <I>io_handle:integer</I>
+ -contig        <I>identifier:string</I>
+?-reading       <I>identifier:string()</I>?
+?-pos           <I>position:integer(1)</I>?
+</PRE>
+
+<P>
+<CODE>-io</CODE> and <CODE>-pos</CODE> both take integer values. <CODE>-pos</CODE> is
+optional, and has a default value of 1. <CODE>-contig</CODE> and <CODE>-reading</CODE>
+both require string values. <CODE>-reading</CODE> is optional, and has a default
+value of a blank string.
+
+</P>
+
+<HR>
+<A HREF="scripting_2.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

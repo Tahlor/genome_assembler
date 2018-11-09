@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-Output-tout_pipe</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_29.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_31.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-Output-tout_pipe -->
+
+
+<H3><A NAME="SEC31" HREF="scripting_toc.html#SEC31">tout_pipe</A></H3>
+<P>
+<A NAME="IDX69"></A>
+<A NAME="IDX70"></A>
+
+</P>
+
+<PRE>
+<CODE>tout_pipe</CODE> <I>command</I> <I>input</I> <I>forever</I>
+</PRE>
+
+<P>
+This command executes the unix shell <VAR>command</VAR> with <VAR>input</VAR>. If
+<VAR>forever</VAR> is 0, the command is terminated if it takes more than a specific
+amount of time (currently 5 seconds). A value of <VAR>forever</VAR> other than 0
+causes the <CODE>tout_pipe</CODE> command to wait until <VAR>command</VAR> has finished.
+The stdout and stderr streams from <VAR>command</VAR> appear in the appropriate
+output window. The command returns 0 for success, -1 for failure.
+
+</P>
+<P>
+NOTE: This command may not be implemented on all platforms.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_29.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_31.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

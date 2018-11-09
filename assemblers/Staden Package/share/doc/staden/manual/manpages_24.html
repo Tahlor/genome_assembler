@@ -1,0 +1,362 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Vector_clip</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_23.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-vector_clip -->
+
+
+<H1><A NAME="SEC143" HREF="manpages_toc.html#SEC143">Vector_clip</A></H1>
+
+<P>
+<A NAME="IDX26"></A>
+
+
+<H2><A NAME="SEC144" HREF="manpages_toc.html#SEC144">NAME</A></H2>
+
+<P>
+vector_clip -- finds and marks vector segments in sequence readings
+
+</P>
+
+
+<H2><A NAME="SEC145" HREF="manpages_toc.html#SEC145">SYNOPSIS</A></H2>
+
+<P>
+<CODE>vector_clip</CODE> <CODE>-</CODE>[<CODE>schr</CODE>]
+[<CODE>-w</CODE> <I>word_length (4)</I>] [<CODE>-n</CODE> <I>num_diags (7)</I>]
+[<CODE>-d</CODE> <I>diagonal_score (0.35)</I>] [<CODE>-l</CODE> <I>minimum_match (20/70%)</I>]
+[<CODE>-m</CODE> <I>minimum_5'_position</I>] [<CODE>-t</CODE>] [<CODE>-p</CODE>
+<I>passed_fofn</I>] [<CODE>-f</CODE> <I>failed_fofn</I>] <I>input_fofn</I>
+
+</P>
+
+
+<H2><A NAME="SEC146" HREF="manpages_toc.html#SEC146">DESCRIPTION</A></H2>
+
+<P>
+<CODE>vector_clip</CODE> finds and marks vector segments in sequence readings stored
+in experiment file format. For sequencing vectors it can be used to find the
+5' primer and, for short inserts, the sequence to the 3' side of the cloning
+site. It can also be used to find 3' primer sequences. A further option can do
+a final check for any vector rearrangements that could be missed by the more
+specific searches around the cloning site. For cloning vectors it will search
+both orientations of the sequence and mark any segments found.  The vector
+sequences must be stored as simple text files. For cloning vector
+searches the reading's experiment file must contain the name of the
+cloning vector file. For sequencing vector searches, either the experiment
+file for each reading must contain the information about the vector
+sequence (the file name, cloning site and primer offset) or
+vector-primer files must be used. Vector-primer files contain sets of
+sequences from around cloning sites, and vector_clip can use these to
+find the vector that matches each reading best. If the match is above
+the cutoff score the reading is clipped. Vector-primer files are the
+simplest method of providing vector_clip with the data it needs for
+finding sequencing vectors. More information is available elsewhere
+(see section <A HREF="vector_clip_2.html#SEC2">Screening Against Vector Sequences</A>).
+
+</P>
+
+<P>
+The program processes batches of readings by the use of file of file names:
+one is used for input and two for output. The input file lists the names of
+all the readings to process, one name per line. One output file contains the
+names of all the readings that pass the screening and the other contains the
+names of those that fail.
+
+</P>
+
+
+<H2><A NAME="SEC147" HREF="manpages_toc.html#SEC147">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-s</CODE>
+<DD>
+Mark sequencing vector. Searches for 5' primer, 3' running into vector.
+<DT><CODE>-c</CODE>
+<DD>
+Mark cloning vector. Searches both strands for cloning vector.
+<DT><CODE>-h</CODE>
+<DD>
+Hgmp primer. Searches 3' end for a primer.
+<DT><CODE>-i vector_primer filename</CODE>
+<DD>
+Mark transposon data.
+<DT><CODE>-r</CODE>
+<DD>
+Vector rearrangements. Searches for sequencing vector rearrangements.
+<DT><CODE>-t</CODE>
+<DD>
+Test only. Does not change the experiment files, displays hits.
+</DL>
+
+<DL COMPACT>
+
+<DT><VAR><CODE>-L</CODE> minimum percentage match 5' end (60)</VAR>
+<DD>
+sequencing vector searches and transposon search
+<DT><VAR><CODE>-R</CODE> minimum percentage match 3' end (80)</VAR>
+<DD>
+sequencing vector searches and transposon search
+<DT><VAR><CODE>-m</CODE> minimum 5' position</VAR>
+<DD>
+allows a minimum 5' end cutoff to be set if a sufficiently good match is not 
+found (i.e. it is really a default 5' cutoff position). 
+If a value of -1 is used the program will set the cutoff to be the 
+distance between the primer and the cloning site.
+<DT><VAR><CODE>-v</CODE> vector-primer-pair filename</VAR>
+<DD>
+sequencing vector search using vector-primer-pair file
+<DT><VAR><CODE>-V</CODE> vector_primer length</VAR>
+<DD>
+the length of the sequence stored in the vector_primer file to use for
+the 5' search
+<DT><VAR><CODE>-w</CODE> word_length (4)</VAR>
+<DD>
+cloning vector search hash length
+<DT><VAR><CODE>-P</CODE> probability</VAR>
+<DD>
+cloning vector search, (a score less likely than P is a match)
+<DT><VAR><CODE>-n</CODE> num_diags (7)</VAR>
+<DD>
+cloning vector search, old score based algorithm: number of diagonals to combine
+<DT><VAR><CODE>-d</CODE> diagonal score (0.35)</VAR>
+<DD>
+cloning vector search, old score based algorithm
+<DT><VAR><CODE>-l</CODE> minimum match (20)</VAR>
+<DD>
+sequencing vector rearrangements and transposon search minimum match length
+<DT><VAR><CODE>-M</CODE> maximum vector length (100000)</VAR>
+<DD>
+all algorithms, reset for vectors &#62;100000 bases
+<DT><VAR><CODE>-p</CODE> passed fofn</VAR>
+<DD>
+file of file names for passed files
+<DT><VAR><CODE>-f</CODE> failed fofn</VAR>
+<DD>
+file of file names for failed files
+<DT><VAR>input fofn ...</VAR>
+<DD>
+input file of file names
+</DL>
+
+
+
+<H2><A NAME="SEC148" HREF="manpages_toc.html#SEC148">EXAMPLES</A></H2>
+
+
+<PRE>
+Usage: vector_clip [options] file_of_filenames
+Where options are:
+    [-s mark sequencing vector]      [-c mark cloning vector]
+    [-h hgmp primer]                 [-r vector rearrangements]
+    [-w word_length (4)]             [-n num_diags (7)]
+    [-d diagonal score (0.35)]       [-l minimum match (20)]
+    [-L minimum % 5' match (60)]     [-R minimum % 3' match (80)]
+    [-m default 5' position]         [-t test only]
+    [-M Max vector length (100000)]  [-P max Probability]
+    [-v vector_primer filename]      [-i vector_primer filename]
+    [-V vector_primer length]
+    [-p passed fofn]                 [-f failed fofn]
+</PRE>
+
+<P>
+Screen for sequencing vector using 5' cutoff of 70%, a 3' cutoff of 90%
+and default 5' primer position of 30. The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -s -L70 -R90 -m30 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for sequencing vector using 5' cutoff of 60%, a 3' cutoff of 80%
+and default 5' primer position of 30. The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail. This shows
+that the default search is for sequencing vector.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -m30 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for sequencing vector using 5' cutoff of 60%, a 3' cutoff of 80%
+and a vector-primer-pair file called vector_primer_file. 
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -v vector_primer_file -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen transposon data using 5' cutoff of 80%, a 3' cutoff of 85%, a match length of 10
+and a vector-primer-pair file called vector_primer_file. 
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -i vector_primer_file -L 80 -R 85 -l 10 -pfiles.pass \</CODE>
+<CODE>            -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for cloning vector using the old algorithm with a word length of 4, 
+summing 7 diagonals and diagonal cutoff score of 0.4. 
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -c -w4 -n7 -d0.4 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for cloning vector using the probability based algorithm with a 
+word length of 4 and probability cutoff of 1.0e-13.
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -c -P 1.0e-13 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for 3' primer using a cutoff of 75%.
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+<PRE>
+<CODE>vector_clip -h -R75 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for sequencing vector rearrangements using a cutoff of 20 bases.
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+<PRE>
+<CODE>vector_clip -r -l20 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+
+
+<H2><A NAME="SEC149" HREF="manpages_toc.html#SEC149">NOTES</A></H2>
+
+<P>
+The following error messages can be generated.
+
+</P>
+<P>
+<A NAME="IDX27"></A>
+
+<OL>
+<LI>Error: could not open experiment file
+
+<LI>Error: no sequence in experiment file
+
+<LI>Error: sequence too short
+
+<LI>Error: missing vector file name
+
+<LI>Error: missing cloning site
+
+<LI>Error: missing primer site
+
+<LI>Error: could not open vector file
+
+<LI>Error: could not write to experiment file
+
+<LI>Error: could not read vector file
+
+<LI>Error: missing primer sequence
+
+<LI>Error: hashing problem
+
+<LI>Error: alignment problem
+
+<LI>Error: invalid cloning site
+
+<LI>Warning: sequence now too short (no message)
+
+<LI>Warning: sequence entirely cloning vector (no message)
+
+<LI>Warning: possible vector rearrangement (no message)
+
+<LI>Warning: error parsing vector_primer file
+
+<LI>Warning: primer pair mismatch!
+
+<LI>Aborting: more than X entries in vector_primer file
+
+</OL>
+
+<P>
+<I>SL</I>, <I>SR</I>, <I>CL</I>, <I>CR</I>, <I>CS</I>, <I>PS</I>, <I>PR</I> and <I>SF</I>
+records are written to the experiment files.
+
+</P>
+
+
+<H2><A NAME="SEC150" HREF="manpages_toc.html#SEC150">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_18.html#SEC40">Experiment File</A>. 
+
+</P>
+
+<P>
+For notes on defining the cloning and primer sites,
+
+</P>
+<P>See section <A HREF="vector_clip_9.html#SEC11">Defining the Positions of Cloning and Primer Sites for Vector_Clip</A>.
+
+</P>
+
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_23.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

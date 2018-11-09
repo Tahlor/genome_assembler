@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - values2tag</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_164.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_166.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:values2tag -->
+
+
+<H2><A NAME="SEC184" HREF="scripting_toc.html#SEC184">values2tag</A></H2>
+<P>
+<A NAME="IDX734"></A>
+<A NAME="IDX735"></A>
+<A NAME="IDX736"></A>
+<A NAME="IDX737"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+int values2tag(
+        char   *tag,
+        char   *type,
+        int     start,
+        int     end,
+        int     strand,
+        char   *comment);
+</PRE>
+
+<P>
+This function converts a tag represented by a series of separate
+integer/string values to a single string of the format used by the experiment
+file <CODE>TG</CODE> line type. It performs the opposite task to the
+<CODE>tag2values</CODE> function.
+
+</P>
+<P>
+For the format of the tag string please see _ref(tag2values, tag2values).
+
+</P>
+<P>
+The <VAR>type</VAR>, <VAR>start</VAR>, <VAR>end</VAR>, <VAR>strand</VAR> and <VAR>comment</VAR>
+paramaters contain the current tag details. <VAR>comment</VAR> must be specified
+even when no comment exists, but can be specified as a blank string in this
+case. <VAR>tag</VAR> is expected to have been allocated already and no bounds
+checks are performed. A safe size for allocation is <CODE>strlen(comment)+30</CODE>.
+
+</P>
+<P>
+The function returns 0 for success, -1 for failure.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_164.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_166.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

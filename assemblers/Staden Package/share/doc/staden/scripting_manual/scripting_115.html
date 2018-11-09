@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Cio-GContigs</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_114.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_116.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Cio-GContigs -->
+
+
+<H3><A NAME="SEC132" HREF="scripting_toc.html#SEC132">The GContigs Structure</A></H3>
+
+
+<PRE>
+typedef struct { 
+    GCardinal left;		/* left reading number */
+    GCardinal right;		/* right reading number */
+    GCardinal length;		/* contig sequence length */
+    GCardinal annotations;	/* start of annotation list */
+    GCardinal notes;		/* Unpositional annotations */
+} GContigs; 
+</PRE>
+
+<DL COMPACT>
+
+<DT><VAR>left</VAR>
+<DD>
+<A NAME="IDX525"></A>
+ 
+	The number of the leftmost reading in this contig. This is a reading
+	number, not a record number.
+
+<A NAME="IDX526"></A>
+<DT><VAR>right</VAR>
+<DD>
+	The number of the rightmost reading in this contig. This is a reading
+	number, not a record number. Note that the rightmost reading is
+	defined as the reading the left end furthest to the right and not the
+	reading with the right end furthest to the right.
+
+<A NAME="IDX527"></A>
+<DT><VAR>length</VAR>
+<DD>
+	The total length of this contig.
+
+<A NAME="IDX528"></A>
+<DT><VAR>annotations</VAR>
+<DD>
+	The annotation number of the first annotation on the consensus for
+	this contig or 0 if none are available.
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_114.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_116.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

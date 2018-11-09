@@ -1,0 +1,212 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Gap-Intro-Files</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Gap-Intro-Files -->
+
+
+<H2><A NAME="SEC4" HREF="gap4_toc.html#SEC4">Summary of the Files used and the Preprocessing Steps</A></H2>
+
+<P>
+<A NAME="IDX2"></A>
+<A NAME="IDX3"></A>
+<A NAME="IDX4"></A>
+<A NAME="IDX5"></A>
+<A NAME="IDX6"></A>
+<A NAME="IDX7"></A>
+<A NAME="IDX8"></A>
+<A NAME="IDX9"></A>
+<A NAME="IDX10"></A>
+<A NAME="IDX11"></A>
+<A NAME="IDX12"></A>
+<A NAME="IDX13"></A>
+<A NAME="IDX14"></A>
+<A NAME="IDX15"></A>
+<A NAME="IDX16"></A>
+<A NAME="IDX17"></A>
+<A NAME="IDX18"></A>
+<A NAME="IDX19"></A>
+
+</P>
+
+<P>
+<A NAME="IDX20"></A>
+
+</P>
+<P>
+Gap4 stores the data for an assembly project in a gap4
+database. Before being entered into the gap4 database the data must be
+passed through several preassembly steps, usually via pregap4
+(see section <A HREF="pregap4_3.html#SEC3">Pregap4 introduction</A>). 
+These steps are outlined below.
+
+</P>
+<P>
+The programs can handle data produced by a variety of sequencing
+instruments. 
+They can also
+handle data entered using digitisers or that has been typed in by
+hand. Usually the trace files in proprietary format, such as
+those of ABI, are converted to SCF files (see section <A HREF="formats_3.html#SEC3">SCF introduction</A>) or ZTR files.
+As originally put forward in <CITE>Bonfield,J.K. and Staden,R. The application of
+numerical estimates of base calling accuracy to DNA sequencing
+projects. Nucleic Acids Research 23, 1406-1410 (1995).</CITE> gap4 makes
+important use of basecall confidence values, 
+(see section <A HREF="gap4_16.html#SEC23">The use of numerical estimates of base calling accuracy</A>)
+which are normally stored in the reading's SCF file.
+
+</P>
+<P>
+One of the first steps in the preprocessing is to copy
+the base calls from the trace files 
+to text files known as Experiment files
+(see section <A HREF="formats_18.html#SEC40">Experiment files</A>). 
+All the subsequent processes operate on the Experiment files.
+Other preassembly steps include quality and vector clipping.
+Each step is performed by a specific program
+controlled by the program pregap4
+(see section <A HREF="pregap4_3.html#SEC3">Pregap4 introduction</A>). 
+
+</P>
+<P>
+Experiment file format is similar to that of EMBL sequence entries in
+that each record starts with a two letter identifier, but we have
+invented new records specific to sequencing experiments. One of
+pregap4's tasks is to augment the Experiment files to include data about
+the vectors, primers and templates used in the production of each
+reading, and if necessary it can extract this information from external
+databases. Some of the information is needed by pregap4 and some by
+gap4. (Note that in order to get the most from gap4 it is essential to make
+sure that it is supplied, via the Experiment files, with all the information
+it needs.)
+
+</P>
+<P>
+The trace files are not altered, but are kept as archival data so that
+it is always possible to check the original base calls and traces. Any
+changes to the data prior to assembly
+(and we recommend that none are made until readings
+can be viewed aligned with others) are made to the copy of the sequence
+in the Experiment file.
+
+</P>
+<P>
+The reading data, in Experiment file format, is entered into the project
+database (see section <A HREF="gap4_152.html#SEC224">Gap Database Files</A>), usually via one of
+the assembly engines. Because Experiment file format was based on EMBL
+file format, EMBL files can also be entered and their feature tables will
+be convered to tags.  There is no limit to the length of readings which
+can be entered.
+
+</P>
+<P>
+All the changes to
+the data made by gap4 are made to the copies of the data in the project
+database.  Once the data has been copied into the gap4 database the
+Experiment files are no longer required.
+
+</P>
+<P>
+Gap4 uses the trace files to display the traces 
+(see section <A HREF="gap5_24.html#SEC52">Traces</A>),
+and to compare the edited bases with the original base calls
+(see section <A HREF="gap4_61.html#SEC84">Search by Evidence for Edit (1)</A>),
+(see section <A HREF="gap4_61.html#SEC85">Search by Evidence for Edit (2)</A>).
+However gap4 databases do not store trace files: they record only the
+names of the trace files 
+(which are copied from the readings' Experiment files).
+This means that
+if the trace files for a project are not in the same directory/folder as
+the gap4 database, gap4 needs to be told where they are, otherwise it
+cannot use them. Ideally, all the trace files for a project should be stored
+in one directory. To tell gap4 where they are the "Trace file location"
+command in the Options menu should be used (see section <A HREF="gap4_177.html#SEC265">Trace File Location</A>).
+
+</P>
+<P>
+Gap4 databases have a number of size constraints, some of which can be altered
+by users and others which are fixed. 
+
+</P>
+<P>
+While gap4 is running it often needs to calculate a consensus. The maximum size
+of this sequence is controlled by a variable "maxseq". Most routines are able 
+to automatically increase the value of maxseq while they are running, but some 
+of the older functions, including some of the original assembly engines, are 
+not. This means that it is important for users to set maxseq to a sufficiently 
+high value before running these elderly routines. By default maxseq is 
+currently set to 100000, but users can set it on the command line or from 
+within the Options menu.
+
+</P>
+<P>
+Gap4 databases contain one record for each reading and one for each contig. 
+The sum of these two sets of records is the "database_size", and the maximum 
+value that database_size is permitted to reach is "maxdb". When databases are
+initialised maxdb is set, by default, to 8000. Users can alter this value on
+the command line or from within the Options menu of gap4.
+
+</P>
+<P>
+Gap4 databases also limit the number and names of readings so that various 
+output routines know how many character positions are required: the maximum
+number imposed in this way is 99,999,999, and the maximum reading name length
+is 40.
+
+</P>
+<P>
+Currently we have sites with single gap4 databases containing over 200,000
+readings with consensus sequences in excess of 7,000,000 bases.
+
+</P>
+<P>
+A gap4 database can be used by several users simultaneously, but only
+one is allowed to change the contents of the database, and the others
+are given "readonly" access. 
+As part of its mechanism to
+prevent more than one person editing a database at once
+gap4 uses a "BUSY" file
+to signify that the database is opened for writing.
+Before opening a database for
+writing, gap4 checks to see if the BUSY file for that database exists. 
+If it does, the database is
+opened only for reading, if not it creates the file, so that any
+additional attempts to open the
+database for writing will be blocked. 
+When the user with write access closes the database, the BUSY file is
+deleted, hence re-enabling its ability to be opened for changes.
+It is worth remembering that a side effect of this mechanism, 
+is that in the event of a
+program or system crash the BUSY file will be left on the disk, even
+though 
+the database is
+not being used. In this case users must remove the BUSY file 
+before using the database
+(see section <A HREF="gap4_152.html#SEC224">Gap4 Database Files</A>).
+
+</P>
+<P>
+The final result from a sequencing project is a consensus sequence 
+(see section <A HREF="gap5_59.html#SEC97">The Consensus Calculation</A>)
+and
+gap4 can write these in Experiment file format, fasta format or staden
+format. Of course the whole database and all the trace files are also
+useful for future reference as they allow any queries about the accuracy
+of the sequence to be answered.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_3.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_5.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

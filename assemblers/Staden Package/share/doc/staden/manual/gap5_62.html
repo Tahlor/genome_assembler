@@ -1,0 +1,153 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Con-Calculation-3</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_61.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_63.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-Calculation-3 -->
+
+
+<H3><A NAME="SEC100" HREF="gap5_toc.html#SEC100">Consensus Calculation Using Confidence values</A></H3>
+
+<P>
+This is the prefered consensus algorithm for reading data with Phred
+decibel scale confidence values. As will become clear from the follwing
+description, it is more complicated than the other algorithms, but
+produces a much more useful result.
+
+</P>
+<P>
+A difficulty in designing an algorithm to calculate the confidence for
+a consensus derived from several readings, possibly using different
+chemistries, and hopefully from both strands of the DNA, is knowing
+the level of
+independence of the results from different experiments - namely the readings.
+Given that sequencing traces are sequence dependent, we do not regard
+readings as wholly independent, but at the same time,
+repeated readings which confirm base calls may give us more confidence
+in their accuracy. In addition, if we get a particularly good sequencing
+run, with consequently high base call confidence values, we are 
+more likely to believe its base call and confidence value assignments.
+The final point in this preamble
+is that the Phred confidence values 
+refer only to the probability for the called base, and
+they tell us nothing about the relative likelihood of each of the other
+3 base types appearing at the same position.
+These difficulties are taken into account by our algorithm, which
+is described below.
+
+</P>
+<P>
+In what follows, a particular position in an alignment of readings is
+referred to as a "column".
+The base calls in a column are classified by their chemistry
+and strand. We currently group them into "top strand dye primer", "top strand
+dye terminator", "bottom strand dye primer" and "bottom strand dye terminator"
+classes.
+
+</P>
+<P>
+Within each class there may be zero or many base calls. For each
+class we check for multiple occurrences of the same base type. 
+For each base type we find the highest confidence value, and then
+increase it by an amount dependent on the number of confirming reads.
+Then Bayes formula is used to derive the probabilities and hence the
+confidence values for each base type.
+
+</P>
+<P>
+To further describe the method it is easiest to work through an example.
+Suppose we have 5 readings with the
+following characteristics covering a particular column.
+
+</P>
+
+<PRE>
+Dye primer, top strand,        'A', confidence 20
+Dye primer, top strand,        'A', confidence 10
+Dye primer, top strand,        'T', confidence 20
+Dye terminator, top strand,    'T', confidence 10
+Dye primer, bottom strand,     'A', confidence 5
+</PRE>
+
+<P>
+Hence there are three possible classes.
+
+</P>
+<P>
+Examining the "dye primer top strand" class we
+see there are three readings (A, A and T). The highest A is 20. We add to
+this a fixed quantity to indicate one other occurence of an A in this set. For
+this example we add 5. Now we have an adjusted confidence of
+25 for A and 20 for T. This is equivalent to a .997 
+probability of A being correct and .99 probability of T being correct.
+To use Bayes we split the remaining probabilies evenly.
+A has a probability of .997 and so the remaining .003 is spread amongst the
+other base types. Similarly for the .01 of the T. The result is shown in
+the table below.
+
+</P>
+
+<PRE>
+  |   A     C     G     T
+--+-----------------------
+A | .997  .001  .001  .001
+T | .0033 .0033 .0033 .990
+</PRE>
+
+<P>
+Bayesian calculations on
+this table then give us probabilities of approximately .766 for A,
+.00154 for C, .00154 for G and .231 for T.
+
+</P>
+<P>
+The other classes give probalities of .033 for A, C, G and .9 for T, and
+.316 for A, and .228 for C, G and T.
+
+</P>
+<P>
+To combine the values for each class we produce a table for a further Bayesian
+calculation. Once again we fill in the probabilities and spread the remainder
+evenly amongst the other base types.
+
+</P>
+
+<PRE>
+           |   A      C      G     T
+-----------+--------------------------
+Primer Top | .766  .00154 .00154 .231
+Term   Top | .0333 .0333  .0333  .9
+Primer Bot | .316  .228   .228   .228
+</PRE>
+
+<P>
+From this Bayes gives the 
+final probabilities of .135 for A, .0002 for C, .0002 for
+G and .854 for T.
+This is what would be expected intuitively: the T signal was present in
+both dye primer and dye terminator experiments with 1/100 and 1/10 error
+rates whilst the A signal was present on both strands with 1/100 and 1/3 error
+rates. 
+Hence the consensus base is T with confidence 8.4 (-10*log10(1-.854)).
+
+</P>
+<P>
+If a padding character is present in a
+column we consider the pad as a separate base type and then evenly divide the
+remaining probabilities by 4 instead of 3.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_61.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_63.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

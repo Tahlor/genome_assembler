@@ -1,0 +1,171 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Primer Selection</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_64.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_66.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Primer Selection -->
+
+
+<H2><A NAME="SEC124" HREF="gap4_toc.html#SEC124">Primer Selection</A></H2>
+<P>
+<A NAME="IDX298"></A>
+<A NAME="IDX299"></A>
+<A NAME="IDX300"></A>
+<A NAME="IDX301"></A>
+
+</P>
+<P>
+The oligo selection engine is the one used in the program OSP.
+It is described in 
+<CITE>Hillier, L., and Green, P. (1991). "OSP: an oligonucleotide
+selection program," PCR Methods and Applications, 1:124-128</CITE>.
+Oligo selection is a complex operation. The normal mode of use is
+outlined below:
+
+</P>
+
+<OL>
+<LI>
+
+Open the oligo selection window, by selecting "Select Primer" from the
+contig editor commands menu.
+
+<LI>
+
+Position the cursor to where you want the oligo to be chosen. While the
+oligo selection window is visible, you will still have complete control over
+positioning and editing within the contig editor.
+
+<LI>
+
+Indicate the strand for which you require an oligo. This is
+done by toggling the direction arrows ("-----&#62;" or "&#60;------").
+
+<LI>
+
+Press the "Find Oligos" button to find all suitable oligos
+(see the "Parameters" subsection below for further information on
+controlling this procedure). Information for the closest suitable oligo to
+the cursor position is given in the output text window and at the bottom
+of the editor in the information line. In the
+contig editor the position of the oligo is marked by a temporary
+tag on the consensus. The window is recentered if the oligo is
+off the screen.
+
+<LI>
+
+If this oligo is not suitable (it may have been used before, and failed)
+the next closest oligo can be viewed by pressing "Next".
+
+<LI>
+
+Suitable templates are automatically identified for the
+currently displayed oligo (see the "Template selection"
+subsection below). By default, the template is that closest to
+the oligo site. If the choice is not suitable (it may be known to
+be a poor quality template, say) another can be chosen from the
+"Choose from" pull-down menu. Templates that do not
+appear on the menu can be specified by selecting simply typing their name
+in the "Template name" entry box. However, the template must be on the correct
+strand and be upstream of the oligo.
+
+<LI>
+
+A tag can be created for the current oligo by pressing the
+button "Accept". The annotation for this tag
+holds the name of the template and the oligo primer sequence.
+There are fields to allow the user to specify their own primer
+name ("serial#") and comments ("flags") for this tag. An example
+of oligo tag annotation:
+
+
+<PRE>
+ serial#=
+ template=a16a9.s1
+ sequence=CGTTATGACCTATATTTTGTATG
+ flags=
+</PRE>
+
+<LI>
+
+The oligo selection window is closed when "Accept" or "Quit" is selected.
+</OL>
+
+
+
+<H3><A NAME="SEC125" HREF="gap4_toc.html#SEC125">Parameters</A></H3>
+
+<P>
+The parameters controlling the selection of oligos can be
+changed by pressing the "Edit parameters" button. This invokes a
+dialogue box which allows the specification of further parameters.
+
+</P>
+<P>
+By default, the oligos are selected from a window that extends
+40 bases either side of the cursor. The size and location of this
+window relative to the cursor position can be changed in the
+"Edit parameters" window.
+
+</P>
+<P>
+Primer constraints can be specified by melting temperature, length
+and G+C content.
+
+</P>
+<P>
+In gap4 oligos are ranked according to their overall score, where the
+best oligos have lower scores.
+
+</P>
+
+
+<H3><A NAME="SEC126" HREF="gap4_toc.html#SEC126">Template selection</A></H3>
+
+<P>
+For simplicity, each reading is considered to represent a
+template. In practice, many readings can be made off the same
+template. Suitable templates that are identified are those that
+satisfy all of the following conditions:
+
+</P>
+
+<OL>
+<LI>
+
+are in the appropriate sense,
+
+<LI>
+
+have 5' ends that start upstream of the oligo,
+
+<LI>
+
+are sufficiently close to the oligo to be useful.
+</OL>
+
+<P>
+This last criterion relates to the insert size for the
+templates used for sequencing and the average reading length. A
+template is considered useful if a full reading can be made from it,
+taking into account both of these factors. The default insert size
+is 1000 bases (although the size range should be included in the
+experiment file for each reading, and hence the default would not be
+required), and the default average reading length is 400 bases.
+These values can be changed in the "Edit parameters" window.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_64.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_66.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

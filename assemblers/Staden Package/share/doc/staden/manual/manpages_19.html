@@ -1,0 +1,103 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - PolyA_clip</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_18.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_20.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-polyA_clip -->
+
+
+<H1><A NAME="SEC112" HREF="manpages_toc.html#SEC112">PolyA_clip</A></H1>
+<P>
+<A NAME="IDX18"></A>
+<A NAME="IDX19"></A>
+<A NAME="IDX20"></A>
+
+</P>
+
+
+<H2><A NAME="SEC113" HREF="manpages_toc.html#SEC113">NAME</A></H2>
+
+<P>
+polyA_clip -- Mark polyA and polyT heads and tails.
+
+</P>
+
+
+<H2><A NAME="SEC114" HREF="manpages_toc.html#SEC114">SYNOPSIS</A></H2>
+
+<P>
+<CODE>polyA_clip</CODE> [<CODE>-vt</CODE>] [<CODE>-t</CODE>] [<CODE>-x</CODE> <I>min_length(0)</I>] 
+[<CODE>p</CODE> <I>percent_cutoff(95)</I>] [<CODE>w</CODE> <I>window_length(50)</I>] files...
+
+</P>
+
+
+
+<H2><A NAME="SEC115" HREF="manpages_toc.html#SEC115">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-v</CODE>
+<DD>
+     Enable verbose output. This outputs information on which files are
+     currently being clipped.
+
+<DT><CODE>-t</CODE>
+<DD>
+     Test mode. The SL and SR information is written to stdout instead of
+     being appended to the Experiment file.
+
+<DT><CODE>-x</CODE> <I>min_length</I>
+<DD>
+     Sequences which after clipping are shorter than min_length are reported.
+     
+<DT><CODE>-w</CODE> <I>window_length</I>
+<DD>
+     The length of the window that is slid along the sequence to analyse the
+     composition.
+
+<DT><CODE>-p</CODE> <I>percentage</I>
+<DD>
+     Windows containing this percentage of A or T bases are considered as 
+     polyA or polyT
+</DL>
+
+
+
+<H2><A NAME="SEC116" HREF="manpages_toc.html#SEC116">DESCRIPTION</A></H2>
+
+<P>
+PolyA_clip searches the 5' and 3' ends of sequence readings for the presence
+of polyA and polyT heads and tails. It marks them using the SL and SR 
+experiment file records, and hence should be applied after quality clipping
+and sequence vector clipping. Any number of files can be processed in a single
+run. The algorithm is as follows. The user supplies window_length and  
+percentage. From MIN(QR,SR) slide the window left until 
+percent_A &#60; percentage and percent_T &#60; percentage.
+Then from the right edge of the window look left until
+a C or G is found. Mark this base SR. Do the equivalent for the 5' end and
+mark SL.
+
+</P>
+
+
+<H2><A NAME="SEC117" HREF="manpages_toc.html#SEC117">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_18.html#SEC40">ExperimentFile(4)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_18.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_20.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

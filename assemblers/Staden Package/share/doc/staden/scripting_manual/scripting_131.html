@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_read_rd</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_130.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_132.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_read_rd -->
+
+
+<H3><A NAME="SEC150" HREF="scripting_toc.html#SEC150">io_read_rd and io_write_rd</A></H3>
+<P>
+<A NAME="IDX646"></A>
+<A NAME="IDX647"></A>
+<A NAME="IDX648"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_read_rd(
+        GapIO  *io,
+        int     N,
+        char   *file,
+        int     filelen,
+        char   *type,
+        int     typelen);
+
+int io_write_rd(
+        GapIO  *io,
+        int     N,
+        char   *file,
+        int     filelen,
+        char   *type,
+        int     typelen);
+</PRE>
+
+<P>
+These routines read and write the reading 'raw data' paramaters. These are the
+file name and file type of the sequence trace file.
+
+</P>
+<P>
+For both functions, <VAR>N</VAR> is the reading number; <VAR>file</VAR> is a buffer,
+allocated by the caller, of length <VAR>filelen</VAR>; and <VAR>type</VAR> is a buffer,
+allocated by the caller, of length <VAR>typelen</VAR>.
+
+</P>
+<P>
+<CODE>io_read_rd</CODE> copies the trace filename to <VAR>file</VAR> and it's type to
+<VAR>type</VAR>. If either of these unknown the corresponding buffer is filled with
+spaces instead. It returns 0 if both name and type are known and 1 is either
+or both are unknown.
+
+</P>
+<P>
+<CODE>io_write_rd</CODE> write new file name and file type information. If <VAR>N</VAR>
+is an unknown reading number, it is first allocated using
+<CODE>io_init_readings</CODE>. It returns 0 for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_130.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_132.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

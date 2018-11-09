@@ -1,0 +1,98 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Double Strand</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_107.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_109.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Double Strand -->
+
+
+<H2><A NAME="SEC179" HREF="gap4_toc.html#SEC179">Double Stranding</A></H2>
+<P>
+<A NAME="IDX409"></A>
+
+</P>
+<P>
+The purpose of this function 
+(which is available from the gap4 Edits menu)
+is to use hidden data
+to fill regions of contigs that have
+data on only one strand
+(see section <A HREF="gap4_17.html#SEC24">Use of the "hidden" poor quality data</A>).
+First the routine finds a region that has data for
+only one strand. Then it examines the nearby readings on the other
+strand to see if they have hidden data that covers the single stranded
+region.  If so it
+finds the best alignment between this hidden data and the consensus over
+the region. If this alignment is good enough the data is converted from
+hidden to visible.  This process is continued over all the selected
+contigs. The function can be run on a subsection of a single contig, on all
+contigs, or on a subset of contigs that are named in a file of a list.
+
+</P>
+<P>
+Significant portions of the sequence can be  covered  by  this
+operation,  hence  saving  a great deal of experimental work, and it
+can be used as a standard part of cleaning up a sequencing project.
+However it must be noted that an increased number of edits may be
+required after its application. The amount of  cutoff
+data  used depends on the number of mismatches and the percentage
+mismatch in the alignment. That is, it depends on the quality of the
+alignment, not the quality of the data: if it aligns it is assumed to
+be correct!
+
+</P>
+<P>
+The program reports its progress in the Output window as shown in the
+following example.
+
+</P>
+
+<PRE>
+Wed 03:52:46 PM: double strand
+------------------------------------------------------------
+Double stranding contig xf48g3.s1 between 1 and 6189
+Double stranded zf23b2.s1       by 121 bases at offset 3752
+Double stranded zf18g11.s1      by 194 bases at offset 5652
+Positive strand :
+	Double stranded 315 bases with 2 inserts into consensus
+	Filled 0 holes
+Complementing contig   358
+Double stranded zg29a11.s1      by 42 bases at offset 5265 - Filled
+Double stranded zf38c7.s1       by 131 bases at offset 5015 - Filled
+Negative strand :
+	Double stranded 174 bases with 1 insert into consensus
+	Filled 2 holes
+</PRE>
+
+<p>
+<img src="exp_suggest.double.png" alt="[picture]">
+
+<P>
+The contigs to process can be a particular
+"single" contig, "all contigs", or a subset of contigs whose names are
+stored in a "file" or a "list". If a file or list is selected the
+browse button will be activated, and if it is clicked, an appropriate
+browser will be invoked. If the user selects "single" then the
+dialogue for choosing the contig and the section to process becomes
+active.
+
+</P>
+<P>
+Only alignments with not more than "Maximum number of mismatches" and
+"Maximum percentage of mismatches" will be accepted.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_107.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_109.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

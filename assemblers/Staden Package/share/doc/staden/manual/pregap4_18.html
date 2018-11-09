@@ -1,0 +1,71 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-ATQA</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_17.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_19.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-ATQA -->
+
+
+<H2><A NAME="SEC24" HREF="pregap4_toc.html#SEC24">ATQA</A></H2>
+<P>
+<A NAME="IDX28"></A>
+<A NAME="IDX29"></A>
+
+</P>
+<P>
+ATQA is not include as part of the Staden package. It is available from
+its developers, Daniel H. Wagner, Associates, at
+<a href="http://www.wagner.com/">
+http://www.wagner.com/
+
+</P>
+</a>
+
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+The ATQA program estimates confidence values for each called base in a
+lane file. A confidence value corresponds to the probability that the
+associated base call is incorrect by the formula
+
+
+<PRE>
+score = -10*log10(probability of error).
+</PRE>
+
+(This is the same log scale used by Phred.) In fact, the ATQA program
+computes four confidence values for each called base. The first three
+values correspond to the probabilities of substitution, insertion, and
+deletion errors, respectively. The fourth value is a combined score
+representing the probability that the called base is an error of any
+sort. Currently, only the combined confidence value is used by Staden
+package software.
+<P>
+Unlike Phred, the ATQA program does not produce base calls. Rather, it
+assigns confidence values to each base call in a lane file based on
+features of the trace data. The current version of the ATQA program is
+tuned to base calls made by the ABI base caller and to trace data from
+the ABI 377 sequencer.
+<P>
+Although ATQA can read ABI files, it will not create SCF files in such
+circumstances. However pregap4 will always convert any non SCF trace files
+into SCF format before running ATQA, so an explicit conversion is not
+required.
+
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_17.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_19.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

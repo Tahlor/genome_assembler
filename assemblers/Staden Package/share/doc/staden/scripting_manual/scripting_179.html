@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-REG_GENERIC</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_178.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_180.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-REG_GENERIC -->
+
+
+<H3><A NAME="SEC198" HREF="scripting_toc.html#SEC198">REG_GENERIC</A></H3>
+<P>
+<A NAME="IDX788"></A>
+<A NAME="IDX789"></A>
+
+<PRE>
+reg_generic         generic;
+
+typedef struct {
+    int    job;        /* REG_GENERIC */
+    int    task;       /* Some specific task */
+    void  *data;     /* And data associated with the task */
+} reg_generic;
+</PRE>
+
+<P>
+This is used for sending specific requests to specific data or data types.
+The task is a macro named after the type the task deals with. Eg
+<CODE>TASK_EDITOR_SETCURSOR</CODE>. <CODE>REG_GENERIC</CODE> is usually used in conjuction
+with a <CODE>result_notify</CODE> or <CODE>type_contig_notify</CODE> function call.
+See section <A HREF="scripting_185.html#SEC217">Specific Notification Tasks</A>.
+
+</P>
+<!-- NODE:Reg-REG_NUMBER_CHANGE -->
+
+
+<H3><A NAME="SEC199" HREF="scripting_toc.html#SEC199">REG_NUMBER_CHANGE</A></H3>
+<P>
+<A NAME="IDX790"></A>
+<A NAME="IDX791"></A>
+
+<PRE>
+reg_number          number;
+
+typedef struct {
+    int    job;        /* REG_NUMBER_CHANGE */
+    int    number;     /* New contig number */
+} reg_number;
+</PRE>
+
+<P>
+Sent whenever a contig number changes, but not when a reading number
+changes. This is currently only sent when renumbering contigs during a
+contig delete operation.
+    
+<!-- NODE:Reg-REG_JOIN_TO -->
+
+
+<H3><A NAME="SEC200" HREF="scripting_toc.html#SEC200">REG_JOIN_TO</A></H3>
+<P>
+<A NAME="IDX792"></A>
+<A NAME="IDX793"></A>
+
+<PRE>
+reg_join            join;
+
+typedef struct {
+    int    job;        /* REG_JOIN_TO */
+    int    contig;     /* New contig number */
+    int    offset;     /* Offset of old contig into new contig */
+} reg_join;
+</PRE>
+
+<P>
+Used to notify data that this contig has just been joined to another contig,
+at a specified offset. <VAR>contig</VAR> is contig number that this contig has been
+joined to (and hence it's new number). <VAR>offset</VAR> is the offset within the
+new contig that the old contig has been joined to. This request is always sent
+to the right most of the contig pair to join. The leftmost contig receives a
+<CODE>REG_LENGTH</CODE> notification. See section <A HREF="scripting_193.html#SEC254">Joining two contigs</A>.
+
+</P>
+<!-- NODE:Reg-REG_ORDER -->
+
+
+<H3><A NAME="SEC201" HREF="scripting_toc.html#SEC201">REG_ORDER</A></H3>
+<P>
+<A NAME="IDX794"></A>
+<A NAME="IDX795"></A>
+
+<PRE>
+reg_order           order;
+
+typedef struct {
+    int    job;        /* REG_ORDER */
+    int    pos;        /* New order */
+} reg_order;
+</PRE>
+
+<P>
+The purpose is to inform when the contig order changes. <VAR>pos</VAR> is the new
+position of this contig. To be consistent, there will be further
+<VAR>REG_ORDER</VAR> requests indicating the new position of the contig that was
+previously at this position. Typically this is simply handled by sending a
+notification for each contig. To handle these efficiently it is probably best
+to use the <CODE>REG_BUFFER_START</CODE> and <CODE>REG_BUFFER_END</CODE> notifications.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_178.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_180.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

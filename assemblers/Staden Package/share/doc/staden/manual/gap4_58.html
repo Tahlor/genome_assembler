@@ -1,0 +1,74 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Editing Summary</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Editing Summary -->
+
+
+<H3><A NAME="SEC70" HREF="gap4_toc.html#SEC70">Summary of Editing Commands</A></H3>
+<P>
+<A NAME="IDX166"></A>
+<A NAME="IDX167"></A>
+
+</P>
+<P>
+A brief summary of these editing operations and which (if any) edit modes are
+required can be seen below:
+
+</P>
+
+<PRE>
+Key          Location    Ins/Rep  Edit Mode           Action
+--------------------------------------------------------------------------
+base/*       Reading     Replace  any                 Change base
+base/*       Reading     Insert   Insert in read      Change base
+delete       Reading     both     Delete in read      Del base left &#38; move
+Ctrl delete  Reading     both     Delete in read      Delete base to left
+Ctrl d       Reading     both     Delete in read      Delete under cursor
+delete       Read start  both     Readint shift       Shift left
+space        Read start  both     Reading shift       Shift right
+Ctrl l       Reading     both     any                 Move pad left
+Ctrl r       Reading     both     any                 Move pad right
+Ctrl l       Reading     both     Transpose any       Move base left
+Ctrl r       Reading     both     Transpose any       Move base left
+[            Reading     both     any                 Set quality to 0
+]            Reading     both     any                 Set quality to 100
+Shift Up     Reading     both     any                 Incr. quality by 1
+Shift Down   Reading     both     any                 Decr. quality by 1
+Ctrl Up      Reading     both     any                 Incr. quality by 10
+Ctrl Down    Reading     both     any                 Decr. quality by 10
+&#60;            Reading     both     any                 Set left cutoff
+&#62;            Reading     both     any                 Set right cutoff
+Meta left    Reading     both     any                 Adjust left cutoff
+Meta right   Reading     both     any                 Adjust right cutoff
+*            Consensus   both     any                 Insert pad column
+base         Consensus   Insert   Insert any in cons  Insert column
+base         Consensus   Replace  any                 Replace column
+delete *     Consensus   both     any                 Delete column
+delete -     Consensus   both     Del dash in con     Delete column
+delete any   Consensus   both     Del any in cons     Delete column
+Ctrl d       Consensus   both     Del dash/any        Delete column
+Shift F1-10  Read/Cons   both     any                 Create tag macro
+F1 to F10    Read/Cons   both     any                 Use tag macro
+F11          Read/Cons   both     any                 Edit tag under cursor
+Shift F11    Read/Cons   both     any                 Edit tag under pointer
+F12          Read/Cons   both     Fast tag deletion   Delete tag under cursor
+Shift F12    Read/Cons   both     Fast tag deletion   Del. tag under pointer
+
+</PRE>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

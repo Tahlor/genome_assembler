@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - TkU-vTcl_SetResult</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_39.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_41.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:TkU-vTcl_SetResult -->
+
+
+<H3><A NAME="SEC43" HREF="scripting_toc.html#SEC43">vTcl_SetResult</A></H3>
+<P>
+<A NAME="IDX103"></A>
+<A NAME="IDX104"></A>
+
+</P>
+
+<PRE>
+<CODE>#include &#60;tcl_utils.h&#62;</CODE>
+<CODE>void vTcl_SetResult(Tcl_Interp *interp, char *fmt, ...);</CODE>
+</PRE>
+
+<P>
+This function is a varargs implementation of the standard <CODE>Tcl_SetResult</CODE>
+function. The Tcl result is set to be the string specified by the <VAR>fmt</VAR>
+and subsequent arguments in the standard <CODE>sprintf</CODE> style.
+
+</P>
+<P>
+NOTE: The current implementation has a limit of setting up to 8192 bytes.
+
+</P>
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_39.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_41.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

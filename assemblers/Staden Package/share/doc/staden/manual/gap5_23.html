@@ -1,0 +1,105 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Primer Selection</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_22.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_24.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Primer Selection -->
+
+
+<H2><A NAME="SEC51" HREF="gap5_toc.html#SEC51">Primer Selection</A></H2>
+<P>
+<A NAME="IDX76"></A>
+<A NAME="IDX77"></A>
+<A NAME="IDX78"></A>
+<A NAME="IDX79"></A>
+
+</P>
+<P>
+The "Find Primer Walk" function from the Commands menu is an
+interface to the Primer3 program (builtin to Gap5 so it does not need
+an external installation). Currently it only allows for selection of a
+single internal oligo suitable for "walking" along a
+template. It is designed for manual finishing work and is not
+appropriate for automatic finishing. Future plans are to add PCR support.
+
+</P>
+<P>
+The command brings up its own dialogue window.
+
+</P>
+
+<p>
+<img src="gap5_contig_editor.primer_dialogue.png" alt="[picture]">
+
+<P>
+The top portion of this window controls where to look for primers. By
+default it will be either side of the editing cursor location. We also
+specify here what strand we wish to run our experiment on.
+
+</P>
+<P>
+Below this are a series of Primer3 parameters. Please see the Primer3
+documentation for a full description of these.
+
+</P>
+<P>
+Upon hitting OK, and assuming that some primers can be found, a new
+window showing the available choices is presented.
+
+</P>
+
+<p>
+<img src="gap5_contig_editor.primers.png" alt="[picture]">
+
+<P>
+The primers show are sorted by Primer3 score, with lower being
+better. Clicking on any of the other headings in the table allows the
+data to be re-sorted by that column. Clicking the left mouse button on
+any line will show the location of this primer in the main editor
+window as an underlined region. It also updates the bottom half of the
+Oligos window with further details.
+
+</P>
+<P>
+At the bottom of the window are two editable selections. The left most
+labelled "Seq. name to tag" allows us to pick a sequence we wish to
+place an oligo (<CODE>OLIG</CODE>) annotation on, which defaults to the
+consensus sequence. The right selection box labelled "Template name"
+is an list of identified templates at this region, however this is not
+necessarily exhaustive as it only includes the sequences at this
+position and may miss some read-pairs that span this region. If you
+have a specific template in mind you can also type in the name of it
+to here.
+
+</P>
+<P>
+Pressing the "Add annotation" button then creates an oligo
+annotation. The text associated with the annotation will depend on the
+primer chosen, but an example follows.
+
+</P>
+
+<PRE>
+Sequence        AACACATGGTAAAGCAGATG
+Template        zDH64-714h06
+GC              40.0
+Temperature     53.45
+Score           1.54377204143
+Date_picked     Thu Aug 12 17:31:18 BST 2010
+Oligoname       ??
+</PRE>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_22.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_24.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,888 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from mini.htmlinfo on 25 April 2016 -->
+
+<TITLE>The Staden Package Mini-Manual - Searching for point mutations using pregap4 and gap4</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="mini_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mini_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mini_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mini_10.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mini_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Mutations -->
+
+
+<H1><A NAME="SEC16" HREF="mini_toc.html#SEC16">Searching for point mutations using pregap4 and gap4</A></H1>
+
+<UL>
+<LI><A HREF="mini_5.html#SEC17">Mutation Detection Introduction</A>
+<LI><A HREF="mini_5.html#SEC18">Mutation Detection Programs</A>
+<LI><A HREF="mini_5.html#SEC19">Mutation Detection Reference Data</A>
+<LI><A HREF="mini_5.html#SEC20">Mutation Detection Reference Sequences</A>
+<LI><A HREF="mini_5.html#SEC21">Mutation Detection Reference Traces</A>
+<LI><A HREF="mini_5.html#SEC22">Using The Template Display With Mutation Data</A>
+<LI><A HREF="mini_5.html#SEC23">Configuring The Gap4 Editor For Mutation Data</A>
+<LI><A HREF="mini_5.html#SEC24">Using The Gap4 Editor With Mutation Data</A>
+<LI><A HREF="mini_5.html#SEC25">Processing Batches Of Mutation Data Trace Files</A>
+<LI><A HREF="mini_5.html#SEC26">Processing Batches Of Mutation Data Trace Files Using Pregap4</A>
+<LI><A HREF="mini_5.html#SEC28">Discussion Of Mutation Data Processing</A>
+</UL>
+
+<P>
+The original version of these methods was described in 
+<CITE>James K Bonfield, Cristina Rada and Rodger Staden, 
+"Automated detection of point
+mutations using fluorescent sequence trace subtraction", Nucleic Acids
+Res.  26, 3404-3409, 1998.</CITE>. The more recent work has been done by Mark
+Jordan and James Bonfield with advice from Graham Taylor, Andrew
+Wallace, Will Wang and others.
+
+</P>
+
+<!-- NODE:Mutation-Detection-Introduction -->
+
+
+<H2><A NAME="SEC17" HREF="mini_toc.html#SEC17">Introduction to mutation detection</A></H2>
+<P>
+<A NAME="IDX21"></A>
+<A NAME="IDX22"></A>
+
+</P>
+<P>
+Our methods for detecting mutations are based on the alignment and comparison
+of the fluorescent traces produced by Sanger DNA sequencing. To use clinical
+terminology, samples from patients are compared to standard reference traces.
+Patient and reference traces should be produced using the same primers and 
+sequencing chemistry, ideally from both strands of the DNA. The data shown
+in the examples below is from exon 11 of the BRCA1 gene.
+
+</P>
+<P>
+The basic idea is illustrated in the following two figures which are screen
+dumps from our program gap4. The first shows
+a sample containing a point mutation and the second contains a heterozygous
+base position. The displays are bisected vertically: at the top left is the 
+sample trace
+from one strand of the DNA, below that the reference trace for that 
+strand, and underneath the difference between these traces which is 
+obtained by 
+subtracting one from the other.
+On the right is corresponding data from the other DNA strand (shown 
+complemented).
+
+</P>
+<P>
+@image{mut_traces_point,6in}
+
+</P>
+
+<P>
+Figure 1. Top and bottom strand differences for a point mutation.
+
+</P>
+<P>
+@image{mut_traces_het,6in}
+
+</P>
+
+<P>
+Figure 2. Top and bottom strand differences for a heterozygous base.
+
+</P>
+<P>
+As can be seen, although no vertical scaling is performed the difference trace
+is quite flat or is consistently either above or below the mid-line, except 
+at the sites of mutations. Near these are strong peaks, but notice that only
+for the mutated base are there peaks both above and below the mid-line. The
+context effects caused by the mutation produce peaks only in one direction.
+
+</P>
+<P>
+It is perhaps necessary to point out that analysis of the traces is essential
+because base callers make mistakes: they can assign the wrong base types and
+also assign single bases where the DNA is heterozygous. An example of the latter
+can be observed in Figure 2: on one strand the base caller has assigned
+a "-" symbol at position 251, at least indicating uncertainty, but on the
+other strand it has assigned "T". The DNA is clearly heterozygous at this
+position. This means that simply looking for differences between patient
+sequences and reference sequences will cause point mutations and heterozygous
+bases to be missed (of course base calling errors will also create
+false differences).
+
+</P>
+<P>
+These trace displays alone are very useful for visual inspection of data 
+and are all
+some users want. However we also have programs which automatically analyse 
+the trace differences and tag the bases which have significant peaks as possible
+sites of mutation.
+
+</P>
+
+<P>
+Trace viewing is initiated from within the gap4 editor.
+Each record in the editor shows an individual reading with its number and name
+at the left. Negative numbers denote readings which have been complemented.
+Several sequences have special status. At the top is a sequence labelled with
+a letter S at the left edge. This is the reference sequence, here the EMBL
+entry HSLBRCA1 which covers the entirety of the BRCA1 gene. The numbering
+at the top of the display corresponds to positions in this reference sequence.
+The program has also coloured (green) all exons on the reference sequence.
+The bottom DNA sequence in the editor is labelled "CONSENSUS". For mutation
+detection work this sequence is forced to be identical to the reference.
+Below the CONSENSUS sequence is the amino acid sequence for the reference.
+This is calculated on the fly using the feature table of the reference 
+sequence and so translates only exons and in their correct reading frames.
+Two other sequences (near the top) are labelled R and F. These are the readings
+providing the reverse
+and forward reference traces for this segment of the data.
+
+</P>
+<P>
+@image{mut_contig_editor5,6in}
+
+</P>
+
+<P>
+Figure 3. A set of aligned sequence readings displayed in the gap4 editor.
+
+</P>
+<P>
+At the very bottom of the editor is an information line which is used to
+display data about items touched by the mouse cursor. Here it is showing
+data about one of the positions tagged as possibly being heterozygous. 
+It includes the
+observed base types (G and A) and the scores achieved by the automated analysis.
+
+</P>
+<P>
+The editor can be set to show only differences between readings and the 
+reference; all matching bases appear as dots. For example, Figure 4.
+shows the same data as Figure 3, but with the editor set to show differences,
+and the information line showing details about a possible mutation.
+
+</P>
+
+<P>
+@image{mut_contig_editor_dis5,6in}
+
+</P>
+
+<P>
+Figure 4. An alternative view of aligned sequence readings in the gap4 editor.
+
+</P>
+
+<P>
+One column contains several bases tagged in  red, signifying possible
+heterozygotes, and some in orange denoting possible point mutations. 
+During visual inspection the program can be made to move the cursor from 
+one tag to the next and to display the aligned traces as shown
+above in Figures 1 and 2.
+
+</P>
+<P>
+It is also possible to have positive controls for displaying the trace 
+differences; i.e. reference traces which contain the mutation. In this case the traces
+appear as shown in figure 5. Here the forward and reverse positive controls
+are shown to the right of the normal plots. In Figure 5 the positive control
+difference plots are quite flat hence, in this case, providing confirmation 
+of the presence of the heterozygous base.
+
+</P>
+<P>
+@image{mut_traces_positive,6in}
+
+</P>
+
+<P>
+Figure 5. Top and bottom strand differences and positive control for a heterozygous base.
+
+</P>
+<P>
+As mentioned above the package contains programs which can automatically
+compare the traces and their reference sequences. The output from these
+programs are the tags shown in the editor. Users can check the traces at
+these positions using the displays shown in Figures 1, 2 and 5; if necessary
+removing or adding tags. Alternatively users can rely entirely on visual
+inspection and create all tags themselves.
+
+</P>
+<P>
+Once all the mutations are correctly tagged the program can produce a report
+which includes the reading names, mutation positions relative to the reference
+sequence, the actual change, its effect, and the evidence. An example is shown
+below in Figure 6.
+
+</P>
+
+<PRE>
+
+001321_11aF 33885T&#62;Y (silent F) (strand - only)
+001321_11aF 34407G&#62;K (expressed E&#62;[ED]) (strand - only)
+001321_11cF 35512T&#62;Y (silent L) (double stranded)
+001321_11cF 35813C&#62;Y (expressed P&#62;[PL]) (double stranded)
+001321_11dF 36314A&#62;R (expressed E&#62;[EG]) (double stranded)
+001321_11eF 36749A&#62;R (expressed K&#62;[KR]) (double stranded)
+001321_11eF 37313T&#62;K (noncoding) (strand - only)
+000256_11eF 36749A&#62;G (expressed K&#62;R) (double stranded)
+
+</PRE>
+
+<P>
+Figure 6. How gap4 reports mutations.
+<A NAME="IDX23"></A>
+
+</P>
+
+<P>
+Here the first record is for reading 001321_11aF, position 33885, T changed
+to T and C (i.e. is heterozygous) to produce no amino acid change, with evidence coming only from
+the complementary strand. The last record is for reading 000256_11eF, position
+36749, A changed to G, producing an amino acid change K to R, with evidence
+from both strands of the sequence. The penultimate record denotes a 
+heterozygote in a noncoding region.
+
+</P>
+
+<!-- NODE:Mutation-Detection-Methods -->
+
+
+<H3><A NAME="SEC18" HREF="mini_toc.html#SEC18">Mutation Detection Programs</A></H3>
+
+<P>
+The software handles batches of trace data from sequencing instruments. It 
+performs
+all processing except base calling (although it can employ third party
+programs such as phred for this step). This includes file format
+conversions, quality clipping, scanning for mutations and heterozygotes,
+multiple sequence alignment, easy visual inspection of traces, production of
+reports, and the accumulation and storage of readings and traces. The
+software also handles the initialisation/configuration of standard
+reference files and databases for any project. The two main programs are
+pregap4 and gap4. Pregap4
+prepares data for gap4 by automatically using
+a variety of smaller programs, including those used to search for mutations:
+mutscan (@xref{Pregap4-Modules-Mutation Scanner,Pregap4-Modules-Mutation Scanner,Mutation Scanner}.
+Gap4
+is used to store the aligned readings, to view the sequences and
+traces, and to produce a report listing the observed mutations.
+
+</P>
+<P>
+Any number of sequences can be processed in a  single run, and for each
+individual  patient sample the  operation  is generally
+performed in two steps. First, via pregap4, the traces are aligned and
+compared to the reference traces and any possible mutations or heterozygous
+bases marked.  Secondly,  the data  is transfered into a gap4 database
+from  where  users can   visually check   the differences between  the
+reference and patient traces.
+
+</P>
+<P>
+The program mutscan can automatically compare patient and reference traces to
+find point mutations and heterozygous bases.  Users can set parameters
+which control the sensistivity of the algorithms (and hence which
+determine the ratio of false negative and positive results). Mutscan
+adds tags of type "mutation" or "heterozygous" to the patient
+files. The tags contain the numerical scores achieved at the site of
+the reported base changes, and they can be viewed via the gap4
+editor.  Mutscan is
+normally run via pregap4.
+
+</P>
+<P>
+The description of the programs given below is presented in reverse order of
+use i.e. gap4 then pregap4, but first we give further details about the use
+of reference data.
+
+</P>
+
+<!-- NODE:Mutation-Detection-Reference-Data -->
+
+
+<H3><A NAME="SEC19" HREF="mini_toc.html#SEC19">Mutation Detection Reference Data</A></H3>
+
+<P>
+The mutation detection methods require reference traces and optionally 
+reference sequences. Reference traces are used for automatic mutation
+detection and for visual inspection of trace differences. Reference sequences
+are used in gap4 to provide a base numbering standard, and if required to
+provide feature table entries to control translation and mutation reporting.
+
+</P>
+
+<UL>
+<LI><A HREF="mini_5.html#SEC20">Reference Sequences</A>
+<LI><A HREF="mini_5.html#SEC21">Reference Traces</A>
+</UL>
+
+<!-- NODE:Mutation-Detection-Reference-Sequences -->
+
+
+<H3><A NAME="SEC20" HREF="mini_toc.html#SEC20">Reference Sequences</A></H3>
+<P>
+<A NAME="IDX24"></A>
+<A NAME="IDX25"></A>
+
+</P>
+<P>
+Reference sequences are used in gap4.
+Here they can be used to define a
+numbering system independent of gaps introduced to produce alignments.
+The numbering can start at any point in the reference sequence. If the
+reference sequence is entered with a feature table the features are
+converted to tags and can be used to control translation of the sequence
+in the contig editor. For mutation detection work the reference sequence
+and feature table
+enable mutations to be
+reported using positions defined by the reference sequence, and also
+allows the effect of the mutations to be noted. 
+Gap4 is able to store entries from the EMBL sequence library complete with
+their feature tables. These feature tables are converted to gap4
+database annotations (tags), which means that they can be selectively
+displayed in the template display and editor, and used to translate only
+the exons (in the correct reading frame). Obviously it may be useful to
+augment the feature tables with the sites of known polymorphisms or deleterious
+mutations so that they can be displayed in gap4 as landmarks.
+When it comes to producing a
+report of the observed mutations the feature table is used to work out
+if a mutation is expressed and if so what the amino acid change is.
+Additional tags can be created to specify the positions of the primers
+or restriction sites used to obtain data covering segments of the sequence.
+For any project the reference sequence need only be set up once. Either
+project databases can be started with the reference sequence already 
+configured or the reference can be assembled along with the reading data.
+The reference sequence can be designated (or reassigned) as follows.
+In pregap4
+it can be named in the module "Reference Traces". In the
+gap4 editor it can be set by right clicking on its name. Once set it should
+appear labelled "S" at the left edge of the editor.
+
+</P>
+<!-- NODE:Mutation-Detection-Reference-Traces -->
+
+
+<H3><A NAME="SEC21" HREF="mini_toc.html#SEC21">Reference Traces</A></H3>
+<P>
+<A NAME="IDX26"></A>
+<A NAME="IDX27"></A>
+
+</P>
+<P>
+References traces are used by the automatic mutation detection program
+mutscan (@xref{Pregap4-Modules-Mutation Scanner,Pregap4-Modules-Mutation Scanner,Mutation Scanner}, and by the trace difference display in the gap4
+editor.  
+Ideally forward and reverse reference traces should be
+available and should be obtained using the same primers and sequencing
+chemistry as the patient data.  From the "settings" menu of the editor
+the trace display can be set to "Auto-Diff traces". Once this is
+activated, whenever the user double clicks on a base in the editor
+sequence display, not only is the reading's trace displayed, but also
+its designated reference trace plus the difference between them. If its
+complementary reading is available, its trace and reference trace and
+their differences are also displayed.  These
+trace displays and the editing cursor scroll in synch.
+
+</P>
+<P>
+@image{mut_traces_het,6in}
+
+</P>
+
+<P>
+Top and bottom strand differences for a heterozygous base.
+
+</P>
+
+<P>
+The preferred way of assigning reference traces to readings is by use of
+"naming conventions"; that is to have a simple set of rules which
+control the names given to the trace files. It can be seen in the
+figures showing the editor that forward and reverse readings from the
+same patient have names with a common root but which end either F or
+R. This both ties the two together (so the software knows which is the
+corresponding 
+complementary trace when the user double clicks on a reading) and also
+enables the association of readings and their reference traces. Once a
+convention has been adopted the rules can be defined for pregap4 by
+loading them via the "Load Naming Scheme" option in its File menu. For
+any batch of readings the reference traces are defined within pregap4's
+"Reference Traces" module.  Note that this mode of operation, by
+allowing the specification of only one forward and one reverse trace,
+limits each batch of traces processed to those which correspond to a
+given pair of reference traces. The size of the batch is unlimited. 
+
+</P>
+
+<P>
+The alternative way of specifying the reference traces is to right click
+on their names in the editor. This also allows positive trace controls to be 
+specified (which is not possible in pregap4).
+
+</P>
+
+<!-- NODE:Using-The-Template-Display-With-Mutation-Data -->
+
+
+<H3><A NAME="SEC22" HREF="mini_toc.html#SEC22">Using The Template Display With Mutation Data</A></H3>
+
+<P>
+@image{mut_template_all,6in}
+
+</P>
+
+<P>
+Figure 7. The template display showing the whole of the BRCA1 gene (exons in green).
+
+</P>
+<P>
+The view obtained from the Template display and shown in Figure 7 is not of 
+practical use but serves here to illustrate the overall
+arrangement of the data for our chosen example the BRCA1 gene. This figure
+shows the entirety of the EMBL entry HSLBRCA1 with its exons marked
+in green. Only exon 11 has patient trace data stacked above it.
+
+</P>
+<P>
+@image{mut_template_reads,6in}
+
+</P>
+
+<P>
+Figure 8. A zoomed-in version of the data shown in Figure 7. 
+
+</P>
+<P>
+Here we can see all the readings
+covering exon 11. Forward readings are light blue, reverse readings orange, 
+primers are 
+marked in yellow, mutations in red and orange.
+A common mutation appears in the leftmost set of readings and illustrates
+the value of using the template display for visualising the overall pattern 
+of the tagged mutations. 
+
+</P>
+<!-- NODE:Configuring-The-Gap4-Editor-For-Mutation-Data -->
+
+
+<H3><A NAME="SEC23" HREF="mini_toc.html#SEC23">Configuring The Gap4 Editor For Mutation Data</A></H3>
+
+<P>
+The current version of the gap4 editor contains very many options that are
+not needed for mutation data. Given sufficient demand a version tailored for
+mutation studies could be produced. For now it might make it easier to understand
+the program if its origin as a genome assembly program is borne in mind.
+Here we outline the options and settings relevant to mutation studies.
+The assignment of reference sequence and traces is described above. From the
+editor they can be set by right clicking on the reading names.
+
+</P>
+<P>
+Gap4 enables segments of sequences to be annotated (or tagged). Each tag 
+has a type (eg primer) and each type has an associated colour. Each instance
+of a tag can include editable text. This text can be viewed and edited by right
+clicking on the tag and selecting "Edit tag", after which a text box will appear.
+Gap4 can display annotations/tags as background colour and the user can specify
+which tag types are shown. For mutation studies the following tag types may
+usefully be activated, and all others turned off. Using the "Set Active Tags"
+option in the "Settings" menu first click on "Clear all".  
+Then click on "primer".
+To add further types
+you must hold down the "Ctrl" key on the keyboard while clicking. 
+Now scroll down and click on "Mutation", "Heterozygous" and "FEATURE CDS".
+Add any others required, then click "OK".
+
+</P>
+<P>
+The following configurations are performed via the "Settings" menu.
+
+</P>
+<P>
+Gap4 has three consensus generation algorithms. When using a reference
+sequence it is convenient if the consensus shown in the editor is forced
+to be the same as the reference. This will be the case if either
+the "Weighted base frequencies" or the "Confidence values" consensus algorithms
+are being used. This selection is made using the "Consensus algorithm" option.
+
+</P>
+<P>
+Translations are shown in what gap4 refers to as the "Status" line.
+To enable automatic translation of the exons defined in the reference sequence,
+in the "Status Line" option set "Translate using feature tables".
+
+</P>
+<P>
+To enable automatic display of trace diferences, in the "Trace Display" option
+set "Auto-Diff Traces".
+
+</P>
+<P>
+To show only the base differences between the consensus/reference, set 
+"Highlight Disagreements". These can be shown by dots or colour.
+
+</P>
+<P>
+To show base confidence values set "Show reading quality" and also make sure
+that the value in the box labelled "Q" at the top left of the editor is set
+to 0 or greater.
+
+</P>
+<P>
+To force forward and reverse reading pairs to be shown in adjacent records in
+the editor set "Group readings by templates" (NB this assumes that an appropriate
+naming scheme has been used).
+
+</P>
+<P>
+If a reference sequence is assigned, the numbering at the top of the sequence
+will reflect the base positions in that sequence. Any pads in the reference
+sequence are ignored. If no reference sequence is assigned, the numbering will 
+ignore pads if the "Show unpadded positions" option is activated.
+
+</P>
+<P>
+At the bottom of the "Settings" menu is an option to "Save settings". Use of
+this will mean that the current configuration will be set automatically next
+time the editor is used (and hence the steps just described only need to be
+performed once).
+
+</P>
+<!-- NODE:Using-The-Gap4-Editor-With-Mutation-Data -->
+
+
+<H3><A NAME="SEC24" HREF="mini_toc.html#SEC24">Using The Gap4 Editor With Mutation Data</A></H3>
+
+<P>
+The current version of the editor has a fixed width and a maximum
+height. If too many sequences are present at any position a vertical
+scrollbar on the right edge can be used to move them up and down. The
+CONSENSUS line will always be visible, but at present, the reference
+sequence is scrolled along with all the other sequences and so may
+disappear. Horizontal scrolling is achieved in the usual ways, plus by use of
+the &#62;, &#62;&#62; and &#60;, &#60;&#60; buttons. The reading names can be moved left and right 
+using the scrollbar above them.
+
+</P>
+<P>
+Configure the editor as described above.
+
+</P>
+<P>
+The traces for readings (and their reverse) can be examined over their full
+length one at a time by simply double clicking on them then scrolling
+along. Any 
+mutations observed can be labelled by right clicking on the base in the editor 
+display and invoking
+the "Create tag" option. This brings up a dialogue box. At the top is a
+button marked "Type:comment"; clicking on this will bring up another dialogue
+with a list of all the tag types; choose the appropriate one ("Heterozygous"
+or "Mutation"). There are obviously many advantages to examining the traces
+like this using gap4. However, if the automated mutation detection methods
+are trusted, or used in way that makes them trustworthy for the type of
+study being undertaken, then there are quicker ways of examining the data.
+
+</P>
+<P>
+The "Next Search" button at the top of the editor gives access to many types
+of search, one of which is "tag type". If this is selected a button appears
+labelled "Tag type COMM(Comment)". Clicking on this will bring up a dialogue
+showing all the available tag types. If the user selects, say "Mutation", 
+each time the "Next Search" button is used the program will position the
+editing cursor on the next
+mutation tag. Double clicking will automatically bring up the appropriate 
+traces as shown in figures 1, 2 and 5.
+The user can view the traces and if necessary alter the tag (eg delete it
+if it is a false positive).
+
+</P>
+<P>
+Once all the data has been checked and all mutations and heterozygous bases
+have been tagged a report can be generated using the "Report Mutations"
+option in the editor "Commands" menu. Note that it is also possible to
+simply report all differences between base calls and the reference, but the
+usual procedure is for the program to report all bases tagged as "Mutation"
+or "Heterozygous". Example output is shown above in Figure 6.
+The report appears in the gap4 "Output window" which can
+be saved to disk by right clicking on the text and selecting "Output to
+disk".
+
+</P>
+
+<!-- NODE:Processing-Batches-Of-Mutation-Data-Trace-Files -->
+
+
+<H3><A NAME="SEC25" HREF="mini_toc.html#SEC25">Processing Batches Of Mutation Data Trace Files</A></H3>
+
+<P>
+It is not clear which is the best way of organising the data for the simplest
+and most efficient processing using the current programs, but 
+for now we make the following suggestions.
+
+</P>
+<P>
+We assume that the region of the DNA being studied has a standard set of 
+forward and reverse primer pairs covering all segments of interest and that
+a standard reference sequence in EMBL format is available.
+
+</P>
+<P>
+We recommend that batches of data from single primer pair combinations
+are processed separately, using separate temporary gap4 databases. 
+For example, exon 11 of BRCA1 can be covered by five
+pairs of forward and reverse primers and we suggest that
+batches of traces obtained from each of these primer pairs should be 
+processed using five gap4 databases.
+
+</P>
+<P>
+Each processing run should create a new database and should enter, not 
+only the
+new sets of patient data for that particular
+primer pair, but also the corresponding
+reference sequence and reference traces.
+
+</P>
+<P>
+Obviously when several primer pairs are needed to cover a given region of
+the DNA (eg for BRCA1) the same reference sequence would be used for
+all the primer pairs.
+
+</P>
+<P>
+An alternative to the above is to create a template database 
+for each primer pair which contains the data for the corresponding 
+forward and reverse 
+reference traces plus the fully annotated reference sequence.
+These template databases are copied to create a
+temporary database for each new batch of data for the given primer pair.
+
+</P>
+<P>
+Whichever of these two strategies is adopted
+each batch of new data is processed, analysed and 
+assembled into these temporary databases, inspected
+visually, and a mutation report generated.
+
+</P>
+<P>
+The use of separate temporary databases
+simplifies the assignment of reference traces and the use of the report
+generation function.
+
+</P>
+<P>
+@image{mut_template_reads_single,6in}
+
+</P>
+
+<P>
+Figure 9. An overview of a database containing data for only one primer pair of BRCA1
+
+</P>
+<P>
+For long term storage and to facilitate larger studies, the content of each
+of these temporary databases is then transferred to archive databases, after
+which the temporary databases are no longer needed. 
+The archive databases could be restricted to individual primer pairs
+or could accommodate data covering the whole of the reference sequence.
+
+</P>
+<!-- NODE:Processing-Batches-Of-Mutation-Data-Trace-Files-Using-Pregap4 -->
+
+
+<H3><A NAME="SEC26" HREF="mini_toc.html#SEC26">Processing Batches Of Mutation Data Trace Files Using Pregap4</A></H3>
+
+<P>
+All the data processing other than visual inspection of traces and report 
+generation is handled by the program pregap4. 
+Pregap4 achieves this by
+running a set of individual programs selected by the user. 
+
+</P>
+<P>
+@image{mut_pregap4,6in}
+
+</P>
+
+<P>
+Figure 10. The pregap4 Configure Modules window showing a typical list of mutation data option selections.
+
+</P>
+<P>
+The "Configure Modules" window shown in Figure 10. 
+is used to select which programs
+to apply to a batch of data, and to configure their usage. On the left is a list
+of programs and options, with "x" showing the ones that have been selected.
+If the user clicks on an option name its name is given a blue background and
+its configurable parameters are shown in the right hand panel to enable the
+user to alter them. Here "Reference Traces" has been selected which 
+enables the user to set the reference traces and sequence. 
+
+</P>
+<P>
+The other selected options (marked with "x") are typical of the ones used for
+mutation detection studies. Below we describe the use of each plus a few 
+alternatives. All of the options are descibed in more detail elsewhere in
+our documentation, our intention here is to give an overview of their use
+during mutation studies.
+
+</P>
+<P>
+Note that the window labelled "Files to Process" is used to
+tell the program which files to process as a batch.
+
+</P>
+
+
+<H3><A NAME="SEC27" HREF="mini_toc.html#SEC27">Configuration Of Pregap4 For Mutation Data</A></H3>
+
+<DL COMPACT>
+
+<DT><VAR>General Configuration</VAR>
+<DD>
+This option allows the user to select whether the trace names used for
+the samples should be the same as their file names or should be the
+names stored inside the files.
+
+<DT><VAR>Phred</VAR>
+<DD>
+Phred is a base caller which also assigns confidence values to each base.
+Generally the data passed to pregap4 has already been base called. However
+not all base callers assign confidence values and so it can be useful to
+apply phred or ATQA (which does not base call but does assign confidence values).
+Alternatively "Estimate Base Accuracies" can be applied which is a simple
+program for providing numerical values which reflect the signal to noise ratio
+for each base, and which can be used instead of confidence values.
+(Note that if quality clipping is used, its score thresholds depend on 
+whether confidence values of eba values are used).
+
+<DT><VAR>Trace Format Conversion</VAR>
+<DD>
+This option can be used to convert bulky files such as those of ABI to a
+compact format such as SCF or ZTR without loss of the data required for
+trace display.
+
+<DT><VAR>Initialise Experiment Files</VAR>
+<DD>
+The input to gap4 and several of the other programs used here is a data
+format known as Experiment file format. This step, which has no
+configurable parameters is essential for mutation data processing.
+
+<DT><VAR>Augment Experiment Files</VAR>
+<DD>
+The section on Reference Traces outlined the use of "Naming Schemes" for
+associating pairs of forward and reverse readings, and for assigning
+reference traces. The naming scheme must be loaded from pregap4's File
+menu. "Augment Experiment Files" must be activated in order for the
+naming scheme to be applied. No parameters need be set.
+
+<DT><VAR>Quality Clip</VAR>
+<DD>
+The reliability of the base calls varies with position along the sequence.
+Near to both ends the data is less reliable. The "Quality Clip" option
+trims the ends of the sequences by analysing their confidence values or
+accuracy estimates (if present) or the density of unknown bases in the 
+sequence. By observing these "clip points" other processing programs
+will work more reliably.
+
+<DT><VAR>Reference Traces</VAR>
+<DD>
+As explained above it is necessary to specify a reference trace (preferably
+one for each strand of the data if processing data from both strands). The
+Reference sequence can also be set here.
+Note that
+even if our suggestion to preload the reference traces into the gap4
+database is followed, it is still necessary to specify them here for use
+by the
+mutation detection modules.
+
+<DT><VAR>Trace Difference</VAR>
+<DD>
+This is the program which compares the patient and reference traces to
+search for possible mutations. It adds data to the experiment files
+to mark each predicted mutation, and this data will appear as tags in the gap4
+database. It can also create a new trace file containing the difference
+of the reference and the sample. The numerical parameters control the
+sensitivity of the algorithms, and hence the ratio between the numbers
+of false positive and negative results.
+
+<DT><VAR>Heterozygote Scanner</VAR>
+<DD>
+This is the program which compares the patient and reference traces to
+search for possible heterozygous bases. It adds data to the experiment files
+to mark each predicted heterozygous base, 
+and this data will appear as tags in the gap4
+database. The numerical parameters control the
+sensitivity of the algorithms, and hence the ratio between the numbers
+of false positive and negative results.
+
+<DT><VAR>Gap4 shotgun assembly</VAR>
+<DD>
+In order to be able report the positions of mutations relative to the reference
+sequence, and to be able to compare sets of samples from patients, it is
+necessary to perform multiple sequence alignment on the data. This is termed
+"assembly" and is usually performed by gap4, although other programs can be
+operated via pregap4. If following the suggestion to preload the reference
+sequence to a temporary database for each batch, supply the name of this
+database here. Otherwise a new database should be named and created
+from this option. (If this strategy is adopted make sure that the reference 
+sequence and the references traces are assembled!) The parameters
+that control the assembly process and are described elsewhere.
+</DL>
+
+<P>
+Note that pregap4 has the facility to save its configuration and parameter
+settings. 
+This means that the current configuration will be set automatically next
+time the program is used (and hence the steps just described only need to be
+performed once). In addition pregap4 can be run non-interactively
+by typing a single line on the command line.
+Taking thse two capabilities together, means that only one line need be 
+typed in order to process all subsequent batches of data (assuming the
+file names are reused, which is easy to arrange.)
+
+</P>
+
+<!-- NODE:Discussion-Of-Mutation-Data-Processing -->
+
+
+<H3><A NAME="SEC28" HREF="mini_toc.html#SEC28">Discussion Of Mutation Data Processing Methods</A></H3>
+
+<P>
+At present pregap4 and gap4 clearly show their primary usage in the field
+of genome assembly, but versions tailored to mutation studies can be created once
+the requirements are agreed. 
+Ideally all processing should be controlled by a single program which once
+configured for any project should require users to provide only the project
+name - all other file names and parameters could be preset, and all processing,
+including archiving and backup, performed automatically, leaving the data 
+ready for visual inspection. 
+
+</P>
+<P>
+The automatic mutation and heterozygote detection
+programs work well on all the test data we have but now they
+require evaluation by external groups. Such analysis would
+enable us to improve the algorithms and to tune their parameters.
+At present we know that sometimes a base will be declared both as a mutation
+and as a heterozygous position when visual inspection shows that it is
+one or the other.
+
+</P>
+<P>
+There is still much that can be done overall to improve the methods, 
+but the text above
+summarises their status in July 2002.
+Although currently valuable for real scientific
+and clinical work they should perhaps be viewed as prototypes.
+
+</P>
+
+<HR>
+<A HREF="mini_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mini_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mini_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mini_10.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mini_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

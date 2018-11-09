@@ -1,0 +1,212 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Convert_trace</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-convert_trace -->
+
+
+<H1><A NAME="SEC2" HREF="manpages_toc.html#SEC2">Convert_trace</A></H1>
+<P>
+<A NAME="IDX1"></A>
+
+
+<H2><A NAME="SEC3" HREF="manpages_toc.html#SEC3">NAME</A></H2>
+
+<P>
+convert_trace -- Converts trace file formats
+
+</P>
+
+
+<H2><A NAME="SEC4" HREF="manpages_toc.html#SEC4">SYNOPSIS</A></H2>
+
+<P>
+<CODE>convert_trace</CODE>
+[<CODE>-in_format</CODE> <I>format</I>]
+[<CODE>-out_format</CODE> <I>format</I>]
+[<CODE>-fofn</CODE> <I>file_of_filenames</I>]
+[<CODE>-passed</CODE> <I>fofn</I>]
+[<CODE>-failed</CODE> <I>fofn</I>]
+[<CODE>-name</CODE> <I>id</I>]
+[<CODE>-subtract_background</CODE>]
+[<CODE>-normalise</CODE>]
+[<CODE>-scale</CODE> <I>range</I>]
+[<CODE>-compress</CODE> <I>mode</I>]
+[<CODE>-abi_data</CODE> <I>counts</I>]
+[<I>informat</I> <I>outformat</I>]
+
+</P>
+
+
+<H2><A NAME="SEC5" HREF="manpages_toc.html#SEC5">DESCRIPTION</A></H2>
+
+<P>
+<CODE>convert_trace</CODE> converts between the various DNA sequence chromatogram
+formats, optionally performing trace processing actions too. It can read ABI
+(raw or processed), ALF, CTF, SCF and ZTR formats. It can write CTF, EXP, PLN, 
+SCF and ZTR formats. (Note that EXP (Experiment File) and PLN formats are
+text sequences rather than a binary trace.)
+
+</P>
+<P>
+There are two main modes of operation; either with a file of filenames
+specified using the <CODE>-fofn</CODE> <I>filename</I> option, or acting as a filter
+to process one single file. In this case the input and output file format may
+be specified as the last two options on the command line.
+
+</P>
+
+
+<H2><A NAME="SEC6" HREF="manpages_toc.html#SEC6">OPTIONS</A></H2>
+<DL COMPACT>
+
+<DT><CODE>-abi_data</CODE> <I>counts</I>
+<DD>
+    Only of use when processing ABI files. This indicates which ABI
+    <CODE>DATA</CODE> channel numbers to use. For sequencing files this defaults to
+    "9,10,11,12" which corresponds to the processed data. To read the raw data 
+    use "1,2,3,4".
+
+<DT><CODE>-compress</CODE> <I>mode</I>
+<DD>
+    Specifies the name of a program to use to compress the trace data prior to 
+    writing. Due to limitations in the current implementation this option does 
+    not work when <CODE>convert_trace</CODE> is operating as a filter (and so
+    requires use of the <CODE>-fofn</CODE> option). Valid values for <I>mode</I> are
+    compress, bzip, bzip2, gzip, pack and szip. Note that for ZTR, ZTR2 and
+    ZTR3 format files specifying compression modes will not reduce the file
+    size as this format already contains internal compression algorithms. The
+    ZTR1 format does not internally compress and so <CODE>-compress</CODE> will have 
+    an effect.
+
+<DT><CODE>-failed</CODE> <I>fofn</I>
+<DD>
+    Produces a file listing the filenames which have failed to be
+    converted. This only makes sense when also using <CODE>-fofn</CODE>.
+
+<DT><CODE>-fofn</CODE> <I>file_of_filenames</I>
+<DD>
+    Processes several files instead of one, with the filenames to read from and
+    written to being listed in <I>file_of_filenames</I> with one pair (input and
+    output filenames) being listed per line, separated by spaces. If the
+    filenames contain spaces then these may be "escaped" using
+    backslashes. Similarly backslashes should be escaped using a double
+    backslash. For example to convert "file a.scf" and "fileb.scf" to "file
+    a.ztr" and "fileb.ztr" respectively we would use a <I>file_of_filenames</I>
+    containing:
+
+
+<PRE>
+file\ a.scf    file\ a.ztr
+fileb.scf      fileb.ztr
+</PRE>
+
+<DT><CODE>-in_format</CODE> <I>format</I>
+<DD>
+    Specifies the format for the input data. Typically the input format is
+    automatically determined so this may not be required. <I>format</I> should be 
+    one of ABI, ALF, CTF, EXP, PLN, SCF, ZTR, ZTR1, ZTR2 or ZTR3. The ZTR
+    formats all conform to the ZTR specification, but this indicates the
+    compression level to be used.
+
+<DT><CODE>-name</CODE> <I>id</I>
+<DD>
+    When producing an Experiment File this specifies the value of the
+    <CODE>ID</CODE> line. Without this option default Experiment File ID line is the 
+    output filename, or if this is stdout it is the input filename.
+
+<DT><CODE>-normalise</CODE>
+<DD>
+    Attempts to normalise the trace amplitudes to produce more even height
+    peaks. This may be useful to compensate for large spikes at either the
+    start or end of the trace.
+
+<DT><CODE>-out_format</CODE> <I>format</I>
+<DD>
+    Specifies the output format for all files, whether read from a file of
+    filenames or via a filter.  <I>format</I> should be 
+    one of ABI, ALF, CTF, EXP, PLN, SCF, ZTR, ZTR1, ZTR2 or ZTR3. The ZTR
+    formats all conform to the ZTR specification, but this indicates the
+    compression level to be used.
+
+<DT><CODE>-passed</CODE> <I>fofn</I>
+<DD>
+    Produces a file listing the filenames which have been successfully
+    converted. This only makes sense when also using <CODE>-fofn</CODE>.
+
+<DT><CODE>-scale</CODE> <I>range</I>
+<DD>
+    Scales all trace amplitudes so that they fit within the range of 0 to 
+    <I>range</I> inclusive. Any integer value of <I>range</I> may be used between 1
+    and 65535, but this option is designed for down-scaling traces in order to 
+    reduce file size.
+
+<DT><CODE>-subtract_background</CODE>
+<DD>
+    Attempts to remove background trace levels by analysing each trace channel 
+    independently to determine the baseline. This option is mainly used when
+    processing raw data.
+</DL>
+
+
+
+<H2><A NAME="SEC7" HREF="manpages_toc.html#SEC7">EXAMPLES</A></H2>
+
+<P>
+To convert several files to ZTR format using the same example file of
+filenames listed in the <CODE>-fofn</CODE> option above:
+
+</P>
+
+<PRE>
+convert_trace -out_format ZTR -fofn filename
+</PRE>
+
+<P>
+To subtract the background from a raw ABI file and save this as an SCF file:
+
+</P>
+
+<PRE>
+convert_trace -abi_data 1,2,3,4 -subtract_background ABI SCF &#60; a.abi &#62; a.scf
+</PRE>
+
+
+
+<H2><A NAME="SEC8" HREF="manpages_toc.html#SEC8">NOTES</A></H2>
+
+<P>
+If ABI files are manually edited before input to convert_trace then the
+internal formats of these files may differ to the format expected by
+convert_trace.
+
+</P>
+
+
+<H2><A NAME="SEC9" HREF="manpages_toc.html#SEC9">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_3.html#SEC3">scf(4)</A>.
+
+</P>
+<P>See section <A HREF="formats_12.html#SEC13">ztr(4)</A>.
+
+</P>
+<P>See section <A HREF="manpages_17.html#SEC97">makeSCF(1)</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_1.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_3.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

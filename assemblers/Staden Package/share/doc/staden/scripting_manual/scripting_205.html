@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Pkg-Command-Code</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_204.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_206.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pkg-Command-Code -->
+
+
+<H3><A NAME="SEC274" HREF="scripting_toc.html#SEC274">Writing the Code Itself</A></H3>
+<P>
+<A NAME="IDX939"></A>
+
+</P>
+<P>
+The final C code itself is obviously completely different for each extension.
+
+</P>
+<P>
+In the example composition package we loop through each contig listed in our
+<CODE>-contigs</CODE> command line argument running a separate function that returns
+a Tcl list containing the total number of characters processed and the number
+of A, C, G, T and unknown nucleotides. Each list in turn is then added as an
+item to another list which is used for the final result.
+
+</P>
+
+<PRE>
+    /* Do the actual work */
+    Tcl_DStringInit(&#38;dstr);
+    for (i = 0; i &#60; num_contigs; i++) {
+        result = doit(args.io, contigs[i].contig, contigs[i].start,
+                      contigs[i].end);
+        if (NULL == result) {
+            xfree(contigs);
+            return TCL_ERROR;
+        }
+
+        Tcl_DStringAppendElement(&#38;dstr, result);
+    }
+
+    Tcl_DStringResult(interp, &#38;dstr);
+
+    xfree(contigs);
+    return TCL_OK;
+}
+</PRE>
+
+<P>
+The above is the end of the <CODE>tcl_composition</CODE> function. <CODE>doit</CODE> is
+our main algorithm written in C (which has no knowledge of Tcl). We use the
+Tcl dynamic strings routines to build up the final return value. The complete
+C code for this package can be found in the appendices.
+
+</P>
+<P>
+If a command has persistent data about a contig (such as a plot containing the
+composition) the registration scheme should be used to keep this data up to
+date whenever database edits are made. See section <A HREF="scripting_173.html#SEC192">Contig Registration Scheme</A>.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_204.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_206.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_replace_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_151.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_153.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_replace_seq -->
+
+
+<H2><A NAME="SEC171" HREF="scripting_toc.html#SEC171">io_replace_seq</A></H2>
+<P>
+<A NAME="IDX697"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_replace_seq(
+        int2    maxgel,
+        int2   *length,
+        int2   *start,
+        int2   *end,
+        char   *seq,
+        int1   *conf,
+        int2   *opos,
+        int2    pos,
+        char   *bases,
+        int1   *newconf,
+        int2   *newopos,
+        int2    Nbases,
+        int     diff_only,
+        int     conf_only);
+</PRE>
+
+<P>
+<CODE>io_replace_seq</CODE> replaces on or more bases from the sequence, confidence
+and original positions arrays specified. No database I/O is performed.
+
+</P>
+<P>
+The existing sequence, confidence values, and original positions arrays are
+passed as <VAR>seq</VAR>, <VAR>conf</VAR>, and <VAR>opos</VAR> arguments. All are mandatory.
+The length of sequence and hence the number of used elements in these arrays
+is passed as <VAR>length</VAR>, with <VAR>start</VAR> and <VAR>end</VAR> containing the left
+and right cutoff positions. The allocated size of these arrays is
+<VAR>maxgel</VAR>. FIXME: it is used - does it need to be?
+
+</P>
+<P>
+The new sequence, confidence values, and original positions to replace are
+passed as <VAR>bases</VAR>, <VAR>newconf</VAR> and <VAR>newopos</VAR>. The number of bases to
+replace is <VAR>NBases</VAR>. Either or both of the <VAR>newconf</VAR> and <VAR>newopos</VAR>
+arguments may be NULL. The replaced confidence values will then default to 100
+for non pad ("<CODE>*</CODE>") bases. For pads, the confidence value defaults to the
+average of the confidence values of the first two neighbouring bases that are
+not pads. The replaced original positions default to 0. These bases are to be
+inserted at the position specified by <VAR>pos</VAR>, counting as position 1 being
+to the left of the first base in the sequence. The <VAR>length</VAR>, <VAR>start</VAR>
+and <VAR>end</VAR> values are left unchanged.
+
+</P>
+<P>
+This function returns 0 for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_151.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_153.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

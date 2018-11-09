@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - merge_contig_tags</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_157.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_159.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:merge_contig_tags -->
+
+
+<H2><A NAME="SEC177" HREF="scripting_toc.html#SEC177">merge_contig_tags</A></H2>
+<P>
+<A NAME="IDX708"></A>
+<A NAME="IDX709"></A>
+<A NAME="IDX710"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+void merge_contig_tags(
+        GapIO  *io,
+        int     contig1,
+        int     contig2,
+        int     off);
+</PRE>
+
+<P>
+This function is used to join a tag list from one contig to a tag list from
+another contig. All the tags in contig number <VAR>contig1</VAR> are added to
+contig number <VAR>contig2</VAR>. Each tag is moved by <VAR>off</VAR> bases when it is
+copied. The tag list is correctly maintained as sorted list. At the end of the
+function, the tags list for contig number <VAR>contig2</VAR> is set to 0.
+
+</P>
+<P>
+The main purpose of this function is for use when joining contigs.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_157.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_159.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

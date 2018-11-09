@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_delete_contig</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_144.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_146.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_delete_contig -->
+
+
+<H3><A NAME="SEC164" HREF="scripting_toc.html#SEC164">io_delete_contig</A></H3>
+<P>
+<A NAME="IDX684"></A>
+<A NAME="IDX685"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_delete_contig(
+	GapIO  *io,
+	int	contig_num);
+</PRE>
+
+<P>
+This function deletes a single contig number from the database. It
+<STRONG>does not</STRONG> remove any of the readings on the contig, but all
+annotations on the consensus sequence for this contig are deallocated.
+
+</P>
+<P>
+The last contig in the database is renumbered to be <VAR>contig_num</VAR>. This
+updates the <CODE>io_clength()</CODE>, <CODE>io_clnbr()</CODE>, and <CODE>io_crnbr()</CODE>
+arrays in <VAR>io</VAR> and the contig order information.
+
+</P>
+<P>
+A <CODE>REG_DELETE</CODE> notification is sent to the deleted contig <STRONG>after</STRONG>
+removal, followed by a <CODE>REG_NUMBER_CHANGE</CODE> notification to renumbered
+contig, followed by updating the contig registry tables.e
+
+</P>
+<P>
+It returns 0 for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_144.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_146.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

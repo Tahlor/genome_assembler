@@ -1,0 +1,62 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Clip-Quality</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_134.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_136.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Clip-Quality -->
+
+
+<H3><A NAME="SEC206" HREF="gap4_toc.html#SEC206">Quality Clipping</A></H3>
+<P>
+<A NAME="IDX467"></A>
+<A NAME="IDX468"></A>
+
+</P>
+
+<p>
+<img src="quality_clip.png" alt="[picture]">
+
+<P>
+The quality clipping function 
+(which is available from the gap4 Edit menu)
+clips the ends of readings when the average
+(over 31 bases) confidence value is lower than a user defined threshold.  As
+with the difference clipping method the clips are only adjusted when the newly
+calculated clip points are more stringent than the originals.
+
+</P>
+<P>
+After clipping Gap4 then identifies any holes (breaks in the contigs) that may
+have been created and fills them up again by extending the sequence(s) with
+the fewest number of expected errors.
+
+</P>
+<P>
+An example output follows.
+
+<PRE>
+Hole from 32652 to 32725: extend #1378 and #1385 with 3.157324 expected errors
+</PRE>
+
+<P>
+We have observed that when using confidence values expressed as 
+-10*log(err_rate),
+it is sometimes better not to clip using the confidence values, but to
+use the difference clipping method 
+(see section <A HREF="gap4_134.html#SEC205">Difference Clipping</A>).
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_134.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_136.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

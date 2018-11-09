@@ -1,0 +1,75 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-Enter Assembly</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_41.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_43.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-Enter Assembly -->
+
+
+<H2><A NAME="SEC48" HREF="pregap4_toc.html#SEC48">Enter Assembly into Gap4</A></H2>
+<P>
+<A NAME="IDX79"></A>
+<A NAME="IDX80"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module is used to enter assemblies into gap4 which have been generated
+externally to gap4 (ie all assembly engines except "Gap4 shotgun assembly"). This is
+achieved by using the gap4 "Directed Assembly" function. The assembly is read
+from the <I>fofn</I>.assembly directory, where <I>fofn</I> is the filename prefix
+listed in the "Files to Process" panel.
+<P>
+
+<DT><STRONG>Option: Gap4 database name</STRONG>
+<DD>
+<DT><STRONG>Option: Gap4 database version</STRONG>
+<DD>
+The name and version of the database to assemble into.
+<P>
+
+<DT><STRONG>Option: Create new database</STRONG>
+<DD>
+This is a toggle to define whether the specified gap4 database should be
+created or appended to.  Be warned that at present creating a new database
+will overwrite existing one of the same name, in the same directory, without
+any warnings.
+<P>
+
+<DT><STRONG>Option: Post-assembly quality clipping</STRONG>
+<DD>
+<DT><STRONG>Option: Lowest (average) quality to use</STRONG>
+<DD>
+This can be used to direct gap4 to run the "Quality Clip" function after
+entering the assembly. This performs quality clipping by identifying segments
+where the average quality is below a particular threshold. This should only be
+necessary if quality clipping was not performed earlier (eg because Phrap was
+used for assembly), and even then it is usually better to use difference
+clipping instead.
+<P>
+
+<DT><STRONG>Option: Post-assembly difference clipping</STRONG>
+<DD>
+This can be used to direct gap4 to run the "Difference Clip" function after
+entering the assembly. This identifies ends of readings where the alignment
+between readings and consensus is bad and marks these ends as hidden data. This
+is primarily designed for use after the Phrap assembly engine, which sometimes
+leaves poorly aligned end fragments.
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_41.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_43.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

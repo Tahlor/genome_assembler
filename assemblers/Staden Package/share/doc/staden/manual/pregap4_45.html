@@ -1,0 +1,51 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-ABI2SCF</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_44.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_46.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-ABI2SCF -->
+
+
+<H2><A NAME="SEC51" HREF="pregap4_toc.html#SEC51">ALF/ABI to SCF Conversion - Obsolete</A></H2>
+<P>
+<A NAME="IDX85"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module converts ABI and ALF files to SCF format using the <CODE>makeSCF</CODE>
+program. SCF format is not required by programs such as gap4,
+but it is considerably
+smaller and has been designed to give high compression ratios.
+<P>
+
+<DT><STRONG>Option: SCF bit size</STRONG>
+<DD>
+This selects the data size for the chromatogram data. An 8 bit value can store
+256 possible values, which is typically good enough for display purposes. If Y
+scaling is required (for instance because the signal strength diminishes
+significantly along the length of the trace), or further computational analysis
+of the trace is required, a 16 bit data size should be chosen.  As the majority
+of the trace file is the sample data, using 8 bit data typically saves about
+half of the disk space.
+
+This module may also be used for converting 16-bit SCF files to 8-bit SCF
+files.
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_44.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_46.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

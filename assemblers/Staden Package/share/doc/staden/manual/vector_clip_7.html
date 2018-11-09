@@ -1,0 +1,133 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from vector_clip.htmlinfo on 25 April 2016 -->
+
+<TITLE>Vector clipping - Vector_Clip-Examples</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_6.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_8.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Vector_Clip-Examples -->
+
+
+<H2><A NAME="SEC8" HREF="vector_clip_toc.html#SEC8">Examples</A></H2>
+
+<P>
+Screen for sequencing vector using 5' cutoff of 70%, a 3' cutoff of 90%
+and default 5' primer position of 30. The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -s -L70 -R90 -m30 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for sequencing vector using 5' cutoff of 60%, a 3' cutoff of 80%
+and default 5' primer position of 30. The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail. This shows
+that the default search is for sequencing vector.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -m30 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for sequencing vector using 5' cutoff of 60%, a 3' cutoff of 80%
+and a vector-primer-pair file called vpfile. Only the 20 bases closest
+to the cloning site will be used for the 5' search.
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -v vpfile -V20 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen transposon data using 5' cutoff of 80%, a 3' cutoff of 85%, a match length of 10
+and a vector-primer-pair file called vector_primer_file. 
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -i vector_primer_file -L 80 -R 85 -l 10 -pfiles.pass \</CODE>
+<CODE>            -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for cloning vector using the old algorithm with a word length of 4, 
+summing 7 diagonals and diagonal cutoff score of 0.4. 
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -c -w4 -n7 -d0.4 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for cloning vector using the probability based algorithm with a 
+word length of 4 and probability cutoff of 1.0e-13.
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+
+<PRE>
+<CODE>vector_clip -c -P 1.0e-13 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for 3' primer using a cutoff of 75%.
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+<PRE>
+<CODE>vector_clip -h -R75 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<P>
+Screen for sequencing vector rearrangements using a cutoff of 20 bases.
+The batch of files to process are
+named in files.in, the names of the passed files are written to
+files.pass and the names of those that fail to files.fail.
+
+</P>
+
+<PRE>
+<CODE>vector_clip -r -l20 -pfiles.pass -f files.fail files.in</CODE>
+</PRE>
+
+<HR>
+<A HREF="vector_clip_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="vector_clip_6.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="vector_clip_8.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="vector_clip_17.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="vector_clip_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

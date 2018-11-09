@@ -1,0 +1,33 @@
+.TH "trace_dump" 1 "" "" "Staden Package"
+.SH "NAME"
+.PP
+trace_dump \- lists in a textual form the contents of a trace file.
+
+.SH "SYNOPSIS"
+.PP
+
+\fBtrace_dump\fP \fIfile\fP
+
+.SH "DESCRIPTION"
+.PP
+
+\fBtrace_dump\fP extracts the contents of a trace file and lists it
+in textual format. It is primarily a debugging tool for use with
+io_lib, but can serve as a useful way to query the contents of a trace
+file outside of graphical programs such as Trev. The \fIfile\fP may be of
+any supported trace format (and so this tool replaces the older
+\fBscf_dump\fP program).
+
+Each portion of the trace file is listed in its own block. The block
+names output are ``[Trace]'' (containing general information such as
+the number of samples), ``[Bases]'', ``[A_Trace]'', ``[C_Trace]'',
+``[G_Trace]'', ``[T_Trace]'' and ``[Info]'' (containing the free text
+comments).
+
+.SH "SEE ALSO"
+.PP
+
+\fBscf\fR(4)
+\fBztr\fR(4)
+\fBRead\fP(4)
+

@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Script-open_close</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_48.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_50.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Script-open_close -->
+
+
+<H3><A NAME="SEC55" HREF="scripting_toc.html#SEC55">Opening, Closing and Copying Databases</A></H3>
+
+<P>
+Before any database accessing can take place the gap4 database must be opened.
+This is done using the <CODE>open_db</CODE> call. This returns an <I>io</I> handle
+which should be passed to all other functions accessing the database.
+
+</P>
+<P>
+<A NAME="IDX145"></A>
+<A NAME="IDX146"></A>
+
+<PRE>
+<CODE>open_db</CODE>
+ -name          <I>database_name</I>
+?-version       <I>version</I>?
+?-create        <I>boolean</I>?
+?-access        <I>access_mode</I>?
+</PRE>
+
+<P>
+This opens a database named <I>database_name</I>. The actual files used will be
+<I>database_name.version</I>. The routine is used for both creating a new
+database and opening an existing database. The value returned is the io handle
+of the opened database. More than one database may be opened at one time.
+
+</P>
+<DL COMPACT>
+
+<DT>-name <I>database_name</I>
+<DD>
+Specifies the database name. The name is the start component of the two
+filenames used for storing the database and so is the section up to, but not
+including, the full stop. This is not an optional argument.
+<P>
+<DT>-version <I>version</I>
+<DD>
+This optional parameter specifies the database version. The version is
+the single character after the full stop in the UNIX database filenames. It is
+expected to be a single character. The default value (as used for newly
+created databases) is "0".
+<P>
+<DT>-create <I>boolean</I>
+<DD>
+Whether to open an existing database (-create 0) or a new database (-create
+1). The default here is 0; to open an existing database.
+<P>
+<DT>-access <I>access_mode</I>
+<DD>
+<A NAME="IDX147"></A>
+The <I>access_mode</I> specifies whether the database is to be opened in
+read-only mode or read-write mode. Valid arguments are "r", "READONLY", "rw"
+and "WRITE". If a database is opened in "rw" or "WRITE" mode a BUSY file will
+be created. If the BUSY file already exists then the database is opened in
+read-only mode instead. Either way, the <CODE>read_only</CODE> Tcl variable is set
+to 0 for read-write and 1 for read-only mode.
+</DL>
+
+<P>
+<hr>
+<P>
+<A NAME="IDX148"></A>
+<A NAME="IDX149"></A>
+
+<PRE>
+<CODE>close_db</CODE>
+ -io            <I>io_handle</I>
+</PRE>
+
+<P>
+This closes a previously opened database. Returns nothing, but produces a Tcl
+error for failure.
+
+</P>
+<DL COMPACT>
+
+<DT>-io <I>io</I>
+<DD>
+Specifies which database to close. The <I>io</I> is the io handle returned from a
+previous <CODE>open_db</CODE> call. Attempting to close databases that have not been
+opened will lead to undefined results.
+</DL>
+
+<P>
+<hr>
+<P>
+<A NAME="IDX150"></A>
+<A NAME="IDX151"></A>
+
+<PRE>
+<CODE>copy_db</CODE>
+ -io            <I>io_handle</I>
+ -version       <I>version</I>
+?-collect       <I>boolean</I>?
+</PRE>
+
+<P>
+This command copies a currently open database to a new version number. The
+currently opened database is not modified. After copying the current open
+database referred to by <I>io_handle</I> is still the original database.
+
+</P>
+<DL COMPACT>
+
+<DT>-io <I>io</I>
+<DD>
+Specifies which database to copy. The <I>io</I> is the io handle returned from a
+previous <CODE>open_db</CODE> call. Attempting to copy databases that have not been
+opened will lead to undefined results.
+<P>
+<DT>-version <I>version</I>
+<DD>
+This parameter specifies the database version to create to place the copy in.
+<P>
+<DT>-collect <I>boolean</I>
+<DD>
+This optional parameter specifies whether to perform garbage collection when
+copying the file. A value of 0 means no garbage collection; which is simply to
+do a raw byte-by-byte copy of the two database files. A non zero value will
+read and write each reading, contig, (etc) in turn to the new database, thus
+resolving any database fragmentation. The default value is "0".
+</DL>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_48.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_50.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

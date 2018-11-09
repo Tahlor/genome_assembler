@@ -1,0 +1,197 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-get_consensus</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_88.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_90.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-get_consensus -->
+
+
+<H2><A NAME="SEC97" HREF="scripting_toc.html#SEC97">get_consensus</A></H2>
+<P>
+<A NAME="IDX308"></A>
+<A NAME="IDX309"></A>
+
+</P>
+
+<PRE>
+<CODE>get_consensus</CODE>
+ -io            <I>io_handle</I>
+ -contigs       <I>identifiers:strings</I>
+ -outfile       <I>filename:string</I>
+?-type          <I>type:string(normal)</I>?
+?-mask          <I>mask:string(none)</I>?
+?-tag_types     <I>types:string()</I>?
+?-win_size      <I>length:integer(0)</I>?
+?-max_dashes    <I>count:integer(0)</I>?
+?-format        <I>format:integer(3)</I>?
+?-annotations   <I>annotations:integer(0)</I>?
+?-truncate      <I>truncate:integer(0)</I>?
+</PRE>
+
+<P>
+This command calculates the consensus sequence for one or more contigs and
+saves it to a file. The function returns no value but will generate a Tcl
+error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to search. The <I>{contig start end}</I>
+syntax may be used for an identifier to search only a region of the
+contig, otherwise all of it is searched.
+
+<P>
+<DT><VAR><CODE>-outfile</CODE> filename</VAR>
+<DD>
+Specifies the filename to write the consensus sequence too. This has no
+default value.
+
+<P>
+<DT><VAR><CODE>-type</CODE> type</VAR>
+<DD>
+This specifies the final output type for the consensus algorithm. Valid
+<I>type</I>s are:
+
+<DL COMPACT>
+
+<DT><CODE>normal</CODE>
+<DD>
+The standard consensus sequence consisting of A, C, G, T, - and *.
+
+<DT><CODE>extended</CODE>
+<DD>
+As per <CODE>normal</CODE>, except the cutoff data at the ends of contigs is used to
+provide consensus sequence beyond the well defined contig ends.
+
+<DT><CODE>unfinished</CODE>
+<DD>
+The consensus sequence in single stranded regions is output as a, c, g and
+t whilst the consensus for finished regions is listed as d, e f and i (for
+a, c, g and t respectively).  The quality of each base is output instead
+of the consensus base. The base quality is listed as a single letter from
+the following table showing the quality of each strand independently.
+
+<A NAME="IDX310"></A>
+<DL COMPACT>
+
+<DT><VAR>a</VAR>
+<DD>
+<KBD>Good Good (in agreement)</KBD>
+<DT><VAR>b</VAR>
+<DD>
+<KBD>Good Bad</KBD>
+<DT><VAR>c</VAR>
+<DD>
+<KBD>Bad  Good</KBD>
+<DT><VAR>d</VAR>
+<DD>
+<KBD>Good None</KBD>
+<DT><VAR>e</VAR>
+<DD>
+<KBD>None Good</KBD>
+<DT><VAR>f</VAR>
+<DD>
+<KBD>Bad  Bad</KBD>
+<DT><VAR>g</VAR>
+<DD>
+<KBD>Bad  None</KBD>
+<DT><VAR>h</VAR>
+<DD>
+<KBD>None Bad</KBD>
+<DT><VAR>i</VAR>
+<DD>
+<KBD>Good Good (disagree)</KBD>
+<DT><VAR>j</VAR>
+<DD>
+<KBD>None None</KBD>
+</DL>
+</DL>
+
+<P>
+<DT><VAR><CODE>-win_size</CODE> length</VAR>
+<DD>
+<DT><VAR><CODE>-max_dashes</CODE> count</VAR>
+<DD>
+These are only of use during the <I>extended</I> consensus type.  The criteria
+for determining how much cutoff sequence to output is selected as the
+portion where there are no more than <I>count</I> unknown ("-") bases are
+found within a region of <I>length</I> bases. The defaults are 0 for both,
+which implies that only used data should be output.
+
+<P>
+<DT><VAR><CODE>-format</CODE> format</VAR>
+<DD>
+Specifies the output format of the file to be created. All formats can be
+written for all consensus types, but some may not be legal (eg Fasta files
+containing quality codes instead of sequence). The available formats are:
+
+<A NAME="IDX311"></A>
+<DL COMPACT>
+
+<DT><CODE>1</CODE>
+<DD>
+Staden format
+<DT><CODE>2</CODE>
+<DD>
+Fasta format
+<DT><CODE>3</CODE>
+<DD>
+Experiment File format
+</DL>
+
+The default is 3.
+
+<P>
+<DT><VAR><CODE>-annotations</CODE> annotations</VAR>
+<DD>
+This controls whether to output annotations. This is only of used in the
+Experiment File output format. Note that with the <I>extended</I> consensus type
+the annotation positions are still for the <I>normal</I> consensus; this is a bug
+which will only be fixed if it is considered useful. A non-zero value will
+output annotations. The default is 0, which is to not output annotations.
+
+<P>
+<DT><VAR><CODE>-truncate</CODE> truncate</VAR>
+<DD>
+This controls whether annotations within or overlapping the cutoff data will
+be output. A non-zero value will not output annotations within the cutoff
+data. The default is 0.
+
+<P>
+<DT><VAR><CODE>-mask</CODE> mask</VAR>
+<DD>
+<DT><VAR><CODE>-tag_types</CODE> types</VAR>
+<DD>
+If <I>types</I> is a non blank list of tag types then masking or marking will
+be applied to the sequence covered by tags of these types from. When
+<I>mask</I> is "<CODE>mask</CODE>" the sequence is converted to an alternative
+character set (<VAR>d</VAR>, <VAR>e</VAR>, <VAR>f</VAR> and <VAR>i</VAR> for Experiment Files
+and Staden format and <VAR>n</VAR>s for Fasta format). When <I>mask</I> is
+"<CODE>mark</CODE>" the sequence is in lowercase. The defaults are"
+<CODE>none</CODE>" for <I>mask</I> and a blank string for the tag types, which
+disables masking and marking. Masking and marking is only used in the
+<I>normal</I> and <I>extended</I> consensus types.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_88.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_90.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

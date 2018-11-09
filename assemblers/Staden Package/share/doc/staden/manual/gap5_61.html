@@ -1,0 +1,59 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Con-Calculation-2</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_60.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_62.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-Calculation-2 -->
+
+
+<H3><A NAME="SEC99" HREF="gap5_toc.html#SEC99">Consensus Calculation Using Weighted Base Frequencies</A></H3>
+
+<P>
+This method can be used when simple, unquantified, base call quality
+values are available. Instead of simply counting base type frequencies
+it sums the quality values.
+Hence a column of 4 bases A,
+A, A and T with confidence values 10, 10, 10 and 50 would give combined totals
+of 30/80 for A and 50/80 for T (compared to 3/4 for A and 1/4 for 
+T when using frequencies). As
+with the unweighted frequency method this sets the confidence value of the
+consensus base to be the the fraction of the chosen base type weights over the
+total weights (62.5 in the above example).
+
+</P>
+<P>
+The quality cutoff parameter controls which bases are used in the calculation.
+Only bases with quality values greater than or equal to the quality cutoff are
+used, otherwise they are completely ignored and have no effect on either the
+base type chosen for the consensus or the consensus confidence value. In the
+above example setting the quality cutoff to 20 would give a T with
+confidence 100 (100 * 50/50).
+
+</P>
+<P>
+In the event that more than one base type is calculated to have the same
+weight, and this
+exceeds the consensus cutoff, the bases are assigned in descending order of
+precedence: A, C, G and T.
+
+</P>
+<P>
+This is Rule IV of <CITE>Bonfield,J.K. and Staden,R. The application of
+numerical estimates of base calling accuracy to DNA sequencing projects.
+Nucleic Acids Research 23, 1406-1410 (1995).</CITE>
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_60.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_62.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_13.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_15.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules -->
+
+
+<H1><A NAME="SEC20" HREF="pregap4_toc.html#SEC20">Configuring Modules</A></H1>
+<P>
+<A NAME="IDX20"></A>
+<A NAME="IDX21"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="pregap4_15.html#SEC21">General Configuration</A>
+<LI><A HREF="pregap4_16.html#SEC22">Estimate Base Accuracies</A>
+<LI><A HREF="pregap4_17.html#SEC23">Phred</A>
+<LI><A HREF="pregap4_18.html#SEC24">ATQA</A>
+<LI><A HREF="pregap4_19.html#SEC25">Trace Format Conversion</A>
+
+<LI><A HREF="pregap4_20.html#SEC26">Initialise Experiment Files</A>
+<LI><A HREF="pregap4_21.html#SEC27">Augment Experiment Files</A>
+<LI><A HREF="pregap4_22.html#SEC28">Quality Clip</A>
+<LI><A HREF="pregap4_23.html#SEC29">Sequencing Vector Clip</A>
+<LI><A HREF="pregap4_24.html#SEC30">Cross_match</A>
+<LI><A HREF="pregap4_25.html#SEC31">Cloning Vector Clip</A>
+<LI><A HREF="pregap4_26.html#SEC32">Screen for Unclipped Vector</A>
+<LI><A HREF="pregap4_27.html#SEC33">Screen Sequences</A>
+<LI><A HREF="pregap4_28.html#SEC34">Blast Screen</A>
+<LI><A HREF="pregap4_29.html#SEC35">Interactive Clipping</A>
+<LI><A HREF="pregap4_30.html#SEC36">Extract Sequence</A>
+<LI><A HREF="pregap4_31.html#SEC37">RepeatMasker</A>
+<LI><A HREF="pregap4_32.html#SEC38">Tag Repeats</A>
+<LI><A HREF="pregap4_33.html#SEC39">Mutation Detection</A>
+<LI><A HREF="pregap4_34.html#SEC40">Reference Traces</A>
+<LI><A HREF="pregap4_35.html#SEC41">Trace Difference</A>
+<LI><A HREF="pregap4_36.html#SEC42">Mutation Scanner</A>
+<LI><A HREF="pregap4_37.html#SEC43">Gap4 Shotgun Assembly</A>
+<LI><A HREF="pregap4_38.html#SEC44">Cap2 Assembly</A>
+<LI><A HREF="pregap4_39.html#SEC45">Cap3 Assembly</A>
+<LI><A HREF="pregap4_40.html#SEC46">FakII Assembly</A>
+<LI><A HREF="pregap4_41.html#SEC47">Phrap Assembly</A>
+<LI><A HREF="pregap4_42.html#SEC48">Enter Assembly into Gap4</A>
+<LI><A HREF="pregap4_43.html#SEC49">Email</A>
+<LI><A HREF="pregap4_44.html#SEC50">Old Cloning Vector Clip - Obsolete</A>
+<LI><A HREF="pregap4_45.html#SEC51">ALF/ABI to SCF Conversion - Obsolete</A>
+</UL>
+
+<P>
+The "Configure Modules" dialogue is available from the Modules menu or, when
+using the compact window style, by pressing the Configure Modules tab.
+
+</P>
+<P>
+This dialogue contains the main interface through which most of the
+user's interaction with pregap4
+will be performed. The left side of the display contains a list of the
+currently loaded modules. One module in this list will be highlighted.
+The right side of the display shows the configuration panel for this
+highlighted module.
+
+</P>
+
+<p>
+<img src="pregap4_config.png" alt="[picture]">
+
+<P>
+The module list shown on the left consists of a series of module names and
+their status, and is termed the "enable status".  The <CODE>[ ]</CODE> and
+<CODE>[x]</CODE> strings at the left of the name indicates whether this module is
+enabled; crossed boxes are enabled modules. The highlighting is another
+indication of whether the module is enabled. The "General Configuration"
+module is mandatory and cannot be disabled. The text to the right of the
+module name indicates whether the module has been given all the parameters
+needed for it to process. This will be one of "ok" (all configuration options
+have been filled in), "-" (no configuration options exist for this module),
+"edit" (further configuration is required") or blank (this module is
+disabled).
+
+</P>
+<P>
+The "enable status" can be toggled by left clicking on the "<CODE>[ ]</CODE>" to the
+left of the module name. The enable status can be written to the current
+Pregap4 configuration file using the "Save Module List" or "Save All
+Parameters" commands in the Modules menu. Left clicking anywhere on a module
+name in the module list will switch the pane on the right side of the window
+to display any available parameters for this module. Not all modules will have
+parameters to configure.
+
+</P>
+<P>
+For modules that do have parameters, the top line of the configuration panel
+will contain a button labelled "Save these parameters". This button will save
+all parameters for this module to the configuration file. Note that this is
+not the same as the "Save all parameters" option in the main Modules menu, as
+this saves all parameters in all modules.
+
+</P>
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_13.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_15.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

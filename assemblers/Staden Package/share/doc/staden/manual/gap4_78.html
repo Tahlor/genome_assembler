@@ -1,0 +1,70 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Techniques-Overcall</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_77.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_79.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Techniques-Overcall -->
+
+
+<H3><A NAME="SEC143" HREF="gap4_toc.html#SEC143">Base Overcalls</A></H3>
+<P>
+<A NAME="IDX335"></A>
+<A NAME="IDX336"></A>
+
+</P>
+<P>
+A common problem is that of base overcalls that will result in perhaps one
+reading having and extra base, and all the others being padded by the alignment
+routines:
+
+</P>
+
+<PRE>
+Read1      ACC*AG
+Read2      ACC*AG
+Read3      ACC*AG
+Read4      ACCCAG
+Read5      ACC*AG
+Consensus  ACC*AG
+</PRE>
+
+<P>
+In this first case we see that <CODE>Read4</CODE> has an extra <CODE>C</CODE>, probably
+due to an overcall. Check that the trace for <CODE>Read4</CODE> shows an overcall.
+It is a good idea to check good quality traces for both strands as well as the
+trace with the apparent problem. Also note that enabling "Show reading
+quality" (Settings menu) will show the reading quality as grey scales.
+
+</P>
+<P>
+We now need to remove the column. It would appear that this could be done by
+removing the <CODE>*</CODE> from each of Readings 1, 2, 3 and 5, and removing the
+<CODE>C</CODE> from Reading 4. However this will only make edits to those five
+readings. As we're trying to remove an entire column from the contig, we need
+to shift to the left by a single base the position of any readings to the
+right. Naturally this is not the ideal method.
+
+</P>
+<P>
+By placing the editing cursor in the consensus (on the second A) we can
+press Delete to remove the entire column. This automatically makes sure that
+everything is consistent. If we are editing at 100% consensus cutoff then this
+consensus base will be a '-' instead of a '*'. For this to work we need to
+make sure that we have "Allow del dash in cons" enabled in the Edit Modes
+menu. See section <A HREF="gap4_56.html#SEC67">Editing Modes</A>.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_77.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_79.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

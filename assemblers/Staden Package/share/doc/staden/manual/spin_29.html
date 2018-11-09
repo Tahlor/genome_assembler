@@ -1,0 +1,62 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from spin.htmlinfo on 25 April 2016 -->
+
+<TITLE>Spin - SPIN-Positional-Base-Prefs</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_28.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_30.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:SPIN-Positional-Base-Prefs -->
+
+
+<H3><A NAME="SEC39" HREF="spin_toc.html#SEC39">Positional base preferences</A></H3>
+
+<P>
+This method for finding protein coding regions
+is a variant of the codon usage method. Here, instead of measuring the
+closeness to an table of codon frequencies whose main discriminating
+power is due codon preferences, we look for similarity to the codon
+usage that would be expected from a protein sequence of average amino
+acid composition, but with no codon preference. The method is
+surprisingly effective:
+When  tested  against all the E. coli
+  sequences in the EMBL sequence library it correctly  identified  the
+  coding  frame  for  91% of window positions.  (The E. coli sequences
+  were chosen only for technical reasons: we have no  reason  to  think
+  the method would work less well on other organisms with roughly even
+  base composition.) 
+<CITE>Staden R. (1990) Finding protein coding regions in genomic sequences.
+                  In Doolittle, R,R (ed), Methods in Enzymology, 183, 
+                  Academic Press, San Diego, CA, 163-180.</CITE>
+
+</P>
+<P>
+The   average   amino
+  composition  used  to derive the values in the codon table
+is that described by McCaldon and Argos <CITE>McCaldon  and  Argos (1988),
+Proteins  4,  99-122</CITE>. 
+
+</P>
+
+<p>
+<a href="spin_codon_usage_aaonly,6in.png.html"><img src="spin_codon_usage_aaonly,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Above is the result of applying this method to the C. elegans sequence
+analysed above with a codon preference table. Note that, as would be expected,
+the main difference
+is the that the range of observed scores is very much reduced.
+
+</P>
+<HR>
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_28.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_30.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

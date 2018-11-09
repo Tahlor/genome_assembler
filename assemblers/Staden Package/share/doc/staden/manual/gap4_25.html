@@ -1,0 +1,100 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Contig Comparator</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_24.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_26.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Contig Comparator -->
+
+
+<H1><A NAME="SEC32" HREF="gap4_toc.html#SEC32">Contig Comparator</A></H1>
+
+<UL>
+<LI><A HREF="gap4_26.html#SEC33">Examining Results</A>
+<LI><A HREF="gap4_27.html#SEC34">Automatic Match Navigation</A>
+</UL>
+
+<P>
+<A NAME="IDX51"></A>
+<A NAME="IDX52"></A>
+
+</P>
+<P>
+Gap4 commands such as Find Internal Joins
+(see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>), Find Repeats (see section <A HREF="gap5_44.html#SEC81">Find Repeats</A>), Check Assembly (see section <A HREF="gap5_49.html#SEC86">Check Assembly</A>), and Find Read Pairs (see section <A HREF="gap5_45.html#SEC82">Find Read Pairs</A>)
+automatically transform the Contig Selector (see section <A HREF="gap5_3.html#SEC8">Contig Selector</A>) to produce the Contig Comparator.  To
+produce this transformation a copy of the Contig Selector is added at
+right angles to the original window to create a two dimensional
+rectangular surface on which to display the results of comparing or
+checking contigs. Each of the functions plots its results as diagonal
+lines of different colours.  If the plotted points are close to the main
+diagonal they represent results from pairs of contigs that are in the
+correct relative order.  Lines parallel to the main diagonal represent
+contigs that are in the correct relative orientation to one another.
+Those perpendicular to the main diagonal show results for which one
+contig would need to be reversed before the pair could be joined.  The
+manual contig dragging procedure can be used to change the relative
+positions of contigs.  See section <A HREF="gap5_5.html#SEC10">Changing the Contig Order</A>. As the contigs are dragged the plotted results
+will be automatically moved to their corresponding new positions.  This
+means that if users drag the contigs to move their plotted results close
+to the main diagonal they will be simultaneously putting their contigs
+into the correct relative positions.
+
+</P>
+<P>
+Because this plot can simultaneously show the results of independent
+types of search, users can see if different analyses produce
+corroborating evidence for the ordering of contigs.  Also, if for
+example, a result
+from Check Assembly lies on the same horizontal or vertical projection
+as a result from Find Repeats, users can see the alternative position to
+place the doubtful reading. Ie this is an indication that a reading may have
+been assembled in an incorrect position.
+
+</P>
+<P>
+By use of popup menus the plotted results can be used to invoke a subset
+of commands.  For example if the user clicks the right mouse button over
+a result from Find Internal Joins a menu containing Invoke Join Editor
+(see section <A HREF="gap5_26.html#SEC57">The Join Editor</A>) and Invoke
+Contig Editors (see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>)
+will pop up. If the user selects Invoke Join Editor the Join Editor will
+be started with the two contigs aligned at the match position contained
+in the result. If required one of the contigs will be complemented to
+allow their alignment.
+
+</P>
+<P>
+A typical display from the Contig Comparator is
+shown below. It includes results for Find Internal Joins in black,
+Find Repeats in red, Check Assembly in green, and Find Read Pairs in
+blue. Notice that there are several Find Internal Joins, Find Read
+Pairs and Find Repeats results close to the main diagonal near the top
+left of the display, indicating that the contigs represented in that
+area are likely to be in the correct relative positions to one
+another.  In the middle of the bottom right quadrant there is a blue
+diagonal line perpendicular to the main diagonal which indicates a
+pair of contigs that are in the wrong relative orientation.
+The crosshairs show the positions for a pair of contigs. The vertical
+line continues into the Contig Selector part of the display, and the
+position represented by the horizontal line is also duplicated there.
+
+</P>
+
+<p>
+<a href="comparator,5.325in.png.html"><img src="comparator,5.325in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_24.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_26.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

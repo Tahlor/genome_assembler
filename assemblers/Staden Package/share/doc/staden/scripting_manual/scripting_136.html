@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - get_gel_num</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_135.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_137.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:get_gel_num -->
+
+
+<H3><A NAME="SEC155" HREF="scripting_toc.html#SEC155">get_gel_num and get_contig_num</A></H3>
+<P>
+<A NAME="IDX661"></A>
+<A NAME="IDX662"></A>
+<A NAME="IDX663"></A>
+<A NAME="IDX664"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int get_gel_num(
+        GapIO  *io,
+        char   *gel_name,
+        int     is_name);
+
+int get_contig_num(
+        GapIO  *io,
+        char   *gel_name,
+        int     is_name);
+</PRE>
+
+<P>
+These functions convert reading and contig names into reading and contig
+numbers. (A contig name is defined to be the name of any reading held within
+that contig.)
+
+</P>
+<P>
+The <VAR>is_name</VAR> argument is mainly used for backwards compatibility. It
+should be passed as either <CODE>GGN_ID</CODE> or <CODE>GGN_NAME</CODE>. When equal to
+<CODE>GGN_ID</CODE>, <VAR>gel_name</VAR> is treated as a <VAR>reading identifier</VAR>,
+otherwise it is treated as a <VAR>reading name</VAR>. An identifier is defined to
+be either a reading name; a hash sign followed by a reading number; or an
+equals sign followed by a contig number.
+
+</P>
+<P>
+Both functions return -1 for failure or the appropriate reading or contig
+number for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_135.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_137.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

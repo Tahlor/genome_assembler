@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-find_repeats</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_85.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_87.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-find_repeats -->
+
+
+<H2><A NAME="SEC94" HREF="scripting_toc.html#SEC94">find_repeats</A></H2>
+<P>
+<A NAME="IDX297"></A>
+<A NAME="IDX298"></A>
+<A NAME="IDX299"></A>
+
+</P>
+
+<PRE>
+<CODE>find_repeats</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-direction     <I>direction:integer(3)</I>?
+?-min_match     <I>length:integer(25)</I>?
+?-outfile       <I>filename:string()</I>?
+?-tag_types     <I>types:string()</I>?
+</PRE>
+
+<P>
+The command searches for perfect matches between two or more fragments in the
+consensus sequences. This information is plotted on the Contig Selector. The
+command will not work if the Contig Selector is not displayed. The function
+returns no value but will generate a Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to search. The <I>{contig start end}</I>
+syntax may be used for an identifier to search only a region of the
+contig, otherwise all of it is searched.
+
+<P>
+<DT><VAR><CODE>-direction</CODE> direction</VAR>
+<DD>
+This specifies whether forward repeats (1), reverse repeats (2), or both (3)
+are to be found. The default is 3 (both).
+
+<P>
+<DT><VAR><CODE>-min_match</CODE> length</VAR>
+<DD>
+This specifies the minimum length of a repeat to be searched for. The default
+is 25. The minimum allowed is 8.
+
+<P>
+<DT><VAR><CODE>-outfile</CODE> filename</VAR>
+<DD>
+This specifies a file in which to save the tag hits. The results are
+written in the form of REPT annotations which are suitable for passing onto
+the <CODE>enter_tags</CODE> command.  The default is a blank string, which
+implies no file should be created.
+
+<P>
+<DT><VAR><CODE>-tag_types</CODE> types</VAR>
+<DD>
+If <I>types</I> is a non blank list of tag types then masking will be applied to
+remove sequence covered by tags of these types from the repeat searching. The
+default is a blank list, which means no masking will be performed.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_85.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_87.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

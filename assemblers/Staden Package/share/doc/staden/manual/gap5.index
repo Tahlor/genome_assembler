@@ -1,0 +1,107 @@
+{Contents} gap5_toc.html
+{Gap5_DB} gap5_2.html
+{tg_index} gap5_2.html#SEC3
+{OpenDatabase} gap5_2.html#SEC4
+{GapDB-Directories} gap5_2.html#SEC5
+{CheckDatabase} gap5_2.html#SEC6
+{Contig Selector and Comparator} gap5_3.html
+{Contig Selector} gap5_3.html#SEC8
+{Contig-Selector-Contigs} gap5_4.html
+{Contig-Selector-Order} gap5_5.html
+{Contig-Selector-Menus} gap5_6.html
+{Contig Comparator} gap5_7.html
+{Compar-Examining} gap5_8.html
+{Compar-AutoNavigation} gap5_9.html
+{Template Display} gap5_10.html
+{Template-Filter} gap5_10.html#SEC16
+{Template-Template} gap5_10.html#SEC17
+{Template-Y-Type} gap5_10.html#SEC18
+{Template-Depth} gap5_10.html#SEC19
+{Editor} gap5_11.html
+{Editor-Movement} gap5_12.html
+{Editor-Names} gap5_13.html
+{Editor-Editing} gap5_14.html
+{Editor-Cursor} gap5_15.html
+{Editor-Quality Values} gap5_16.html
+{Editor-Positions} gap5_16.html#SEC26
+{Editor-Cutoffs} gap5_16.html#SEC27
+{Editor-Editing Summary} gap5_17.html
+{Editor-Select Base} gap5_18.html
+{Editor-Select Seq} gap5_19.html
+{Editor-Annotations} gap5_20.html
+{Editor-Annotatons-Macro} gap5_20.html#SEC32
+{Editor-Searching} gap5_21.html
+{Editor-Search-Anno} gap5_21.html#SEC34
+{Editor-Search-Type} gap5_21.html#SEC35
+{Editor-Search-UPosition} gap5_21.html#SEC36
+{Editor-Search-PPosition} gap5_21.html#SEC37
+{Editor-Search-Seq} gap5_21.html#SEC38
+{Editor-Search-Name} gap5_21.html#SEC39
+{Editor-Search-RefIndel} gap5_21.html#SEC40
+{Editor-Search-ConsQual} gap5_21.html#SEC41
+{Editor-Search-ConsDiscrep} gap5_21.html#SEC42
+{Editor-Search-ConsHet} gap5_21.html#SEC43
+{Editor-Search-depth-lt} gap5_21.html#SEC44
+{Editor-Search-depth-ht} gap5_21.html#SEC45
+{Editor-Settings} gap5_22.html
+{Editor-Group Readings} gap5_22.html#SEC47
+{Editor-Disagree} gap5_22.html#SEC48
+{Editor-Pack Sequences} gap5_22.html#SEC49
+{Editor-Hide Annotations} gap5_22.html#SEC50
+{Editor-Primer Selection} gap5_23.html
+{Editor-Traces} gap5_24.html
+{Editor-Info} gap5_25.html
+{Editor-Joining} gap5_26.html
+{Editor-Multiple Editors} gap5_27.html
+{Editor-Quitting} gap5_28.html
+{Editor-Summary} gap5_29.html
+{Editor-Summary-Keys} gap5_29.html#SEC61
+{Editor-Summary-Mouse} gap5_29.html#SEC62
+{Editor-Summary-MouseNames} gap5_29.html#SEC63
+{Restrict} gap5_30.html
+{Restrict-Selecting} gap5_31.html
+{Restrict-Examining} gap5_32.html
+{Restrict-Reconfig} gap5_33.html
+{Restrict-Output} gap5_34.html
+{Assembly-tg_index} gap5_36.html
+{Assembly-Fasta} gap5_37.html
+{Assembly-Map-bwa-aln} gap5_38.html
+{Assembly-Map-bwa-dbwtsw} gap5_38.html#SEC74
+{ImportGFF} gap5_39.html
+{ExportTags} gap5_40.html
+{ExportSequences} gap5_41.html
+{Matches} gap5_42.html
+{FIJ} gap5_42.html#SEC79
+{FIJ-Dialogue} gap5_43.html
+{Repeats} gap5_44.html
+{Read Pairs} gap5_45.html
+{ReadPair-Display} gap5_46.html
+{Find Oligos} gap5_47.html
+{Disassembly and Data Deletion} gap5_48.html
+{Check Assembly} gap5_49.html
+{Removing Readings} gap5_50.html
+{Break Contig} gap5_51.html
+{Disassemble} gap5_52.html
+{Delete Contigs} gap5_53.html
+{Tidying up alignments} gap5_54.html
+{Shuffle Pads} gap5_54.html#SEC92
+{Remove Pad Columns} gap5_55.html
+{Remove Contig Holes} gap5_56.html
+{Calculate Consensus} gap5_57.html
+{Con-Normal} gap5_58.html
+{Con-Calculation} gap5_59.html
+{Con-Calculation-1} gap5_60.html
+{Con-Calculation-2} gap5_61.html
+{Con-Calculation-3} gap5_62.html
+{Qual-Cal} gap5_63.html
+{Con-Evaluation} gap5_64.html
+{Con-ListBaseConf} gap5_65.html
+{Misc} gap5_66.html
+{List Libraries} gap5_67.html
+{Results} gap5_68.html
+{Lists} gap5_69.html
+{List-Special} gap5_70.html
+{List-Commands} gap5_71.html
+{List-ContigToRead} gap5_72.html
+{List-SearchSequenceNames} gap5_73.html
+{Index} gap5_74.html

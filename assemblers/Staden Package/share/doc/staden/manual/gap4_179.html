@@ -1,0 +1,117 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Conf-GTAGDB</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_178.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_180.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Conf-GTAGDB -->
+
+
+<H2><A NAME="SEC267" HREF="gap4_toc.html#SEC267">The GTAGDB File</A></H2>
+<P>
+<A NAME="IDX633"></A>
+<A NAME="IDX634"></A>
+
+</P>
+<P>
+To plot tags, gap uses a file describing the available tag types and
+their colours. It is possible for users to edit their own local copies
+of this file to create new tag types.
+
+</P>
+<P>
+The environment variable <CODE>GTAGDB</CODE> is used to specify the location
+of tag type databases. The <CODE>GTAGDB</CODE> variable consists of one or
+more file pathnames separated by colons. The first file read defines a
+set of tags and colours. Subsequent files can define additional
+tags and also override the earlier tag definitions. To achieve this gap4
+loads each file from the <CODE>GTAGDB</CODE> variable in the order of rightmost
+first to leftmost last. Thus, as is similar to the unix shell
+<CODE>PATH</CODE> variable, the leftmost pathnames have highest precedence for
+the resultant tag definitions. The default <CODE>GTAGDB</CODE> specified in the
+staden login and profile scripts is:
+
+</P>
+
+<PRE>
+GTAGDB:$HOME/GTAGDB:$STADTABL/GTAGDB
+</PRE>
+
+<P>
+Hence the <TT>`$STADTABL/GTAGDB'</TT> file is read and the
+<TT>`$HOME/GTAGDB'</TT> and <TT>`GTAGDB'</TT> (a file in the current directory)
+files are merged if present. To add a new tag type only to the
+database local to the current directory, create a <TT>`GTAGDB'</TT> file in
+the current directory.
+
+</P>
+<P>
+The BNF grammar for the tag database is as follows:
+
+</P>
+
+<PRE>
+&#60;tag_db&#62;       ::= &#60;tag&#62; &#60;tag_db&#62; | &#60;empty&#62;
+&#60;tag&#62;          ::= &#60;tag_long_name&#62; ':' &#60;element_list&#62; '\n'
+&#60;element_list&#62; ::= &#60;element&#62; | &#60;element&#62; ':' &#60;element_list&#62; | &#60;empty&#62;
+&#60;element&#62;      ::= &#60;option_name&#62; '=' &#60;string&#62;
+&#60;option_name&#62;  ::= 'id' | 'bg' | 'dt'
+</PRE>
+
+<P>
+Quoting strings is optional for single words, but necessary when writing
+a string containing spaces. In plain English, this means that to define
+the compression tag (<CODE>COMP</CODE>) to be displayed in red, with no
+default annotation string we write:
+
+</P>
+
+<PRE>
+compression: id="COMP": bg=red
+</PRE>
+
+<P>
+Any lines starting with hash (<SAMP>`#'</SAMP>) are considered as comments. Lines
+ending in backslash (<SAMP>`\'</SAMP>) are joined with the next line. Hence the
+above definition can be written in a clearer form using:
+
+</P>
+
+<PRE>
+# For marking compressions
+compression: \
+        id="COMP": \
+        bg=red:
+</PRE>
+
+<P>
+An example including a default annotation string of "default string" follows:
+
+</P>
+
+<PRE>
+# For general comments
+comment: \
+        id="COMM": \
+        bg=MediumBlue: \
+        dt="default string"
+</PRE>
+
+<P>
+Allowed names for colours are those recognised by the windowing system.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_178.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_180.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

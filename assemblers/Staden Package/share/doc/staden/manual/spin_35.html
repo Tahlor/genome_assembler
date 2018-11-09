@@ -1,0 +1,175 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from spin.htmlinfo on 25 April 2016 -->
+
+<TITLE>Spin - SPIN-Find similar spans</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_34.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_36.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:SPIN-Find similar spans -->
+
+
+<H2><A NAME="SEC45" HREF="spin_toc.html#SEC45">Finding Similar Spans</A></H2>
+<P>
+<A NAME="IDX89"></A>
+
+</P>
+<P>
+This method was first described by
+McLachlan <CITE>Mclachlan,A.D. Tests for comparing related amino acid sequences
+J. Mol. Biol. 61, 409-424 (1971)</CITE>. 
+It involves calculating a score for each position in the plot
+by summing points found when looking forwards and
+backwards along a diagonal line of a given length (window length). The
+algorithm does not simply look for identity but uses a score matrix that
+contains scores for every possible pair of character types. At each point
+that the score is above a minimum score, a match is saved. The matches
+are plotted as a single point in the SPIN Sequence Comparison Plot, corresponding to the centre of the
+matching span (
+see section <A HREF="spin_45.html#SEC66">SPIN Sequence Comparison Plot</A>) (Although see "Rescan
+matches, below).
+
+</P>
+
+<p>
+<img src="spin_similar_spans.png" alt="[picture]">
+
+<P>
+The dialogue box (shown above) requests the horizontal and vertical sequences
+and their ranges (
+see section <A HREF="spin_49.html#SEC97">Selecting a sequence</A>), 
+the window span length and the minimum score. 
+Only results above this minimum score are plotted. The default
+value for the minimum score is one that would produce
+approximately 500 matches between two random sequences of the same
+composition as the two under investigation
+(
+see section <A HREF="spin_40.html#SEC51">Probabilities and expected numbers of matches</A>). 
+This value of 500 can be changed using the "Configure default number
+of matches" option of the "Options" menu on the main menubar
+(
+see section <A HREF="spin_40.html#SEC53">Changing the default number of matches</A>). The upper and lower limits of the minimum score are similarly
+determined except that the expected number of matches for the upper limit is
+0 and for the lower limit is "maximum number of matches". The "maximum number of
+matches" value can be altered if more matches are required to be plotted by 
+using the
+"Configure maximum number of matches" option of the "Options" menu
+(
+see section <A HREF="spin_40.html#SEC52">Changing the maximum number of matches</A>).
+
+</P>
+<P>
+Further operations available for find similiar spans are:
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>Information</VAR>
+<DD>
+This command gives a brief description of the sequences used in the comparison,
+the input parameters used and the number of matches found.
+
+
+<PRE>
+
+horizontal EMBL: hsproperd 
+vertical EMBL: mmproper
+window length 11 min match 9
+number of matches 1772
+
+</PRE>
+
+<DT><VAR>Results</VAR>
+<DD>
+A detailed listing of all the hits found is displayed in the Output Window.
+
+
+<PRE>
+
+Positions          2 h        630 v and score          9
+
+ Percentage mismatch  18.2
+                2        12
+              H agcctatcaac
+                ::::::: : :
+              V agcctatgagc
+              630       640
+
+Positions          7 h        369 v and score          9
+
+ Percentage mismatch  18.2
+                7        17
+              H atcaacccaga
+                :  ::::::::
+              V aggaacccaga
+              369       379
+
+</PRE>
+
+<DT><VAR>Tabulate Scores</VAR>
+<DD>
+This option lists scores, probabilities, and their expected and
+observed numbers of matches.
+
+
+<PRE>
+
+score    9 probability 1.73e-04 expected          365 observed 1772
+score   10 probability 1.17e-05 expected           25 observed 601
+score   11 probability 3.60e-07 expected            1 observed 149
+
+</PRE>
+
+<DT><VAR>Rescan matches</VAR>
+<DD>
+It is also possible to plot a dot for each residue with a score above a 
+minimum value within each matching span using the "Rescan matches" command.
+This is only a temporary result and will be destroyed if the SPIN Sequence Comparison Plot is
+altered (see section <A HREF="spin_40.html#SEC50">Controlling and Managing Results</A>).
+
+<DT><VAR>Configure</VAR>
+<DD>
+This option allows the line width and colour of the matches to be altered. 
+See section <A HREF="interface_11.html#SEC13">Colour Selector</A>.
+A colour browser is displayed from which the desired line width or colour can 
+be configured. Pressing OK will update the SPIN Sequence Comparison Plot.
+
+<DT><VAR>Display sequences</VAR>
+<DD>
+Selecting this command invokes the SPIN Sequence Comparison Display 
+(
+see section <A HREF="spin_47.html#SEC71">Sequence Comparison Display</A>). 
+Moving the cursor in the sequence display will move the cursors of the
+same sequence in any SPIN Sequence Comparison Plot (
+see section <A HREF="spin_46.html#SEC67">Cursors</A>).
+To force the sequence display to show the nearest match,
+use the "nearest match" button in the sequence display plot. To force
+the sequences to maintain their current register activate the "Lock" button.
+
+<DT><VAR>Hide</VAR>
+<DD>
+This option removes the points from the SPIN Sequence Comparison Plot but retains the information
+in memory.
+
+<DT><VAR>Reveal</VAR>
+<DD>
+This option will redisplay previously hidden points in the SPIN Sequence Comparison Plot.
+
+<DT><VAR>Remove</VAR>
+<DD>
+This command removes all the information regarding this particular
+invocation of Find similar spans and access to this data lost.
+
+</DL>
+
+<HR>
+<A HREF="spin_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="spin_34.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="spin_36.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="spin_50.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="spin_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

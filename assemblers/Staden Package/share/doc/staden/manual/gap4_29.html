@@ -1,0 +1,115 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Template-Display</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_28.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_30.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Template-Display -->
+
+
+<H2><A NAME="SEC36" HREF="gap4_toc.html#SEC36">Template Display</A></H2>
+<P>
+<A NAME="IDX64"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="gap4_30.html#SEC37">Reading and Template Plot</A>
+<LI><A HREF="gap4_30.html#SEC38">Reading and Template Plot Display</A>
+<LI><A HREF="gap4_31.html#SEC39">Reading and Template Plot Options</A>
+<LI><A HREF="gap4_32.html#SEC40">Reading and Template Plot Operations</A>
+<LI><A HREF="gap4_33.html#SEC41">Quality Plot</A>
+<LI><A HREF="gap4_34.html#SEC42">Restriction Enzyme Plot</A>
+</UL>
+
+<P>
+The Template Display can show schematic plots of 
+readings, templates, tags, restriction enzyme
+sites and the consensus quality. It can be used to reorder contigs,
+create tags and invoke the Contig Editor. 
+It is invoked from the main gap4 View menu.
+
+</P>
+<P>
+An example showing all these information types can be seen in the Figure below.
+
+</P>
+
+<p>
+<a href="template.display,6in.png.html"><img src="template.display,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+The large top section contains lines and arrows representing readings
+and templates. Beneath this are rulers;
+one for each contig, and below those is the quality plot. 
+The template and reading section of the display is in two parts. The top
+part contains the templates which have been sequenced from both ends but
+which are in some way inconsistent - for example given the current
+relative positions of their readings, they may have a length that is
+larger or greater than that expected, or the two readings may, as it
+were, face away from one another. Colour coding is used to distinguish
+between different types of inconsistency, and whether or not the
+inconsistency involves readings within or between contigs. For example,
+most of the problems shown in the screendump above are coloured
+dark yellow, indicating an inconsistency between a pair of contigs.
+The rest of the data, (mostly dark blue indicating templates sequenced
+from only one end), is plotted below the data for the inconsistent
+templates.
+Forward readings are blue and reverse readings are orange.
+Templates in bright yellow have been sequenced from both ends, are consistent and
+span a pair of contigs (and so indicate the relative orientation and
+separation of the contigs). 
+
+</P>
+<P>
+The coloured blocks immediately above and below the ruler are tags.
+Those above the ruler 
+can also be seen on their corresponding readings in the large top
+section. Zooming is available. The position of a crosshair
+is shown in the two left most boxes in the top right hand corner. The leftmost
+shows the distance in bases between the crosshair and the start of the contig
+underneath the crosshair. The middle box shows the distance between the
+crosshair and the start of the first contig. The right box shows the distance
+between two selected cut sites in the restriction enzyme plots.
+
+</P>
+
+<p>
+<img src="template.dialogue.png" alt="[picture]">
+
+<P>
+As seen in the dialogue above,
+users can choose to display a single contig, all contigs, or a subset of 
+contigs from a file of filenames ("file") or a list ("list"). If either the
+file or list options are chosen, the "browse" button will be activated and can
+be used to call up a file or list browser dialogue.
+
+</P>
+<P>
+The items to be shown in the initial template display can be selected from the
+list of checkboxes. The default is to display all templates and readings.
+However, it is possible to display only templates with more than one reading 
+("Ignore 'single' templates) or templates with both forward and reverse 
+readings ("Show only read pairs"). These latter two options may be beneficial 
+if the database is very large.
+
+</P>
+<P>
+In the section below we give details about the individual components of
+the overall Template Display.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_28.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_30.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

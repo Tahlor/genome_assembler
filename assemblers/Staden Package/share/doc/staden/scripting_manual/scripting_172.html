@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - type2str</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_171.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_173.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:type2str -->
+
+
+<H2><A NAME="SEC191" HREF="scripting_toc.html#SEC191">type2str and str2type</A></H2>
+<P>
+<A NAME="IDX759"></A>
+<A NAME="IDX760"></A>
+<A NAME="IDX761"></A>
+<A NAME="IDX762"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+int str2type(
+        char   *stype);
+
+void type2str(
+        int     itype,
+        char    stype[5]);
+</PRE>
+
+<P>
+Note that these two functions are infact #defines. The prototypes are listed
+simply to guide their correct usage.
+
+</P>
+<P>
+<CODE>str2type</CODE> converts a 4 character tag type, pointed to by <VAR>stype</VAR>
+into an integer value as used in the <VAR>GAnnotations.type</VAR> field.
+
+</P>
+<P>
+<CODE>type2str</CODE> converts an integer type passed as <VAR>itype</VAR> to a 4
+character (plus 1 nul) string.
+
+</P>
+
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_171.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_173.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

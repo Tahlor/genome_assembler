@@ -1,0 +1,240 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - Reg-Tasks</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_184.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_186.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Reg-Tasks -->
+
+
+<H2><A NAME="SEC217" HREF="scripting_toc.html#SEC217">Specific Notification Tasks</A></H2>
+<P>
+<A NAME="IDX831"></A>
+<A NAME="IDX832"></A>
+
+</P>
+<P>
+Some registered items may support extra forms of communication than the listed
+notifications. In this case, we use the <CODE>REG_GENERIC</CODE> notification
+together with a task number and some task specific data to send a specific
+task to a specific registered data. This provides a way for individual
+displays to add new communicates methods to the registration scheme.
+
+</P>
+<P>
+To send a <CODE>REG_GENERIC</CODE> task, the <VAR>reg_generic</VAR> structure must first
+be completed by setting <VAR>job</VAR>, <VAR>task</VAR> and <VAR>data</VAR>. <VAR>Data</VAR> will
+point to another structure, which is unique for specific type of task. The
+task data structure must then be initialised and sent to the appropriate
+client contig, id or type.
+
+</P>
+<P>
+The <VAR>task</VAR> number needs to be unique across all the types of generic tasks
+likely to be sent to the client. For instance, a contig editor can receive
+<CODE>TASK_EDITOR_SETCURSOR</CODE> and <CODE>TASK_EDITOR_GETCON</CODE> tasks. Obviously
+the <CODE>#define</CODE>s for these tasks need to be different. However they may
+safely coincide with <CODE>TASK_TEMPLATE_REDRAW</CODE>, which is used by the
+template display, as we know that the the editor will never receive this task
+(and vice versa). The assignment of task numbers is at present something which
+requires further investigation. However the use of defines everywhere means
+that they are trivial to change.
+
+</P>
+
+
+<H3><A NAME="SEC218" HREF="scripting_toc.html#SEC218">TASK_EDITOR_GETCON</A></H3>
+<P>
+<A NAME="IDX833"></A>
+<A NAME="IDX834"></A>
+
+<PRE>
+typedef struct {
+    char  *con;         /* Allocated by the contig editor */
+    int    lreg;        /* Set lreg and rreg to 0 for all consensus */
+    int    rreg;
+    int    con_cut;
+    int    qual_cut;
+} task_editor_getcon;
+</PRE>
+
+<P>
+Allocates and calculates a consensus (stored in <VAR>con</VAR>) between <VAR>lreg</VAR>
+and <VAR>rreg</VAR>. If <VAR>lreg</VAR> and <VAR>rreg</VAR> are both zero, then all the
+consensus is computed. The calling function is expected to free <VAR>con</VAR> when
+finished. An example of use can be seen in the stop codon code:
+
+</P>
+
+<PRE>
+reg_generic gen;
+task_editor_getcon tc;
+
+gen.job = REG_GENERIC;
+gen.task = TASK_EDITOR_GETCON;
+gen.data = (void *)&#38;tc;
+
+tc.lreg = 0;
+tc.rreg = 0;
+tc.con_cut = consensus_cutoff;
+tc.qual_cut = quality_cutoff;
+
+if (type_contig_notify(args.io, args.contig, REG_TYPE_EDITOR,
+                       (reg_data *)&#38;gen, 0) == -1)
+    return TCL_OK;
+
+[...]
+
+xfree(tc.con);
+</PRE>
+
+<P>
+    
+
+
+<H3><A NAME="SEC219" HREF="scripting_toc.html#SEC219">TASK_CANVAS_SCROLLX</A></H3>
+<P>
+<A NAME="IDX835"></A>
+<A NAME="IDX836"></A>
+
+</P>
+
+
+<H3><A NAME="SEC220" HREF="scripting_toc.html#SEC220">TASK_CANVAS_SCROLLY</A></H3>
+<P>
+<A NAME="IDX837"></A>
+<A NAME="IDX838"></A>
+
+</P>
+
+
+<H3><A NAME="SEC221" HREF="scripting_toc.html#SEC221">TASK_CANVAS_ZOOMBACK</A></H3>
+<P>
+<A NAME="IDX839"></A>
+<A NAME="IDX840"></A>
+
+</P>
+
+
+<H3><A NAME="SEC222" HREF="scripting_toc.html#SEC222">TASK_CANVAS_ZOOM</A></H3>
+<P>
+<A NAME="IDX841"></A>
+<A NAME="IDX842"></A>
+
+</P>
+
+
+<H3><A NAME="SEC223" HREF="scripting_toc.html#SEC223">TASK_CANVAS_CURSOR_X</A></H3>
+<P>
+<A NAME="IDX843"></A>
+<A NAME="IDX844"></A>
+
+</P>
+
+
+<H3><A NAME="SEC224" HREF="scripting_toc.html#SEC224">TASK_CANVAS_CURSOR_Y</A></H3>
+<P>
+<A NAME="IDX845"></A>
+<A NAME="IDX846"></A>
+
+</P>
+
+
+<H3><A NAME="SEC225" HREF="scripting_toc.html#SEC225">TASK_CANVAS_CURSOR_DELETE</A></H3>
+<P>
+<A NAME="IDX847"></A>
+<A NAME="IDX848"></A>
+
+</P>
+
+
+<H3><A NAME="SEC226" HREF="scripting_toc.html#SEC226">TASK_CANVAS_RESIZE</A></H3>
+<P>
+<A NAME="IDX849"></A>
+<A NAME="IDX850"></A>
+
+</P>
+
+
+<H3><A NAME="SEC227" HREF="scripting_toc.html#SEC227">TASK_CANVAS_REDRAW</A></H3>
+<P>
+<A NAME="IDX851"></A>
+<A NAME="IDX852"></A>
+
+</P>
+
+
+<H3><A NAME="SEC228" HREF="scripting_toc.html#SEC228">TASK_CANVAS_WORLD</A></H3>
+<P>
+<A NAME="IDX853"></A>
+<A NAME="IDX854"></A>
+
+</P>
+
+
+<H3><A NAME="SEC229" HREF="scripting_toc.html#SEC229">TASK_WINDOW_ADD</A></H3>
+<P>
+<A NAME="IDX855"></A>
+<A NAME="IDX856"></A>
+
+</P>
+
+
+<H3><A NAME="SEC230" HREF="scripting_toc.html#SEC230">TASK_WINDOW_DELETE</A></H3>
+<P>
+<A NAME="IDX857"></A>
+<A NAME="IDX858"></A>
+
+</P>
+
+
+<H3><A NAME="SEC231" HREF="scripting_toc.html#SEC231">TASK_CS_REDRAW</A></H3>
+<P>
+<A NAME="IDX859"></A>
+<A NAME="IDX860"></A>
+
+</P>
+
+
+<H3><A NAME="SEC232" HREF="scripting_toc.html#SEC232">TASK_RENZ_INFO</A></H3>
+<P>
+<A NAME="IDX861"></A>
+<A NAME="IDX862"></A>
+
+</P>
+
+
+<H3><A NAME="SEC233" HREF="scripting_toc.html#SEC233">TASK_TEMPLATE_REDRAW</A></H3>
+<P>
+<A NAME="IDX863"></A>
+<A NAME="IDX864"></A>
+
+</P>
+
+
+<H3><A NAME="SEC234" HREF="scripting_toc.html#SEC234">TASK_DISPLAY_RULER</A></H3>
+<P>
+<A NAME="IDX865"></A>
+<A NAME="IDX866"></A>
+
+</P>
+
+
+<H3><A NAME="SEC235" HREF="scripting_toc.html#SEC235">TASK_DISPLAY_TICKS</A></H3>
+<P>
+<A NAME="IDX867"></A>
+<A NAME="IDX868"></A>
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_184.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_186.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

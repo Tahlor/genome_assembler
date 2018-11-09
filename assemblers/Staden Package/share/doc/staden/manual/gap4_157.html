@@ -1,0 +1,96 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - GapDB-Names</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_156.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_158.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:GapDB-Names -->
+
+
+<H2><A NAME="SEC229" HREF="gap4_toc.html#SEC229">Reading and Contig Names and Numbers</A></H2>
+<P>
+<A NAME="IDX547"></A>
+<A NAME="IDX548"></A>
+<A NAME="IDX549"></A>
+<A NAME="IDX550"></A>
+<A NAME="IDX551"></A>
+<A NAME="IDX552"></A>
+<A NAME="IDX553"></A>
+<A NAME="IDX554"></A>
+<A NAME="IDX555"></A>
+<A NAME="IDX556"></A>
+<A NAME="IDX557"></A>
+<A NAME="IDX558"></A>
+
+</P>
+<P>
+For various reasons there are restrictions on the characters used in 
+file names and the length of the file names.
+
+</P>
+<P>
+Characters permitted in file names:
+
+</P>
+<P>
+<CODE>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._-</CODE>
+
+</P>
+<P>
+A reading name or experiment file name must not be longer than 40 characters.
+
+</P>
+<P>
+These restrictions also apply to SCF files which means, in turn, also to
+the names given to samples obtained from sequencing instruments. For example
+do not give sample names such as 27/OCT/96/r.1 when using and ABI machine:
+the / symbols will be interpreted as directory name separators on UNIX!
+
+</P>
+<P>
+As each reading is entered into a project database it is given a unique
+number. The first is numbered 1, the second 2 and so on. Their reading
+names are read from the ID line in the experiment files and copied into
+the database. As new readings are created and existing ones removed the
+reading numbers change in an unpredictable fashion. Hence when taking
+notes on a project always record the reading name instead of the reading
+number.
+
+</P>
+<P>
+The maximum number of readings a database can hold is 99,999,999.
+
+</P>
+<P>
+Many options ask for a reading or contig identifier. A contig identifier is
+simply any reading name or number within that contig. A reading
+identifier is either the reading name or the hash ("<CODE>#</CODE>") character
+followed by the number. For example, if the reading name is
+<CODE>fred.gel</CODE> with number 99 users could type "<CODE>fred.gel</CODE>" or
+"<CODE>#99</CODE>" when asked to identify the contig.
+
+</P>
+<P>
+Generally when prompting for a contig or reading name a default is
+supplied. This is the last name you used, or if you've only just opened
+the database, the name of the longest contig in the database.
+For more information about selecting contigs within the program see
+
+</P>
+<P>See section <A HREF="gap5_4.html#SEC9">Selecting Contigs</A>..
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_156.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_158.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - io_insert_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_149.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_151.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:io_insert_seq -->
+
+
+<H2><A NAME="SEC169" HREF="scripting_toc.html#SEC169">io_insert_seq</A></H2>
+<P>
+<A NAME="IDX695"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int io_insert_seq(
+        int2    maxgel,
+        int2   *length,
+        int2   *start,
+        int2   *end,
+        char   *seq,
+        int1   *conf,
+        int2   *opos,
+        int2    pos,
+        char   *bases,
+        int1   *newconf,
+        int2   *newopos,
+        int2    Nbases);
+</PRE>
+
+<P>
+<CODE>io_insert_seq</CODE> inserts one or more bases into the sequence, confidence
+and original positions arrays specified. No database I/O is performed.
+
+</P>
+<P>
+The existing sequence, confidence values, and original positions arrays are
+passed as <VAR>seq</VAR>, <VAR>conf</VAR>, and <VAR>opos</VAR> arguments. All are mandatory.
+The length of sequence and hence the number of used elements in these arrays
+is passed as <VAR>length</VAR>, with <VAR>start</VAR> and <VAR>end</VAR> containing the left
+and right cutoff positions.
+
+</P>
+<P>
+The new sequence, confidence values, and original positions to insert are
+passed as <VAR>bases</VAR>, <VAR>newconf</VAR> and <VAR>newopos</VAR>. The number of bases to
+insert is <VAR>Nbases</VAR>. Either or both of the <VAR>newconf</VAR> and <VAR>newopos</VAR>
+arguments may be NULL. The inserted confidence values will then default to 100
+for non pad ("<CODE>*</CODE>") bases. For pads, the confidence value defaults to the
+average of the confidence values of the first two neighbouring bases that are
+not pads. The inserted original positions default to 0. These bases are to be
+inserted at the position specified by <VAR>pos</VAR>, counting as position 1 being
+to the left of the first base in the sequence.
+
+</P>
+<P>
+As this operation increases the size of the <VAR>seq</VAR>, <VAR>conf</VAR>, and
+<VAR>opos</VAR> arrays, their allocated size must be passed in <VAR>maxgel</VAR>. If the
+insertion causes data to be shuffle beyond the <VAR>maxgel</VAR>, the right end of
+the sequence is clipped to ensure that no more than <VAR>maxgel</VAR> bases are
+present. The <VAR>start</VAR> and <VAR>end</VAR> values may be incremented, depending on
+where the insertion occurs.
+
+</P>
+<P>
+This function returns 0 for success.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_149.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_151.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

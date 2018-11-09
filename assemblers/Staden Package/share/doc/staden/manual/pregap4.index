@@ -1,0 +1,107 @@
+{Contents} pregap4_toc.html
+{Pregap4-Intro-Manual} pregap4_2.html
+{Pregap4-Introduction} pregap4_3.html
+{Pregap4-Intro-Files} pregap4_4.html
+{Pregap4-Intro-Interface} pregap4_5.html
+{Pregap4-Intro-Interface-Files} pregap4_6.html
+{Pregap4-Intro-Interface-Configure} pregap4_7.html
+{Pregap4-Intro-Interface-Output} pregap4_8.html
+{Pregap4-Intro-Interface-Running} pregap4_9.html
+{Pregap4-Intro-Menus} pregap4_10.html
+{Pregap4-Intro-Menus-File} pregap4_10.html#SEC11
+{Pregap4-Intro-Menus-Modules} pregap4_10.html#SEC12
+{Pregap4-Intro-Menus-Information} pregap4_10.html#SEC13
+{Pregap4-Intro-Menus-Options} pregap4_10.html#SEC14
+{Pregap4-Files} pregap4_11.html
+{Pregap4-Running} pregap4_12.html
+{Pregap4-Config} pregap4_13.html
+{Pregap4-Config-Fonts Colours} pregap4_13.html#SEC18
+{Pregap4-Config-Window Styles} pregap4_13.html#SEC19
+{Pregap4-Modules} pregap4_14.html
+{Pregap4-Modules-General} pregap4_15.html
+{Pregap4-Modules-EBA} pregap4_16.html
+{Pregap4-Modules-Phred} pregap4_17.html
+{Pregap4-Modules-ATQA} pregap4_18.html
+{Pregap4-Modules-ConvertTrace} pregap4_19.html
+{Pregap4-Modules-Initexp} pregap4_20.html
+{Pregap4-Modules-Augment} pregap4_21.html
+{Pregap4-Modules-Quality Clip} pregap4_22.html
+{Pregap4-Modules-Sequence Vector} pregap4_23.html
+{Pregap4-Modules-Cross_match} pregap4_24.html
+{Pregap4-Modules-Cloning Vector} pregap4_25.html
+{Pregap4-Modules-Screen Vector} pregap4_26.html
+{Pregap4-Modules-Screen} pregap4_27.html
+{Pregap4-Modules-Blast} pregap4_28.html
+{Pregap4-Modules-Interactive Clip} pregap4_29.html
+{Pregap4-Modules-Extract Seq} pregap4_30.html
+{Pregap4-Modules-RepeatMasker} pregap4_31.html
+{Pregap4-Modules-Repeats} pregap4_32.html
+{Pregap4-Modules-Mutations} pregap4_33.html
+{Pregap4-Modules-Reference Traces} pregap4_34.html
+{Pregap4-Modules-Trace Difference} pregap4_35.html
+{Pregap4-Modules-Mutation Scanner} pregap4_36.html
+{Pregap4-Modules-Gap4 Assembly} pregap4_37.html
+{Pregap4-Modules-Cap2 Assembly} pregap4_38.html
+{Pregap4-Modules-Cap3 Assembly} pregap4_39.html
+{Pregap4-Modules-FakII Assembly} pregap4_40.html
+{Pregap4-Modules-Phrap Assembly} pregap4_41.html
+{Pregap4-Modules-Enter Assembly} pregap4_42.html
+{Pregap4-Modules-Email} pregap4_43.html
+{Pregap4-Modules-Old Cloning Vector} pregap4_44.html
+{Pregap4-Modules-ABI2SCF} pregap4_45.html
+{Pregap4-Config-Files} pregap4_46.html
+{Pregap4-Naming} pregap4_47.html
+{Pregap4-Naming-Mutation detection} pregap4_48.html
+{Pregap4-Naming-Sanger_names_old} pregap4_49.html
+{Pregap4-Naming-Sanger_names_new} pregap4_50.html
+{Pregap4-Naming-Writing} pregap4_51.html
+{Pregap4-Components} pregap4_52.html
+{Pregap4-Database} pregap4_53.html
+{Pregap4-Database-Simple} pregap4_54.html
+{Pregap4-Database-LineTypes} pregap4_55.html
+{Pregap4-ModAdd} pregap4_56.html
+{Pregap4-ManualConfig} pregap4_57.html
+{Pregap4-ManualConfig-Global} pregap4_58.html
+{Pregap4-ManualConfig-Components} pregap4_59.html
+{Pregap4-ManualConfig-Modules} pregap4_60.html
+{Pregap4-ManualConfig-General} pregap4_61.html
+{Pregap4-ManualConfig-ABI2SCF} pregap4_62.html
+{Pregap4-ManualConfig-EBA} pregap4_63.html
+{Pregap4-ManualConfig-Phred} pregap4_64.html
+{Pregap4-ManualConfig-ATQA} pregap4_65.html
+{Pregap4-ManualConfig-ConvertTrace} pregap4_66.html
+{Pregap4-ManualConfig-Initexp} pregap4_67.html
+{Pregap4-ManualConfig-Augment} pregap4_68.html
+{Pregap4-ManualConfig-Uncalled Clip} pregap4_69.html
+{Pregap4-ManualConfig-Quality Clip} pregap4_70.html
+{Pregap4-ManualConfig-Sequence Vector} pregap4_71.html
+{Pregap4-ManualConfig-Cross_match} pregap4_72.html
+{Pregap4-ManualConfig-Cloning Vector} pregap4_73.html
+{Pregap4-ManualConfig-Old Cloning Vector} pregap4_74.html
+{Pregap4-ManualConfig-Screen Vector} pregap4_75.html
+{Pregap4-ManualConfig-Screen} pregap4_76.html
+{Pregap4-ManualConfig-Blast} pregap4_77.html
+{Pregap4-ManualConfig-Interactive Clip} pregap4_78.html
+{Pregap4-ManualConfig-Extract Seq} pregap4_79.html
+{Pregap4-ManualConfig-Repeats} pregap4_80.html
+{Pregap4-ManualConfig-RepeatMasker} pregap4_81.html
+{Pregap4-ManualConfig-Mutations} pregap4_82.html
+{Pregap4-ManualConfig-Gap4 Assembly} pregap4_83.html
+{Pregap4-ManualConfig-Cap2 Assembly} pregap4_84.html
+{Pregap4-ManualConfig-Cap3 Assembly} pregap4_85.html
+{Pregap4-ManualConfig-FakII Assembly} pregap4_86.html
+{Pregap4-ManualConfig-Phrap Assembly} pregap4_87.html
+{Pregap4-ManualConfig-Enter Assembly} pregap4_88.html
+{Pregap4-ManualConfig-Email} pregap4_89.html
+{Pregap4-ManualConfig-Shutdown} pregap4_90.html
+{Pregap4-WritingMods} pregap4_91.html
+{Pregap4-WritingMods-Overview} pregap4_91.html#SEC98
+{Pregap4-WritingMods-Functions} pregap4_91.html#SEC99
+{Pregap4-WritingMods-Module Variables} pregap4_91.html#SEC100
+{Pregap4-WritingMods-Global Variables} pregap4_91.html#SEC101
+{Pregap4-WritingMods-Builtin} pregap4_91.html#SEC102
+{Pregap4-WritingMods-Example} pregap4_91.html#SEC103
+{General Index} pregap4_92.html
+{File Index} pregap4_93.html
+{Variable Index} pregap4_94.html
+{Function Index} pregap4_95.html

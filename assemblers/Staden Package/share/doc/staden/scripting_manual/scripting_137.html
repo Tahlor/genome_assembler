@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - lget_gel_num</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_136.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_138.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:lget_gel_num -->
+
+
+<H3><A NAME="SEC156" HREF="scripting_toc.html#SEC156">lget_gel_num and lget_contig_num</A></H3>
+<P>
+<A NAME="IDX665"></A>
+<A NAME="IDX666"></A>
+<A NAME="IDX667"></A>
+<A NAME="IDX668"></A>
+<A NAME="IDX669"></A>
+
+</P>
+
+<PRE>
+#include &#60;IO.h&#62;
+
+int lget_gel_num(
+        GapIO  *io,
+        int     listArgc,
+        char  **listArgv,
+        int    *rargc,
+        int   **rargv);
+
+int lget_contig_num(
+        GapIO  *io,
+        int     listArgc,
+        char  **listArgv,
+        int    *rargc,
+        contig_list_t **rargv);
+</PRE>
+
+<P>
+These functions perform the same task as <CODE>get_gel_num</CODE> and
+<CODE>get_contig_num</CODE> except on lists of identifier instead of single
+identifiers.
+
+</P>
+<P>
+The list of identifiers is passed in <VAR>listArgv</VAR> as an array of
+<VAR>listArgc</VAR> strings. They return arrays of reading or contig numbers by
+setting <VAR>*rargv</VAR> to point to an array of <VAR>*rargc</VAR> elements. The memory
+is allocated by these functions and should be deallocated by the caller using
+<CODE>free</CODE>.
+
+</P>
+<P>
+For <CODE>lget_gel_num</CODE> the return arrays are arrays of integer values.
+<CODE>lget_contig_num</CODE> returns arrays of <VAR>contig_list_t</VAR> structures. This
+structure is defined as follows.
+
+</P>
+
+<PRE>
+typedef struct contig_list {
+    int contig;
+    int start;
+    int end;
+} contig_list_t;
+</PRE>
+
+<P>
+If any string within the <VAR>listArgv</VAR> argument to <CODE>lget_contig_num</CODE> is
+a list, the second and third elements of this list are used to define the
+<VAR>start</VAR> and <VAR>end</VAR> offsets within the contig (which is defined by the
+name held in the first element of the list). Otherwise, the <VAR>start</VAR> and
+<VAR>end</VAR> fields are set to 1 and the length of the contig respectively.
+
+</P>
+<P>
+For instance, it is legal for pass over "<CODE>rname</CODE>", "<CODE>rname 100</CODE>" and
+"<CODE>rname 100 200</CODE>" as contig identifiers.
+
+</P>
+<P>
+Both functions return 0 for success and -1 for failure.  Note that the
+returned <VAR>rargc</VAR> value may not be the same as <VAR>listArgc</VAR> in the case
+where one or more identifiers could not be translated.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_136.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_138.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,213 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Naming-Writing</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_50.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_52.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Naming-Writing -->
+
+
+<H2><A NAME="SEC57" HREF="pregap4_toc.html#SEC57">Writing Your Own Naming Schemes</A></H2>
+<P>
+<A NAME="IDX95"></A>
+
+</P>
+<P>
+The naming schemes are defined in the "component" files. At present two
+examples exist; both are naming schemes taken from the Sanger Centre. It is
+possible to define your own naming scheme, or indeed any other component. A
+component is basically just a file which you want to add (in its entirety) to
+the user's pregap4 configuration file. Typically these files end in the
+extension <TT>`.p4t'</TT>.
+
+</P>
+<P>
+The naming schemes are defined by use of three variables: <VAR>ns_name</VAR>,
+<VAR>ns_regexp</VAR> and <VAR>ns_lt</VAR>.
+
+</P>
+<P>
+<VAR>ns_name</VAR> is simply a text name for the naming scheme.
+
+</P>
+<P>
+<VAR>ns_regexp</VAR> is a regular expression which will be matched against each
+sequence identifier. The bracketed segments are assigned to Tcl variables
+which can be referenced as <CODE>$1</CODE>, <CODE>$2</CODE>, <CODE>$3</CODE> etc.
+
+</P>
+<P>
+<VAR>ns_lt</VAR> is an array indexed by Experiment File line types. The contents of
+a particular array element is either a string containing the value for that
+line type or the word <CODE>subst</CODE> followed by a substitution list of the
+following format:
+
+</P>
+<P>
+<CODE>subst {</CODE><I>string</I> <CODE>{</CODE><I>pattern</I> <I>replacement</I><CODE>}</CODE> ...
+<I>default_replacement</I><CODE>}</CODE>
+
+</P>
+<P>
+In addition to this we need a bit of preamble stating that the following
+component is part of the pregap4 naming scheme section. This can be done by
+making sure the first line of the component file is <CODE>[naming_scheme]</CODE>.
+
+</P>
+<P>
+A completely new example naming scheme may be, in English, as follows:
+
+</P>
+<P>
+The reading identifier will consist of the template name, followed by a full
+stop, followed by two characters to determine the primer type and position,
+a single character to determine the chemistry, and any extra characters needed
+to create a unique name. Forward and reverse readings from the same "insert"
+or "template" will share the same template name. This in turn allows for gap4
+to know the relative positions, orientations and distances of two such
+readings and hence will allow it to point out possible problems.
+
+</P>
+<P>
+Putting this more specifically: a template name is any string of
+alpha-numerics (a-z, 0-9 and underscore). The primer type could be defined as:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>uf</CODE>
+<DD>
+universal forward primer
+item ur
+universal reverse primer
+<DT><CODE>cf</CODE>
+<DD>
+custom forward primer
+<DT><CODE>cr</CODE>
+<DD>
+custom reverse primer
+</DL>
+
+<P>
+The chemistry can be defined as:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>p</CODE>
+<DD>
+Dye-Primer
+<DT><CODE>P</CODE>
+<DD>
+Big dye-primer
+<DT><CODE>t</CODE>
+<DD>
+Dye-Terminator
+<DT><CODE>T</CODE>
+<DD>
+Big dye-terminator
+</DL>
+
+<P>
+For example <CODE>fred.ufp</CODE>, <CODE>fred.urp</CODE> and <CODE>bert.cfT</CODE> are all valid
+names.
+
+</P>
+<P>
+The above variable definitions may seem complex so we shall work through the
+example naming scheme. Firstly we need to define the regular expression. To
+new users this can be complex, but is described in great detail in many places
+(try the Unix "grep" manual page). In the shortest form: dot (<CODE>.</CODE>)
+matches any character; square brackets delimit a set of characters, any one of
+which is allowed (or if it starts with <CODE>^</CODE> it is the complement set - any
+except those listed). Following a character or set with <CODE>+</CODE> indicates one
+or more copies of the preceeding expression, <CODE>*</CODE> is for zero or more
+copies, and <CODE>?</CODE> is for zero or one copy.
+
+</P>
+<P>
+So to define our example names we would start our component file with:
+
+</P>
+
+<PRE>
+[naming_scheme]
+set ns_name "Example naming scheme"
+set ns_regexp {([^.]*)\.(..)(.).*}
+</PRE>
+
+<P>
+The backslash in the above text is to state that we want to match a real full
+stop character instead of the "any character" that regular expressions usually
+regard full stop as meaning. The <CODE>ns_regexp</CODE> will store the three
+bracketed segments in <CODE>$1</CODE>, <CODE>$2</CODE> and <CODE>$3</CODE>.
+
+</P>
+<P>
+The first segment is the template name. To use this we simply add:
+
+</P>
+
+<PRE>
+set ns_lt(TN) {$1}
+</PRE>
+
+<P>
+The next segment is the primer type.  The primer type is defined for gap4 as a
+single digit number. 0 is for unknown, 1 is universal forward primer, 2 is
+universal reverse primer, 3 is custom forward primer, and 4 is custom reverse
+primer. So we wish to map <CODE>uf</CODE> to <CODE>1</CODE>, <CODE>ur</CODE> to <CODE>2</CODE>,
+<CODE>cf</CODE> to <CODE>3</CODE>, <CODE>cr</CODE> to <CODE>4</CODE>, and anything else to <CODE>0</CODE>.
+This is done with the following command:
+
+</P>
+
+<PRE>
+set ns_lt(PR) {subst {$2 {uf 1} {ur 2} {cf 3} {cr 4} 0}}
+</PRE>
+
+<P>
+The final segment is the chemistry. At present gap4 only distinguishes between
+dye-primer and dye-terminators, although our naming scheme also "knows about"
+big dyes. So we wish to map both <CODE>p</CODE> and <CODE>P</CODE> to chemistry type
+<CODE>0</CODE>, and <CODE>t</CODE> and <CODE>T</CODE> to chemistry type <CODE>1</CODE>. Anything else
+we'll also assume is dye-primer. In much the same way that the regular
+expressions work, we can use square brackets in our patterns to say "any of
+these letters". So the command for this is:
+
+</P>
+
+<PRE>
+set ns_lt(CH) {subst {$3 {[pP] 0} {[tT] 1} 0}}
+</PRE>
+
+<P>
+The final line to add to the component file is <CODE>set_name_scheme</CODE>. This is
+a pregap4 command which tells it that you have finished defining the naming
+scheme. So the completed component file is simply:
+
+</P>
+
+<PRE>
+[naming_scheme]
+set ns_name "Example naming scheme"
+set ns_regexp {([^.]*)\.(..)(.).*}
+set ns_lt(TN) {$1}
+set ns_lt(PR) {subst {$2 {uf 1} {ur 2} {cf 3} {cr 4} 0}}
+set ns_lt(CH) {subst {$3 {[pP] 0} {[tT] 1} 0}}
+set_name_scheme
+</PRE>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_50.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_52.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

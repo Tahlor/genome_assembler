@@ -1,0 +1,87 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Editor-Editing</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_13.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_15.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Editing -->
+
+
+<H2><A NAME="SEC23" HREF="gap5_toc.html#SEC23">Editing</A></H2>
+<P>
+<A NAME="IDX39"></A>
+<A NAME="IDX40"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="gap5_15.html#SEC24">Moving the editing cursor</A>
+<LI><A HREF="gap5_16.html#SEC25">Adjusting the quality values</A>
+<LI><A HREF="gap5_16.html#SEC27">Adjusting the cutoff data</A>
+<LI><A HREF="gap5_16.html#SEC26">Adjusting the alignment coordinates</A>
+<LI><A HREF="gap5_17.html#SEC28">Summary of editing commands</A>
+</UL>
+
+<P>
+Editing can take up a significant portion of the time taken to finish
+a sequencing project. Gap5 has a selection of searches
+(see section <A HREF="gap5_21.html#SEC33">Searching</A>) designed to speed
+up this process.  The problems that require most attention are
+conflicts between good bases. Where base confidence values are present
+it should be unnecessary to edit all conflicting bases as, generally,
+this will amount to adjusting poor quality data to agree with good
+quality data in which case the consensus sequence should be correct
+anyway.
+
+</P>
+<P>
+Pads in the consensus should not be considered a problem requiring
+edits because it is possible to output the consensus sequence (from
+the main Gap5 File menu) with pads stripped out. Obviously poorly
+defined pads (a mixture of several alignment padding characters and
+real bases) require checking in the same manner as other poorly
+defined consensus bases.
+
+</P>
+<P>
+To change a base simply overtype with a new base call, one of a,c,g or
+t in lowercase. Alternatively a base can be changed to an alignment
+padding character by pressing "*". These new bases and pads
+automatically get given a quality value of 100, but see below for how
+to adjust this. The consensus cannot be edited in this manner.
+
+</P>
+<P>
+To insert a gap into sequence press "i" or the Insert key. At present
+only alignment pads can be inserted, not bases, although the pads can
+subsequently be edited to turn them into bases. The "i" and Insert
+keys also permits insertions of gaps into the consensus, which it
+achieves by inserting into every sequence aligned at that position.
+
+</P>
+<P>
+Bases may be deleted by pressing the Delete or Backspace key. This
+deletes the base immediately to the left of the current editing
+cursor. Note that if Delete or Backspace is pressed with the editing
+cursor on the consensus this removes an entire column of
+data. Deleting anything other than alignment padding characters
+(either in sequences or the consensus) is a dangerous operation
+needing careful thought. To prevent accidental removal of data
+therefore, to delete anything other than "*" you must press Control
+in conjunction with Delete or Backspace.
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_13.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_15.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,100 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Con-Normal</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Con-Normal -->
+
+
+<H2><A NAME="SEC96" HREF="gap5_toc.html#SEC96">Normal Consensus Output</A></H2>
+<P>
+<A NAME="IDX167"></A>
+<A NAME="IDX168"></A>
+<A NAME="IDX169"></A>
+
+</P>
+<P>
+This is the usual consensus type that will be calculated
+(and is available from the gap4 File menu).
+The currently active consensus algorithm is selected from the
+"Consensus algorithm" dialogue in the main gap4 Options menu
+(see section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>).
+
+</P>
+<P>
+Contigs can be
+selected from a file of file names or a list.  In addition, tagged regions can
+be masked or marked (see section <A HREF="gap4_20.html#SEC27">Active tags and masking</A>), and
+output can be in Experiment file, fasta 
+or staden formats.  If experiment file format is selected a further menu
+appears that allows users to select for the inclusion of tag data in the
+output file.
+
+</P>
+
+<p>
+<img src="calc_consensus.normal.png" alt="[picture]">
+
+<P>
+The contigs for which to calculate a consensus can be a particular
+"single" contig, "all contigs", or a subset of contigs whose names are
+stored in a "file" or a "list". If a file or list is selected the
+browse button will be activated, and if it is clicked, an appropriate
+browser will be invoked. If the user selects "single" then the
+dialogue for choosing the contig, and the section to process, becomes
+active.
+
+</P>
+<P>
+If the user selects either "mask active tags" or "mark active tags"
+the "Select tags" button is activated, and if it is clicked, a dialogue
+panel appears to enable the user to select which tag types should be
+used in these processes. If "mask" is selected all segments covered by
+the tag types chosen will not be written as ACGT but as defi
+symbols. If "mark" is selected the tagged segments will be written in
+lowercase characters. Masking is useful for producing a sequence to
+screen against other sequences: only the unmasked segments will
+produce hits.
+
+</P>
+<P>
+The "strip pads" option will remove pads ("*"s) from the consensus sequence.
+In the case of experiment files this will also automatically adjust the
+position and length of the annotations to ensure that they still mark the
+correct segment of sequence.
+
+</P>
+<P>
+Normally the consensus sequences are named after the left-most reading
+in each contig. For the purposes of single-template based sequencing
+projects (eg cDNA assemblies) the option exists to "Name consensus by
+left-most template" instead of by left-most reading.
+
+</P>
+<P>
+The routine can write its consensus sequence (plus extra data for
+experiment files) in "experiment file", "fasta" and "staden"
+formats. The output file can be chosen with the aid of a file
+browser. If experiment file format is selected the user can choose
+whether or not to have "all annotations", "annotations except in
+hidden", or "no annotations" written out with the sequence. If the
+user elects to include annotations the "select tags" button will become
+active, and if it is clicked, a dialogue for selecting the types to include
+will appear. 
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_57.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_59.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

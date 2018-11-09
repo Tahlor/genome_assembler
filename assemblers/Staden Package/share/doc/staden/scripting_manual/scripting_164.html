@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - tag2values</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_163.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_165.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:tag2values -->
+
+
+<H2><A NAME="SEC183" HREF="scripting_toc.html#SEC183">tag2values</A></H2>
+<P>
+<A NAME="IDX730"></A>
+<A NAME="IDX731"></A>
+<A NAME="IDX732"></A>
+<A NAME="IDX733"></A>
+
+</P>
+
+<PRE>
+#include &#60;tagUtils.h&#62;
+
+int tag2values(
+        char   *tag,
+        char   *type,
+        int    *start,
+        int    *end,
+        int    *strand,
+        char   *comment);
+</PRE>
+
+<P>
+This function converts a tag in string format to a tag represented by a series
+of separate integer/string values. It performs the opposite task to the
+<CODE>values2tag</CODE> function.
+
+</P>
+<P>
+The tag string format is as used in the experiment file <CODE>TG</CODE> lines. The
+format is "<VAR>TYPE</VAR>&#60;space&#62;<VAR>S</VAR>&#60;space&#62;<VAR>start</VAR>..<VAR>end</VAR>" followed by
+zero or more comment lines, each starting with a newline character. <VAR>TYPE</VAR>
+is the tag type, which must be 4 characters, and <VAR>S</VAR> is the strand; one of
+"<CODE>+</CODE>", "<CODE>-</CODE>" or "<CODE>b</CODE>" (both).
+
+</P>
+<P>
+The tag string is passed as the <VAR>tag</VAR> argument. This is then expanded into
+the <VAR>type</VAR>, <VAR>start</VAR>, <VAR>end</VAR>, <VAR>strand</VAR> and <VAR>comment</VAR> values.
+The comment must have been allocated before hand (<CODE>strlen(tag)</CODE> will
+always be large enough). If no comment was found then <VAR>comment</VAR> is set to
+be an empty string. <VAR>type</VAR> should be allocated to be 5 bytes long.
+
+</P>
+<P>
+The function returns 0 for success, -1 for failure.
+
+</P>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_163.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_165.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

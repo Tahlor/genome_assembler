@@ -1,0 +1,254 @@
+{Contents} gap4_toc.html
+{Gap-Intro-Manual} gap4_2.html
+{Gap4-Introduction} gap4_3.html
+{Gap-Intro-Files} gap4_4.html
+{Gap-Intro-Funtions} gap4_5.html
+{Gap-Intro-Interface} gap4_6.html
+{Gap-Intro-Interface-CS} gap4_7.html
+{Gap-Intro-Interface-CC} gap4_8.html
+{Gap-Intro-Interface-TD} gap4_9.html
+{Gap-Intro-Interface-CD} gap4_10.html
+{Gap-Intro-Interface-RE} gap4_11.html
+{Gap-Intro-Interface-SC} gap4_12.html
+{Gap-Intro-Interface-CE} gap4_13.html
+{Gap-Intro-Interface-CJ} gap4_14.html
+{Gap-Intro-Menus} gap4_15.html
+{Gap-Intro-Menus-File} gap4_15.html#SEC16
+{Gap-Intro-Menus-Edit} gap4_15.html#SEC17
+{Gap-Intro-Menus-View} gap4_15.html#SEC18
+{Gap-Intro-Menus-Options} gap4_15.html#SEC19
+{Gap-Intro-Menus-Experiments} gap4_15.html#SEC20
+{Gap-Intro-Menus-Lists} gap4_15.html#SEC21
+{Gap-Intro-Menus-Assembly} gap4_15.html#SEC22
+{Intro-Base-Acc} gap4_16.html
+{Intro-Hidden} gap4_17.html
+{Intro-Anno} gap4_18.html
+{Anno-Types} gap4_19.html
+{Anno-Act} gap4_20.html
+{Contig Selector} gap4_21.html
+{Contig-Selector-Contigs} gap4_22.html
+{Contig-Selector-Order} gap4_23.html
+{Contig-Selector-Menus} gap4_24.html
+{Contig Comparator} gap4_25.html
+{Compar-Examining} gap4_26.html
+{Compar-AutoNavigation} gap4_27.html
+{Contig-Overviews} gap4_28.html
+{Template-Display} gap4_29.html
+{Template-Templates} gap4_30.html
+{Template-Templates-Display} gap4_30.html#SEC38
+{Template-Templates-Options} gap4_31.html
+{Template-Templates-Operations} gap4_32.html
+{Template-Quality} gap4_33.html
+{Template-Restriction} gap4_34.html
+{Consistency-Display} gap4_35.html
+{Consistency-Confidence} gap4_36.html
+{Consistency-ReadingCov} gap4_37.html
+{Consistency-ReadPairCov} gap4_38.html
+{Consistency-StrandCov} gap4_39.html
+{Consistency-2ndHighest} gap4_40.html
+{Consistency-Diploid} gap4_41.html
+{SNP-Candidates} gap4_42.html
+{Quality} gap4_43.html
+{Quality-Examining} gap4_43.html#SEC52
+{Stops} gap4_44.html
+{Stops-Examining} gap4_44.html#SEC54
+{Stops-Updating} gap4_44.html#SEC55
+{Restrict} gap4_45.html
+{Restrict-Selecting} gap4_46.html
+{Restrict-Examining} gap4_47.html
+{Restrict-Reconfig} gap4_48.html
+{Restrict-Tags} gap4_49.html
+{Restrict-Output} gap4_50.html
+{Editor} gap4_51.html
+{Editor-Movement} gap4_52.html
+{Editor-Names} gap4_53.html
+{Editor-Editing} gap4_54.html
+{Editor-Cursor} gap4_55.html
+{Editor-Modes} gap4_56.html
+{Editor-Quality Values} gap4_57.html
+{Editor-Cutoffs} gap4_57.html#SEC69
+{Editor-Editing Summary} gap4_58.html
+{Editor-Selections} gap4_59.html
+{Editor-Annotations} gap4_60.html
+{Editor-Searching} gap4_61.html
+{Editor-Search-Pos} gap4_61.html#SEC74
+{Editor-Search-Prob} gap4_61.html#SEC75
+{Editor-Search-Anno} gap4_61.html#SEC76
+{Editor-Search-Type} gap4_61.html#SEC77
+{Editor-Search-Seq} gap4_61.html#SEC78
+{Editor-Search-Qual} gap4_61.html#SEC79
+{Editor-Search-ConsQual} gap4_61.html#SEC80
+{Editor-Search-File} gap4_61.html#SEC81
+{Editor-Search-Name} gap4_61.html#SEC82
+{Editor-Search-Edit} gap4_61.html#SEC83
+{Editor-Search-VerifyEdit1} gap4_61.html#SEC84
+{Editor-Search-VerifyEdit2} gap4_61.html#SEC85
+{Editor-Search-Discrepancies} gap4_61.html#SEC86
+{Editor-Search-ConsDiscreps} gap4_61.html#SEC87
+{Editor-Commands} gap4_62.html
+{Editor-Comm-Save} gap4_62.html#SEC93
+{Editor-Comm-Dump} gap4_62.html#SEC94
+{Editor-Comm-Consensus Trace} gap4_62.html#SEC95
+{Editor-Comm-List Confidence} gap4_62.html#SEC96
+{Editor-Comm-Report-Mutations} gap4_62.html#SEC97
+{Editor-Comm-Primer Selection} gap4_62.html#SEC98
+{Editor-Comm-Align} gap4_62.html#SEC99
+{Editor-Comm-Remove Reading} gap4_62.html#SEC100
+{Editor-Comm-Break Contig} gap4_62.html#SEC101
+{Editor-Settings} gap4_63.html
+{Editor-Status} gap4_63.html#SEC103
+{Editor-Trace Display} gap4_63.html#SEC104
+{Editor-Consensus algorithm} gap4_63.html#SEC109
+{Editor-Group Readings} gap4_63.html#SEC110
+{Editor-Disagree} gap4_63.html#SEC111
+{Editor-Compare} gap4_63.html#SEC112
+{Editor-auto-save} gap4_63.html#SEC113
+{Editor-3Char} gap4_63.html#SEC114
+{Editor-Show Quality} gap4_63.html#SEC115
+{Editor-Show edits} gap4_63.html#SEC116
+{Editor-Show unpadded pos} gap4_63.html#SEC117
+{Editor-Show template names} gap4_63.html#SEC118
+{Editor-Active Tags} gap4_63.html#SEC119
+{Editor-Output List} gap4_63.html#SEC120
+{Editor-Default Confidence} gap4_63.html#SEC121
+{Editor-Store Undo} gap4_63.html#SEC122
+{Editor-Remove Readings} gap4_64.html
+{Editor-Primer Selection} gap4_65.html
+{Editor-Traces} gap4_66.html
+{Editor-Reference-Data} gap4_67.html
+{Editor-Reference-Sequences} gap4_68.html
+{Editor-Reference-Traces} gap4_69.html
+{Editor-Template Status} gap4_70.html
+{Editor-Info} gap4_71.html
+{Editor-Joining} gap4_72.html
+{Editor-Multiple Editors} gap4_73.html
+{Editor-Quitting} gap4_74.html
+{Editor-Techniques} gap4_75.html
+{Editor-Techniques-Cutoffs} gap4_76.html
+{Editor-Techniques-EType} gap4_77.html
+{Editor-Techniques-Overcall} gap4_78.html
+{Editor-Techniques-Undercall} gap4_79.html
+{Editor-Techniques-Disagree} gap4_80.html
+{Editor-Techniques-Quality} gap4_81.html
+{Editor-Techniques-Check} gap4_82.html
+{Editor-Summary} gap4_83.html
+{Editor-Summary-Keys} gap4_83.html#SEC149
+{Editor-Summary-Mouse} gap4_83.html#SEC150
+{Editor-Summary-MouseNames} gap4_83.html#SEC151
+{Editor-Summary-Scroll} gap4_83.html#SEC152
+{Assembly} gap4_84.html
+{Assembly-Shot} gap4_85.html
+{Assembly-Ind} gap4_86.html
+{Assembly-Single} gap4_87.html
+{Assembly-One} gap4_88.html
+{Assembly-New} gap4_89.html
+{Assembly-Directed} gap4_90.html
+{Assembly-Screen} gap4_91.html
+{Assembly-Tips} gap4_92.html
+{Assembly-Codes} gap4_93.html
+{Ordering-and-Joining} gap4_94.html
+{Order-Contigs} gap4_95.html
+{Read Pairs} gap4_96.html
+{ReadPair-Display} gap4_97.html
+{ReadPair-Output} gap4_98.html
+{FIJ} gap4_99.html
+{FIJ-Dialogue} gap4_100.html
+{Repeats} gap4_101.html
+{Contig-Checking-and-Breaking} gap4_102.html
+{Check Assembly} gap4_103.html
+{Removing Readings} gap4_104.html
+{Break Contig} gap4_105.html
+{Disassemble} gap4_106.html
+{Experiments} gap4_107.html
+{Double Strand} gap4_108.html
+{Suggest Primers} gap4_109.html
+{Suggest Long} gap4_110.html
+{Compressions} gap4_111.html
+{Suggest Probes} gap4_112.html
+{Calculate Consensus} gap4_113.html
+{Con-Normal} gap4_114.html
+{Con-Extended} gap4_115.html
+{Con-Unfinished} gap4_116.html
+{Con-Quality} gap4_117.html
+{Con-Calculation} gap4_118.html
+{Con-Calculation-1} gap4_119.html
+{Con-Calculation-2} gap4_120.html
+{Con-Calculation-3} gap4_121.html
+{Qual-Cal} gap4_122.html
+{Con-Evaluation} gap4_123.html
+{Con-ListBaseConf} gap4_124.html
+{gap4-misc} gap4_125.html
+{Complement} gap4_126.html
+{Enter Tags} gap4_127.html
+{Shuffle Pads} gap4_128.html
+{Show Relationships} gap4_129.html
+{Contig Navigation} gap4_130.html
+{Find Oligos} gap4_131.html
+{Extract Readings} gap4_132.html
+{Auto Clipping} gap4_133.html
+{Clip-Difference} gap4_134.html
+{Clip-Quality} gap4_135.html
+{Clip-QClipEnds} gap4_136.html
+{Clip-NBases} gap4_137.html
+{Results} gap4_138.html
+{Lists} gap4_139.html
+{List-Special} gap4_140.html
+{List-Commands} gap4_141.html
+{List-ContigToRead} gap4_142.html
+{List-MinCoverage} gap4_143.html
+{List-Unattached} gap4_144.html
+{List-HighlightReadings} gap4_144.html#SEC216
+{List-SearchSequenceNames} gap4_145.html
+{List-SearchTemplateNames} gap4_146.html
+{List-SearchAnnotations} gap4_147.html
+{Notes} gap4_148.html
+{Notes-Selector} gap4_149.html
+{Notes-Editor} gap4_150.html
+{Notes-Special} gap4_151.html
+{GapDB} gap4_152.html
+{GapDB-Directories} gap4_153.html
+{GapDB-New} gap4_154.html
+{GapDB-Existing} gap4_155.html
+{GapDB-CopyDatabase} gap4_156.html
+{GapDB-Names} gap4_157.html
+{Copy Readings} gap4_158.html
+{Copy Reads} gap4_158.html#SEC231
+{Copy Reads-Dialogue} gap4_159.html
+{Check Database} gap4_160.html
+{Check-Database} gap4_161.html
+{Check-Contig} gap4_161.html#SEC235
+{Check-Reading} gap4_161.html#SEC236
+{Check-Anno} gap4_161.html#SEC237
+{Check-Note} gap4_161.html#SEC238
+{Check-Template} gap4_161.html#SEC239
+{Check-Vector} gap4_161.html#SEC240
+{Check-Clone} gap4_161.html#SEC241
+{Doctor Database} gap4_162.html
+{Doctor-Structures} gap4_163.html
+{Doctor-Database} gap4_163.html#SEC244
+{Doctor-Reading} gap4_163.html#SEC245
+{Doctor-Contig} gap4_163.html#SEC246
+{Doctor-Annotation} gap4_163.html#SEC247
+{Doctor-Template} gap4_163.html#SEC248
+{Doctor-Clone} gap4_163.html#SEC249
+{Doctor-Note} gap4_163.html#SEC250
+{Doctor-IgnoreCheck} gap4_164.html
+{Doctor-Extend} gap4_165.html
+{Doctor-Anno} gap4_166.html
+{Doctor-Shift} gap4_167.html
+{Doctor-Delete} gap4_168.html
+{Doctor-Contig Order} gap4_169.html
+{Conf} gap4_170.html
+{Conf-Introduction} gap4_170.html#SEC258
+{Conf-Consensus Algorithm} gap4_171.html
+{Conf-Set Maxseq} gap4_172.html
+{Conf-Fonts} gap4_173.html
+{Conf-Configure Menus} gap4_174.html
+{Conf-Set Genetic Code} gap4_175.html
+{Conf-Alignment Scores} gap4_176.html
+{Conf-Trace File Location} gap4_177.html
+{Conf-Tag} gap4_178.html
+{Conf-GTAGDB} gap4_179.html
+{Conf-Template Status} gap4_180.html
+{Gap4-Cline} gap4_181.html
+{Index} gap4_182.html

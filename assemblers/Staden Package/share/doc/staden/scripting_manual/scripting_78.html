@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-edit_contig</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_77.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_79.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-edit_contig -->
+
+
+<H2><A NAME="SEC86" HREF="scripting_toc.html#SEC86">edit_contig</A></H2>
+<P>
+<A NAME="IDX269"></A>
+<A NAME="IDX270"></A>
+<A NAME="IDX271"></A>
+
+</P>
+
+<PRE>
+<CODE>edit_contig</CODE>
+ -io            <I>io_handle:integer</I>
+ -contig        <I>identifier:string</I>
+?-reading       <I>identifier:string()</I>?
+?-pos           <I>position:integer(1)</I>?
+</PRE>
+
+<P>
+This command brings up a contig editor display. The function returns no value
+but will generate a Tcl error if an error occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contig</CODE> identifier</VAR>
+<DD>
+This specifies the contig to edit.
+
+<P>
+<DT><VAR><CODE>-reading</CODE> identifier</VAR>
+<DD>
+<DT><VAR><CODE>-pos</CODE> position</VAR>
+<DD>
+By default the editor starts with the display and cursor at the left end of
+the consensus. Use these options to specify a different reading and position.
+The position is relative to the start of the specified reading. To start the
+editor at a specific position in the consensus sequence use only <CODE>-pos</CODE>.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_77.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_79.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

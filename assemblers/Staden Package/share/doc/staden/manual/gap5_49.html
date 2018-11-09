@@ -1,0 +1,95 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Check Assembly</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_48.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_50.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Check Assembly -->
+
+
+<H3><A NAME="SEC86" HREF="gap5_toc.html#SEC86">Checking Assemblies</A></H3>
+<P>
+<A NAME="IDX151"></A>
+
+</P>
+<P>
+The Check Assembly routine (which is invoked from the gap5 View menu) is
+used to check contigs for potentially misassembled readings by comparing
+them against the segment of the consensus which they overlap.  It simply
+slides a small window along the sequence identifying regions of high
+disagreement between that portion of sequence and the consensus. Results
+are displayed in the Output Window and plotted on the main diagonal in
+the Contig Comparator. See section <A HREF="gap5_7.html#SEC12">Contig Comparator</A>.
+
+</P>
+<P>
+From the Contig Comparator the user can invoke the Contig Editor to
+examine the alignment of any problem reading. See section <A HREF="gap5_11.html#SEC20">Editing in gap5</A>. If the reading appears to be correctly positioned
+the user can either edit it, or instead select the name to add it to the
+"readings" list for subsequent disassembly or removal.
+
+</P>
+
+<p>
+<img src="gap5_check_ass.png" alt="[picture]">
+
+<P>
+Users select either to search only one contig ("single"), all contigs
+("all contigs"), or a subset of contigs contained in a "file" or a
+"list". If "file" or "list" is selected the "browse" button will be
+activated and clicking on it will invoke a file or list browser. If a
+single contig is selected the "Contig identifier" dialogue will be
+activated and users should enter a contig name.
+
+</P>
+<P>
+The percentage disagreement and over what size of window are both
+configurable parameters. Additionally there is a parameter to control
+whether N bases in the sequence should be considered as disagreements or
+not. The choice will depend on whether you are looking for sequences
+that appear to be in the wrong place (ignore Ns) or simply sequences
+that appear to have a large number of incorrect base calls (keep Ns).
+
+</P>
+<P>
+<A NAME="IDX152"></A>
+<A NAME="IDX153"></A>
+<A NAME="IDX154"></A>
+
+</P>
+<P>
+The "Information" window produced by selecting "Information" from the
+Contig Comparator "Results" menu produces a summary of the results
+sorted in order os percentage mismatch.
+
+</P>
+
+<P>
+By clicking with the right mouse button
+on results plotted in the Contig Comparator a pop-up menu is revealed
+which can be used to invoke the Contig Editor
+(see section <A HREF="gap5_11.html#SEC20">Editing in gap4</A>). The editor will start
+up with the cursor positioned on the problem reading. If the reading is
+found to be misplaced it can be marked for removal from within the Editor
+(see section <A HREF="gap4_62.html#SEC100">Remove Reading</A>).
+However, prior to this it may be beneficial to use some of the other
+analyses such as Find internal joins (see section <A HREF="gap5_42.html#SEC79">Find Internal Joins</A>) and Find repeats (see section <A HREF="gap5_44.html#SEC81">Find Repeats</A>), which may help to find its correct location. Both of these
+functions produce results plotted in the Contig Comparator
+(see section <A HREF="gap5_7.html#SEC12">Contig Comparator</A>) and any
+alternative locations will give matches on the same vertical or
+horizontal projection as the problem reading.
+
+</P>
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_48.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_50.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

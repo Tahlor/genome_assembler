@@ -1,0 +1,278 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from manpages.htmlinfo on 25 April 2016 -->
+
+<TITLE>Manual Pages - Screen_seq</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_20.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_22.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Man-screen_seq -->
+
+
+<H1><A NAME="SEC125" HREF="manpages_toc.html#SEC125">Screen_seq</A></H1>
+<P>
+<A NAME="IDX22"></A>
+
+
+<H2><A NAME="SEC126" HREF="manpages_toc.html#SEC126">NAME</A></H2>
+
+<P>
+screen_seq -- filters out sequence readings containing contaminating DNA
+
+</P>
+
+
+<H2><A NAME="SEC127" HREF="manpages_toc.html#SEC127">SYNOPSIS</A></H2>
+
+<P>
+<CODE>screen_seq</CODE> <CODE>-</CODE>[<CODE>lcwmiIsSpft</CODE>]
+[<CODE>-l</CODE> <I>Length of minimum match (25)</I>]
+[<CODE>-m</CODE> <I>Maximum vector length (100000)</I>]
+[<CODE>-i</CODE> <I>Input file of reading file names</I>]
+[<CODE>-I</CODE> <I>Input file of single reading to screen</I>]
+[<CODE>-s</CODE> <I>Input file of sequence file names</I>]
+[<CODE>-S</CODE> <I>Input file of single sequence to screen against</I>]
+[<CODE>-p</CODE> <I>Passed output file of file names</I>]
+[<CODE>-f</CODE> <I>Failed output file of file names</I>]
+[<CODE>-t</CODE> <I>Test only mode</I>]
+
+</P>
+
+
+
+<H2><A NAME="SEC128" HREF="manpages_toc.html#SEC128">DESCRIPTION</A></H2>
+
+<P>
+<CODE>screen_seq</CODE> searches sequence readings to
+filter out those from extraneous DNA
+such as vector or bacterial sequences. We have separated this task
+from that of locating and marking the extents of sequencing vector and
+other cloning vectors. There we require precise identification of the
+junction between the vectors and the target DNA. The filtering process
+described here is designed to spot strong matches between readings and a
+panel of possible contaminating sequences, and it splits readings into
+passes and fails. Readings that fail have a PS line containing the word
+"contaminant" and a tag of type "CONT" added to their experiment file.
+
+</P>
+<P>
+Normal usage would be to compare a batch of readings in experiment file
+format against a batch of possible contaminant sequences stored in (at
+present) simple text files. Each batch is presented to the program as a
+file of file names, and the program will write out two new files of file
+names: one containing the names of the files that do not match any of
+the contaminant sequences (the passes), and the other those that do
+match (the
+fails). It is also possible to compare single readings and single
+contaminant files by giving their file names (i.e. it is not necessary
+to use a file of file names for single files).
+
+</P>
+<P>
+Given the frequent need to compare against the full E. coli genome the
+algorithm is designed to be fast. The user controls the speed and
+sensitivity by supplying a single parameter, "min_match".
+The program will find the longest exact match of at
+least min_match characters.
+
+</P>
+<P>
+The search is
+conducted only over the clipped portion of the readings. On our Alpha machine
+it takes about 1 second to compare both strands of a reading against the
+4.7 million bases of E. coli.
+
+</P>
+
+
+<H2><A NAME="SEC129" HREF="manpages_toc.html#SEC129">OPTIONS</A></H2>
+
+<DL COMPACT>
+
+<DT><CODE>-l</CODE> <I>Length of minimum match (25)</I>
+<DD>
+        The length of match required to initiate a closer search.
+
+<DT><CODE>-m</CODE> <I>Maximum vector length (100000)</I>
+<DD>
+        The maximum length of the longest sequence to screen the readings against.
+
+<DT><CODE>-i</CODE> <I>Input file of reading file names</I>
+<DD>
+<DT><CODE>-I</CODE> <I>Input file of single reading to screen</I>
+<DD>
+<DT><CODE>-s</CODE> <I>Input file of sequence file names to screen against</I>
+<DD>
+<DT><CODE>-S</CODE> <I>Input file of single sequence to screen against</I>
+<DD>
+<DT><CODE>-p</CODE> <I>Passed output file of file names</I>
+<DD>
+<DT><CODE>-f</CODE> <I>Failed output file of file names</I>
+<DD>
+<DT><CODE>-t</CODE> <I>Test only mode</I>
+<DD>
+        In test mode no experiment files are changed and the results are written
+        to stdout. When not in test mode a dot "." is written to stdout for each
+        comparison, and an exclamation mark "!" for each error detected.
+</DL>
+
+
+
+<H2><A NAME="SEC130" HREF="manpages_toc.html#SEC130">EXAMPLES</A></H2>
+
+
+<PRE>
+Usage: screen_seq [options and paramters] 
+Where options and parameters are:
+    [-l minimum match (25)]           [-m Max vector length (100000)]
+    [-i readings to screen fofn]      [-I reading to screen]
+    [-s seqs to screen against fofn]  [-S seq to screen against]
+    [-t test only]
+    [-p passed fofn]                  [-f failed fofn]
+</PRE>
+
+<P>
+1. Screen the readings whose names are stored in fofn against a batch of
+possible contaminant sequences whose names are stored in vnames. Write
+the names of the readings that pass to file p and those that fail to
+file f. Increase the maximum sequence length to 5000,000 characters and
+require a minimum match of 20.
+
+</P>
+
+
+<PRE>
+<CODE>screen_seq -i fofn -s vnames -p p -f f -l20 -m5000000</CODE>
+</PRE>
+
+<P>
+2. Screen the single reading stored in xpg33.g1 against a batch of
+possible contaminant sequences whose names are stored in vnames. If the
+reading does not match write its name to file p, otherwise to
+file f. Increase the maximum sequence length to 5000,000 characters and
+require a minimum match of 20.
+
+</P>
+
+<PRE>
+<CODE>screen_seq -I xpg33.g1 -s vnames -p p -f f -l20 -m5000000</CODE>
+</PRE>
+
+<P>
+3. Screen the readings whose names are stored in fofn against a single
+possible contaminant sequence stored in ecoli.seq. Write
+the names of the readings that pass to file pass and those that fail to
+file fails. Increase the maximum sequence length to 5000,000 characters and
+require minimum  match of 20.
+
+</P>
+
+<PRE>
+<CODE>screen_seq -i fofn -S ecoli.seq -p pass -f fails -l20 -m5000000</CODE>
+</PRE>
+
+
+
+<H2><A NAME="SEC131" HREF="manpages_toc.html#SEC131">NOTES</A></H2>
+
+<P>
+Limits
+
+</P>
+<P>
+Screen_seq is currently set to be able to process a maximum of 10,000
+readings and 5000 screening sequences in a single run. The maximum
+length of any screening sequence is 100,000 although this can be
+overridden by use of the -m parameter (set it to 5000000 for E. coli).
+At present the sequences to screen against must be stored in simple text
+files containing individual sequences, with no entry names, and &#60;100
+characters per line.
+
+</P>
+
+<P>
+The following errors can be reported.
+
+</P>
+<P>
+<A NAME="IDX23"></A>
+
+<OL>
+<LI>"Failed to open file of file names to screen against". Fatal failure to
+
+open the file of file names to screen against.
+<LI>"Failed to open single file to screen against". Fatal failure to
+
+open the file to screen against.
+<LI>"Failed to open file of file names to screen". Fatal failure to
+
+open the file of file names to screen.
+<LI>"Failed to open single file to screen". Fatal failure to
+
+open the file to screen.
+<LI>"Failed to open file of passed file names". Fatal failure to
+
+open the file of file names for readings that do not match.
+<LI>"Failed to open file of failed file names". Fatal failure to
+
+open the file of file names for readings that match.
+<LI>"Failed to open single file to screen". Fatal failure to
+
+open the file to screen.
+<LI>"Error: could not open vector file". An individual sequence file
+
+could not be opened.
+<LI>"Error: could not read vector file". An individual sequence file
+
+could not be read.
+<LI>"Error: could not hash vector file". An individual sequence file
+
+could not be prepared for comparison.
+<LI>"Error: could not open experiment file". The file does not exist
+
+or is unreadable.
+<LI>"Error: no sequence in experiment file".
+
+<LI>"Error: sequence too short". The reading is shorter than the
+
+minimum match length.
+<LI>"Error: could not write to experiment file". The disk is full or
+
+the file is write protected.
+<LI>"Error: hashing problem". An error occurred in the comparison
+
+algorithm. Please report to staden-package@mrc-lmb.cam.ac.uk
+</OL>
+
+<P>
+Inconsistencies in the selection of options, such as selecting -I and
+-i, should also cause the usage message (shown below) to appear, and 
+the program to terminate. 
+
+</P>
+<P>
+<I>PS</I> record added to the experiment file for any reading that matches.
+
+</P>
+
+
+<H2><A NAME="SEC132" HREF="manpages_toc.html#SEC132">SEE ALSO</A></H2>
+
+<P>See section <A HREF="formats_18.html#SEC40">Experiment File</A>.
+
+</P>
+<P>See section <A HREF="vector_clip_2.html#SEC2">Screening Against Vector Sequences</A>.
+
+</P>
+
+<HR>
+<A HREF="manpages_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="manpages_20.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="manpages_22.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="manpages_25.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="manpages_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,105 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Shuffle Pads</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_127.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_129.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Shuffle Pads -->
+
+
+<H2><A NAME="SEC199" HREF="gap4_toc.html#SEC199">Shuffle Pads</A></H2>
+<P>
+<A NAME="IDX448"></A>
+<A NAME="IDX449"></A>
+<A NAME="IDX450"></A>
+
+</P>
+<P>
+This function realigns all of the sequences within a contig to improve
+pad placement. This can be considered as the replacement to the old
+Shuffle Pads command within the contig editor. (Being outside of the
+editor allows this to be autoamtically scripted.) The contigs to
+realign are specified as either a single contig, all contigs or to
+input a contig names from a file or a gap4 list. Currently the entire
+contig will be shuffled, which can take some time on large contigs. In
+future we plan to allow regions to be specified.
+
+</P>
+<P>
+Padding (gapping) problems originate in many sequence assembly
+algorithms, including gap4's, where sequences are aligned against a
+consensus rather than a profile. As an example let us consider
+aligning <CODE>TCAAGAC</CODE> (Sequence4) to the following contig:
+
+</P>
+
+<PRE>
+Sequence1:    GATTCAAAGAC
+Sequence2:      TTCAA*GACGG
+Sequence3:        CAAAGACGGATC
+
+Consensus:    GATTCAAAGACGGATC
+</PRE>
+
+<P>
+The consensus contains a triple A because that is the most likely
+sequence, however we have three possible ways to align a sequence
+containing double A:
+
+</P>
+
+<PRE>
+alignment1:      TCAA*GAC
+alignment1:      TCA*AGAC
+alignment1:      TC*AAGAC
+Consensus:    GATTCAAAGACGGATC
+</PRE>
+
+<P>
+All of these have identical alignment scores because the cost of
+inserting a gap into the sequence is identical at all
+points. Alignment algorithms typically always pick the same end to
+place pads (ie left end or right end), but after contigs get
+complemented and more data inserted this often yields pads at both as,
+as follows:
+
+</P>
+
+<PRE>
+Sequence1:    GATTCAAAGAC
+Sequence2:      TTCAA*GACGG
+Sequence3:        CAAAGACGGATC
+Sequence4:       TC*AAGAC
+Consensus:    GATTCAAAGACGGATC
+</PRE>
+
+<P>
+The new Shuffle Pads algorithm implements the same ideas put forward
+by Anson and Myers in ReAligner. It aligns each sequence against a
+consensus vector where the entire column of bases in the consensus are
+used to compute match, mismatch and indel scores. The result is that
+pads generally get shuffled to the same end (not necessarily always
+left or always right) and the total number of disagreements to the
+consensus reduces.
+
+</P>
+<P>
+For speed we acknowledge that the new alignment will only deviate
+slightly from the old one and so a narrow "band size" is used. This
+paramater may be adjusted if required, but at the expense of speed.
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_127.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_129.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

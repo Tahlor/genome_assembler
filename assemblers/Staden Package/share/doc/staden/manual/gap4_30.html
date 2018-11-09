@@ -1,0 +1,207 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Template-Templates</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_29.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_31.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Template-Templates -->
+
+
+<H3><A NAME="SEC37" HREF="gap4_toc.html#SEC37">Reading and Template Plot</A></H3>
+<P>
+<A NAME="IDX65"></A>
+<A NAME="IDX66"></A>
+<A NAME="IDX67"></A>
+<A NAME="IDX68"></A>
+<A NAME="IDX69"></A>
+<A NAME="IDX70"></A>
+<A NAME="IDX71"></A>
+<A NAME="IDX72"></A>
+
+</P>
+
+<UL>
+<LI><A HREF="gap4_30.html#SEC38">Reading and Template Plot Display</A>
+<LI><A HREF="gap4_31.html#SEC39">Reading and Template Plot Options</A>
+<LI><A HREF="gap4_32.html#SEC40">Reading and Template Plot Operations</A>
+</UL>
+
+<P>
+The Reading and Template Plot shows templates and readings. The
+following sections describe the display, its options, and the operations
+which it can be used to perform.
+It is invoked from the main gap4 View menu.
+
+</P>
+<!-- NODE:Template-Templates-Display -->
+
+
+<H4><A NAME="SEC38" HREF="gap4_toc.html#SEC38">Reading and Template Plot Display</A></H4>
+
+<P>
+The Reading and Template Plot shows templates and readings.  Colour is used to
+provide additional information.
+The reading colour is used to convey the primer
+information. The default colours are:
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>red</VAR>
+<DD>
+primer unknown
+<DT><VAR>green</VAR>
+<DD>
+forwards primer
+<DT><VAR>orange</VAR>
+<DD>
+reverse primer
+<DT><VAR>dark_cyan</VAR>
+<DD>
+custom forward primer
+<DT><VAR>orange-red</VAR>
+<DD>
+custom reverse primer
+</DL>
+
+<P>
+Colour is used to distinguish the number and the location
+of the readings derived from each template.
+Templates with readings derived from only one end are drawn in blue. 
+Those with readings from both ends
+are pink when both ends are contained within the same contig.
+Those with readings from both ends are green when
+the readings are in different contigs and one of 
+the contigs is not being plotted.
+
+</P>
+<P>
+For each template gap4 stores an expected length, as a range between two
+values. From an assembly it is often possible to work out the actual length of
+a template based upon the positions within a contig of readings sequenced
+using the forward and reverse primers. The forward and reverse readings on
+a single template (called a read pair) are considered to be inconsistent if 
+this observed distance is outside of
+the range of acceptable sizes and then the template is drawn in black. 
+Alternatively it may be possible that both forward and reverse readings are 
+assembled on the same strand (in which case both arrows will point in the same
+direction). This too is a problem and hence the templates are drawn in
+black. 
+
+</P>
+<P>
+If more than one contig is displayed then the distance between adjacent 
+contigs is determined from any read pair information. If there are spanning 
+templates between two adjacent contigs and the readings on that template are 
+consistent, i.e. are in the correct orientation, the template is coloured yellow. 
+Templates which span non-adjacent contigs in the display or contain 
+inconsistent readings are coloured dark yellow.
+
+</P>
+<P>
+A summary of the default template colours follows.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR>blue</VAR>
+<DD>
+the template contains only readings from one end
+<DT><VAR>pink</VAR>
+<DD>
+the template contains both forward and reverse readings in the same contig
+<DT><VAR>green</VAR>
+<DD>
+the template contains both forward and reverse readings, but they are in
+separate contigs, and one of the contigs is not being displayed.
+<DT><VAR>black</VAR>
+<DD>
+the readings on the template are within the same contig but are in
+contradictory orientations or are an unexpected distance apart
+<DT><VAR>yellow</VAR>
+<DD>
+the readings on the template are within different contigs (both of which are being displayed) and are consistent
+<DT><VAR>dark_yellow</VAR>
+<DD>
+the readings on the template are within different contigs (both of which are being displayed) and are inconsistent
+</DL>
+
+<P>
+<A NAME="IDX73"></A>
+<A NAME="IDX74"></A>
+<A NAME="IDX75"></A>
+<A NAME="IDX76"></A>
+
+</P>
+<P>
+If more than one contig is displayed, the contigs are positioned in the same
+left to right order as the input contig list, (which need not necessarily be in
+the same order as the contig selector).
+Overlapping contigs are drawn as staggered lines. 
+If the user selects the "Calculate contig positions" option from the menu
+the horizontal distance between adjacent contigs is
+determined from any available read pair information. 
+Otherwise, or in the absence of any read pair
+information, the second contig is positioned immediately following the first
+contig, but will be drawn staggered in the vertical direction. If the 
+readings on a template spanning two contigs are consistent, the distance 
+between the contigs is determined using the template's mean length.
+If there are several templates spanning a pair of contigs
+an average distance is calculated and used as the final 
+offset between the contigs. 
+Templates which span non-adjacent contigs or contain inconsistent readings 
+are not used in the calculation of the contig offsets. It is possible that 
+data in the database is inconsistent to such an extent that, although spanning 
+templates have consistent readings, the averaging can lead to a display which 
+shows the templates to have inconsistent readings, eg the readings are 
+pointing in opposite directions. 
+
+</P>
+<P>
+A summary of the templates and readings used to calculate the distance 
+between two contigs is displayed in the output window. An example is given 
+below:
+
+</P>
+
+<PRE>
+============================================================
+Wed 02 Apr 10:35:51 1997: template display
+------------------------------------------------------------
+Contig zf98g12.r1(651) and Contig zf23d2.s1(348) 
+Template       zf22h7( 376) length 1893
+Reading        zf22h7.r1(  +10R), pos   6257 +208, contig  651
+Reading        zf22h7.s1( -376F), pos    145 +331, contig  348
+Template       zf49f5( 536) length 1510
+Reading        zf49f5.r1( +255R), pos   6562 +239, contig  651
+Reading        zf49f5.s1( -536F), pos    227 +135, contig  348
+Gap between contigs = -11
+Offset of contig 348 from the beginning = 7674
+</PRE>
+
+<P>
+The contig names and numbers are given in the top line. Below this, the
+spanning template name, number and length is displayed. Below this the reading
+name, whether the reading has been complemented (+: original -: complemented),
+number, primer information, starting position, length and contig number. This
+is of similar format to that displayed by the read pairs output.
+
+</P>
+<P>See section <A HREF="gap4_98.html#SEC167">Find Read Pairs</A>. The average gap between
+the contigs is given and finally the distance in bases between the start of
+the second contig and the start of the left most contig in the display.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_29.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_31.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

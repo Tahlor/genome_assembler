@@ -1,0 +1,207 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from mutations.htmlinfo on 25 April 2016 -->
+
+<TITLE>Mutation Detection - Using-The-Template-Display-With-Mutation-Data</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Using-The-Template-Display-With-Mutation-Data -->
+
+
+<H3><A NAME="SEC7" HREF="mutations_toc.html#SEC7">Using The Template Display With Mutation Data</A></H3>
+
+<p>
+<a href="mut_template_all,6in.png.html"><img src="mut_template_all,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 7. The template display showing the whole of the BRCA1 gene (exons in green).
+
+</P>
+<P>
+The view obtained from the Template display and shown in Figure 7 is not of 
+practical use but serves here to illustrate the overall
+arrangement of the data for our chosen example the BRCA1 gene. This figure
+shows the entirety of the EMBL entry HSLBRCA1 with its exons marked
+in green. Only exon 11 has patient trace data stacked above it.
+
+</P>
+
+<p>
+<a href="mut_template_reads,6in.png.html"><img src="mut_template_reads,6in.small.png" alt="[picture]"></a>
+<br><font size="-1">(Click for full size image)<font size="+0"><br>
+
+<P>
+Figure 8. A zoomed-in version of the data shown in Figure 7. 
+
+</P>
+<P>
+Here we can see all the readings
+covering exon 11. Forward readings are light blue, reverse readings orange, 
+primers are 
+marked in yellow, mutations in red and orange.
+A common mutation appears in the leftmost set of readings and illustrates
+the value of using the template display for visualising the overall pattern 
+of the tagged mutations. 
+
+</P>
+<!-- NODE:Configuring-The-Gap4-Editor-For-Mutation-Data -->
+
+
+<H3><A NAME="SEC8" HREF="mutations_toc.html#SEC8">Configuring The Gap4 Editor For Mutation Data</A></H3>
+
+<P>
+The current version of the gap4 editor contains very many options that are
+not needed for mutation data. Given sufficient demand a version tailored for
+mutation studies could be produced. For now it might make it easier to understand
+the program if its origin as a genome assembly program is borne in mind.
+Here we outline the options and settings relevant to mutation studies.
+The assignment of reference sequence and traces is described above. From the
+editor they can be set by right clicking on the reading names.
+
+</P>
+<P>
+Gap4 enables segments of sequences to be annotated (or tagged). Each tag 
+has a type (eg primer) and each type has an associated colour. Each instance
+of a tag can include editable text. This text can be viewed and edited by right
+clicking on the tag and selecting "Edit tag", after which a text box will appear.
+Gap4 can display annotations/tags as background colour and the user can specify
+which tag types are shown. For mutation studies the following tag types may
+usefully be activated, and all others turned off. Using the "Set Active Tags"
+option in the "Settings" menu first click on "Clear all".  
+Then click on "primer".
+To add further types
+you must hold down the "Ctrl" key on the keyboard while clicking. 
+Now scroll down and click on "Mutation", "Heterozygous" and "FEATURE CDS".
+Add any others required, then click "OK".
+
+</P>
+<P>
+The following configurations are performed via the "Settings" menu.
+
+</P>
+<P>
+Gap4 has three consensus generation algorithms. When using a reference
+sequence it is convenient if the consensus shown in the editor is forced
+to be the same as the reference. This will be the case if either
+the "Weighted base frequencies" or the "Confidence values" consensus algorithms
+are being used. This selection is made using the "Consensus algorithm" option.
+
+</P>
+<P>
+Translations are shown in what gap4 refers to as the "Status" line.
+To enable automatic translation of the exons defined in the reference sequence,
+in the "Status Line" option set "Translate using feature tables".
+
+</P>
+<P>
+To enable automatic display of trace diferences, in the "Trace Display" option
+set "Auto-Diff Traces".
+
+</P>
+<P>
+To show only the base differences between the consensus/reference, set 
+"Highlight Disagreements". These can be shown by dots or colour.
+
+</P>
+<P>
+To show base confidence values set "Show reading quality" and also make sure
+that the value in the box labelled "Q" at the top left of the editor is set
+to 0 or greater.
+
+</P>
+<P>
+To force forward and reverse reading pairs to be shown in adjacent records in
+the editor set "Group readings by templates" (NB this assumes that an appropriate
+naming scheme has been used).
+
+</P>
+<P>
+If a reference sequence is assigned, the numbering at the top of the sequence
+will reflect the base positions in that sequence. Any pads in the reference
+sequence are ignored. If no reference sequence is assigned, the numbering will 
+ignore pads if the "Show unpadded positions" option is activated.
+
+</P>
+<P>
+At the bottom of the "Settings" menu is an option to "Save settings". Use of
+this will mean that the current configuration will be set automatically next
+time the editor is used (and hence the steps just described only need to be
+performed once).
+
+</P>
+<!-- NODE:Using-The-Gap4-Editor-With-Mutation-Data -->
+
+
+<H3><A NAME="SEC9" HREF="mutations_toc.html#SEC9">Using The Gap4 Editor With Mutation Data</A></H3>
+
+<P>
+The current version of the editor has a fixed width and a maximum
+height. If too many sequences are present at any position a vertical
+scrollbar on the right edge can be used to move them up and down. The
+CONSENSUS line will always be visible, but at present, the reference
+sequence is scrolled along with all the other sequences and so may
+disappear. Horizontal scrolling is achieved in the usual ways, plus by use of
+the &#62;, &#62;&#62; and &#60;, &#60;&#60; buttons. The reading names can be moved left and right 
+using the scrollbar above them.
+
+</P>
+<P>
+Configure the editor as described above.
+
+</P>
+<P>
+The traces for readings (and their reverse) can be examined over their full
+length one at a time by simply double clicking on them then scrolling
+along. Any 
+mutations observed can be labelled by right clicking on the base in the editor 
+display and invoking
+the "Create tag" option. This brings up a dialogue box. At the top is a
+button marked "Type:comment"; clicking on this will bring up another dialogue
+with a list of all the tag types; choose the appropriate one ("Heterozygous"
+or "Mutation"). There are obviously many advantages to examining the traces
+like this using gap4. However, if the automated mutation detection methods
+are trusted, or used in way that makes them trustworthy for the type of
+study being undertaken, then there are quicker ways of examining the data.
+
+</P>
+<P>
+The "Next Search" button at the top of the editor gives access to many types
+of search, one of which is "tag type". If this is selected a button appears
+labelled "Tag type COMM(Comment)". Clicking on this will bring up a dialogue
+showing all the available tag types. If the user selects, say "Mutation", 
+each time the "Next Search" button is used the program will position the
+editing cursor on the next
+mutation tag. Double clicking will automatically bring up the appropriate 
+traces as shown in figures 1, 2 and 5
+(see section <A HREF="mutations_2.html#SEC2">Introduction to mutation detection</A>).
+The user can view the traces and if necessary alter the tag (eg delete it
+if it is a false positive).
+
+</P>
+<P>
+Once all the data has been checked and all mutations and heterozygous bases
+have been tagged a report can be generated using the "Report Mutations"
+option in the editor "Commands" menu. Note that it is also possible to
+simply report all differences between base calls and the reference, but the
+usual procedure is for the program to report all bases tagged as "Mutation"
+or "Heterozygous". Example output is shown above in Figure 6
+(see section <A HREF="mutations_2.html#SEC2">Introduction to mutation detection</A>).
+The report appears in the gap4 "Output window" which can
+be saved to disk by right clicking on the text and selecting "Output to
+disk".
+
+</P>
+
+<HR>
+<A HREF="mutations_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="mutations_4.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="mutations_6.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="mutations_8.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="mutations_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap5.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap5 - Qual-Cal</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_62.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_64.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Qual-Cal -->
+
+
+<H3><A NAME="SEC101" HREF="gap5_toc.html#SEC101">The Quality Calculation</A></H3>
+<P>
+<A NAME="IDX174"></A>
+
+</P>
+<P>
+The Quality Calculation described here 
+(which is available from the gap4 File menu)
+applies either of the two simple
+consensus calculations
+(see section <A HREF="gap5_60.html#SEC98">Consensus Calculation Using Base Frequencies</A>) and 
+(see section <A HREF="gap5_61.html#SEC99">Consensus Calculation Using Weighted Base Frequencies</A>)
+to the data for each strand of the DNA separately. 
+It produces, not a consensus sequence, but an encoding of the "quality"
+of the data which defines whether it has been determined on both
+strands, and whether the strands agree.
+This quality is used as
+the basis for problem searches, such as find next problem, and the Quality
+Display within the Template Display (see section <A HREF="gap4_33.html#SEC41">Quality Plot</A>).
+
+</P>
+<P>
+The categories of data
+and the codes produced are shown in the table. For example  'c' means 
+bad data on one strand is aligned with good data on the other.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR></VAR>
+<DD>
++Strand -Strand
+<DT><VAR>a</VAR>
+<DD>
+Good    Good (in agreement)
+<DT><VAR>b</VAR>
+<DD>
+Good    Bad
+<DT><VAR>c</VAR>
+<DD>
+Bad     Good
+<DT><VAR>d</VAR>
+<DD>
+Good    None
+<DT><VAR>e</VAR>
+<DD>
+None    Good
+<DT><VAR>f</VAR>
+<DD>
+Bad     Bad
+<DT><VAR>g</VAR>
+<DD>
+Bad     None
+<DT><VAR>h</VAR>
+<DD>
+None    Bad
+<DT><VAR>i</VAR>
+<DD>
+Good    Good (disagree)
+<DT><VAR>j</VAR>
+<DD>
+None    None
+</DL>
+
+<P>
+the "Configure cutoffs" command in the
+
+</P>
+<P>
+In the "Consensus algorithm" dialogue in the main gap4 Options menu
+(see section <A HREF="gap4_171.html#SEC259">Consensus Algorithm</A>),
+setting the configuration to treat readings flagged using the
+"Special Chemistry" Experiment File line (CH field) 
+(see section <A HREF="formats_18.html#SEC40">Experiment File</A>)
+affects this
+calculation. When set, the reading counts for both strands
+in the Consensus and Quality
+Calculations, and hence is equivalent to having data on both
+strands. 
+
+</P>
+
+<HR>
+<A HREF="gap5_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap5_62.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap5_64.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap5_74.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap5_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

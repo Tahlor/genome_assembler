@@ -1,0 +1,55 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Copy Readings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_157.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_159.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Copy Readings -->
+
+
+<H1><A NAME="SEC230" HREF="gap4_toc.html#SEC230">Copy Readings</A></H1>
+<!-- NODE:Copy Reads -->
+
+
+<H2><A NAME="SEC231" HREF="gap4_toc.html#SEC231">Introduction</A></H2>
+
+<P>
+<A NAME="IDX559"></A>
+<A NAME="IDX560"></A>
+<A NAME="IDX561"></A>
+<A NAME="IDX562"></A>
+
+</P>
+<P>
+During large scale sequencing projects where the genome is cloned into e.g.
+BACs prior to being subcloned into sequencing vectors it is generally 
+the case that the ends of the DNA from one BAC will overlap that of two other
+BACs. Unless it is being used for quality control, it is a waste of time to
+sequence the overlapping regions twice, and so most labs transfer the relevant
+data between the adjacent gap4 databases. This is the function of copy_reads
+which copies readings from a "source" database to a "destination" database.
+
+</P>
+<P>
+The consensus sequences for
+user selected contigs in each of the two databases are compared in both
+orientations. If an overlapping region is found, readings of sufficient
+quality are automatically assembled into the destination database. In 
+the source database readings which have been added to the destination
+database will be tagged with a "LENT" tag and the equivalent readings in
+the destination databse will be tagged with a "BORO" (borrowed) tag.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_157.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_159.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

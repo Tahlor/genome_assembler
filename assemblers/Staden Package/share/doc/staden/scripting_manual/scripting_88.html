@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from scripting.htmlinfo on 26 January 2011 -->
+
+<TITLE>Programming with Gap4 - G4Comm-find_internal_joins</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_87.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_89.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:G4Comm-find_internal_joins -->
+
+
+<H2><A NAME="SEC96" HREF="scripting_toc.html#SEC96">find_internal_joins</A></H2>
+<P>
+<A NAME="IDX305"></A>
+<A NAME="IDX306"></A>
+<A NAME="IDX307"></A>
+
+</P>
+
+<PRE>
+<CODE>find_internal_joins</CODE>
+ -io            <I>io_handle:integer</I>
+ -contigs       <I>identifiers:strings</I>
+?-mode          <I>mode:string(end_all)</I>?
+?-segment       <I>identifier:string()</I>?
+?-min_match     <I>length:integer(15)</I>?
+?-max_pads      <I>count:integer(25)</I>?
+?-max_pmismatch <I>percentage:float(30.0)</I>?
+?-win_size      <I>length:integer(0)</I>?
+?-max_dashes    <I>count:integer(0)</I>?
+?-probe_length  <I>length:integer(100)</I>?
+?-mask          <I>mask:string(none)</I>?
+?-tag_types     <I>types:string()</I>?
+</PRE>
+
+<P>
+This command searches for potential joins between contigs by comparing the
+sequence data in each contig. This information is plotted on the Contig
+Selector. The command will not work if the Contig Selector is not displayed.
+The function returns no value but will generate a Tcl error if an error
+occurs.
+
+</P>
+<DL COMPACT>
+
+<DT><VAR><CODE>-io</CODE> io_handle</VAR>
+<DD>
+The database IO handle returned from a previous <CODE>open_db</CODE> call.
+
+<P>
+<DT><VAR><CODE>-contigs</CODE> identifiers</VAR>
+<DD>
+This specifies the list of contigs to search. The <I>{contig start end}</I>
+syntax may be used for an identifier to search only a region of the
+contig, otherwise all of it is searched.
+
+<P>
+<DT><VAR><CODE>-mode</CODE> mode</VAR>
+<DD>
+This specifies the segments of contigs in which to search for joins.
+Valid <I>mode</I>s are:
+
+<DL COMPACT>
+
+<DT><CODE>end_end</CODE>
+<DD>
+Compares only the ends of each contigs with the ends of other contigs.
+<DT><CODE>end_all</CODE>
+<DD>
+Compares the ends of each contigs with the entirety of other contigs.
+<DT><CODE>all_all</CODE>
+<DD>
+Compares all of each contig with all of the other contigs.
+<DT><CODE>segment</CODE>
+<DD>
+Compares a segment of a particular contig with all of the contig contigs.
+</DL>
+
+The default mode is "<CODE>end_all</CODE>".
+
+<P>
+<DT><VAR><CODE>-segment</CODE> identifier</VAR>
+<DD>
+When <I>mode</I> is "<CODE>segment</CODE>" this specifies the region of the contig
+identifier to compare. The default is blank.
+
+<P>
+<DT><VAR><CODE>-min_match</CODE> length</VAR>
+<DD>
+Specifies the minimum length of exact match used during the hashing stage of
+find internal joins. The minium allowed value for this is 14. The default is
+15.
+
+<P>
+<DT><VAR><CODE>-max_pads</CODE> count</VAR>
+<DD>
+After alignments the number of pads required in each of the two consensus
+sequences must be less than or equal to <I>count</I>. The default is 25.
+
+<P>
+<DT><VAR><CODE>-max_pmismatch</CODE> count</VAR>
+<DD>
+After alignments the percentage of bases that do not match must be less than
+or equal to <I>percentage</I>. This is a floating point value. The default is
+30.0.
+
+<P>
+<DT><VAR><CODE>-win_size</CODE> length</VAR>
+<DD>
+<DT><VAR><CODE>-max_dashes</CODE> count</VAR>
+<DD>
+If these are both set to non-zero values the cutoff data will be searched for
+matches. The criteria for determining how much cutoff sequence to align is
+selected as the portion where no more than <I>count</I> unknown ("-") bases
+within a region of <I>length</I> bases. The defaults are 0 for both, which
+implies only used data should be searched.
+
+<P>
+<DT><VAR><CODE>-mask</CODE> mask</VAR>
+<DD>
+<DT><VAR><CODE>-tag_types</CODE> mask</VAR>
+<DD>
+If <I>types</I> is a non blank list of tag types then masking or marking will
+be applied to the sequence covered by tags of these types from. When
+<I>mask</I> is "<CODE>mark</CODE>" the sequence is converted to an alternative
+character set so that matches will be found, but are clearly visible in the
+output as being matches between marked fragments. When <I>mask</I> is
+"<CODE>mask</CODE>" the sequence is removed so that no matches will be initiated
+between this sequence and another fragment. The defaults are"
+<CODE>none</CODE>" for <I>mask</I> and a blank string for the tag types, which
+disables masking and marking.
+</DL>
+
+<P>
+<hr>
+<HR>
+<A HREF="scripting_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="scripting_87.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="scripting_89.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="scripting_219.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="scripting_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 26 January 2011.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

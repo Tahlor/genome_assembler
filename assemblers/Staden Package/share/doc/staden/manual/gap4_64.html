@@ -1,0 +1,74 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Remove Readings</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_63.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_65.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Remove Readings -->
+
+
+<H2><A NAME="SEC123" HREF="gap4_toc.html#SEC123">Removing Readings</A></H2>
+<P>
+<A NAME="IDX294"></A>
+<A NAME="IDX295"></A>
+<A NAME="IDX296"></A>
+<A NAME="IDX297"></A>
+
+</P>
+<P>
+It is often desirable to completely remove a reading from a contig. When not
+using the editor this is typically performed using the Disassemble Readings
+function. See section <A HREF="gap5_52.html#SEC89">Disassemble Readings</A>.
+When using the editor, the "Remove Reading" option on the editor commands
+menu performs a similar task.
+
+</P>
+<P>
+The command marks the reading underneath the editing cursor to be removed once
+the editor is quitted. Until then, the reading number in the names section of
+the display is shown with a dark grey background. The reading will also not be
+used in the calculation of the consensus. Thus, if all readings at a
+particular section of consensus are marked for removal the consensus sequence
+will be shown as dashes. Selecting the "Removing Reading" command again with
+the editing cursor on a reading already marked for removal will cancel the
+removal request. The keyboard command of Control-H may also be used as a
+shortcut to the "Removing Reading" command.
+
+</P>
+<P>
+Once the editor has been quitted you will be asked whether you wish to
+disassemble the marked readings. Answering "No" will simply quit the editor as
+normal without removing any readings. Answering "Yes" will bring up the
+usual "Disassemble Readings" dialogue. The options here allow removal of all
+readings from this contig, or non-crucial only. A crucial reading is one that
+will cause this contig to be broken into two or more segments. A choice is
+also given as to whether the readings should be completely removed from this
+database, or for each reading to be placed in its own contig. Pressing "OK"
+now will remove the readings from the contig, breaking the contig if
+necessary, and will quit the editor. Pressing "Cancel" will close the
+"Disassemble Readings" dialogue without making any changes and will not quit
+the editor.
+
+</P>
+<P>
+At any time, quitting the editor and not disassembling the readings will leave
+a List (see section <A HREF="gap5_69.html#SEC107">Lists</A>) named "disassemble" containing the
+readings marked for removal. These may then be disassembled at a later stage
+if necessary. However the list will only be available until the next editor is
+quit (at which stage that editor will create its own, possibly blank,
+disassemble list), so make a copy if necessary.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_63.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_65.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

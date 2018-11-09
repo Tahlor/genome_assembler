@@ -1,0 +1,52 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Editor-Techniques-Undercall</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_78.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_80.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Editor-Techniques-Undercall -->
+
+
+<H3><A NAME="SEC144" HREF="gap4_toc.html#SEC144">Base Undercalls</A></H3>
+
+
+<PRE>
+Read1      ACCCAG
+Read2      ACCCAG
+Read3      ACCCAG
+Read4      ACC*AG
+Read5      ACCCAG
+Consensus  ACCCAG
+</PRE>
+
+<P>
+In the above case we see that <CODE>Read4</CODE> has a <CODE>C</CODE> missing. Once again
+we must check the traces to be sure that we wish to edit the reading. If so,
+then we can either make an edit specifically to <CODE>Read4</CODE> itself (in
+"replace" mode) or type <CODE>C</CODE> in the consensus at this column. The latter
+will change either the base type of the <CODE>*</CODE> in <CODE>Read4</CODE> to <CODE>c</CODE>,
+or will change its confidence value to 0. This depends upon the value of the
+"Edit by base type"/"Edit by confidence" setting in the Edit Modes menu.
+
+</P>
+<P>
+When replacing base types, it is preferable to use lowercase letters. This
+makes the modified base stand out. However even when using uppercase letters
+it is always possible to search for edits at a later stage, although they
+won't be as obvious to the human eye. Finally, note that the "Allow replace in
+cons" mode must be set to to enable this solution.
+
+</P>
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_78.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_80.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

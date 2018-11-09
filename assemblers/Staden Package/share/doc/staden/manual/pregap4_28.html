@@ -1,0 +1,75 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from pregap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Pregap4 - Pregap4-Modules-Blast</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_27.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_29.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Pregap4-Modules-Blast -->
+
+
+<H2><A NAME="SEC34" HREF="pregap4_toc.html#SEC34">Blast Screen</A></H2>
+<P>
+<A NAME="IDX49"></A>
+<A NAME="IDX50"></A>
+
+</P>
+<DL COMPACT>
+
+<DT><STRONG>Description</STRONG>
+<DD>
+This module uses the <CODE>blastall</CODE> program to compare all the input
+sequences against a prebuilt blast database of screen sequences. It is not
+possible to compare against a subset of the database - to do this build a new
+blast database using formatdb. This module is an alternative to the
+Screen Sequences module which uses the <CODE>screen_seq</CODE> program.
+
+Blast may be used for either completely rejecting sequences or for simply
+tagging the matching segments, or for both. If you wish to tag with several
+tag types, then several instances of the Blast screen module need to be used.
+
+Blast is not included as part of the Staden Package. It is available from the
+NCBI.
+<P>
+
+<DT><STRONG>Option: BLAST database</STRONG>
+<DD>
+This is the filename of the BLAST database to screen against, with the
+<TT>`.nhr'</TT>, <TT>`.nin'</TT> and <TT>`.nsq'</TT> suffixes removed.
+<P>
+
+<DT><STRONG>Option: E value</STRONG>
+<DD>
+This specifies the `E value' used by blast when determining which hits should
+be considered as real.
+
+<DT><STRONG>Option: Match fraction</STRONG>
+<DD>
+This is the total percentage of the sequence which much have a blast match
+somewhere in the BLAST database searched in order to reject this sequence.
+Segments of the input sequence that match multiple components in the BLAST
+database are only counted once when computing this percentage, but the
+locations of the matches in the BLAST database do not need to be consecutive.
+
+If you wish to accept everything, but still want to tag the matches, then set
+the match fraction to greater than <CODE>1.0</CODE>.
+
+<DT><STRONG>Option: Tag type</STRONG>
+<DD>
+The default for this is <CODE>&#60;none&#62;</CODE> which indicates no tagging is
+required. Otherwise this should be a 4 letter tag type (such as <CODE>REPT</CODE>)
+known to gap4.
+</DL>
+
+<HR>
+<A HREF="pregap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="pregap4_27.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="pregap4_29.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="pregap4_95.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="pregap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

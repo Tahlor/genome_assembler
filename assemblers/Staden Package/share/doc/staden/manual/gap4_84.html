@@ -1,0 +1,107 @@
+
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.39
+     from gap4.htmlinfo on 25 April 2016 -->
+
+<TITLE>Gap4 - Assembly</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_83.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_85.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<HR>
+<!-- NODE:Assembly -->
+
+
+<H1><A NAME="SEC153" HREF="gap4_toc.html#SEC153">Assembling and Adding Readings to a Database</A></H1>
+<P>
+<A NAME="IDX340"></A>
+<A NAME="IDX341"></A>
+
+</P>
+<P>
+Assembly is performed by selecting one of the functions from the
+Assembly menu. The options available are:
+
+</P>
+
+<UL>
+<LI><A HREF="gap4_85.html#SEC154">Normal shotgun assembly</A>
+<LI><A HREF="gap4_86.html#SEC155">Assemble independently</A>
+<LI><A HREF="gap4_87.html#SEC156">Assemble into single stranded regions</A>
+<LI><A HREF="gap4_88.html#SEC157">Stack readings</A>
+<LI><A HREF="gap4_89.html#SEC158">Put all readings in separate contigs</A>
+<LI><A HREF="gap4_90.html#SEC159">Directed assembly</A>
+<LI><A HREF="gap4_91.html#SEC160">Screen only</A>
+<LI><A HREF="gap4_92.html#SEC161">Tips on entering readings</A>
+<LI><A HREF="gap4_93.html#SEC162">Assembly Failure Codes</A>
+</UL>
+
+<P>
+The data for a project is stored in an assembly database 
+(See section <A HREF="gap4_152.html#SEC224">Gap Database Files</A>.)
+All modes of assembly except CAP2, CAP3 and FAKII can either assemble all the
+readings for a project in a single operation or can add batches of
+new data as they are produced. CAP2, CAP3 and FAKII can only be used to 
+assemble all the data for a project as a single operation.
+
+</P>
+<P>
+For all modes the names of the readings to assemble are read from a
+list or file of file names, and the names of readings that fail to be
+entered are written to a list or a file of file names. If only a single read
+is to be assembled the "single" button may be pressed and the filename entered
+instead of the file of filenames.
+
+</P>
+<P>
+Now that a sufficient number of readings to get close to contiguity can be
+obtained quite quickly, and that more repetitive genomes are being sequenced
+it is sensible to use a "global" algorithm for assembly, such as Cap2, Cap3, 
+FakII or Phrap. These algorithms compare each reading against all of the 
+others to work out their most likely left to right order and so have a better 
+chance of correctly assembling repetitive elements than an algorithm that only
+compares readings to the ones already assembled.
+
+</P>
+<P>
+There is no limit to the length of the individual readings which can be
+assembled.  Hence reference sequences for use in mutation studies or for
+use as guide sequences can be assembled.
+
+</P>
+
+<P>
+<A NAME="IDX342"></A>
+<A NAME="IDX343"></A>
+<A NAME="IDX344"></A>
+<A NAME="IDX345"></A>
+<A NAME="IDX346"></A>
+<A NAME="IDX347"></A>
+<A NAME="IDX348"></A>
+<A NAME="IDX349"></A>
+<A NAME="IDX350"></A>
+<A NAME="IDX351"></A>
+
+</P>
+<P>
+Note that 
+Normal shotgun assembly (see section <A HREF="gap4_85.html#SEC154">Normal Shotgun Assembly</A>),
+Assemble independently (see section <A HREF="gap4_85.html#SEC154">Assembly Independently</A>),
+Assembly into single stranded regions (see section <A HREF="gap4_87.html#SEC156">Assembly Single</A>),
+Screen only (see section <A HREF="gap4_91.html#SEC160">Screen Only</A>),
+Put all readings in separate contigs (see section <A HREF="gap4_89.html#SEC158">Assembly new</A>),
+may require the parameters maxseq and maxdb to be set beforehand
+(see section <A HREF="gap4_172.html#SEC260">Set Maxseq</A>). The maxseq parameter defines the maximum
+length of consensus that can be created, and the maxdb parameter the maximum number of readings
+and contigs that the database can hold (i.e. number of readings + number of contigs).
+
+</P>
+
+<HR>
+<A HREF="gap4_1.html"><IMG SRC="i/nav_first.gif" ALT="first"></A>  <A HREF="gap4_83.html"><IMG SRC="i/nav_prev.gif" ALT="previous"></A>  <A HREF="gap4_85.html"><IMG SRC="i/nav_next.gif" ALT="next"></A>  <A HREF="gap4_182.html"><IMG SRC="i/nav_last.gif" ALT="last"></A>  <A HREF="gap4_toc.html"><IMG SRC="i/nav_top.gif" ALT="contents"></A>
+<hr>
+<i>Last generated on 25 April 2016.</i>
+<font size="-1"><br>
+</font>
+</BODY>
+</HTML>

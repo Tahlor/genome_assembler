@@ -1,0 +1,126 @@
+.TH "getABIfield" 1 "" "" "Staden Package"
+.SH "NAME"
+.PP
+getABIfield \- extract arbitrary components from an ABI file
+
+.SH "SYNOPSIS"
+.PP
+
+\fBgetABIfield\fP [\fBOPTIONS\fP] \fIfilename\fP [\fBField-ID\fP [
+\fBCount\fP]] ...
+
+.SH "DESCRIPTION"
+.PP
+
+The \fBgetABIfield\fP command extracts specified blocks from an ABI
+file and displays them in a variety of formats. The ABI file may be
+considered as a directory structure with files (data blocks) contained
+within it. Supply just the ABI filename as an argument will give a
+listing of the blocks.
+
+To extract specific data one or more ``name count'' pairs need to be
+specified.
+
+.SH "OPTIONS"
+.PP
+
+.TP
+\fB-a\fP
+Dump all blocks.
+
+.TP
+\fB-D\fP \fIseparator\fP
+Sets the output field separator for elements within a date and
+time format. Dates default to ``yyyy/mm/dd'' format and times default
+to ``hh:mm:ss.xx''.
+
+.TP
+\fB-F\fP \fIseparator\fP
+Sets the output field separator to be a specified character.
+This defaults to space.
+
+.TP
+\fB-f\fP \fIformat\fP
+Reformat the data to a specific style. By default the data is
+listed in the format specified within the ABI file.
+\fIformat\fP should be chosen of \fB1\fP(1-byte integer),
+\fB4\fP(2-byte integer), \fB5\fP(4-byte integer),
+\fB7\fP(4-byte real), \fB8\fP(8-byte real), \fB10\fP(date),
+\fB11\fP(time), \fB18\fP(Pascal-string), \fB19\fP(C-string).
+
+.TP
+\fB-h\fP
+Displays data in hex format. By default the output format will be
+chosen based on the data type (eg string, integer, floating
+point).
+
+.TP
+\fB-I\fP \fIfofn\fP
+Instead of reading the single file specified on the argument list
+this reads a list of filenames from \fIfofn\fP. If \fIfofn\fP is ``-''
+then the file of filenames is read from 'stdin'.
+
+.TP
+\fB-L\fP \fIseparator\fP
+Sets the line separator between multiple blocks listed within a
+single file. Defaults to newline.
+
+.TP
+\fB-l\fP
+Sets the output field separator to be a newline.
+
+Query mode. Here no output is displayed, but it simply returns true
+or false depending on whether any of requested comments were found.
+
+.TP
+\fB-r\fP
+Displays data in raw byte format.
+
+.TP
+\fB-t\fP
+Enable tagged output format. Each name/count pair are listed on a
+single line in the format ``filename name count data...''.
+.TE
+.SH "EXAMPLES"
+.PP
+
+To extract the run dates in a tagged format for all the ab1 files in
+the current working directory:
+
+.nf
+.in +0.5i
+ls *.ab1 | getABIfield -t -I - RUND
+.in -0.5i
+.fi
+
+To see the order of the processed data channels (e.g. ``GATC'') on a
+single file:
+
+.nf
+.in +0.5i
+getABIfield 3150.ab1 FWO_
+.in -0.5i
+.fi
+
+To see the processed trace data for the first channel (e.g. ``G'')
+with one sample point per line:
+
+.nf
+.in +0.5i
+getABIfield -l 3150.ab1 DATA 9
+.in -0.5i
+.fi
+
+To obtain the version numbers of the various trace processing steps:
+
+.nf
+.in +0.5i
+getABIfield -t 3150.ab1 SVER 1 SVER 2 SVER 3
+.in -0.5i
+.fi
+
+.SH "SEE ALSO"
+.PP
+
+\fBget_comment\fR(1)
+\fBscf\fR(4)
