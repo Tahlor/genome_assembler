@@ -153,4 +153,4 @@ def checker(reads, contigs):
                 break
         if not result:
             print("CONTIGS don't include all reads")
-            return
+            print(read)

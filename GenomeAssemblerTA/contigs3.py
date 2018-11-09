@@ -1,5 +1,6 @@
 import collections, sys
 import os
+import main
 
 output = open("results.txt", "w")
 
@@ -61,7 +62,7 @@ def forward_contig(d, km):
     return c_fw
 
 
-def all_contigs(d, k):
+def all_contigs_old(d, k):
     """ Get the contig when starting at each kmer
     """
     done = set()
@@ -87,6 +88,34 @@ def all_contigs(d, k):
                 G[i][0].append(heads[y])
     return G, r
 
+
+def non_maximal_contigs(d,k):
+    """ Get the max non branching path when starting at each kmer
+    """
+    done = set()
+    r = []
+    for x in d:
+        if x not in done:
+            contig_string, contig_kmer_list = get_contig(d, x)
+            for y in contig_kmer_list:  # every sub-kmer is done
+                done.add(y)
+            r.append(contig_string)
+    return r
+
+
+def all_contigs(d, k):
+    """ Get the contig when starting at each kmer
+    """
+    r = non_maximal_contigs(d,k)
+    contigs=r[:]
+    for possible_contig in r:
+        for other_possible_contig in contigs:
+            #print(possible_contig, other_possible_contig)
+            if possible_contig in other_possible_contig and possible_contig!=other_possible_contig:
+                contigs.remove(possible_contig)
+                break
+    return r, contigs
+
 def parse_fasta(path):
     with open(path, "r") as f:
         text = f.readlines()
@@ -111,24 +140,6 @@ def longest_contig(contigs):
         return 0
     return max([len(contig) for contig in contigs])
 
-def main_file_loop():
-    data_path = r"../data"
-    print(os.getcwd())
-    files = os.listdir(data_path)
-    files.sort()
-
-    for f in files:
-        if f[-6:] == ".fasta":
-            print(f)
-            main_call(os.path.join(data_path, f), depth=1)
-
-def test():
-    path = r"../data/6 real.error.large.fasta"
-    reads = parse_fasta(path)
-    k = 19
-    d = build_de_bruijn(reads, k, 1)
-    G, cs = all_contigs(d, k)
-    print("\t", k, len(cs), cs)  # cs is list of contigs
 
 def main_call(path, depth=0):
     """
@@ -138,7 +149,7 @@ def main_call(path, depth=0):
     kmers = parse_fasta(path)
     print("\t K #CONTIGS CONTIG_LIST")
     output.write("\tK\t#CONTIGS\tN50\t\tLARGEST\t\t\tCONTIG_LIST \n")
-    for k in range(13,51,2):
+    for k in range(13,100,2):
         d = build_de_bruijn(kmers, k, depth)
         G, cs = all_contigs(d, k)
         print("\t", k, len(cs), cs) # cs is list of contigs
@@ -148,7 +159,7 @@ def main_call(path, depth=0):
         output.write("\t\t" + str(longest_contig(cs)))
         output.write("\t\t\t\t" + str(cs) + "\n")
 
-if __name__ == "__main__":
+def main_file_loop():
     data_path = r"../data"
     print(os.getcwd())
     output.write(os.getcwd())
@@ -159,5 +170,25 @@ if __name__ == "__main__":
             print(f)
             output.write(f + "\n")
             main_call(os.path.join(data_path, f))
+
+def test():
+    path = r"../data/6 real.error.large.fasta"
+    reads = parse_fasta(path)
+    k = 19
+    d = build_de_bruijn(reads, k, 1)
+    G, cs = all_contigs(d, k)
+    print("\t", k, len(cs), cs)  # cs is list of contigs
+
+def test2():
+    path = r"../data/2 synthetic.example.noerror.small.fasta"
+    reads = parse_fasta(path)
+    k = 19
+    d = build_de_bruijn(reads, k, 0)
+    G, cs = all_contigs(d, k)
+    cs.sort(key=lambda x:len(x), reverse=True)
+    print("\t", k, len(cs), cs)  # cs is list of contigs
+    main.checker(reads, [cs[0]])
+
+if __name__ == "__main__":
     #main_loop()
-    #test()
+    test2()
