@@ -190,5 +190,5 @@ def test2():
     main.checker(reads, [cs[0]])
 
 if __name__ == "__main__":
-    #main_loop()
-    test2()
+    main_file_loop()
+    #test2()
