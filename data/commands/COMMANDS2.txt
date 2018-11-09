@@ -18,3 +18,12 @@ cd "/media/taylor/Data/PyCharm Projects/Genome Assembly Project"
 cd "/media/taylor/Data/PyCharm Projects/Genome Assembly Project"
 ./assemblers/velvet_1.2.10/velveth "./data" 11 "./data/*.fasta"
 ./assemblers/velvet_1.2.10/velvetg "./data" 
+
+
+
+SPADES
+./assemblers/SPAdes-3.13.0-Linux/bin/spades.py -1 <file_name> --only-assembler -o <output_dir>
+spades.py --test
+./assemblers/SPAdes-3.13.0-Linux/bin/spades.py -s "./data/6 real.error.large.fasta" --only-assembler -o "./data/results/6 real.error.large_spades"
+
+

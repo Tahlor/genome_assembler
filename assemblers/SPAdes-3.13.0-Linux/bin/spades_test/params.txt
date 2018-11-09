@@ -1,0 +1,36 @@
+Command line: ./spades.py	--test	
+
+System information:
+  SPAdes version: 3.13.0
+  Python version: 2.7.15
+  OS: Linux-4.15.0-38-generic-x86_64-with-Ubuntu-18.04-bionic
+
+Output dir: /media/taylor/Data/PyCharm Projects/Genome Assembly Project/assemblers/SPAdes-3.13.0-Linux/bin/spades_test
+Mode: read error correction and assembling
+Debug mode is turned OFF
+
+Dataset parameters:
+  Multi-cell mode (you should set '--sc' flag if input data was obtained with MDA (single-cell) technology or --meta flag if processing metagenomic dataset)
+  Reads:
+    Library number: 1, library type: paired-end
+      orientation: fr
+      left reads: ['/media/taylor/Data/PyCharm Projects/Genome Assembly Project/assemblers/SPAdes-3.13.0-Linux/share/spades/test_dataset/ecoli_1K_1.fq.gz']
+      right reads: ['/media/taylor/Data/PyCharm Projects/Genome Assembly Project/assemblers/SPAdes-3.13.0-Linux/share/spades/test_dataset/ecoli_1K_2.fq.gz']
+      interlaced reads: not specified
+      single reads: not specified
+      merged reads: not specified
+Read error correction parameters:
+  Iterations: 1
+  PHRED offset will be auto-detected
+  Corrected reads will be compressed
+Assembly parameters:
+  k: automatic selection based on read length
+  Repeat resolution is enabled
+  Mismatch careful mode is turned OFF
+  MismatchCorrector will be SKIPPED
+  Coverage cutoff is turned OFF
+Other parameters:
+  Dir for temp files: /media/taylor/Data/PyCharm Projects/Genome Assembly Project/assemblers/SPAdes-3.13.0-Linux/bin/spades_test/tmp
+  Threads: 16
+  Memory limit (in Gb): 15
+

@@ -1,0 +1,31 @@
+Command line: ./assemblers/SPAdes-3.13.0-Linux/bin/spades.py	-s	/media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/6 real.error.large.fasta	--only-assembler	-o	/media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/6 real.error.large_spades	
+
+System information:
+  SPAdes version: 3.13.0
+  Python version: 3.6.6
+  OS: Linux-4.15.0-38-generic-x86_64-with-Ubuntu-18.04-bionic
+
+Output dir: /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/6 real.error.large_spades
+Mode: ONLY assembling (without read error correction)
+Debug mode is turned OFF
+
+Dataset parameters:
+  Multi-cell mode (you should set '--sc' flag if input data was obtained with MDA (single-cell) technology or --meta flag if processing metagenomic dataset)
+  Reads:
+    Library number: 1, library type: single
+      left reads: not specified
+      right reads: not specified
+      interlaced reads: not specified
+      single reads: ['/media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/6 real.error.large.fasta']
+      merged reads: not specified
+Assembly parameters:
+  k: automatic selection based on read length
+  Repeat resolution is enabled
+  Mismatch careful mode is turned OFF
+  MismatchCorrector will be SKIPPED
+  Coverage cutoff is turned OFF
+Other parameters:
+  Dir for temp files: /media/taylor/Data/PyCharm Projects/Genome Assembly Project/data/results/6 real.error.large_spades/tmp
+  Threads: 16
+  Memory limit (in Gb): 15
+

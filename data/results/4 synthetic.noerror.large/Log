@@ -22,3 +22,8 @@ Fri Nov 09 10:01:24 2018
 Fri Nov 09 10:01:27 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\4 synthetic.noerror.large
 Final graph has 11 nodes and n50 of 630, max 1014, total 3716, using 0/780 reads
+Fri Nov 09 10:26:58 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\4 synthetic.noerror.large 29 ./data\4 synthetic.noerror.large.fasta
+Fri Nov 09 10:27:00 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\4 synthetic.noerror.large
+Final graph has 11 nodes and n50 of 630, max 1014, total 3716, using 0/780 reads

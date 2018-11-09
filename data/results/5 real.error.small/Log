@@ -22,3 +22,8 @@ Fri Nov 09 10:01:27 2018
 Fri Nov 09 10:01:30 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\5 real.error.small
 Final graph has 1 nodes and n50 of 1039, max 1039, total 1039, using 0/102 reads
+Fri Nov 09 10:27:00 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\5 real.error.small 35 ./data\5 real.error.small.fasta
+Fri Nov 09 10:27:03 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\5 real.error.small
+Final graph has 1 nodes and n50 of 1039, max 1039, total 1039, using 0/102 reads

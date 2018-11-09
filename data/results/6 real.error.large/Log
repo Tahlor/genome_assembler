@@ -1,22 +1,16 @@
-Fri Nov 09 09:40:10 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 43 ./data\6 real.error.large.fasta
-Fri Nov 09 09:40:11 2018
+Fri Nov 09 10:46:34 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 15 ./data\6 real.error.large.fasta
+Fri Nov 09 10:46:37 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\6 real.error.large
-Fri Nov 09 09:40:34 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 43 ./data\6 real.error.large.fasta
-Fri Nov 09 09:40:37 2018
+Fri Nov 09 10:47:01 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 13 ./data\6 real.error.large.fasta
+Fri Nov 09 10:47:04 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\6 real.error.large
-Fri Nov 09 09:41:35 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 33 ./data\6 real.error.large.fasta
-Fri Nov 09 09:41:38 2018
+Fri Nov 09 10:47:30 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 13 ./data\6 real.error.large.fasta
+Fri Nov 09 10:47:34 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\6 real.error.large
-Fri Nov 09 09:44:37 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 43 ./data\6 real.error.large.fasta
-Fri Nov 09 09:44:41 2018
+Fri Nov 09 10:49:01 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 13 ./data\6 real.error.large.fasta
+Fri Nov 09 10:49:05 2018
  ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\6 real.error.large
-Final graph has 319 nodes and n50 of 392, max 1477, total 28117, using 0/4675 reads
-Fri Nov 09 10:01:30 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 43 ./data\6 real.error.large.fasta
-Fri Nov 09 10:01:33 2018
- ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\6 real.error.large
-Final graph has 319 nodes and n50 of 392, max 1477, total 28117, using 0/4675 reads

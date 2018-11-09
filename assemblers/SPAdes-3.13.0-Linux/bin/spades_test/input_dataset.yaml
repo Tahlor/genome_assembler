@@ -1,0 +1,6 @@
+- "left reads":
+  - "/media/taylor/Data/PyCharm Projects/Genome Assembly Project/assemblers/SPAdes-3.13.0-Linux/share/spades/test_dataset/ecoli_1K_1.fq.gz"
+  "orientation": "fr"
+  "right reads":
+  - "/media/taylor/Data/PyCharm Projects/Genome Assembly Project/assemblers/SPAdes-3.13.0-Linux/share/spades/test_dataset/ecoli_1K_2.fq.gz"
+  "type": "paired-end"
