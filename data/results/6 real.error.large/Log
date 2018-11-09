@@ -59,3 +59,11 @@ CATEGORIES = 2
 MAXKMERLENGTH = 31
 
 Final graph has 1137 nodes and n50 of 76, max 1112, total 33038, using 0/4675 reads
+Thu Nov 08 17:58:21 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\6 real.error.large
+Thu Nov 08 17:58:21 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 17 ./data\6 real.error.large.fasta
+Thu Nov 08 18:03:55 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\6 real.error.large
+Thu Nov 08 18:03:55 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\6 real.error.large 21 ./data\6 real.error.large.fasta

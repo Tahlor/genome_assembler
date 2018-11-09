@@ -58,3 +58,13 @@ Compilation settings:
 CATEGORIES = 2
 MAXKMERLENGTH = 31
 
+Thu Nov 08 17:58:21 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\5 real.error.small 17 ./data\5 real.error.small.fasta
+Thu Nov 08 17:58:21 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\5 real.error.small
+Final graph has 7 nodes and n50 of 851, max 851, total 1087, using 0/102 reads
+Thu Nov 08 18:03:55 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\5 real.error.small
+Thu Nov 08 18:03:55 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\5 real.error.small 21 ./data\5 real.error.small.fasta
+Final graph has 7 nodes and n50 of 851, max 851, total 1087, using 0/102 reads

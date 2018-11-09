@@ -61,3 +61,13 @@ CATEGORIES = 2
 MAXKMERLENGTH = 31
 
 Final graph has 1 nodes and n50 of 115, max 115, total 115, using 0/9 reads
+Thu Nov 08 17:58:21 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\1 example.data 17 ./data\1 example.data.fasta
+Thu Nov 08 17:58:22 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\1 example.data
+Final graph has 1 nodes and n50 of 115, max 115, total 115, using 0/9 reads
+Thu Nov 08 18:03:55 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velveth_mt_x64.exe ./data/results\1 example.data 15 ./data\1 example.data.fasta
+Thu Nov 08 18:03:55 2018
+ ./assemblers/Velvet_1.1.04_executables\win64\multithread\velvetg_mt_x64.exe ./data/results\1 example.data
+Final graph has 1 nodes and n50 of 115, max 115, total 115, using 0/9 reads

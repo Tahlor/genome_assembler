@@ -10,10 +10,12 @@ def get_fname(path):
     fname, ext = os.path.splitext(child)
     return fname, ext, parent
 
-def write_file(path, text, mode="w"):
+def write_file(path, text, mode="w",newline=False):
     if type(text) != type(""):
         text = str(text)
     with open(path, mode) as f:
+        if newline:
+            f.write("\n")
         f.write(text)
 
 def create_arrays(text):
